@@ -7,7 +7,7 @@
     --drawer-border: 1px solid hsl(var(--glass-border));
     --table-gap-x: 120px;
     --table-gap-y: 84px;
-    --editor-sql-keyword-color: 219 72% 42%;
+    --editor-sql-keyword-color: 212 100% 71%;
     --editor-sql-function-color: 48 95% 62%;
     --editor-sql-identifier-color: 220 20% 92%;
     --editor-sql-datatype-color: 33 100% 71%;
