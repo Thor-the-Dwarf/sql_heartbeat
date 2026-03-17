@@ -43,6 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function selectEntireEditor(editorInstance) {
+        if (!editorInstance?.lineCount || !editorInstance?.setSelection) return;
+        const lastLineIndex = Math.max(0, editorInstance.lineCount() - 1);
+        const lastLineText = String(editorInstance.getLine(lastLineIndex) || '');
+        editorInstance.focus();
+        editorInstance.setSelection(
+            CodeMirror.Pos(0, 0),
+            CodeMirror.Pos(lastLineIndex, lastLineText.length)
+        );
+    }
+
     // Initialize CodeMirror
     const editor = CodeMirror.fromTextArea(document.getElementById('sql-editor'), {
         mode: 'text/x-sql',
@@ -8191,6 +8202,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     editor.addKeyMap({
+        'Ctrl-A': () => selectEntireEditor(editor),
+        'Cmd-A': () => selectEntireEditor(editor),
         'Ctrl-Enter': () => runSimulation({ fastForward: false }),
         'Cmd-Enter': () => runSimulation({ fastForward: false })
     });

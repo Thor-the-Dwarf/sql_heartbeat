@@ -1442,7 +1442,13 @@ html {
 }
 
 .cm-s-dracula .CodeMirror-selected {
-    background: hsl(220 58% 28% / 0.55) !important;
+    background: hsl(208 100% 62% / 0.26) !important;
+    box-shadow: inset 0 0 0 1px hsl(208 100% 74% / 0.22);
+}
+
+.cm-s-dracula.CodeMirror-focused .CodeMirror-selected {
+    background: hsl(208 100% 62% / 0.44) !important;
+    box-shadow: inset 0 0 0 1px hsl(208 100% 78% / 0.46);
 }
 
 .cm-s-dracula .CodeMirror-gutters {
