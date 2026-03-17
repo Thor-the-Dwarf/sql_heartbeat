@@ -76,6 +76,10 @@ html {
     /* Optional: Subtle background pattern or tint */
 }
 
+[hidden] {
+    display: none !important;
+}
+
 .drawer {
     /* Glassmorphic Drawer */
     background: hsl(var(--bg-surface) / 0.9);
@@ -684,20 +688,6 @@ html {
     padding: 8px;
 }
 
-.guide-story-title {
-    font-size: 0.86rem;
-    font-weight: 700;
-    color: hsl(var(--txt));
-    line-height: 1.25;
-}
-
-.guide-story-meta {
-    margin-top: 3px;
-    font-size: 0.72rem;
-    color: hsl(var(--txt-muted));
-    letter-spacing: 0.01em;
-}
-
 .guide-story-controls {
     margin-top: 8px;
     display: flex;
@@ -748,30 +738,6 @@ html {
     text-align: center;
 }
 
-.guide-story-status {
-    margin-left: auto;
-    font-size: 0.66rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    border: 1px solid hsl(var(--glass-border));
-    border-radius: 999px;
-    padding: 2px 7px;
-    color: hsl(var(--txt-muted));
-    background: hsl(var(--bg) / 0.42);
-}
-
-.guide-story-status.status-aktiv {
-    border-color: hsl(var(--primary) / 0.84);
-    color: hsl(var(--primary));
-    background: hsl(var(--primary) / 0.16);
-}
-
-.guide-story-status.status-gelesen {
-    border-color: hsl(var(--success) / 0.75);
-    color: hsl(var(--success));
-    background: hsl(var(--success) / 0.16);
-}
-
 .guide-story-gate {
     margin-top: 6px;
     font-size: 0.68rem;
@@ -792,14 +758,6 @@ html {
     display: flex;
     flex-direction: column;
     gap: 6px;
-}
-
-.guide-story-mission-title {
-    margin: 0;
-    font-size: 0.74rem;
-    line-height: 1.2;
-    color: hsl(var(--txt));
-    font-weight: 700;
 }
 
 .guide-story-mission-text {
@@ -930,6 +888,7 @@ html {
     font-size: 0.78rem;
     line-height: 1.45;
     color: hsl(var(--txt));
+    white-space: pre-line;
 }
 
 /* Horizontal Drawers (Left/Right) */

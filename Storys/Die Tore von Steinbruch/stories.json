@@ -3,21 +3,21 @@
   "rootLabel": "Storys",
   "titles": [
     {
-      "id": "story-markthof-00",
-      "title": "Schritt 0: Alle Bezirke",
-      "treeLabel": "0 Alle Bezirke",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "1 / 34",
+      "id": "story-steinbruch-00",
+      "title": "Schritt 0: Alle Bereiche",
+      "treeLabel": "0 Alle Bereiche",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "1 / 36",
       "status": "aktiv",
       "guideScenes": [
         {
           "sceneTitle": "Mission 0",
           "speaker": "Fremde",
-          "text": "Verflixt... mein Karren ist kurz vor der Stadt im Schlamm stecken geblieben. Wenigstens habe ich diese Handelsstadt erreicht. Hier gibt es ja sogar mehrere Bezirke.",
-          "objective": "Zeige alle Bezirke.",
-          "advanceHint": "Nutze SELECT auf `bezirk`.",
-          "editorComment": "Mission 0: Alle Bezirke",
-          "starterSql": "SELECT * FROM bezirk;",
+          "text": "Verflixt... der Passstrasse ist eingestuerzt, und ich sitze hier fest. Wenigstens habe ich diese Steinbruch erreicht. Hier gibt es ja sogar mehrere Bereiche.",
+          "objective": "Zeige alle Bereiche.",
+          "advanceHint": "Nutze SELECT auf `bereich`.",
+          "editorComment": "Mission 0: Alle Bereiche",
+          "starterSql": "SELECT * FROM bereich;",
           "successMessage": "Schritt 0 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -36,7 +36,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEZIRK"
+                  "BEREICH"
                 ]
               }
             ]
@@ -45,21 +45,21 @@
       ]
     },
     {
-      "id": "story-markthof-01",
-      "title": "Schritt 1: Alle Bewohner",
-      "treeLabel": "1 Alle Bewohner",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "2 / 34",
+      "id": "story-steinbruch-01",
+      "title": "Schritt 1: Alle Arbeiter",
+      "treeLabel": "1 Alle Arbeiter",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "2 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 1",
           "speaker": "Fremde",
-          "text": "Und eine ganze Menge Bewohner gibt es hier auch. Zeige mir die Liste der Bewohner.",
-          "objective": "Zeige alle Bewohner.",
-          "advanceHint": "Nutze SELECT auf `bewohner`.",
-          "editorComment": "Mission 1: Alle Bewohner",
-          "starterSql": "SELECT * FROM bewohner;",
+          "text": "Und eine ganze Menge Arbeiter gibt es hier auch. Zeige mir die Liste der Arbeiter.",
+          "objective": "Zeige alle Arbeiter.",
+          "advanceHint": "Nutze SELECT auf `arbeiter`.",
+          "editorComment": "Mission 1: Alle Arbeiter",
+          "starterSql": "SELECT * FROM arbeiter;",
           "successMessage": "Schritt 1 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -78,7 +78,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               }
             ]
@@ -87,21 +87,21 @@
       ]
     },
     {
-      "id": "story-markthof-02",
+      "id": "story-steinbruch-02",
       "title": "Schritt 2: Alle Koeche",
       "treeLabel": "2 Alle Koeche",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "3 / 34",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "3 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 2",
           "speaker": "Fremde",
-          "text": "Mein Magen knurrt. Ich suche mir erst mal einen Koch, der mir eine warme Mahlzeit gibt.",
+          "text": "Mein Magen knurrt. Ich suche mir erst mal einen Koch, der mir etwas Warmes gibt.",
           "objective": "Zeige alle Koeche.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE.",
+          "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
           "editorComment": "Mission 2: Alle Koeche",
-          "starterSql": "SELECT * FROM bewohner WHERE beruf = 'Koch';",
+          "starterSql": "SELECT * FROM arbeiter WHERE beruf = 'Koch';",
           "successMessage": "Schritt 2 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -126,7 +126,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
@@ -141,21 +141,21 @@
       ]
     },
     {
-      "id": "story-markthof-03",
-      "title": "Schritt 3: Alle friedlichen Bewohner",
-      "treeLabel": "3 Alle friedlichen Bewohner",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "4 / 34",
+      "id": "story-steinbruch-03",
+      "title": "Schritt 3: Alle friedlichen Arbeiter",
+      "treeLabel": "3 Alle friedlichen Arbeiter",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "4 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 3",
           "speaker": "Hannes",
-          "text": "Hier, nimm etwas Suppe. Und pass auf deiner Suche gut auf: Solange du unbewaffnet bist, solltest du boesen Bewohnern aus dem Weg gehen. Denn nicht jeder hier ist friedlich!\nDanke, Hannes! Na gut, dann schaue ich mal, welche Bewohner friedlich sind.",
-          "objective": "Zeige alle friedlichen Bewohner.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE.",
-          "editorComment": "Mission 3: Alle friedlichen Bewohner",
-          "starterSql": "SELECT * FROM bewohner WHERE status = 'friedlich';",
+          "text": "Hier, nimm etwas Suppe. Und pass auf deiner Suche gut auf: Solange du unbewaffnet bist, solltest du boesen Arbeitern aus dem Weg gehen. Denn nicht jeder hier ist friedlich!\nDanke, Hannes! Na gut, dann schaue ich mal, welche Arbeiter friedlich sind.",
+          "objective": "Zeige alle friedlichen Arbeiter.",
+          "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
+          "editorComment": "Mission 3: Alle friedlichen Arbeiter",
+          "starterSql": "SELECT * FROM arbeiter WHERE status = 'friedlich';",
           "successMessage": "Schritt 3 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -180,7 +180,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
@@ -194,32 +194,32 @@
           "dialogueTurns": [
             {
               "speaker": "Hannes",
-              "text": "Hier, nimm etwas Suppe. Und pass auf deiner Suche gut auf: Solange du unbewaffnet bist, solltest du boesen Bewohnern aus dem Weg gehen. Denn nicht jeder hier ist friedlich!"
+              "text": "Hier, nimm etwas Suppe. Und pass auf deiner Suche gut auf: Solange du unbewaffnet bist, solltest du boesen Arbeitern aus dem Weg gehen. Denn nicht jeder hier ist friedlich!"
             },
             {
               "speaker": "Fremde",
-              "text": "Danke, Hannes! Na gut, dann schaue ich mal, welche Bewohner friedlich sind."
+              "text": "Danke, Hannes! Na gut, dann schaue ich mal, welche Arbeiter friedlich sind."
             }
           ]
         }
       ]
     },
     {
-      "id": "story-markthof-04",
+      "id": "story-steinbruch-04",
       "title": "Schritt 4: Alle friedlichen Waffenschmiede",
       "treeLabel": "4 Alle friedlichen Waffenschmiede",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "5 / 34",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "5 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 4",
           "speaker": "Fremde",
-          "text": "Frueher oder spaeter brauche ich aber ein Schwert. Lasst uns einen friedlichen Waffenschmied suchen, der mir eines schmieden kann. (Hinweis: Bedingungen im WHERE-Teil kannst du mit AND verknuepfen)",
+          "text": "Frueher oder spaeter brauche ich aber eine Steinklinge. Lasst uns einen friedlichen Waffenschmied suchen, der mir eine schmieden kann. (Hinweis: Bedingungen im WHERE-Teil kannst du mit AND verknuepfen)",
           "objective": "Zeige alle friedlichen Waffenschmiede.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE.",
+          "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
           "editorComment": "Mission 4: Alle friedlichen Waffenschmiede",
-          "starterSql": "SELECT * FROM bewohner WHERE status = 'friedlich' AND beruf = 'Waffenschmied';",
+          "starterSql": "SELECT * FROM arbeiter WHERE status = 'friedlich' AND beruf = 'Waffenschmied';",
           "successMessage": "Schritt 4 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -244,7 +244,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
@@ -265,21 +265,21 @@
       ]
     },
     {
-      "id": "story-markthof-05",
-      "title": "Schritt 5: Alle friedlichen Bewohner, deren Beruf auf 'schmied' endet",
-      "treeLabel": "5 Alle friedlichen Bewohner, deren Beruf auf 'schmied' endet",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "6 / 34",
+      "id": "story-steinbruch-05",
+      "title": "Schritt 5: Alle friedlichen Arbeiter, deren Beruf auf 'schmied' endet",
+      "treeLabel": "5 Alle friedlichen Arbeiter, deren Beruf auf 'schmied' endet",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "6 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 5",
           "speaker": "Fremde",
-          "text": "Hm, das ist nur einer. Vielleicht gibt es noch andere friedliche Schmiede, z.B. Hufschmied, Schmied, Waffenschmied, etc. Probiere beruf LIKE '%schmied', um alle Bewohner zu finden, deren Beruf mit 'schmied' endet.",
-          "objective": "Zeige alle friedlichen Bewohner, deren Beruf auf 'schmied' endet.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE.",
-          "editorComment": "Mission 5: Alle friedlichen Bewohner, deren Beruf auf 'schmied' endet",
-          "starterSql": "SELECT * FROM bewohner WHERE status = 'friedlich' AND beruf LIKE '%schmied';",
+          "text": "Hm, das ist nur einer. Vielleicht gibt es noch andere friedliche Schmiede, z.B. Hufschmied, Schmied, Waffenschmied, etc. Probiere beruf LIKE '%schmied', um alle Arbeiter zu finden, deren Beruf mit 'schmied' endet.",
+          "objective": "Zeige alle friedlichen Arbeiter, deren Beruf auf 'schmied' endet.",
+          "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
+          "editorComment": "Mission 5: Alle friedlichen Arbeiter, deren Beruf auf 'schmied' endet",
+          "starterSql": "SELECT * FROM arbeiter WHERE status = 'friedlich' AND beruf LIKE '%schmied';",
           "successMessage": "Schritt 5 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -310,7 +310,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
@@ -331,21 +331,21 @@
       ]
     },
     {
-      "id": "story-markthof-06",
-      "title": "Schritt 6: Mich als neue Bewohnerin im Suedtor ein",
-      "treeLabel": "6 Mich als neue Bewohnerin im Suedtor ein",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "7 / 34",
+      "id": "story-steinbruch-06",
+      "title": "Schritt 6: Mich als neue Arbeiterin im Nordtor ein",
+      "treeLabel": "6 Mich als neue Arbeiterin im Nordtor ein",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "7 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 6",
-          "speaker": "Gregor",
-          "text": "Hallo Fremde, wohin des Wegs? Ich bin Gregor, der Hauptmann des Suedtors. Ich trage dich gern als Bewohnerin meines Bezirks ein.",
-          "objective": "Trage mich als neue Bewohnerin mit `bewohnernr 20` im Suedtor ein.",
-          "advanceHint": "Nutze INSERT INTO fuer `bewohner`, vergib `bewohnernr 20` und trage die geforderten Werte in die passenden Spalten ein.",
-          "editorComment": "Mission 6: Mich als neue Bewohnerin im Suedtor ein",
-          "starterSql": "INSERT INTO bewohner (bewohnernr, name, bezirknr, geschlecht, beruf, gold, status) VALUES (20, 'Fremde', 1, '?', '?', 0, '?');",
+          "speaker": "Merten",
+          "text": "Hallo Fremde, wohin des Wegs? Ich bin Merten, der Vorarbeiter vom Nordtor. Ich trage dich gern als Arbeiterin meines Bereichs ein.",
+          "objective": "Trage mich als neue Arbeiterin mit `arbeiternr 20` im Nordtor ein.",
+          "advanceHint": "Nutze INSERT INTO fuer `arbeiter`, vergib `arbeiternr 20` und trage die geforderten Werte in die passenden Spalten ein.",
+          "editorComment": "Mission 6: Mich als neue Arbeiterin im Nordtor ein",
+          "starterSql": "INSERT INTO arbeiter (arbeiternr, name, bereichnr, geschlecht, beruf, gold, status) VALUES (20, 'Fremde', 1, '?', '?', 0, '?');",
           "successMessage": "Schritt 6 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -376,7 +376,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
@@ -391,21 +391,21 @@
       ]
     },
     {
-      "id": "story-markthof-07",
-      "title": "Schritt 7: Meine bewohnernr",
-      "treeLabel": "7 Meine bewohnernr",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "8 / 34",
+      "id": "story-steinbruch-07",
+      "title": "Schritt 7: Meine arbeiternr",
+      "treeLabel": "7 Meine arbeiternr",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "8 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 7",
           "speaker": "Fremde",
-          "text": "Hey, nenn mich doch nicht Fremde! Naja, egal. Wie ist eigentlich meine bewohnernr? (Tipp: Verwende eine SELECT-Abfrage ohne Sternchen.)",
-          "objective": "Zeige meine bewohnernr.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE.",
-          "editorComment": "Mission 7: Meine bewohnernr",
-          "starterSql": "SELECT bewohnernr FROM bewohner WHERE name = 'Fremde';",
+          "text": "Hey, nenn mich doch nicht Fremde! Naja, egal. Wie ist eigentlich meine arbeiternr? (Tipp: Verwende eine SELECT-Abfrage ohne Sternchen.)",
+          "objective": "Zeige meine arbeiternr.",
+          "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
+          "editorComment": "Mission 7: Meine arbeiternr",
+          "starterSql": "SELECT arbeiternr FROM arbeiter WHERE name = 'Fremde';",
           "successMessage": "Schritt 7 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -430,7 +430,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
@@ -445,21 +445,21 @@
       ]
     },
     {
-      "id": "story-markthof-08",
+      "id": "story-steinbruch-08",
       "title": "Schritt 8: Mein aktuelles Gold",
       "treeLabel": "8 Mein aktuelles Gold",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "9 / 34",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "9 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 8",
           "speaker": "Fremde",
-          "text": "Hallo Lennart! Was kostet bei dir ein Schwert?\nIch schmiede dir ein Schwert fuer nur 150 Gold. Billiger bekommst du es nirgendwo! Wie viel Gold hast du momentan?",
+          "text": "Hallo Levin! Was kostet bei dir eine Steinklinge?\nIch schmiede dir eine fuer nur 150 Gold. Billiger bekommst du sie nirgendwo! Wie viel Gold hast du momentan?",
           "objective": "Zeige mein aktuelles Gold.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE.",
+          "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
           "editorComment": "Mission 8: Mein aktuelles Gold",
-          "starterSql": "SELECT gold FROM bewohner WHERE bewohnernr = 20;",
+          "starterSql": "SELECT gold FROM arbeiter WHERE arbeiternr = 20;",
           "successMessage": "Schritt 8 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -484,7 +484,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               }
             ]
@@ -492,28 +492,28 @@
           "dialogueTurns": [
             {
               "speaker": "Fremde",
-              "text": "Hallo Lennart! Was kostet bei dir ein Schwert?"
+              "text": "Hallo Levin! Was kostet bei dir eine Steinklinge?"
             },
             {
-              "speaker": "Lennart",
-              "text": "Ich schmiede dir ein Schwert fuer nur 150 Gold. Billiger bekommst du es nirgendwo! Wie viel Gold hast du momentan?"
+              "speaker": "Levin",
+              "text": "Ich schmiede dir eine fuer nur 150 Gold. Billiger bekommst du sie nirgendwo! Wie viel Gold hast du momentan?"
             }
           ]
         }
       ]
     },
     {
-      "id": "story-markthof-09",
+      "id": "story-steinbruch-09",
       "title": "Schritt 9: Alle herrenlosen Gegenstaende",
       "treeLabel": "9 Alle herrenlosen Gegenstaende",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "10 / 34",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "10 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 9",
           "speaker": "Fremde",
-          "text": "Mist, ich habe ja noch gar kein Gold. Arbeiten will ich aber auch nicht sofort. Vorhin habe ich zwischen den Marktstaenden mehrere Dinge herumliegen sehen, die niemandem gehoeren. Die koennte ich einsammeln und an Haendler verkaufen. Liste alle Gegenstaende auf, die niemandem gehoeren.",
+          "text": "Mist, ich habe ja noch gar kein Gold. Arbeiten will ich aber auch nicht sofort. Vorhin habe ich im Stollen mehrere Dinge herumliegen sehen, die niemandem gehoeren. Die koennte ich einsammeln und an Haendler verkaufen. Liste alle Gegenstaende auf, die niemandem gehoeren.",
           "objective": "Zeige alle herrenlosen Gegenstaende.",
           "advanceHint": "Nutze SELECT auf `gegenstand`, filtere mit WHERE.",
           "editorComment": "Mission 9: Alle herrenlosen Gegenstaende",
@@ -563,21 +563,21 @@
       ]
     },
     {
-      "id": "story-markthof-10",
-      "title": "Schritt 10: Den Zinnbecher ein",
-      "treeLabel": "10 Den Zinnbecher ein",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "11 / 34",
+      "id": "story-steinbruch-10",
+      "title": "Schritt 10: Die Torrolle ein",
+      "treeLabel": "10 Die Torrolle ein",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "11 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 10",
           "speaker": "Fremde",
-          "text": "Nehmen wir zuerst den Zinnbecher mit. Einen Becher kann man immer gebrauchen.",
-          "objective": "Sammle den Zinnbecher ein.",
+          "text": "Nehmen wir zuerst die Torrolle mit. Eine Lampe kann man hier unten immer gebrauchen.",
+          "objective": "Sammle die Torrolle ein.",
           "advanceHint": "Nutze UPDATE auf `gegenstand` und setze `besitzer` neu und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 10: Den Zinnbecher ein",
-          "starterSql": "UPDATE gegenstand SET besitzer = 20 WHERE gegenstand = 'Zinnbecher';",
+          "editorComment": "Mission 10: Die Torrolle ein",
+          "starterSql": "UPDATE gegenstand SET besitzer = 20 WHERE gegenstand = 'Torrolle';",
           "successMessage": "Schritt 10 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -602,19 +602,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IN"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
                   "GEGENSTAND"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "ZINNBECHER"
+                  "ERZLAMPE"
                 ]
               }
             ]
@@ -623,11 +617,11 @@
       ]
     },
     {
-      "id": "story-markthof-11",
+      "id": "story-steinbruch-11",
       "title": "Schritt 11: Alle herrenlosen Gegenstaende ein",
       "treeLabel": "11 Alle herrenlosen Gegenstaende ein",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "12 / 34",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "12 / 36",
       "status": "neu",
       "guideScenes": [
         {
@@ -683,11 +677,11 @@
       ]
     },
     {
-      "id": "story-markthof-12",
+      "id": "story-steinbruch-12",
       "title": "Schritt 12: Alle Gegenstaende in meinem Besitz",
       "treeLabel": "12 Alle Gegenstaende in meinem Besitz",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "13 / 34",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "13 / 36",
       "status": "neu",
       "guideScenes": [
         {
@@ -731,21 +725,21 @@
       ]
     },
     {
-      "id": "story-markthof-13",
+      "id": "story-steinbruch-13",
       "title": "Schritt 13: Alle friedlichen Haendler und Kaufleute",
       "treeLabel": "13 Alle friedlichen Haendler und Kaufleute",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "14 / 34",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "14 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 13",
           "speaker": "Fremde",
-          "text": "Finde friedliche Bewohner mit dem Beruf Haendler oder Kaufmann. Eventuell moechten sie etwas von uns kaufen. (Hinweis: Achte bei AND- und OR-Verknuepfungen auf korrekte Klammerung.)",
+          "text": "Finde friedliche Arbeiter mit dem Beruf Haendler oder Kaufmann. Eventuell moechten sie etwas von uns kaufen. (Hinweis: Achte bei AND- und OR-Verknuepfungen auf korrekte Klammerung.)",
           "objective": "Zeige alle friedlichen Haendler und Kaufleute.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE.",
+          "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
           "editorComment": "Mission 13: Alle friedlichen Haendler und Kaufleute",
-          "starterSql": "SELECT * FROM bewohner WHERE status = 'friedlich' AND (beruf = 'Haendler' OR beruf = 'Kaufmann');",
+          "starterSql": "SELECT * FROM arbeiter WHERE status = 'friedlich' AND (beruf = 'Haendler' OR beruf = 'Kaufmann');",
           "successMessage": "Schritt 13 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -770,7 +764,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
@@ -791,21 +785,21 @@
       ]
     },
     {
-      "id": "story-markthof-14",
-      "title": "Schritt 14: Siegelring und Gewuerzbeutel an bewohnernr 15",
-      "treeLabel": "14 Siegelring und Gewuerzbeutel an bewohnernr 15",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "15 / 34",
+      "id": "story-steinbruch-14",
+      "title": "Schritt 14: Steinkeil und Zinnbecher an arbeiternr 15",
+      "treeLabel": "14 Steinkeil und Zinnbecher an arbeiternr 15",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "15 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 14",
           "speaker": "Lene Handel",
-          "text": "Ich interessiere mich fuer den Siegelring und den Gewuerzbeutel. Der Rest ist nur Kram. Gib mir bitte die beiden Gegenstaende. Meine bewohnernr ist uebrigens 15.",
-          "objective": "Gib Siegelring und Gewuerzbeutel an bewohnernr 15.",
+          "text": "Ich interessiere mich fuer den Steinkeil und den Zinnbecher. Der Rest ist nur Geruempel. Gib mir bitte die beiden Gegenstaende. Meine arbeiternr ist uebrigens 15.",
+          "objective": "Gib Steinkeil und Zinnbecher an arbeiternr 15.",
           "advanceHint": "Nutze UPDATE auf `gegenstand` und setze `besitzer` neu und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 14: Siegelring und Gewuerzbeutel an bewohnernr 15",
-          "starterSql": "UPDATE gegenstand SET besitzer = 15 WHERE gegenstand IN ('Siegelring', 'Gewuerzbeutel');",
+          "editorComment": "Mission 14: Steinkeil und Zinnbecher an arbeiternr 15",
+          "starterSql": "UPDATE gegenstand SET besitzer = 15 WHERE gegenstand IN ('Steinkeil', 'Zinnbecher');",
           "successMessage": "Schritt 14 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -842,13 +836,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "SIEGELRING"
+                  "KUPFERRING"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "GEWUERZBEUTEL"
+                  "ZINNBECHER"
                 ]
               }
             ]
@@ -857,11 +851,11 @@
       ]
     },
     {
-      "id": "story-markthof-15",
+      "id": "story-steinbruch-15",
       "title": "Schritt 15: Mein Gold um 120",
       "treeLabel": "15 Mein Gold um 120",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "16 / 34",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "16 / 36",
       "status": "neu",
       "guideScenes": [
         {
@@ -869,9 +863,9 @@
           "speaker": "Lene Handel",
           "text": "Hier hast du einen Haufen Gold!",
           "objective": "Erhoehe mein Gold um 120.",
-          "advanceHint": "Nutze UPDATE auf `bewohner` und setze `gold` neu und grenze die betroffenen Zeilen mit WHERE ein.",
+          "advanceHint": "Nutze UPDATE auf `arbeiter` und setze `gold` neu und grenze die betroffenen Zeilen mit WHERE ein.",
           "editorComment": "Mission 15: Mein Gold um 120",
-          "starterSql": "UPDATE bewohner SET gold = gold + 120 WHERE bewohnernr = 20;",
+          "starterSql": "UPDATE arbeiter SET gold = gold + 120 WHERE arbeiternr = 20;",
           "successMessage": "Schritt 15 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -896,7 +890,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               }
             ]
@@ -905,21 +899,21 @@
       ]
     },
     {
-      "id": "story-markthof-16",
-      "title": "Schritt 16: Meinen Namen von Fremde zu Lea",
-      "treeLabel": "16 Meinen Namen von Fremde zu Lea",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "17 / 34",
+      "id": "story-steinbruch-16",
+      "title": "Schritt 16: Meinen Namen von Fremde zu Tessa",
+      "treeLabel": "16 Meinen Namen von Fremde zu Tessa",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "17 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 16",
           "speaker": "Fremde",
-          "text": "Leider reicht das noch nicht fuer ein Schwert. Dann muss ich wohl doch arbeiten. Bevor ich mich irgendwo bewerbe, sollte ich vielleicht meinen Namen von Fremde auf meinen richtigen Namen aendern.",
-          "objective": "Aendere meinen Namen von Fremde zu Lea.",
-          "advanceHint": "Nutze UPDATE auf `bewohner` und setze `name` neu und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 16: Meinen Namen von Fremde zu Lea",
-          "starterSql": "UPDATE bewohner SET name = 'Lea' WHERE name = 'Fremde';",
+          "text": "Leider reicht das noch nicht fuer eine Steinklinge. Dann muss ich wohl doch arbeiten. Bevor ich mich irgendwo bewerbe, sollte ich vielleicht meinen Namen von Fremde auf meinen richtigen Namen aendern.",
+          "objective": "Aendere meinen Namen von Fremde zu Tessa.",
+          "advanceHint": "Nutze UPDATE auf `arbeiter` und setze `name` neu und grenze die betroffenen Zeilen mit WHERE ein.",
+          "editorComment": "Mission 16: Meinen Namen von Fremde zu Tessa",
+          "starterSql": "UPDATE arbeiter SET name = 'Tessa' WHERE name = 'Fremde';",
           "successMessage": "Schritt 16 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -944,13 +938,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "LEA"
+                  "MARA"
                 ]
               },
               {
@@ -965,21 +959,21 @@
       ]
     },
     {
-      "id": "story-markthof-17",
-      "title": "Schritt 17: Alle Baecker, sortiert nach Gold absteigend",
-      "treeLabel": "17 Alle Baecker, sortiert nach Gold absteigend",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "18 / 34",
+      "id": "story-steinbruch-17",
+      "title": "Schritt 17: Alle Baecker, sortiert nach Gold absteigend und Name au...",
+      "treeLabel": "17 Alle Baecker, sortiert nach Gold absteigend und Name au...",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "18 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 17",
-          "speaker": "Lea",
-          "text": "In meiner Freizeit backe ich gern. Ich glaube, ich verdiene mir ein bisschen Gold als Baeckerin. Zeige mir alle Baecker. Tipp: Mit ORDER BY gold DESC steht sogar der reichste oben.",
-          "objective": "Zeige alle Baecker, sortiert nach Gold absteigend.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE und sortiere mit ORDER BY.",
-          "editorComment": "Mission 17: Alle Baecker, sortiert nach Gold absteigend",
-          "starterSql": "SELECT * FROM bewohner WHERE beruf = 'Baecker' ORDER BY gold DESC;",
+          "speaker": "Tessa",
+          "text": "In meiner Freizeit backe ich gern. Ich glaube, ich verdiene mir ein bisschen Gold als Baeckerin. Zeige mir alle Baecker. Tipp: Mit ORDER BY gold DESC und einem zweiten Sortierkriterium bleibt die Sache sauber.",
+          "objective": "Zeige alle Baecker, sortiert nach Gold absteigend und Name aufsteigend.",
+          "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE und sortiere mit ORDER BY.",
+          "editorComment": "Mission 17: Alle Baecker, sortiert nach Gold absteigend und Name au...",
+          "starterSql": "SELECT * FROM arbeiter WHERE beruf = 'Baecker' ORDER BY gold DESC, name ASC;",
           "successMessage": "Schritt 17 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1016,7 +1010,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
@@ -1031,21 +1025,21 @@
       ]
     },
     {
-      "id": "story-markthof-18",
+      "id": "story-steinbruch-18",
       "title": "Schritt 18: Mein Gold um 100",
       "treeLabel": "18 Mein Gold um 100",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "19 / 34",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "19 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 18",
-          "speaker": "Baldur",
-          "text": "Hi, da bist du ja wieder! Soso, Lea heisst du also. Und du willst als Baeckerin arbeiten? Da sage ich nicht nein. Ich zahle dir pro hundert Brote 1 Gold.\n(8 Stunden spaeter...) Hier bitteschoen, zehntausend Brote! Ich kuendige! Ich habe nun genug Gold fuer das Schwert! Mal schauen, was jetzt mit meinem Kontostand passiert.",
+          "speaker": "Merten",
+          "text": "Hi, da bist du ja wieder! Soso, Tessa heisst du also. Und du willst als Baeckerin arbeiten? Da sage ich nicht nein. Ich zahle dir pro hundert Brote 1 Gold.\n(8 Stunden spaeter...) Hier bitteschoen, zehntausend Brote! Ich kuendige! Ich habe nun genug Gold fuer die Steinklinge! Mal schauen, was jetzt mit meinem Kontostand passiert.",
           "objective": "Erhoehe mein Gold um 100.",
-          "advanceHint": "Nutze UPDATE auf `bewohner` und setze `gold` neu und grenze die betroffenen Zeilen mit WHERE ein.",
+          "advanceHint": "Nutze UPDATE auf `arbeiter` und setze `gold` neu und grenze die betroffenen Zeilen mit WHERE ein.",
           "editorComment": "Mission 18: Mein Gold um 100",
-          "starterSql": "UPDATE bewohner SET gold = gold + 100 WHERE bewohnernr = 20;",
+          "starterSql": "UPDATE arbeiter SET gold = gold + 100 WHERE arbeiternr = 20;",
           "successMessage": "Schritt 18 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1070,40 +1064,40 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               }
             ]
           },
           "dialogueTurns": [
             {
-              "speaker": "Baldur",
-              "text": "Hi, da bist du ja wieder! Soso, Lea heisst du also. Und du willst als Baeckerin arbeiten? Da sage ich nicht nein. Ich zahle dir pro hundert Brote 1 Gold."
+              "speaker": "Merten",
+              "text": "Hi, da bist du ja wieder! Soso, Tessa heisst du also. Und du willst als Baeckerin arbeiten? Da sage ich nicht nein. Ich zahle dir pro hundert Brote 1 Gold."
             },
             {
-              "speaker": "Lea",
-              "text": "(8 Stunden spaeter...) Hier bitteschoen, zehntausend Brote! Ich kuendige! Ich habe nun genug Gold fuer das Schwert! Mal schauen, was jetzt mit meinem Kontostand passiert."
+              "speaker": "Tessa",
+              "text": "(8 Stunden spaeter...) Hier bitteschoen, zehntausend Brote! Ich kuendige! Ich habe nun genug Gold fuer die Steinklinge! Mal schauen, was jetzt mit meinem Kontostand passiert."
             }
           ]
         }
       ]
     },
     {
-      "id": "story-markthof-19",
+      "id": "story-steinbruch-19",
       "title": "Schritt 19: 150 Gold von meinem Konto ab",
       "treeLabel": "19 150 Gold von meinem Konto ab",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "20 / 34",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "20 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 19",
-          "speaker": "Lennart",
-          "text": "Hier ist dein neues Schwert, Lea! Nun kannst du ueberall hin!",
+          "speaker": "Levin",
+          "text": "Hier ist deine neue Steinklinge, Tessa! Nun kannst du ueberall hin!",
           "objective": "Ziehe 150 Gold von meinem Konto ab.",
-          "advanceHint": "Nutze UPDATE auf `bewohner` und setze `gold` neu und grenze die betroffenen Zeilen mit WHERE ein.",
+          "advanceHint": "Nutze UPDATE auf `arbeiter` und setze `gold` neu und grenze die betroffenen Zeilen mit WHERE ein.",
           "editorComment": "Mission 19: 150 Gold von meinem Konto ab",
-          "starterSql": "UPDATE bewohner SET gold = gold - 150 WHERE bewohnernr = 20;",
+          "starterSql": "UPDATE arbeiter SET gold = gold - 150 WHERE arbeiternr = 20;",
           "successMessage": "Schritt 19 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1128,7 +1122,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               }
             ]
@@ -1137,21 +1131,21 @@
       ]
     },
     {
-      "id": "story-markthof-20",
-      "title": "Schritt 20: Alle Faehrmaenner",
-      "treeLabel": "20 Alle Faehrmaenner",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "21 / 34",
+      "id": "story-steinbruch-20",
+      "title": "Schritt 20: Alle Torwaechter",
+      "treeLabel": "20 Alle Torwaechter",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "21 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 20",
-          "speaker": "Lea",
-          "text": "Gibt es in der Stadt einen Faehrmann? Er koennte mich ueber den Fluss und damit nach Hause bringen.",
-          "objective": "Zeige alle Faehrmaenner.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE.",
-          "editorComment": "Mission 20: Alle Faehrmaenner",
-          "starterSql": "SELECT * FROM bewohner WHERE beruf = 'Faehrmann';",
+          "speaker": "Tessa",
+          "text": "Gibt es in der Mine einen Torwaechter? Er koennte mich wieder ans Tageslicht bringen.",
+          "objective": "Zeige alle Torwaechter.",
+          "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
+          "editorComment": "Mission 20: Alle Torwaechter",
+          "starterSql": "SELECT * FROM arbeiter WHERE beruf = 'Torwaechter';",
           "successMessage": "Schritt 20 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1176,13 +1170,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "FAEHRMANN"
+                  "AUFZUGFUEHRER"
                 ]
               }
             ]
@@ -1191,21 +1185,21 @@
       ]
     },
     {
-      "id": "story-markthof-21",
-      "title": "Schritt 21: Den Namen des Bezirks, in dem Kaspar Klinge lebt",
-      "treeLabel": "21 Den Namen des Bezirks, in dem Kaspar Klinge lebt",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "22 / 34",
+      "id": "story-steinbruch-21",
+      "title": "Schritt 21: Den Namen des Bereichs, in dem Raban Stein arbeitet",
+      "treeLabel": "21 Den Namen des Bereichs, in dem Raban Stein arbeitet",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "22 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 21",
           "speaker": "Hannes",
-          "text": "Das ist ja das Geheimnis des Markthofs! Kaspar Klinge haelt den Faehrmann gefangen! Ich verrate dir einen Trick, wie wir schnell herausfinden koennen, in welchem Bezirk Kaspar Klinge lebt.",
-          "objective": "Zeige den Namen des Bezirks, in dem Kaspar Klinge lebt.",
-          "advanceHint": "Nutze SELECT auf `bezirk` und `bewohner`, verbinde die Tabellen per JOIN und filtere mit WHERE.",
-          "editorComment": "Mission 21: Den Namen des Bezirks, in dem Kaspar Klinge lebt",
-          "starterSql": "SELECT bezirk.name FROM bezirk JOIN bewohner ON bezirk.bezirknr = bewohner.bezirknr WHERE bewohner.name = 'Kaspar Klinge';",
+          "text": "Das ist schrecklich! Raban Stein haelt den Torwaechter gefangen! Ich verrate dir einen Trick, wie wir schnell herausfinden koennen, in welchem Bereich Raban Stein arbeitet.",
+          "objective": "Zeige den Namen des Bereichs, in dem Raban Stein arbeitet.",
+          "advanceHint": "Nutze SELECT auf `bereich` und `arbeiter`, verbinde die Tabellen per JOIN und filtere mit WHERE.",
+          "editorComment": "Mission 21: Den Namen des Bereichs, in dem Raban Stein arbeitet",
+          "starterSql": "SELECT b.name FROM bereich b JOIN arbeiter a ON b.bereichnr = a.bereichnr WHERE a.name = 'Raban Stein';",
           "successMessage": "Schritt 21 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1242,19 +1236,19 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEZIRK"
+                  "BEREICH"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "KASPAR"
+                  "KUNO"
                 ]
               }
             ]
@@ -1263,21 +1257,21 @@
       ]
     },
     {
-      "id": "story-markthof-22",
-      "title": "Schritt 22: Den Namen des Hauptmanns des Markthofs",
-      "treeLabel": "22 Den Namen des Hauptmanns des Markthofs",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "23 / 34",
+      "id": "story-steinbruch-22",
+      "title": "Schritt 22: Den Namen des Vorarbeiters des Bruchkantes",
+      "treeLabel": "22 Den Namen des Vorarbeiters des Bruchkantes",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "23 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 22",
           "speaker": "Hannes",
-          "text": "Auf diese Weise kannst du den Bezirk mit der Bezirksnummer suchen, die bei Kaspar Klinge im Feld bezirknr steht. Ein solch genialer Ausdruck nennt sich Verbund oder Join.\nDanke fuer den Tipp. Dann suche ich erst einmal den Hauptmann des Markthofs. Im Feld hauptmann der Tabelle bezirk steht ja die bewohnernr des Hauptmanns.",
-          "objective": "Zeige den Namen des Hauptmanns des Markthofs.",
-          "advanceHint": "Nutze SELECT auf `bezirk` und `bewohner`, verbinde die Tabellen per JOIN und filtere mit WHERE.",
-          "editorComment": "Mission 22: Den Namen des Hauptmanns des Markthofs",
-          "starterSql": "SELECT bewohner.name FROM bezirk JOIN bewohner ON bezirk.hauptmann = bewohner.bewohnernr WHERE bezirk.name = 'Markthof';",
+          "text": "Auf diese Weise kannst du den Bereich mit der Bereichsnummer suchen, die bei Raban Stein im Feld bereichnr steht. Ein solch genialer Ausdruck nennt sich Verbund oder Join.\nDanke fuer den Tipp. Dann suche ich erst einmal den Vorarbeiter des Bruchkantes. Im Feld vorarbeiter der Tabelle bereich steht ja die arbeiternr des Vorarbeiters.",
+          "objective": "Zeige den Namen des Vorarbeiters des Bruchkantes.",
+          "advanceHint": "Nutze SELECT auf `bereich` und `arbeiter`, verbinde die Tabellen per JOIN und filtere mit WHERE.",
+          "editorComment": "Mission 22: Den Namen des Vorarbeiters des Bruchkantes",
+          "starterSql": "SELECT a.name FROM bereich b JOIN arbeiter a ON b.vorarbeiter = a.arbeiternr WHERE b.name = 'Bruchkante';",
           "successMessage": "Schritt 22 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1314,19 +1308,19 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEZIRK"
+                  "BEREICH"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "MARKTHOF"
+                  "TIEFSTOLLEN"
                 ]
               }
             ]
@@ -1334,32 +1328,32 @@
           "dialogueTurns": [
             {
               "speaker": "Hannes",
-              "text": "Auf diese Weise kannst du den Bezirk mit der Bezirksnummer suchen, die bei Kaspar Klinge im Feld bezirknr steht. Ein solch genialer Ausdruck nennt sich Verbund oder Join."
+              "text": "Auf diese Weise kannst du den Bereich mit der Bereichsnummer suchen, die bei Raban Stein im Feld bereichnr steht. Ein solch genialer Ausdruck nennt sich Verbund oder Join."
             },
             {
-              "speaker": "Lea",
-              "text": "Danke fuer den Tipp. Dann suche ich erst einmal den Hauptmann des Markthofs. Im Feld hauptmann der Tabelle bezirk steht ja die bewohnernr des Hauptmanns."
+              "speaker": "Tessa",
+              "text": "Danke fuer den Tipp. Dann suche ich erst einmal den Vorarbeiter des Bruchkantes. Im Feld vorarbeiter der Tabelle bereich steht ja die arbeiternr des Vorarbeiters."
             }
           ]
         }
       ]
     },
     {
-      "id": "story-markthof-23",
-      "title": "Schritt 23: Alle Bewohner des Markthofs",
-      "treeLabel": "23 Alle Bewohner des Markthofs",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "24 / 34",
+      "id": "story-steinbruch-23",
+      "title": "Schritt 23: Alle Arbeiter des Bruchkantes",
+      "treeLabel": "23 Alle Arbeiter des Bruchkantes",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "24 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 23",
-          "speaker": "Lea",
-          "text": "Hm, wie viele Bewohner hat eigentlich der Markthof?",
-          "objective": "Zaehle alle Bewohner des Markthofs.",
-          "advanceHint": "Nutze SELECT auf `bewohner` und `bezirk`, verbinde die Tabellen per JOIN, filtere mit WHERE und nutze COUNT fuer die Auswertung.",
-          "editorComment": "Mission 23: Alle Bewohner des Markthofs",
-          "starterSql": "SELECT COUNT(*) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Markthof';",
+          "speaker": "Tessa",
+          "text": "Hm, wie viele Arbeiter hat eigentlich der Bruchkante?",
+          "objective": "Zaehle alle Arbeiter des Bruchkantes.",
+          "advanceHint": "Nutze SELECT auf `arbeiter` und `bereich`, verbinde die Tabellen per JOIN, filtere mit WHERE und nutze COUNT fuer die Auswertung.",
+          "editorComment": "Mission 23: Alle Arbeiter des Bruchkantes",
+          "starterSql": "SELECT COUNT(*) FROM arbeiter a JOIN bereich b ON a.bereichnr = b.bereichnr WHERE b.name = 'Bruchkante';",
           "successMessage": "Schritt 23 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1402,13 +1396,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEZIRK"
+                  "BEREICH"
                 ]
               }
             ]
@@ -1417,21 +1411,21 @@
       ]
     },
     {
-      "id": "story-markthof-24",
-      "title": "Schritt 24: Alle Frauen im Markthof",
-      "treeLabel": "24 Alle Frauen im Markthof",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "25 / 34",
+      "id": "story-steinbruch-24",
+      "title": "Schritt 24: Alle Frauen im Bruchkante",
+      "treeLabel": "24 Alle Frauen im Bruchkante",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "25 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 24",
           "speaker": "Hannes",
-          "text": "Hallo Lea, Kaspar Klinge haelt den Faehrmann im Keller seiner Schwester gefangen. Unter dem Markthof gibt es alte Lagerr\u00e4ume, und genau dort liegt das Geheimnis. Soll ich dir verraten, wie viele Frauen es im Markthof gibt? Ach was, das kannst du schon selbst herausfinden! (Hinweis: Frauen erkennt man an geschlecht = 'w')",
-          "objective": "Zaehle alle Frauen im Markthof.",
-          "advanceHint": "Nutze SELECT auf `bewohner` und `bezirk`, verbinde die Tabellen per JOIN, filtere mit WHERE und nutze COUNT fuer die Auswertung.",
-          "editorComment": "Mission 24: Alle Frauen im Markthof",
-          "starterSql": "SELECT COUNT(*) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Markthof' AND bewohner.geschlecht = 'w';",
+          "text": "Hallo Tessa, Raban Stein haelt den Torwaechter im Raum seiner Schwester gefangen. Soll ich dir verraten, wie viele Frauen es im Bruchkante gibt? Ach was, das kannst du schon selbst herausfinden! (Hinweis: Frauen erkennt man an geschlecht = 'w')",
+          "objective": "Zaehle alle Frauen im Bruchkante.",
+          "advanceHint": "Nutze SELECT auf `arbeiter` und `bereich`, verbinde die Tabellen per JOIN, filtere mit WHERE und nutze COUNT fuer die Auswertung.",
+          "editorComment": "Mission 24: Alle Frauen im Bruchkante",
+          "starterSql": "SELECT COUNT(*) FROM arbeiter a JOIN bereich b ON a.bereichnr = b.bereichnr WHERE b.name = 'Bruchkante' AND a.geschlecht = 'w';",
           "successMessage": "Schritt 24 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1474,13 +1468,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEZIRK"
+                  "BEREICH"
                 ]
               }
             ]
@@ -1489,21 +1483,21 @@
       ]
     },
     {
-      "id": "story-markthof-25",
-      "title": "Schritt 25: Den Namen der Frau im Markthof",
-      "treeLabel": "25 Den Namen der Frau im Markthof",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "26 / 34",
+      "id": "story-steinbruch-25",
+      "title": "Schritt 25: Den Namen der Frau im Bruchkante",
+      "treeLabel": "25 Den Namen der Frau im Bruchkante",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "26 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 25",
-          "speaker": "Lea",
+          "speaker": "Tessa",
           "text": "Ha, nur eine Frau. Mal schauen, wie sie heisst.",
-          "objective": "Zeige den Namen der Frau im Markthof.",
-          "advanceHint": "Nutze SELECT auf `bewohner` und `bezirk`, verbinde die Tabellen per JOIN und filtere mit WHERE.",
-          "editorComment": "Mission 25: Den Namen der Frau im Markthof",
-          "starterSql": "SELECT bewohner.name FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Markthof' AND bewohner.geschlecht = 'w';",
+          "objective": "Zeige den Namen der Frau im Bruchkante.",
+          "advanceHint": "Nutze SELECT auf `arbeiter` und `bereich`, verbinde die Tabellen per JOIN und filtere mit WHERE.",
+          "editorComment": "Mission 25: Den Namen der Frau im Bruchkante",
+          "starterSql": "SELECT a.name FROM arbeiter a JOIN bereich b ON a.bereichnr = b.bereichnr WHERE b.name = 'Bruchkante' AND a.geschlecht = 'w';",
           "successMessage": "Schritt 25 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1540,19 +1534,19 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEZIRK"
+                  "BEREICH"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "MARKTHOF"
+                  "TIEFSTOLLEN"
                 ]
               }
             ]
@@ -1561,21 +1555,21 @@
       ]
     },
     {
-      "id": "story-markthof-26",
-      "title": "Schritt 26: Das gesamte Gold im Markthof",
-      "treeLabel": "26 Das gesamte Gold im Markthof",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "27 / 34",
+      "id": "story-steinbruch-26",
+      "title": "Schritt 26: Das gesamte Gold im Torhof",
+      "treeLabel": "26 Das gesamte Gold im Torhof",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "27 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 26",
-          "speaker": "Kaspar Klinge",
-          "text": "Lea, wenn du den Faehrmann wiedersehen willst, dann bring mir alles Gold, das die Bewohner des Markthofs zusammen besitzen! Du willst wissen, wie viel das ist? Ich zeige es dir!",
-          "objective": "Summiere das gesamte Gold im Markthof.",
-          "advanceHint": "Nutze SELECT auf `bewohner` und `bezirk`, verbinde die Tabellen per JOIN, filtere mit WHERE und nutze SUM fuer die Auswertung.",
-          "editorComment": "Mission 26: Das gesamte Gold im Markthof",
-          "starterSql": "SELECT SUM(bewohner.gold) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Markthof';",
+          "speaker": "Raban Stein",
+          "text": "Tessa, gib mir alles Gold, was die Arbeiter unseres Nachbarbereichs Torhof zusammen besitzen, und ich lasse den Torwaechter frei! Jetzt verstehst du wohl, warum jeder hier vom Gold der Steinbruch redet. Du willst wissen, wie viel das ist? Ich zeige es dir!",
+          "objective": "Summiere das gesamte Gold im Torhof.",
+          "advanceHint": "Nutze SELECT auf `arbeiter` und `bereich`, verbinde die Tabellen per JOIN, filtere mit WHERE und nutze SUM fuer die Auswertung.",
+          "editorComment": "Mission 26: Das gesamte Gold im Torhof",
+          "starterSql": "SELECT SUM(a.gold) FROM arbeiter a JOIN bereich b ON a.bereichnr = b.bereichnr WHERE b.name = 'Torhof';",
           "successMessage": "Schritt 26 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1618,13 +1612,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEZIRK"
+                  "BEREICH"
                 ]
               }
             ]
@@ -1633,21 +1627,21 @@
       ]
     },
     {
-      "id": "story-markthof-27",
+      "id": "story-steinbruch-27",
       "title": "Schritt 27: Das gesamte Gold von Haendlern, Kaufleuten und Baeckern",
       "treeLabel": "27 Das gesamte Gold von Haendlern, Kaufleuten und Baeckern",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "28 / 34",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "28 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 27",
-          "speaker": "Lea",
+          "speaker": "Tessa",
           "text": "So viel Gold werde ich niemals allein durch Backen verdienen koennen. Wenn ich Gegenstaende verkaufe und zusaetzlich arbeite, kann ich maximal so viel Gold bekommen, wie Haendler, Kaufleute und Baecker zusammen besitzen. Wie viel ist das?",
           "objective": "Summiere das gesamte Gold von Haendlern, Kaufleuten und Baeckern.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE und nutze SUM fuer die Auswertung.",
+          "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE und nutze SUM fuer die Auswertung.",
           "editorComment": "Mission 27: Das gesamte Gold von Haendlern, Kaufleuten und Baeckern",
-          "starterSql": "SELECT SUM(gold) FROM bewohner WHERE beruf IN ('Haendler', 'Kaufmann', 'Baecker');",
+          "starterSql": "SELECT SUM(gold) FROM arbeiter WHERE beruf IN ('Haendler', 'Kaufmann', 'Baecker');",
           "successMessage": "Schritt 27 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1684,7 +1678,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
@@ -1705,21 +1699,21 @@
       ]
     },
     {
-      "id": "story-markthof-28",
+      "id": "story-steinbruch-28",
       "title": "Schritt 28: Beruf, gesamte Goldmenge und durchschnittliches Gold je...",
       "treeLabel": "28 Beruf, gesamte Goldmenge und durchschnittliches Gold je...",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "29 / 34",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "29 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 28",
-          "speaker": "Lea",
-          "text": "Schauen wir uns mal die gesamten sowie durchschnittlichen Goldvorraete der einzelnen Berufe an.",
+          "speaker": "Tessa",
+          "text": "Schauen wir uns mal die gesamten sowie durchschnittlichen Goldvorraete der einzelnen Berufe an. Vielleicht sehe ich dann klarer, wo in dieser Mine das meiste Geld klebt.",
           "objective": "Zeige Beruf, gesamte Goldmenge und durchschnittliches Gold je Beruf.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, gruppiere mit GROUP BY, sortiere mit ORDER BY und nutze SUM und AVG fuer die Auswertung.",
+          "advanceHint": "Nutze SELECT auf `arbeiter`, gruppiere mit GROUP BY, sortiere mit ORDER BY und nutze SUM und AVG fuer die Auswertung.",
           "editorComment": "Mission 28: Beruf, gesamte Goldmenge und durchschnittliches Gold je...",
-          "starterSql": "SELECT beruf, SUM(gold), AVG(gold) FROM bewohner GROUP BY beruf ORDER BY AVG(gold);",
+          "starterSql": "SELECT beruf, SUM(gold), AVG(gold) FROM arbeiter GROUP BY beruf ORDER BY AVG(gold);",
           "successMessage": "Schritt 28 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1768,7 +1762,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               }
             ]
@@ -1777,21 +1771,21 @@
       ]
     },
     {
-      "id": "story-markthof-29",
-      "title": "Schritt 29: Den durchschnittlichen Goldbestand je Status",
-      "treeLabel": "29 Den durchschnittlichen Goldbestand je Status",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "30 / 34",
+      "id": "story-steinbruch-29",
+      "title": "Schritt 29: Beruf, Anzahl und durchschnittliches Gold je Beruf, abe...",
+      "treeLabel": "29 Beruf, Anzahl und durchschnittliches Gold je Beruf, abe...",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "30 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 29",
-          "speaker": "Lea",
-          "text": "Interessant, die Koeche haben also das meiste Gold. Warum auch immer... Wie viel Gold haben im Durchschnitt die einzelnen Gruppen je nach Status?",
-          "objective": "Zeige den durchschnittlichen Goldbestand je Status.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, gruppiere mit GROUP BY und nutze AVG fuer die Auswertung.",
-          "editorComment": "Mission 29: Den durchschnittlichen Goldbestand je Status",
-          "starterSql": "SELECT status, AVG(gold) FROM bewohner GROUP BY status;",
+          "speaker": "Tessa",
+          "text": "Bevor ich hier unten irre werde, will ich nur die Berufe sehen, bei denen im Schnitt wirklich mehr als 500 Gold herumliegt. Da sitzt das fette Erz, bildlich gesprochen.",
+          "objective": "Zeige Beruf, Anzahl und durchschnittliches Gold je Beruf, aber nur bei Durchschnitt groesser als 500.",
+          "advanceHint": "Nutze SELECT auf `arbeiter`, gruppiere mit GROUP BY, pruefe die Gruppen mit HAVING, sortiere mit ORDER BY und nutze COUNT und AVG fuer die Auswertung.",
+          "editorComment": "Mission 29: Beruf, Anzahl und durchschnittliches Gold je Beruf, abe...",
+          "starterSql": "SELECT beruf, COUNT(*), AVG(gold) FROM arbeiter GROUP BY beruf HAVING AVG(gold) > 500 ORDER BY AVG(gold);",
           "successMessage": "Schritt 29 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1822,13 +1816,25 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "AVG"
+                  "HAVING"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ORDER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "IN"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "COUNT"
                 ]
               }
             ]
@@ -1837,28 +1843,28 @@
       ]
     },
     {
-      "id": "story-markthof-30",
-      "title": "Schritt 30: Kaspar Klinge aus der Tabelle",
-      "treeLabel": "30 Kaspar Klinge aus der Tabelle",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "31 / 34",
+      "id": "story-steinbruch-30",
+      "title": "Schritt 30: Alle friedlichen Arbeiter mit mehr Gold als Lukas Tor",
+      "treeLabel": "30 Alle friedlichen Arbeiter mit mehr Gold als Lukas Tor",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "31 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 30",
-          "speaker": "Lea",
-          "text": "Dann kann ich auch gleich Kaspar Klinge mit dem Schwert erledigen und den Faehrmann befreien.",
-          "objective": "Entferne Kaspar Klinge aus der Tabelle.",
-          "advanceHint": "Nutze DELETE FROM fuer `bewohner` und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 30: Kaspar Klinge aus der Tabelle",
-          "starterSql": "DELETE FROM bewohner WHERE name = 'Kaspar Klinge';",
+          "speaker": "Tessa",
+          "text": "Und welche friedlichen Arbeiter haben sogar mehr Gold als Lukas Tor selbst? Vielleicht kann mir jemand helfen — oder zumindest meine Lage ernst nehmen.",
+          "objective": "Zeige alle friedlichen Arbeiter mit mehr Gold als Lukas Tor.",
+          "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE, sortiere mit ORDER BY und arbeite mit einer Unterabfrage.",
+          "editorComment": "Mission 30: Alle friedlichen Arbeiter mit mehr Gold als Lukas Tor",
+          "starterSql": "SELECT arbeiternr, name, gold FROM arbeiter WHERE status = 'friedlich' AND gold > (SELECT gold FROM arbeiter WHERE name = 'Lukas Tor') ORDER BY gold ASC;",
           "successMessage": "Schritt 30 abgeschlossen.",
           "advanceOn": {
             "all": [
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "DELETE"
+                  "SELECT"
                 ]
               },
               {
@@ -1876,25 +1882,31 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IN"
+                  "BY"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ORDER"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "KASPAR"
+                  "ARBEITER"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "KLINGE"
+                  "FRIEDLICH"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FALK"
                 ]
               }
             ]
@@ -1903,22 +1915,94 @@
       ]
     },
     {
-      "id": "story-markthof-31",
-      "title": "Schritt 31: Rika Klinge aus der Tabelle",
-      "treeLabel": "31 Rika Klinge aus der Tabelle",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "32 / 34",
+      "id": "story-steinbruch-31",
+      "title": "Schritt 31: Alle Bereiche mit mindestens zwei boesen Arbeitern",
+      "treeLabel": "31 Alle Bereiche mit mindestens zwei boesen Arbeitern",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "32 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 31",
-          "speaker": "Rika Klinge",
-          "text": "Heeeey! Jetzt bin ich aber sauer! Was tust du wohl als Naechstes, Lea?",
-          "objective": "Entferne Rika Klinge aus der Tabelle.",
-          "advanceHint": "Nutze DELETE FROM fuer `bewohner` und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 31: Rika Klinge aus der Tabelle",
-          "starterSql": "DELETE FROM bewohner WHERE name = 'Rika Klinge';",
+          "speaker": "Tessa",
+          "text": "Und in welchen Bereichen leben eigentlich mindestens zwei boese Arbeiter? Ich will wissen, wo der Dreck wirklich sitzt.",
+          "objective": "Zeige alle Bereiche mit mindestens zwei boesen Arbeitern.",
+          "advanceHint": "Nutze SELECT auf `arbeiter` und `bereich`, verbinde die Tabellen per JOIN, filtere mit WHERE, gruppiere mit GROUP BY, pruefe die Gruppen mit HAVING, sortiere mit ORDER BY und nutze COUNT fuer die Auswertung.",
+          "editorComment": "Mission 31: Alle Bereiche mit mindestens zwei boesen Arbeitern",
+          "starterSql": "SELECT b.name, COUNT(*) FROM arbeiter a JOIN bereich b ON a.bereichnr = b.bereichnr WHERE a.status = 'boese' GROUP BY b.name HAVING COUNT(*) >= 2 ORDER BY COUNT(*) DESC;",
           "successMessage": "Schritt 31 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FROM"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "WHERE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "JOIN"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GROUP"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BY"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "HAVING"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "ORDER"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-steinbruch-32",
+      "title": "Schritt 32: Raban Stein aus der Tabelle",
+      "treeLabel": "32 Raban Stein aus der Tabelle",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "33 / 36",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 32",
+          "speaker": "Tessa",
+          "text": "Hilft alles nichts. Dann muss Raban Stein eben weg.",
+          "objective": "Entferne Raban Stein aus der Tabelle.",
+          "advanceHint": "Nutze DELETE FROM fuer `arbeiter` und grenze die betroffenen Zeilen mit WHERE ein.",
+          "editorComment": "Mission 32: Raban Stein aus der Tabelle",
+          "starterSql": "DELETE FROM arbeiter WHERE name = 'Raban Stein';",
+          "successMessage": "Schritt 32 abgeschlossen.",
           "advanceOn": {
             "all": [
               {
@@ -1942,25 +2026,19 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IN"
+                  "ARBEITER"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "KUNO"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "RIKA"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
-                  "KLINGE"
+                  "ERZ"
                 ]
               }
             ]
@@ -1969,22 +2047,82 @@
       ]
     },
     {
-      "id": "story-markthof-32",
-      "title": "Schritt 32: Den Status des Faehrmanns auf friedlich",
-      "treeLabel": "32 Den Status des Faehrmanns auf friedlich",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "33 / 34",
+      "id": "story-steinbruch-33",
+      "title": "Schritt 33: Rika Stein aus der Tabelle",
+      "treeLabel": "33 Rika Stein aus der Tabelle",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "34 / 36",
       "status": "neu",
       "guideScenes": [
         {
-          "sceneTitle": "Mission 32",
-          "speaker": "Lea",
-          "text": "Yeah! Jetzt muss ich nur noch den Faehrmann befreien.",
-          "objective": "Setze den Status des Faehrmanns auf friedlich.",
-          "advanceHint": "Nutze UPDATE auf `bewohner` und setze `status` neu und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 32: Den Status des Faehrmanns auf friedlich",
-          "starterSql": "UPDATE bewohner SET status = 'friedlich' WHERE beruf = 'Faehrmann';",
-          "successMessage": "Schritt 32 abgeschlossen.",
+          "sceneTitle": "Mission 33",
+          "speaker": "Rika Stein",
+          "text": "Heeeey! Jetzt bin ich aber sauer! Was tust du wohl als Naechstes, Tessa?",
+          "objective": "Entferne Rika Stein aus der Tabelle.",
+          "advanceHint": "Nutze DELETE FROM fuer `arbeiter` und grenze die betroffenen Zeilen mit WHERE ein.",
+          "editorComment": "Mission 33: Rika Stein aus der Tabelle",
+          "starterSql": "DELETE FROM arbeiter WHERE name = 'Rika Stein';",
+          "successMessage": "Schritt 33 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "DELETE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FROM"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "WHERE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "ARBEITER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "RUNA"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "ERZ"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-steinbruch-34",
+      "title": "Schritt 34: Den Status des Torwaechters auf friedlich",
+      "treeLabel": "34 Den Status des Torwaechters auf friedlich",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "35 / 36",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 34",
+          "speaker": "Tessa",
+          "text": "Jetzt ist der Weg frei. Falk, raus hier.",
+          "objective": "Setze den Status des Torwaechters auf friedlich.",
+          "advanceHint": "Nutze UPDATE auf `arbeiter` und setze `status` neu und grenze die betroffenen Zeilen mit WHERE ein.",
+          "editorComment": "Mission 34: Den Status des Torwaechters auf friedlich",
+          "starterSql": "UPDATE arbeiter SET status = 'friedlich' WHERE beruf = 'Torwaechter';",
+          "successMessage": "Schritt 34 abgeschlossen.",
           "advanceOn": {
             "all": [
               {
@@ -2008,7 +2146,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
@@ -2020,7 +2158,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "FAEHRMANN"
+                  "AUFZUGFUEHRER"
                 ]
               }
             ]
@@ -2029,22 +2167,22 @@
       ]
     },
     {
-      "id": "story-markthof-33",
-      "title": "Schritt 33: Meinen Status auf abgereist",
-      "treeLabel": "33 Meinen Status auf abgereist",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "34 / 34",
+      "id": "story-steinbruch-35",
+      "title": "Schritt 35: Meinen Status auf abgereist",
+      "treeLabel": "35 Meinen Status auf abgereist",
+      "subtitle": "Die Tore von Steinbruch",
+      "stepLabel": "36 / 36",
       "status": "neu",
       "guideScenes": [
         {
-          "sceneTitle": "Mission 33",
+          "sceneTitle": "Mission 35",
           "speaker": "Falk",
-          "text": "Vielen vielen Dank, Lea! Jetzt setze ich dich auf die andere Flussseite ueber.\nJuhu! Und als Andenken nehme ich mein Schwert, ein bisschen Gold und den nutzlosen Kram mit nach Hause. Was fuer ein Abenteuer!",
+          "text": "Vielen vielen Dank, Tessa! Jetzt bringe ich dich wieder nach oben.\nJuhu! Und als Andenken nehme ich meine Steinklinge, ein bisschen Gold und den nutzlosen Kram mit nach Hause. Was fuer ein Abenteuer!",
           "objective": "Setze meinen Status auf abgereist.",
-          "advanceHint": "Nutze UPDATE auf `bewohner` und setze `status` neu und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 33: Meinen Status auf abgereist",
-          "starterSql": "UPDATE bewohner SET status = 'abgereist' WHERE bewohnernr = 20;",
-          "successMessage": "Schritt 33 abgeschlossen.",
+          "advanceHint": "Nutze UPDATE auf `arbeiter` und setze `status` neu und grenze die betroffenen Zeilen mit WHERE ein.",
+          "editorComment": "Mission 35: Meinen Status auf abgereist",
+          "starterSql": "UPDATE arbeiter SET status = 'abgereist' WHERE arbeiternr = 20;",
+          "successMessage": "Schritt 35 abgeschlossen.",
           "advanceOn": {
             "all": [
               {
@@ -2074,7 +2212,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "ARBEITER"
                 ]
               },
               {
@@ -2088,11 +2226,11 @@
           "dialogueTurns": [
             {
               "speaker": "Falk",
-              "text": "Vielen vielen Dank, Lea! Jetzt setze ich dich auf die andere Flussseite ueber."
+              "text": "Vielen vielen Dank, Tessa! Jetzt bringe ich dich wieder nach oben."
             },
             {
-              "speaker": "Lea",
-              "text": "Juhu! Und als Andenken nehme ich mein Schwert, ein bisschen Gold und den nutzlosen Kram mit nach Hause. Was fuer ein Abenteuer!"
+              "speaker": "Tessa",
+              "text": "Juhu! Und als Andenken nehme ich meine Steinklinge, ein bisschen Gold und den nutzlosen Kram mit nach Hause. Was fuer ein Abenteuer!"
             }
           ]
         }

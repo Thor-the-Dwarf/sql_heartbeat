@@ -18,8 +18,7 @@
       },
       {
         "path": "Storys/Die Händler von Rabensand/stories.json",
-        "label": "Die Händler von Rabensand",
-        "optional": true
+        "label": "Die Händler von Rabensand"
       }
     ],
     "medium": [
@@ -29,30 +28,25 @@
       },
       {
         "path": "Storys/Das Siegel der Kronfeste/stories.json",
-        "label": "Das Siegel der Kronfeste",
-        "optional": true
+        "label": "Das Siegel der Kronfeste"
       },
       {
         "path": "Storys/Die Spur des Schmugglers/stories.json",
-        "label": "Die Spur des Schmugglers",
-        "optional": true
+        "label": "Die Spur des Schmugglers"
       }
     ],
     "hard": [
       {
         "path": "Storys/Sturm auf den Wachturm/stories.json",
-        "label": "Sturm auf den Wachturm",
-        "optional": true
+        "label": "Sturm auf den Wachturm"
       },
       {
         "path": "Storys/Die Tore von Steinbruch/stories.json",
-        "label": "Die Tore von Steinbruch",
-        "optional": true
+        "label": "Die Tore von Steinbruch"
       },
       {
         "path": "Storys/Der letzte Kurier von Dornwall/stories.json",
-        "label": "Der letzte Kurier von Dornwall",
-        "optional": true
+        "label": "Der letzte Kurier von Dornwall"
       }
     ]
   },

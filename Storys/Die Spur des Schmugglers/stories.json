@@ -1,23 +1,22 @@
 {
-  "$schema": "./stories.schema.json",
-  "rootLabel": "Storys",
+  "rootLabel": "Die Spur des Schmugglers",
   "titles": [
     {
-      "id": "story-markthof-00",
-      "title": "Schritt 0: Alle Bezirke",
-      "treeLabel": "0 Alle Bezirke",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "1 / 34",
+      "id": "story-schmuggler-00",
+      "title": "Schritt 0: Alle Viertel",
+      "treeLabel": "0 Alle Viertel",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "1 / 36",
       "status": "aktiv",
       "guideScenes": [
         {
           "sceneTitle": "Mission 0",
           "speaker": "Fremde",
-          "text": "Verflixt... mein Karren ist kurz vor der Stadt im Schlamm stecken geblieben. Wenigstens habe ich diese Handelsstadt erreicht. Hier gibt es ja sogar mehrere Bezirke.",
-          "objective": "Zeige alle Bezirke.",
-          "advanceHint": "Nutze SELECT auf `bezirk`.",
-          "editorComment": "Mission 0: Alle Bezirke",
-          "starterSql": "SELECT * FROM bezirk;",
+          "text": "Verflixt... mein Karren ist im Hafenschlamm stecken geblieben, und das letzte Schiff ist ohne mich ausgelaufen. Wenigstens habe ich diese Hafenstadt erreicht. Hier gibt es ja sogar mehrere Viertel.",
+          "objective": "Zeige alle Viertel.",
+          "advanceHint": "Nutze SELECT auf `viertel`.",
+          "editorComment": "Mission 0: Alle Viertel",
+          "starterSql": "SELECT * FROM viertel;",
           "successMessage": "Schritt 0 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -36,7 +35,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEZIRK"
+                  "VIERTEL"
                 ]
               }
             ]
@@ -45,11 +44,11 @@
       ]
     },
     {
-      "id": "story-markthof-01",
+      "id": "story-schmuggler-01",
       "title": "Schritt 1: Alle Bewohner",
       "treeLabel": "1 Alle Bewohner",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "2 / 34",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "2 / 36",
       "status": "neu",
       "guideScenes": [
         {
@@ -87,17 +86,17 @@
       ]
     },
     {
-      "id": "story-markthof-02",
+      "id": "story-schmuggler-02",
       "title": "Schritt 2: Alle Koeche",
       "treeLabel": "2 Alle Koeche",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "3 / 34",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "3 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 2",
           "speaker": "Fremde",
-          "text": "Mein Magen knurrt. Ich suche mir erst mal einen Koch, der mir eine warme Mahlzeit gibt.",
+          "text": "Mein Magen knurrt. Ich suche mir erst mal einen Koch, der mir etwas Warmes gibt.",
           "objective": "Zeige alle Koeche.",
           "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE.",
           "editorComment": "Mission 2: Alle Koeche",
@@ -132,6 +131,12 @@
               {
                 "type": "statement-contains",
                 "tokens": [
+                  "BERUF"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
                   "KOCH"
                 ]
               }
@@ -141,17 +146,17 @@
       ]
     },
     {
-      "id": "story-markthof-03",
+      "id": "story-schmuggler-03",
       "title": "Schritt 3: Alle friedlichen Bewohner",
       "treeLabel": "3 Alle friedlichen Bewohner",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "4 / 34",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "4 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 3",
           "speaker": "Hannes",
-          "text": "Hier, nimm etwas Suppe. Und pass auf deiner Suche gut auf: Solange du unbewaffnet bist, solltest du boesen Bewohnern aus dem Weg gehen. Denn nicht jeder hier ist friedlich!\nDanke, Hannes! Na gut, dann schaue ich mal, welche Bewohner friedlich sind.",
+          "text": "Hier, nimm etwas Eintopf. Und pass auf deiner Suche gut auf: Solange du unbewaffnet bist, solltest du boesen Bewohnern aus dem Weg gehen. Denn nicht jeder hier ist friedlich!\nDanke, Hannes! Na gut, dann schaue ich mal, welche Bewohner friedlich sind.",
           "objective": "Zeige alle friedlichen Bewohner.",
           "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE.",
           "editorComment": "Mission 3: Alle friedlichen Bewohner",
@@ -186,6 +191,12 @@
               {
                 "type": "statement-contains",
                 "tokens": [
+                  "STATUS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
                   "FRIEDLICH"
                 ]
               }
@@ -194,7 +205,7 @@
           "dialogueTurns": [
             {
               "speaker": "Hannes",
-              "text": "Hier, nimm etwas Suppe. Und pass auf deiner Suche gut auf: Solange du unbewaffnet bist, solltest du boesen Bewohnern aus dem Weg gehen. Denn nicht jeder hier ist friedlich!"
+              "text": "Hier, nimm etwas Eintopf. Und pass auf deiner Suche gut auf: Solange du unbewaffnet bist, solltest du boesen Bewohnern aus dem Weg gehen. Denn nicht jeder hier ist friedlich!"
             },
             {
               "speaker": "Fremde",
@@ -205,17 +216,17 @@
       ]
     },
     {
-      "id": "story-markthof-04",
+      "id": "story-schmuggler-04",
       "title": "Schritt 4: Alle friedlichen Waffenschmiede",
       "treeLabel": "4 Alle friedlichen Waffenschmiede",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "5 / 34",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "5 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 4",
           "speaker": "Fremde",
-          "text": "Frueher oder spaeter brauche ich aber ein Schwert. Lasst uns einen friedlichen Waffenschmied suchen, der mir eines schmieden kann. (Hinweis: Bedingungen im WHERE-Teil kannst du mit AND verknuepfen)",
+          "text": "Frueher oder spaeter brauche ich aber eine Klinge. Lasst uns einen friedlichen Waffenschmied suchen, der mir eine schmieden kann. (Hinweis: Bedingungen im WHERE-Teil kannst du mit AND verknuepfen)",
           "objective": "Zeige alle friedlichen Waffenschmiede.",
           "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE.",
           "editorComment": "Mission 4: Alle friedlichen Waffenschmiede",
@@ -250,6 +261,12 @@
               {
                 "type": "statement-contains",
                 "tokens": [
+                  "STATUS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
                   "FRIEDLICH"
                 ]
               },
@@ -265,11 +282,11 @@
       ]
     },
     {
-      "id": "story-markthof-05",
+      "id": "story-schmuggler-05",
       "title": "Schritt 5: Alle friedlichen Bewohner, deren Beruf auf 'schmied' endet",
       "treeLabel": "5 Alle friedlichen Bewohner, deren Beruf auf 'schmied' endet",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "6 / 34",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "6 / 36",
       "status": "neu",
       "guideScenes": [
         {
@@ -277,7 +294,7 @@
           "speaker": "Fremde",
           "text": "Hm, das ist nur einer. Vielleicht gibt es noch andere friedliche Schmiede, z.B. Hufschmied, Schmied, Waffenschmied, etc. Probiere beruf LIKE '%schmied', um alle Bewohner zu finden, deren Beruf mit 'schmied' endet.",
           "objective": "Zeige alle friedlichen Bewohner, deren Beruf auf 'schmied' endet.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE.",
+          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE, verwende LIKE fuer das Muster.",
           "editorComment": "Mission 5: Alle friedlichen Bewohner, deren Beruf auf 'schmied' endet",
           "starterSql": "SELECT * FROM bewohner WHERE status = 'friedlich' AND beruf LIKE '%schmied';",
           "successMessage": "Schritt 5 abgeschlossen.",
@@ -316,6 +333,12 @@
               {
                 "type": "statement-contains",
                 "tokens": [
+                  "STATUS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
                   "FRIEDLICH"
                 ]
               },
@@ -331,21 +354,21 @@
       ]
     },
     {
-      "id": "story-markthof-06",
-      "title": "Schritt 6: Mich als neue Bewohnerin im Suedtor ein",
-      "treeLabel": "6 Mich als neue Bewohnerin im Suedtor ein",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "7 / 34",
+      "id": "story-schmuggler-06",
+      "title": "Schritt 6: Neue Bewohnerin im Fischmarkt ein",
+      "treeLabel": "6 Neue Bewohnerin im Fischmarkt ein",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "7 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 6",
-          "speaker": "Gregor",
-          "text": "Hallo Fremde, wohin des Wegs? Ich bin Gregor, der Hauptmann des Suedtors. Ich trage dich gern als Bewohnerin meines Bezirks ein.",
-          "objective": "Trage mich als neue Bewohnerin mit `bewohnernr 20` im Suedtor ein.",
-          "advanceHint": "Nutze INSERT INTO fuer `bewohner`, vergib `bewohnernr 20` und trage die geforderten Werte in die passenden Spalten ein.",
-          "editorComment": "Mission 6: Mich als neue Bewohnerin im Suedtor ein",
-          "starterSql": "INSERT INTO bewohner (bewohnernr, name, bezirknr, geschlecht, beruf, gold, status) VALUES (20, 'Fremde', 1, '?', '?', 0, '?');",
+          "speaker": "Gregor Anleger",
+          "text": "Hallo Fremde, wohin des Wegs? Ich bin Gregor, der Hafenmeister vom Fischmarkt. Ich trage dich gern als Bewohnerin meines Viertels ein.",
+          "objective": "Trage mich als neue Bewohnerin im Fischmarkt ein.",
+          "advanceHint": "Nutze INSERT INTO auf `bewohner` und trage die geforderten Werte in die passenden Spalten ein.",
+          "editorComment": "Mission 6: Neue Bewohnerin im Fischmarkt ein",
+          "starterSql": "INSERT INTO bewohner (name, viertelnr, geschlecht, beruf, gold, status) VALUES ('Fremde', 1, '?', '?', 0, '?');",
           "successMessage": "Schritt 6 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -370,12 +393,6 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IN"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
                   "BEWOHNER"
                 ]
               },
@@ -391,11 +408,11 @@
       ]
     },
     {
-      "id": "story-markthof-07",
+      "id": "story-schmuggler-07",
       "title": "Schritt 7: Meine bewohnernr",
       "treeLabel": "7 Meine bewohnernr",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "8 / 34",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "8 / 36",
       "status": "neu",
       "guideScenes": [
         {
@@ -436,6 +453,12 @@
               {
                 "type": "statement-contains",
                 "tokens": [
+                  "NAME"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
                   "FREMDE"
                 ]
               }
@@ -445,17 +468,17 @@
       ]
     },
     {
-      "id": "story-markthof-08",
+      "id": "story-schmuggler-08",
       "title": "Schritt 8: Mein aktuelles Gold",
       "treeLabel": "8 Mein aktuelles Gold",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "9 / 34",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "9 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 8",
-          "speaker": "Fremde",
-          "text": "Hallo Lennart! Was kostet bei dir ein Schwert?\nIch schmiede dir ein Schwert fuer nur 150 Gold. Billiger bekommst du es nirgendwo! Wie viel Gold hast du momentan?",
+          "speaker": "Lorenz Eisen",
+          "text": "Hallo Lorenz! Was kostet bei dir eine Klinge?\nIch schmiede dir eine fuer nur 150 Gold. Billiger bekommst du sie nirgendwo! Wie viel Gold hast du momentan?",
           "objective": "Zeige mein aktuelles Gold.",
           "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE.",
           "editorComment": "Mission 8: Mein aktuelles Gold",
@@ -486,34 +509,46 @@
                 "tokens": [
                   "BEWOHNER"
                 ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNERNR"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
+                ]
               }
             ]
           },
           "dialogueTurns": [
             {
-              "speaker": "Fremde",
-              "text": "Hallo Lennart! Was kostet bei dir ein Schwert?"
+              "speaker": "Lorenz Eisen",
+              "text": "Hallo Lorenz! Was kostet bei dir eine Klinge?"
             },
             {
-              "speaker": "Lennart",
-              "text": "Ich schmiede dir ein Schwert fuer nur 150 Gold. Billiger bekommst du es nirgendwo! Wie viel Gold hast du momentan?"
+              "speaker": "Fremde",
+              "text": "Ich schmiede dir eine fuer nur 150 Gold. Billiger bekommst du sie nirgendwo! Wie viel Gold hast du momentan?"
             }
           ]
         }
       ]
     },
     {
-      "id": "story-markthof-09",
+      "id": "story-schmuggler-09",
       "title": "Schritt 9: Alle herrenlosen Gegenstaende",
       "treeLabel": "9 Alle herrenlosen Gegenstaende",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "10 / 34",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "10 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 9",
           "speaker": "Fremde",
-          "text": "Mist, ich habe ja noch gar kein Gold. Arbeiten will ich aber auch nicht sofort. Vorhin habe ich zwischen den Marktstaenden mehrere Dinge herumliegen sehen, die niemandem gehoeren. Die koennte ich einsammeln und an Haendler verkaufen. Liste alle Gegenstaende auf, die niemandem gehoeren.",
+          "text": "Mist, ich habe ja noch gar kein Gold. Arbeiten will ich aber auch nicht sofort. Vorhin habe ich am Kai mehrere Dinge herumliegen sehen, die niemandem gehoeren. Die koennte ich einsammeln und an Haendler verkaufen. Liste alle Gegenstaende auf, die niemandem gehoeren.",
           "objective": "Zeige alle herrenlosen Gegenstaende.",
           "advanceHint": "Nutze SELECT auf `gegenstand`, filtere mit WHERE.",
           "editorComment": "Mission 9: Alle herrenlosen Gegenstaende",
@@ -542,19 +577,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IS"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
-                  "NULL"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
                   "GEGENSTAND"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BESITZER"
                 ]
               }
             ]
@@ -563,34 +592,34 @@
       ]
     },
     {
-      "id": "story-markthof-10",
-      "title": "Schritt 10: Den Zinnbecher ein",
-      "treeLabel": "10 Den Zinnbecher ein",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "11 / 34",
+      "id": "story-schmuggler-10",
+      "title": "Schritt 10: Die Sturmlaterne ein",
+      "treeLabel": "10 Die Sturmlaterne ein",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "11 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 10",
           "speaker": "Fremde",
-          "text": "Nehmen wir zuerst den Zinnbecher mit. Einen Becher kann man immer gebrauchen.",
-          "objective": "Sammle den Zinnbecher ein.",
-          "advanceHint": "Nutze UPDATE auf `gegenstand` und setze `besitzer` neu und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 10: Den Zinnbecher ein",
-          "starterSql": "UPDATE gegenstand SET besitzer = 20 WHERE gegenstand = 'Zinnbecher';",
+          "text": "Nehmen wir zuerst die Sturmlaterne mit. Im Hafen kann man Licht immer gebrauchen.",
+          "objective": "Sammle die Sturmlaterne ein.",
+          "advanceHint": "Nutze UPDATE auf `gegenstand`, setze die benoetigten Werte mit SET, grenze die betroffenen Zeilen mit WHERE ein.",
+          "editorComment": "Mission 10: Die Sturmlaterne ein",
+          "starterSql": "UPDATE gegenstand SET besitzer = 20 WHERE gegenstand = 'Sturmlaterne';",
           "successMessage": "Schritt 10 abgeschlossen.",
           "advanceOn": {
             "all": [
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "UPDATE"
+                  "WHERE"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "WHERE"
+                  "UPDATE"
                 ]
               },
               {
@@ -602,19 +631,25 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IN"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
                   "GEGENSTAND"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "ZINNBECHER"
+                  "BESITZER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "STURMLATERNE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
                 ]
               }
             ]
@@ -623,11 +658,11 @@
       ]
     },
     {
-      "id": "story-markthof-11",
+      "id": "story-schmuggler-11",
       "title": "Schritt 11: Alle herrenlosen Gegenstaende ein",
       "treeLabel": "11 Alle herrenlosen Gegenstaende ein",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "12 / 34",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "12 / 36",
       "status": "neu",
       "guideScenes": [
         {
@@ -635,7 +670,7 @@
           "speaker": "Fremde",
           "text": "Kennst du einen Trick, wie wir alle herrenlosen Gegenstaende auf einmal einsammeln koennen?",
           "objective": "Sammle alle herrenlosen Gegenstaende ein.",
-          "advanceHint": "Nutze UPDATE auf `gegenstand` und setze `besitzer` neu und grenze die betroffenen Zeilen mit WHERE ein.",
+          "advanceHint": "Nutze UPDATE auf `gegenstand`, setze die benoetigten Werte mit SET, grenze die betroffenen Zeilen mit WHERE ein.",
           "editorComment": "Mission 11: Alle herrenlosen Gegenstaende ein",
           "starterSql": "UPDATE gegenstand SET besitzer = 20 WHERE besitzer IS NULL;",
           "successMessage": "Schritt 11 abgeschlossen.",
@@ -644,13 +679,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "UPDATE"
+                  "WHERE"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "WHERE"
+                  "UPDATE"
                 ]
               },
               {
@@ -662,19 +697,19 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IS"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
-                  "NULL"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
                   "GEGENSTAND"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BESITZER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
                 ]
               }
             ]
@@ -683,11 +718,11 @@
       ]
     },
     {
-      "id": "story-markthof-12",
+      "id": "story-schmuggler-12",
       "title": "Schritt 12: Alle Gegenstaende in meinem Besitz",
       "treeLabel": "12 Alle Gegenstaende in meinem Besitz",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "13 / 34",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "13 / 36",
       "status": "neu",
       "guideScenes": [
         {
@@ -724,6 +759,18 @@
                 "tokens": [
                   "GEGENSTAND"
                 ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BESITZER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
+                ]
               }
             ]
           }
@@ -731,11 +778,11 @@
       ]
     },
     {
-      "id": "story-markthof-13",
+      "id": "story-schmuggler-13",
       "title": "Schritt 13: Alle friedlichen Haendler und Kaufleute",
       "treeLabel": "13 Alle friedlichen Haendler und Kaufleute",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "14 / 34",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "14 / 36",
       "status": "neu",
       "guideScenes": [
         {
@@ -776,6 +823,12 @@
               {
                 "type": "statement-contains",
                 "tokens": [
+                  "STATUS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
                   "FRIEDLICH"
                 ]
               },
@@ -791,30 +844,24 @@
       ]
     },
     {
-      "id": "story-markthof-14",
-      "title": "Schritt 14: Siegelring und Gewuerzbeutel an bewohnernr 15",
-      "treeLabel": "14 Siegelring und Gewuerzbeutel an bewohnernr 15",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "15 / 34",
+      "id": "story-schmuggler-14",
+      "title": "Schritt 14: Kupferkompass und Leinenballen an bewohnernr 15",
+      "treeLabel": "14 Kupferkompass und Leinenballen an bewohnernr 15",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "15 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 14",
           "speaker": "Lene Handel",
-          "text": "Ich interessiere mich fuer den Siegelring und den Gewuerzbeutel. Der Rest ist nur Kram. Gib mir bitte die beiden Gegenstaende. Meine bewohnernr ist uebrigens 15.",
-          "objective": "Gib Siegelring und Gewuerzbeutel an bewohnernr 15.",
-          "advanceHint": "Nutze UPDATE auf `gegenstand` und setze `besitzer` neu und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 14: Siegelring und Gewuerzbeutel an bewohnernr 15",
-          "starterSql": "UPDATE gegenstand SET besitzer = 15 WHERE gegenstand IN ('Siegelring', 'Gewuerzbeutel');",
+          "text": "Ich interessiere mich fuer den Kupferkompass und den Leinenballen. Der Rest ist nur Kram. Gib mir bitte die beiden Gegenstaende. Meine bewohnernr ist uebrigens 15.",
+          "objective": "Gib Kupferkompass und Leinenballen an bewohnernr 15.",
+          "advanceHint": "Nutze UPDATE auf `gegenstand`, setze die benoetigten Werte mit SET, grenze die betroffenen Zeilen mit WHERE ein.",
+          "editorComment": "Mission 14: Kupferkompass und Leinenballen an bewohnernr 15",
+          "starterSql": "UPDATE gegenstand SET besitzer = 15 WHERE gegenstand IN ('Kupferkompass', 'Leinenballen');",
           "successMessage": "Schritt 14 abgeschlossen.",
           "advanceOn": {
             "all": [
-              {
-                "type": "statement-contains",
-                "tokens": [
-                  "UPDATE"
-                ]
-              },
               {
                 "type": "statement-contains",
                 "tokens": [
@@ -824,13 +871,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "SET"
+                  "UPDATE"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IN"
+                  "SET"
                 ]
               },
               {
@@ -842,13 +889,25 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "SIEGELRING"
+                  "BESITZER"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "GEWUERZBEUTEL"
+                  "KUPFERKOMPASS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "LEINENBALLEN"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "15"
                 ]
               }
             ]
@@ -857,19 +916,19 @@
       ]
     },
     {
-      "id": "story-markthof-15",
+      "id": "story-schmuggler-15",
       "title": "Schritt 15: Mein Gold um 120",
       "treeLabel": "15 Mein Gold um 120",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "16 / 34",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "16 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 15",
-          "speaker": "Lene Handel",
+          "speaker": "Bruno Zoll",
           "text": "Hier hast du einen Haufen Gold!",
           "objective": "Erhoehe mein Gold um 120.",
-          "advanceHint": "Nutze UPDATE auf `bewohner` und setze `gold` neu und grenze die betroffenen Zeilen mit WHERE ein.",
+          "advanceHint": "Nutze UPDATE auf `bewohner`, setze die benoetigten Werte mit SET, grenze die betroffenen Zeilen mit WHERE ein.",
           "editorComment": "Mission 15: Mein Gold um 120",
           "starterSql": "UPDATE bewohner SET gold = gold + 120 WHERE bewohnernr = 20;",
           "successMessage": "Schritt 15 abgeschlossen.",
@@ -878,13 +937,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "UPDATE"
+                  "WHERE"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "WHERE"
+                  "UPDATE"
                 ]
               },
               {
@@ -897,6 +956,30 @@
                 "type": "statement-contains",
                 "tokens": [
                   "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GOLD"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNERNR"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "120"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
                 ]
               }
             ]
@@ -905,34 +988,34 @@
       ]
     },
     {
-      "id": "story-markthof-16",
-      "title": "Schritt 16: Meinen Namen von Fremde zu Lea",
-      "treeLabel": "16 Meinen Namen von Fremde zu Lea",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "17 / 34",
+      "id": "story-schmuggler-16",
+      "title": "Schritt 16: Meinen Namen von Fremde zu Lina",
+      "treeLabel": "16 Meinen Namen von Fremde zu Lina",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "17 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 16",
-          "speaker": "Fremde",
-          "text": "Leider reicht das noch nicht fuer ein Schwert. Dann muss ich wohl doch arbeiten. Bevor ich mich irgendwo bewerbe, sollte ich vielleicht meinen Namen von Fremde auf meinen richtigen Namen aendern.",
-          "objective": "Aendere meinen Namen von Fremde zu Lea.",
-          "advanceHint": "Nutze UPDATE auf `bewohner` und setze `name` neu und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 16: Meinen Namen von Fremde zu Lea",
-          "starterSql": "UPDATE bewohner SET name = 'Lea' WHERE name = 'Fremde';",
+          "speaker": "Lina",
+          "text": "Leider reicht das noch nicht fuer eine Klinge. Dann muss ich wohl doch arbeiten. Bevor ich mich irgendwo bewerbe, sollte ich vielleicht meinen Namen von Fremde auf meinen richtigen Namen aendern.",
+          "objective": "Aendere meinen Namen von Fremde zu Lina.",
+          "advanceHint": "Nutze UPDATE auf `bewohner`, setze die benoetigten Werte mit SET, grenze die betroffenen Zeilen mit WHERE ein.",
+          "editorComment": "Mission 16: Meinen Namen von Fremde zu Lina",
+          "starterSql": "UPDATE bewohner SET name = 'Lina' WHERE name = 'Fremde';",
           "successMessage": "Schritt 16 abgeschlossen.",
           "advanceOn": {
             "all": [
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "UPDATE"
+                  "WHERE"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "WHERE"
+                  "UPDATE"
                 ]
               },
               {
@@ -950,7 +1033,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "LEA"
+                  "NAME"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "LINA"
                 ]
               },
               {
@@ -965,21 +1054,21 @@
       ]
     },
     {
-      "id": "story-markthof-17",
-      "title": "Schritt 17: Alle Baecker, sortiert nach Gold absteigend",
-      "treeLabel": "17 Alle Baecker, sortiert nach Gold absteigend",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "18 / 34",
+      "id": "story-schmuggler-17",
+      "title": "Schritt 17: Alle Baecker, sortiert nach Gold absteigend und Name aufsteigend",
+      "treeLabel": "17 Alle Baecker, sortiert nach Gold absteigend und Name aufsteigend",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "18 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 17",
-          "speaker": "Lea",
-          "text": "In meiner Freizeit backe ich gern. Ich glaube, ich verdiene mir ein bisschen Gold als Baeckerin. Zeige mir alle Baecker. Tipp: Mit ORDER BY gold DESC steht sogar der reichste oben.",
-          "objective": "Zeige alle Baecker, sortiert nach Gold absteigend.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE und sortiere mit ORDER BY.",
-          "editorComment": "Mission 17: Alle Baecker, sortiert nach Gold absteigend",
-          "starterSql": "SELECT * FROM bewohner WHERE beruf = 'Baecker' ORDER BY gold DESC;",
+          "speaker": "Lina",
+          "text": "In meiner Freizeit backe ich gern. Ich glaube, ich verdiene mir ein bisschen Gold als Baeckerin. Zeige mir alle Baecker. Tipp: Mit ORDER BY gold DESC und einem zweiten Sortierkriterium bleibt die Sache sauber.",
+          "objective": "Zeige alle Baecker, sortiert nach Gold absteigend und Name aufsteigend.",
+          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE, sortiere mit ORDER BY.",
+          "editorComment": "Mission 17: Alle Baecker, sortiert nach Gold absteigend und Name aufsteigend",
+          "starterSql": "SELECT * FROM bewohner WHERE beruf = 'Baecker' ORDER BY gold DESC, name ASC;",
           "successMessage": "Schritt 17 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1004,12 +1093,6 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BY"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
                   "ORDER"
                 ]
               },
@@ -1017,6 +1100,18 @@
                 "type": "statement-contains",
                 "tokens": [
                   "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BERUF"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GOLD"
                 ]
               },
               {
@@ -1031,19 +1126,19 @@
       ]
     },
     {
-      "id": "story-markthof-18",
+      "id": "story-schmuggler-18",
       "title": "Schritt 18: Mein Gold um 100",
       "treeLabel": "18 Mein Gold um 100",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "19 / 34",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "19 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 18",
-          "speaker": "Baldur",
-          "text": "Hi, da bist du ja wieder! Soso, Lea heisst du also. Und du willst als Baeckerin arbeiten? Da sage ich nicht nein. Ich zahle dir pro hundert Brote 1 Gold.\n(8 Stunden spaeter...) Hier bitteschoen, zehntausend Brote! Ich kuendige! Ich habe nun genug Gold fuer das Schwert! Mal schauen, was jetzt mit meinem Kontostand passiert.",
+          "speaker": "Balduin Laib",
+          "text": "Hi, da bist du ja wieder! Soso, Lina heisst du also. Und du willst als Baeckerin arbeiten? Da sage ich nicht nein. Ich zahle dir pro hundert Brote 1 Gold.\n(8 Stunden spaeter...) Hier bitteschoen, zehntausend Brote! Ich kuendige! Ich habe nun genug Gold fuer die Klinge! Mal schauen, was jetzt mit meinem Kontostand passiert.",
           "objective": "Erhoehe mein Gold um 100.",
-          "advanceHint": "Nutze UPDATE auf `bewohner` und setze `gold` neu und grenze die betroffenen Zeilen mit WHERE ein.",
+          "advanceHint": "Nutze UPDATE auf `bewohner`, setze die benoetigten Werte mit SET, grenze die betroffenen Zeilen mit WHERE ein.",
           "editorComment": "Mission 18: Mein Gold um 100",
           "starterSql": "UPDATE bewohner SET gold = gold + 100 WHERE bewohnernr = 20;",
           "successMessage": "Schritt 18 abgeschlossen.",
@@ -1052,13 +1147,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "UPDATE"
+                  "WHERE"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "WHERE"
+                  "UPDATE"
                 ]
               },
               {
@@ -1072,36 +1167,60 @@
                 "tokens": [
                   "BEWOHNER"
                 ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GOLD"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNERNR"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "100"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
+                ]
               }
             ]
           },
           "dialogueTurns": [
             {
-              "speaker": "Baldur",
-              "text": "Hi, da bist du ja wieder! Soso, Lea heisst du also. Und du willst als Baeckerin arbeiten? Da sage ich nicht nein. Ich zahle dir pro hundert Brote 1 Gold."
+              "speaker": "Balduin Laib",
+              "text": "Hi, da bist du ja wieder! Soso, Lina heisst du also. Und du willst als Baeckerin arbeiten? Da sage ich nicht nein. Ich zahle dir pro hundert Brote 1 Gold."
             },
             {
-              "speaker": "Lea",
-              "text": "(8 Stunden spaeter...) Hier bitteschoen, zehntausend Brote! Ich kuendige! Ich habe nun genug Gold fuer das Schwert! Mal schauen, was jetzt mit meinem Kontostand passiert."
+              "speaker": "Lina",
+              "text": "(8 Stunden spaeter...) Hier bitteschoen, zehntausend Brote! Ich kuendige! Ich habe nun genug Gold fuer die Klinge! Mal schauen, was jetzt mit meinem Kontostand passiert."
             }
           ]
         }
       ]
     },
     {
-      "id": "story-markthof-19",
+      "id": "story-schmuggler-19",
       "title": "Schritt 19: 150 Gold von meinem Konto ab",
       "treeLabel": "19 150 Gold von meinem Konto ab",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "20 / 34",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "20 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 19",
-          "speaker": "Lennart",
-          "text": "Hier ist dein neues Schwert, Lea! Nun kannst du ueberall hin!",
+          "speaker": "Lorenz Eisen",
+          "text": "Hier ist deine neue Klinge, Lina! Nun kannst du ueberall hin!",
           "objective": "Ziehe 150 Gold von meinem Konto ab.",
-          "advanceHint": "Nutze UPDATE auf `bewohner` und setze `gold` neu und grenze die betroffenen Zeilen mit WHERE ein.",
+          "advanceHint": "Nutze UPDATE auf `bewohner`, setze die benoetigten Werte mit SET, grenze die betroffenen Zeilen mit WHERE ein.",
           "editorComment": "Mission 19: 150 Gold von meinem Konto ab",
           "starterSql": "UPDATE bewohner SET gold = gold - 150 WHERE bewohnernr = 20;",
           "successMessage": "Schritt 19 abgeschlossen.",
@@ -1110,13 +1229,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "UPDATE"
+                  "WHERE"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "WHERE"
+                  "UPDATE"
                 ]
               },
               {
@@ -1130,6 +1249,30 @@
                 "tokens": [
                   "BEWOHNER"
                 ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GOLD"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNERNR"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "150"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
+                ]
               }
             ]
           }
@@ -1137,21 +1280,21 @@
       ]
     },
     {
-      "id": "story-markthof-20",
-      "title": "Schritt 20: Alle Faehrmaenner",
-      "treeLabel": "20 Alle Faehrmaenner",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "21 / 34",
+      "id": "story-schmuggler-20",
+      "title": "Schritt 20: Alle Kapitaene",
+      "treeLabel": "20 Alle Kapitaene",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "21 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 20",
-          "speaker": "Lea",
-          "text": "Gibt es in der Stadt einen Faehrmann? Er koennte mich ueber den Fluss und damit nach Hause bringen.",
-          "objective": "Zeige alle Faehrmaenner.",
+          "speaker": "Lina",
+          "text": "Gibt es in der Hafenstadt einen Kapitaen? Er koennte mich mit seinem Schiff hier wegbringen.",
+          "objective": "Zeige alle Kapitaene.",
           "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE.",
-          "editorComment": "Mission 20: Alle Faehrmaenner",
-          "starterSql": "SELECT * FROM bewohner WHERE beruf = 'Faehrmann';",
+          "editorComment": "Mission 20: Alle Kapitaene",
+          "starterSql": "SELECT * FROM bewohner WHERE beruf = 'Kapitaen';",
           "successMessage": "Schritt 20 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1182,7 +1325,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "FAEHRMANN"
+                  "BERUF"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "KAPITAEN"
                 ]
               }
             ]
@@ -1191,21 +1340,21 @@
       ]
     },
     {
-      "id": "story-markthof-21",
-      "title": "Schritt 21: Den Namen des Bezirks, in dem Kaspar Klinge lebt",
-      "treeLabel": "21 Den Namen des Bezirks, in dem Kaspar Klinge lebt",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "22 / 34",
+      "id": "story-schmuggler-21",
+      "title": "Schritt 21: Den Namen des Viertels, in dem Silas Schmuggler lebt",
+      "treeLabel": "21 Den Namen des Viertels, in dem Silas Schmuggler lebt",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "22 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 21",
           "speaker": "Hannes",
-          "text": "Das ist ja das Geheimnis des Markthofs! Kaspar Klinge haelt den Faehrmann gefangen! Ich verrate dir einen Trick, wie wir schnell herausfinden koennen, in welchem Bezirk Kaspar Klinge lebt.",
-          "objective": "Zeige den Namen des Bezirks, in dem Kaspar Klinge lebt.",
-          "advanceHint": "Nutze SELECT auf `bezirk` und `bewohner`, verbinde die Tabellen per JOIN und filtere mit WHERE.",
-          "editorComment": "Mission 21: Den Namen des Bezirks, in dem Kaspar Klinge lebt",
-          "starterSql": "SELECT bezirk.name FROM bezirk JOIN bewohner ON bezirk.bezirknr = bewohner.bezirknr WHERE bewohner.name = 'Kaspar Klinge';",
+          "text": "Das ist ja die Spur des Schmugglers! Silas Schmuggler haelt den Kapitaen gefangen! Ich verrate dir einen Trick, wie wir schnell herausfinden koennen, in welchem Viertel Silas Schmuggler lebt.",
+          "objective": "Zeige den Namen des Viertels, in dem Silas Schmuggler lebt.",
+          "advanceHint": "Nutze SELECT auf `viertel` und `bewohner`, verbinde die Tabellen per JOIN, filtere mit WHERE.",
+          "editorComment": "Mission 21: Den Namen des Viertels, in dem Silas Schmuggler lebt",
+          "starterSql": "SELECT v.name FROM viertel v JOIN bewohner b ON v.viertelnr = b.viertelnr WHERE b.name = 'Silas Schmuggler';",
           "successMessage": "Schritt 21 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1236,13 +1385,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IN"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
-                  "BEZIRK"
+                  "VIERTEL"
                 ]
               },
               {
@@ -1254,7 +1397,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "KASPAR"
+                  "SILAS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SCHMUGGLER"
                 ]
               }
             ]
@@ -1263,21 +1412,21 @@
       ]
     },
     {
-      "id": "story-markthof-22",
-      "title": "Schritt 22: Den Namen des Hauptmanns des Markthofs",
-      "treeLabel": "22 Den Namen des Hauptmanns des Markthofs",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "23 / 34",
+      "id": "story-schmuggler-22",
+      "title": "Schritt 22: Den Namen des Hafenmeisters des Lagerkais",
+      "treeLabel": "22 Den Namen des Hafenmeisters des Lagerkais",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "23 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 22",
-          "speaker": "Hannes",
-          "text": "Auf diese Weise kannst du den Bezirk mit der Bezirksnummer suchen, die bei Kaspar Klinge im Feld bezirknr steht. Ein solch genialer Ausdruck nennt sich Verbund oder Join.\nDanke fuer den Tipp. Dann suche ich erst einmal den Hauptmann des Markthofs. Im Feld hauptmann der Tabelle bezirk steht ja die bewohnernr des Hauptmanns.",
-          "objective": "Zeige den Namen des Hauptmanns des Markthofs.",
-          "advanceHint": "Nutze SELECT auf `bezirk` und `bewohner`, verbinde die Tabellen per JOIN und filtere mit WHERE.",
-          "editorComment": "Mission 22: Den Namen des Hauptmanns des Markthofs",
-          "starterSql": "SELECT bewohner.name FROM bezirk JOIN bewohner ON bezirk.hauptmann = bewohner.bewohnernr WHERE bezirk.name = 'Markthof';",
+          "speaker": "Konrad Feder",
+          "text": "Auf diese Weise kannst du das Viertel mit der Viertelnummer suchen, die bei Silas Schmuggler im Feld viertelnr steht. Ein solch genialer Ausdruck nennt sich Verbund oder Join.\nDanke fuer den Tipp. Dann suche ich erst einmal den Hafenmeister des Lagerkais. Im Feld hafenmeister der Tabelle viertel steht ja die bewohnernr des Hafenmeisters.",
+          "objective": "Zeige den Namen des Hafenmeisters des Lagerkais.",
+          "advanceHint": "Nutze SELECT auf `viertel` und `bewohner`, verbinde die Tabellen per JOIN, filtere mit WHERE.",
+          "editorComment": "Mission 22: Den Namen des Hafenmeisters des Lagerkais",
+          "starterSql": "SELECT b.name FROM viertel v JOIN bewohner b ON v.hafenmeister = b.bewohnernr WHERE v.name = 'Lagerkai';",
           "successMessage": "Schritt 22 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1308,13 +1457,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IN"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
-                  "BEZIRK"
+                  "VIERTEL"
                 ]
               },
               {
@@ -1326,40 +1469,40 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "MARKTHOF"
+                  "LAGERKAI"
                 ]
               }
             ]
           },
           "dialogueTurns": [
             {
-              "speaker": "Hannes",
-              "text": "Auf diese Weise kannst du den Bezirk mit der Bezirksnummer suchen, die bei Kaspar Klinge im Feld bezirknr steht. Ein solch genialer Ausdruck nennt sich Verbund oder Join."
+              "speaker": "Konrad Feder",
+              "text": "Auf diese Weise kannst du das Viertel mit der Viertelnummer suchen, die bei Silas Schmuggler im Feld viertelnr steht. Ein solch genialer Ausdruck nennt sich Verbund oder Join."
             },
             {
-              "speaker": "Lea",
-              "text": "Danke fuer den Tipp. Dann suche ich erst einmal den Hauptmann des Markthofs. Im Feld hauptmann der Tabelle bezirk steht ja die bewohnernr des Hauptmanns."
+              "speaker": "Lina",
+              "text": "Danke fuer den Tipp. Dann suche ich erst einmal den Hafenmeister des Lagerkais. Im Feld hafenmeister der Tabelle viertel steht ja die bewohnernr des Hafenmeisters."
             }
           ]
         }
       ]
     },
     {
-      "id": "story-markthof-23",
-      "title": "Schritt 23: Alle Bewohner des Markthofs",
-      "treeLabel": "23 Alle Bewohner des Markthofs",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "24 / 34",
+      "id": "story-schmuggler-23",
+      "title": "Schritt 23: Alle Bewohner des Lagerkais",
+      "treeLabel": "23 Alle Bewohner des Lagerkais",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "24 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 23",
-          "speaker": "Lea",
-          "text": "Hm, wie viele Bewohner hat eigentlich der Markthof?",
-          "objective": "Zaehle alle Bewohner des Markthofs.",
-          "advanceHint": "Nutze SELECT auf `bewohner` und `bezirk`, verbinde die Tabellen per JOIN, filtere mit WHERE und nutze COUNT fuer die Auswertung.",
-          "editorComment": "Mission 23: Alle Bewohner des Markthofs",
-          "starterSql": "SELECT COUNT(*) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Markthof';",
+          "speaker": "Lina",
+          "text": "Hm, wie viele Bewohner hat eigentlich der Lagerkai?",
+          "objective": "Zaehle alle Bewohner des Lagerkais.",
+          "advanceHint": "Nutze SELECT auf `bewohner` und `viertel`, verbinde die Tabellen per JOIN, filtere mit WHERE, nutze COUNT fuer die Auswertung.",
+          "editorComment": "Mission 23: Alle Bewohner des Lagerkais",
+          "starterSql": "SELECT COUNT(*) FROM bewohner b JOIN viertel v ON b.viertelnr = v.viertelnr WHERE v.name = 'Lagerkai';",
           "successMessage": "Schritt 23 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1390,12 +1533,6 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IN"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
                   "COUNT"
                 ]
               },
@@ -1408,7 +1545,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEZIRK"
+                  "VIERTEL"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "LAGERKAI"
                 ]
               }
             ]
@@ -1417,21 +1560,21 @@
       ]
     },
     {
-      "id": "story-markthof-24",
-      "title": "Schritt 24: Alle Frauen im Markthof",
-      "treeLabel": "24 Alle Frauen im Markthof",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "25 / 34",
+      "id": "story-schmuggler-24",
+      "title": "Schritt 24: Alle Frauen im Lagerkai",
+      "treeLabel": "24 Alle Frauen im Lagerkai",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "25 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 24",
-          "speaker": "Hannes",
-          "text": "Hallo Lea, Kaspar Klinge haelt den Faehrmann im Keller seiner Schwester gefangen. Unter dem Markthof gibt es alte Lagerr\u00e4ume, und genau dort liegt das Geheimnis. Soll ich dir verraten, wie viele Frauen es im Markthof gibt? Ach was, das kannst du schon selbst herausfinden! (Hinweis: Frauen erkennt man an geschlecht = 'w')",
-          "objective": "Zaehle alle Frauen im Markthof.",
-          "advanceHint": "Nutze SELECT auf `bewohner` und `bezirk`, verbinde die Tabellen per JOIN, filtere mit WHERE und nutze COUNT fuer die Auswertung.",
-          "editorComment": "Mission 24: Alle Frauen im Markthof",
-          "starterSql": "SELECT COUNT(*) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Markthof' AND bewohner.geschlecht = 'w';",
+          "speaker": "Konrad Feder",
+          "text": "Hallo Lina, Silas Schmuggler haelt den Kapitaen im Lager seiner Schwester gefangen. Soll ich dir verraten, wie viele Frauen es im Lagerkai gibt? Ach was, das kannst du schon selbst herausfinden! (Hinweis: Frauen erkennt man an geschlecht = 'w')",
+          "objective": "Zaehle alle Frauen im Lagerkai.",
+          "advanceHint": "Nutze SELECT auf `bewohner` und `viertel`, verbinde die Tabellen per JOIN, filtere mit WHERE, nutze COUNT fuer die Auswertung.",
+          "editorComment": "Mission 24: Alle Frauen im Lagerkai",
+          "starterSql": "SELECT COUNT(*) FROM bewohner b JOIN viertel v ON b.viertelnr = v.viertelnr WHERE v.name = 'Lagerkai' AND b.geschlecht = 'w';",
           "successMessage": "Schritt 24 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1462,12 +1605,6 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IN"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
                   "COUNT"
                 ]
               },
@@ -1480,7 +1617,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEZIRK"
+                  "VIERTEL"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "LAGERKAI"
                 ]
               }
             ]
@@ -1489,21 +1632,21 @@
       ]
     },
     {
-      "id": "story-markthof-25",
-      "title": "Schritt 25: Den Namen der Frau im Markthof",
-      "treeLabel": "25 Den Namen der Frau im Markthof",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "26 / 34",
+      "id": "story-schmuggler-25",
+      "title": "Schritt 25: Den Namen der Frau im Lagerkai",
+      "treeLabel": "25 Den Namen der Frau im Lagerkai",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "26 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 25",
-          "speaker": "Lea",
+          "speaker": "Lina",
           "text": "Ha, nur eine Frau. Mal schauen, wie sie heisst.",
-          "objective": "Zeige den Namen der Frau im Markthof.",
-          "advanceHint": "Nutze SELECT auf `bewohner` und `bezirk`, verbinde die Tabellen per JOIN und filtere mit WHERE.",
-          "editorComment": "Mission 25: Den Namen der Frau im Markthof",
-          "starterSql": "SELECT bewohner.name FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Markthof' AND bewohner.geschlecht = 'w';",
+          "objective": "Zeige den Namen der Frau im Lagerkai.",
+          "advanceHint": "Nutze SELECT auf `bewohner` und `viertel`, verbinde die Tabellen per JOIN, filtere mit WHERE.",
+          "editorComment": "Mission 25: Den Namen der Frau im Lagerkai",
+          "starterSql": "SELECT b.name FROM bewohner b JOIN viertel v ON b.viertelnr = v.viertelnr WHERE v.name = 'Lagerkai' AND b.geschlecht = 'w';",
           "successMessage": "Schritt 25 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1534,25 +1677,19 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IN"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
                   "BEWOHNER"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEZIRK"
+                  "VIERTEL"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "MARKTHOF"
+                  "LAGERKAI"
                 ]
               }
             ]
@@ -1561,21 +1698,21 @@
       ]
     },
     {
-      "id": "story-markthof-26",
-      "title": "Schritt 26: Das gesamte Gold im Markthof",
-      "treeLabel": "26 Das gesamte Gold im Markthof",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "27 / 34",
+      "id": "story-schmuggler-26",
+      "title": "Schritt 26: Das gesamte Gold im Zollhof",
+      "treeLabel": "26 Das gesamte Gold im Zollhof",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "27 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 26",
-          "speaker": "Kaspar Klinge",
-          "text": "Lea, wenn du den Faehrmann wiedersehen willst, dann bring mir alles Gold, das die Bewohner des Markthofs zusammen besitzen! Du willst wissen, wie viel das ist? Ich zeige es dir!",
-          "objective": "Summiere das gesamte Gold im Markthof.",
-          "advanceHint": "Nutze SELECT auf `bewohner` und `bezirk`, verbinde die Tabellen per JOIN, filtere mit WHERE und nutze SUM fuer die Auswertung.",
-          "editorComment": "Mission 26: Das gesamte Gold im Markthof",
-          "starterSql": "SELECT SUM(bewohner.gold) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Markthof';",
+          "speaker": "Silas Schmuggler",
+          "text": "Lina, wenn du den Kapitaen wiedersehen willst, dann bring mir alles Gold, das die Bewohner des Zollhofs zusammen besitzen! Du willst wissen, wie viel das ist? Ich zeige es dir!",
+          "objective": "Summiere das gesamte Gold im Zollhof.",
+          "advanceHint": "Nutze SELECT auf `bewohner` und `viertel`, verbinde die Tabellen per JOIN, filtere mit WHERE, nutze SUM fuer die Auswertung.",
+          "editorComment": "Mission 26: Das gesamte Gold im Zollhof",
+          "starterSql": "SELECT SUM(b.gold) FROM bewohner b JOIN viertel v ON b.viertelnr = v.viertelnr WHERE v.name = 'Zollhof';",
           "successMessage": "Schritt 26 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1606,12 +1743,6 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IN"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
                   "SUM"
                 ]
               },
@@ -1624,7 +1755,13 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEZIRK"
+                  "VIERTEL"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "ZOLLHOF"
                 ]
               }
             ]
@@ -1633,19 +1770,19 @@
       ]
     },
     {
-      "id": "story-markthof-27",
+      "id": "story-schmuggler-27",
       "title": "Schritt 27: Das gesamte Gold von Haendlern, Kaufleuten und Baeckern",
       "treeLabel": "27 Das gesamte Gold von Haendlern, Kaufleuten und Baeckern",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "28 / 34",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "28 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 27",
-          "speaker": "Lea",
+          "speaker": "Lina",
           "text": "So viel Gold werde ich niemals allein durch Backen verdienen koennen. Wenn ich Gegenstaende verkaufe und zusaetzlich arbeite, kann ich maximal so viel Gold bekommen, wie Haendler, Kaufleute und Baecker zusammen besitzen. Wie viel ist das?",
           "objective": "Summiere das gesamte Gold von Haendlern, Kaufleuten und Baeckern.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE und nutze SUM fuer die Auswertung.",
+          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE, nutze SUM fuer die Auswertung, nutze IN fuer die Werteliste.",
           "editorComment": "Mission 27: Das gesamte Gold von Haendlern, Kaufleuten und Baeckern",
           "starterSql": "SELECT SUM(gold) FROM bewohner WHERE beruf IN ('Haendler', 'Kaufmann', 'Baecker');",
           "successMessage": "Schritt 27 abgeschlossen.",
@@ -1672,12 +1809,6 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IN"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
                   "SUM"
                 ]
               },
@@ -1685,6 +1816,12 @@
                 "type": "statement-contains",
                 "tokens": [
                   "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BERUF"
                 ]
               },
               {
@@ -1705,20 +1842,20 @@
       ]
     },
     {
-      "id": "story-markthof-28",
-      "title": "Schritt 28: Beruf, gesamte Goldmenge und durchschnittliches Gold je...",
-      "treeLabel": "28 Beruf, gesamte Goldmenge und durchschnittliches Gold je...",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "29 / 34",
+      "id": "story-schmuggler-28",
+      "title": "Schritt 28: Beruf, gesamte Goldmenge und durchschnittliches Gold je Beruf",
+      "treeLabel": "28 Beruf, gesamte Goldmenge und durchschnittliches Gold je Beruf",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "29 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 28",
-          "speaker": "Lea",
-          "text": "Schauen wir uns mal die gesamten sowie durchschnittlichen Goldvorraete der einzelnen Berufe an.",
+          "speaker": "Lina",
+          "text": "Schauen wir uns mal die gesamten sowie durchschnittlichen Goldvorraete der einzelnen Berufe an. Vielleicht klebt der Dreck ja an einer sehr bestimmten Stelle.",
           "objective": "Zeige Beruf, gesamte Goldmenge und durchschnittliches Gold je Beruf.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, gruppiere mit GROUP BY, sortiere mit ORDER BY und nutze SUM und AVG fuer die Auswertung.",
-          "editorComment": "Mission 28: Beruf, gesamte Goldmenge und durchschnittliches Gold je...",
+          "advanceHint": "Nutze SELECT auf `bewohner`, gruppiere mit GROUP BY, sortiere mit ORDER BY, nutze SUM fuer die Auswertung, nutze AVG fuer die Auswertung.",
+          "editorComment": "Mission 28: Beruf, gesamte Goldmenge und durchschnittliches Gold je Beruf",
           "starterSql": "SELECT beruf, SUM(gold), AVG(gold) FROM bewohner GROUP BY beruf ORDER BY AVG(gold);",
           "successMessage": "Schritt 28 abgeschlossen.",
           "advanceOn": {
@@ -1744,12 +1881,6 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BY"
-                ]
-              },
-              {
-                "type": "statement-contains",
-                "tokens": [
                   "ORDER"
                 ]
               },
@@ -1770,6 +1901,12 @@
                 "tokens": [
                   "BEWOHNER"
                 ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BERUF"
+                ]
               }
             ]
           }
@@ -1777,21 +1914,21 @@
       ]
     },
     {
-      "id": "story-markthof-29",
-      "title": "Schritt 29: Den durchschnittlichen Goldbestand je Status",
-      "treeLabel": "29 Den durchschnittlichen Goldbestand je Status",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "30 / 34",
+      "id": "story-schmuggler-29",
+      "title": "Schritt 29: Beruf, Anzahl und durchschnittliches Gold je Beruf, aber nur bei Durchschnitt groesser als 500",
+      "treeLabel": "29 Beruf, Anzahl und durchschnittliches Gold je Beruf, aber nur bei Durchschnitt groesser als 500",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "30 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 29",
-          "speaker": "Lea",
-          "text": "Interessant, die Koeche haben also das meiste Gold. Warum auch immer... Wie viel Gold haben im Durchschnitt die einzelnen Gruppen je nach Status?",
-          "objective": "Zeige den durchschnittlichen Goldbestand je Status.",
-          "advanceHint": "Nutze SELECT auf `bewohner`, gruppiere mit GROUP BY und nutze AVG fuer die Auswertung.",
-          "editorComment": "Mission 29: Den durchschnittlichen Goldbestand je Status",
-          "starterSql": "SELECT status, AVG(gold) FROM bewohner GROUP BY status;",
+          "speaker": "Lina",
+          "text": "Bevor ich hier den Kopf verliere, will ich nur die Berufe sehen, bei denen im Schnitt wirklich mehr als 500 Gold herumliegt. Da sitzt das fette Geld.",
+          "objective": "Zeige Beruf, Anzahl und durchschnittliches Gold je Beruf, aber nur bei Durchschnitt groesser als 500.",
+          "advanceHint": "Nutze SELECT auf `bewohner`, gruppiere mit GROUP BY, pruefe die Gruppen mit HAVING, sortiere mit ORDER BY, nutze COUNT fuer die Auswertung, nutze AVG fuer die Auswertung.",
+          "editorComment": "Mission 29: Beruf, Anzahl und durchschnittliches Gold je Beruf, aber nur bei Durchschnitt groesser als 500",
+          "starterSql": "SELECT beruf, COUNT(*), AVG(gold) FROM bewohner GROUP BY beruf HAVING AVG(gold) > 500 ORDER BY AVG(gold);",
           "successMessage": "Schritt 29 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1816,7 +1953,19 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BY"
+                  "HAVING"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "ORDER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "COUNT"
                 ]
               },
               {
@@ -1837,28 +1986,28 @@
       ]
     },
     {
-      "id": "story-markthof-30",
-      "title": "Schritt 30: Kaspar Klinge aus der Tabelle",
-      "treeLabel": "30 Kaspar Klinge aus der Tabelle",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "31 / 34",
+      "id": "story-schmuggler-30",
+      "title": "Schritt 30: Alle friedlichen Bewohner mit mehr Gold als Hauke Steuer",
+      "treeLabel": "30 Alle friedlichen Bewohner mit mehr Gold als Hauke Steuer",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "31 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 30",
-          "speaker": "Lea",
-          "text": "Dann kann ich auch gleich Kaspar Klinge mit dem Schwert erledigen und den Faehrmann befreien.",
-          "objective": "Entferne Kaspar Klinge aus der Tabelle.",
-          "advanceHint": "Nutze DELETE FROM fuer `bewohner` und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 30: Kaspar Klinge aus der Tabelle",
-          "starterSql": "DELETE FROM bewohner WHERE name = 'Kaspar Klinge';",
+          "speaker": "Lina",
+          "text": "Und welche friedlichen Bewohner haben sogar mehr Gold als Hauke Steuer selbst? Vielleicht kann mir jemand helfen — oder mir wenigstens sagen, was Silas vorhat.",
+          "objective": "Zeige alle friedlichen Bewohner mit mehr Gold als Hauke Steuer.",
+          "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE, sortiere mit ORDER BY.",
+          "editorComment": "Mission 30: Alle friedlichen Bewohner mit mehr Gold als Hauke Steuer",
+          "starterSql": "SELECT bewohnernr, name, gold FROM bewohner WHERE status = 'friedlich' AND gold > (SELECT gold FROM bewohner WHERE name = 'Hauke Steuer') ORDER BY gold ASC;",
           "successMessage": "Schritt 30 abgeschlossen.",
           "advanceOn": {
             "all": [
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "DELETE"
+                  "SELECT"
                 ]
               },
               {
@@ -1876,7 +2025,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IN"
+                  "ORDER"
                 ]
               },
               {
@@ -1888,13 +2037,19 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "KASPAR"
+                  "STATUS"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "KLINGE"
+                  "NAME"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GOLD"
                 ]
               }
             ]
@@ -1903,28 +2058,28 @@
       ]
     },
     {
-      "id": "story-markthof-31",
-      "title": "Schritt 31: Rika Klinge aus der Tabelle",
-      "treeLabel": "31 Rika Klinge aus der Tabelle",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "32 / 34",
+      "id": "story-schmuggler-31",
+      "title": "Schritt 31: Alle Viertel mit mindestens zwei boesen Bewohnern",
+      "treeLabel": "31 Alle Viertel mit mindestens zwei boesen Bewohnern",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "32 / 36",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 31",
-          "speaker": "Rika Klinge",
-          "text": "Heeeey! Jetzt bin ich aber sauer! Was tust du wohl als Naechstes, Lea?",
-          "objective": "Entferne Rika Klinge aus der Tabelle.",
-          "advanceHint": "Nutze DELETE FROM fuer `bewohner` und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 31: Rika Klinge aus der Tabelle",
-          "starterSql": "DELETE FROM bewohner WHERE name = 'Rika Klinge';",
+          "speaker": "Lina",
+          "text": "Und in welchen Vierteln leben eigentlich mindestens zwei boese Bewohner? Ich will wissen, wo der Dreck wirklich sitzt.",
+          "objective": "Zeige alle Viertel mit mindestens zwei boesen Bewohnern.",
+          "advanceHint": "Nutze SELECT auf `bewohner` und `viertel`, verbinde die Tabellen per JOIN, filtere mit WHERE, gruppiere mit GROUP BY, pruefe die Gruppen mit HAVING, sortiere mit ORDER BY, nutze COUNT fuer die Auswertung.",
+          "editorComment": "Mission 31: Alle Viertel mit mindestens zwei boesen Bewohnern",
+          "starterSql": "SELECT v.name, COUNT(*) FROM bewohner b JOIN viertel v ON b.viertelnr = v.viertelnr WHERE b.status = 'boese' GROUP BY v.name HAVING COUNT(*) >= 2 ORDER BY COUNT(*) DESC;",
           "successMessage": "Schritt 31 abgeschlossen.",
           "advanceOn": {
             "all": [
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "DELETE"
+                  "SELECT"
                 ]
               },
               {
@@ -1942,7 +2097,73 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IN"
+                  "JOIN"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GROUP"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "HAVING"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "ORDER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "COUNT"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-schmuggler-32",
+      "title": "Schritt 32: Silas Schmuggler aus der Tabelle",
+      "treeLabel": "32 Silas Schmuggler aus der Tabelle",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "33 / 36",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 32",
+          "speaker": "Lina",
+          "text": "Hilft alles nichts. Dann muss Silas Schmuggler eben weg.",
+          "objective": "Entferne Silas Schmuggler aus der Tabelle.",
+          "advanceHint": "Nutze DELETE FROM auf `bewohner` und grenze die betroffenen Zeilen mit WHERE ein.",
+          "editorComment": "Mission 32: Silas Schmuggler aus der Tabelle",
+          "starterSql": "DELETE FROM bewohner WHERE name = 'Silas Schmuggler';",
+          "successMessage": "Schritt 32 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FROM"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "WHERE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "DELETE"
                 ]
               },
               {
@@ -1954,13 +2175,19 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "RIKA"
+                  "NAME"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "KLINGE"
+                  "SILAS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SCHMUGGLER"
                 ]
               }
             ]
@@ -1969,34 +2196,100 @@
       ]
     },
     {
-      "id": "story-markthof-32",
-      "title": "Schritt 32: Den Status des Faehrmanns auf friedlich",
-      "treeLabel": "32 Den Status des Faehrmanns auf friedlich",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "33 / 34",
+      "id": "story-schmuggler-33",
+      "title": "Schritt 33: Rike Schmuggler aus der Tabelle",
+      "treeLabel": "33 Rike Schmuggler aus der Tabelle",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "34 / 36",
       "status": "neu",
       "guideScenes": [
         {
-          "sceneTitle": "Mission 32",
-          "speaker": "Lea",
-          "text": "Yeah! Jetzt muss ich nur noch den Faehrmann befreien.",
-          "objective": "Setze den Status des Faehrmanns auf friedlich.",
-          "advanceHint": "Nutze UPDATE auf `bewohner` und setze `status` neu und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 32: Den Status des Faehrmanns auf friedlich",
-          "starterSql": "UPDATE bewohner SET status = 'friedlich' WHERE beruf = 'Faehrmann';",
-          "successMessage": "Schritt 32 abgeschlossen.",
+          "sceneTitle": "Mission 33",
+          "speaker": "Lina",
+          "text": "Heeeey! Jetzt bin ich aber sauer! Was tust du wohl als Naechstes, Lina?",
+          "objective": "Entferne Rike Schmuggler aus der Tabelle.",
+          "advanceHint": "Nutze DELETE FROM auf `bewohner` und grenze die betroffenen Zeilen mit WHERE ein.",
+          "editorComment": "Mission 33: Rike Schmuggler aus der Tabelle",
+          "starterSql": "DELETE FROM bewohner WHERE name = 'Rike Schmuggler';",
+          "successMessage": "Schritt 33 abgeschlossen.",
           "advanceOn": {
             "all": [
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "UPDATE"
+                  "FROM"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
                   "WHERE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "DELETE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "NAME"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "RIKE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SCHMUGGLER"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-schmuggler-34",
+      "title": "Schritt 34: Den Status des Kapitaens auf friedlich",
+      "treeLabel": "34 Den Status des Kapitaens auf friedlich",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "35 / 36",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 34",
+          "speaker": "Hauke Steuer",
+          "text": "Jetzt ist der Weg frei. Hauke, raus hier.",
+          "objective": "Setze den Status des Kapitaens auf friedlich.",
+          "advanceHint": "Nutze UPDATE auf `bewohner`, setze die benoetigten Werte mit SET, grenze die betroffenen Zeilen mit WHERE ein.",
+          "editorComment": "Mission 34: Den Status des Kapitaens auf friedlich",
+          "starterSql": "UPDATE bewohner SET status = 'friedlich' WHERE beruf = 'Kapitaen';",
+          "successMessage": "Schritt 34 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "WHERE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "UPDATE"
                 ]
               },
               {
@@ -2009,6 +2302,18 @@
                 "type": "statement-contains",
                 "tokens": [
                   "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "STATUS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BERUF"
                 ]
               },
               {
@@ -2020,7 +2325,7 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "FAEHRMANN"
+                  "KAPITAEN"
                 ]
               }
             ]
@@ -2029,34 +2334,34 @@
       ]
     },
     {
-      "id": "story-markthof-33",
-      "title": "Schritt 33: Meinen Status auf abgereist",
-      "treeLabel": "33 Meinen Status auf abgereist",
-      "subtitle": "Das Geheimnis des Markthofs",
-      "stepLabel": "34 / 34",
+      "id": "story-schmuggler-35",
+      "title": "Schritt 35: Meinen Status auf abgereist",
+      "treeLabel": "35 Meinen Status auf abgereist",
+      "subtitle": "Die Spur des Schmugglers",
+      "stepLabel": "36 / 36",
       "status": "neu",
       "guideScenes": [
         {
-          "sceneTitle": "Mission 33",
-          "speaker": "Falk",
-          "text": "Vielen vielen Dank, Lea! Jetzt setze ich dich auf die andere Flussseite ueber.\nJuhu! Und als Andenken nehme ich mein Schwert, ein bisschen Gold und den nutzlosen Kram mit nach Hause. Was fuer ein Abenteuer!",
+          "sceneTitle": "Mission 35",
+          "speaker": "Hauke Steuer",
+          "text": "Vielen vielen Dank, Lina! Jetzt bringe ich dich aus diesem Hafenloch fort.\nJuhu! Und als Andenken nehme ich meine Klinge, ein bisschen Gold und den nutzlosen Kram mit nach Hause. Was fuer ein Abenteuer!",
           "objective": "Setze meinen Status auf abgereist.",
-          "advanceHint": "Nutze UPDATE auf `bewohner` und setze `status` neu und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 33: Meinen Status auf abgereist",
+          "advanceHint": "Nutze UPDATE auf `bewohner`, setze die benoetigten Werte mit SET, grenze die betroffenen Zeilen mit WHERE ein.",
+          "editorComment": "Mission 35: Meinen Status auf abgereist",
           "starterSql": "UPDATE bewohner SET status = 'abgereist' WHERE bewohnernr = 20;",
-          "successMessage": "Schritt 33 abgeschlossen.",
+          "successMessage": "Schritt 35 abgeschlossen.",
           "advanceOn": {
             "all": [
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "UPDATE"
+                  "WHERE"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "WHERE"
+                  "UPDATE"
                 ]
               },
               {
@@ -2068,13 +2373,19 @@
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "IS"
+                  "BEWOHNER"
                 ]
               },
               {
                 "type": "statement-contains",
                 "tokens": [
-                  "BEWOHNER"
+                  "STATUS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNERNR"
                 ]
               },
               {
@@ -2082,17 +2393,23 @@
                 "tokens": [
                   "ABGEREIST"
                 ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
+                ]
               }
             ]
           },
           "dialogueTurns": [
             {
-              "speaker": "Falk",
-              "text": "Vielen vielen Dank, Lea! Jetzt setze ich dich auf die andere Flussseite ueber."
+              "speaker": "Hauke Steuer",
+              "text": "Vielen vielen Dank, Lina! Jetzt bringe ich dich aus diesem Hafenloch fort."
             },
             {
-              "speaker": "Lea",
-              "text": "Juhu! Und als Andenken nehme ich mein Schwert, ein bisschen Gold und den nutzlosen Kram mit nach Hause. Was fuer ein Abenteuer!"
+              "speaker": "Lina",
+              "text": "Juhu! Und als Andenken nehme ich meine Klinge, ein bisschen Gold und den nutzlosen Kram mit nach Hause. Was fuer ein Abenteuer!"
             }
           ]
         }

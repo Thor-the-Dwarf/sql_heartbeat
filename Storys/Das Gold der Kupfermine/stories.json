@@ -12,7 +12,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 0",
-          "speaker": "Guide",
+          "speaker": "Fremde",
           "text": "Verflixt... der Bergpfad ist eingestuerzt, und ich sitze hier fest. Wenigstens habe ich diese Kupfermine erreicht. Hier gibt es ja sogar mehrere Bereiche.",
           "objective": "Zeige alle Bereiche.",
           "advanceHint": "Nutze SELECT auf `bereich`.",
@@ -54,7 +54,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 1",
-          "speaker": "Guide",
+          "speaker": "Fremde",
           "text": "Und eine ganze Menge Arbeiter gibt es hier auch. Zeige mir die Liste der Arbeiter.",
           "objective": "Zeige alle Arbeiter.",
           "advanceHint": "Nutze SELECT auf `arbeiter`.",
@@ -96,7 +96,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 2",
-          "speaker": "Guide",
+          "speaker": "Fremde",
           "text": "Mein Magen knurrt. Ich suche mir erst mal einen Koch, der mir etwas Warmes gibt.",
           "objective": "Zeige alle Koeche.",
           "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
@@ -150,8 +150,8 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 3",
-          "speaker": "Guide",
-          "text": "Hier, nimm etwas Suppe. Und pass auf deiner Suche gut auf: Solange du unbewaffnet bist, solltest du boesen Arbeitern aus dem Weg gehen. Denn nicht jeder hier ist friedlich!<br>Danke, Hannes! Na gut, dann schaue ich mal, welche Arbeiter friedlich sind.",
+          "speaker": "Hannes",
+          "text": "Hier, nimm etwas Suppe. Und pass auf deiner Suche gut auf: Solange du unbewaffnet bist, solltest du boesen Arbeitern aus dem Weg gehen. Denn nicht jeder hier ist friedlich!\nDanke, Hannes! Na gut, dann schaue ich mal, welche Arbeiter friedlich sind.",
           "objective": "Zeige alle friedlichen Arbeiter.",
           "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
           "editorComment": "Mission 3: Alle friedlichen Arbeiter",
@@ -190,7 +190,17 @@
                 ]
               }
             ]
-          }
+          },
+          "dialogueTurns": [
+            {
+              "speaker": "Hannes",
+              "text": "Hier, nimm etwas Suppe. Und pass auf deiner Suche gut auf: Solange du unbewaffnet bist, solltest du boesen Arbeitern aus dem Weg gehen. Denn nicht jeder hier ist friedlich!"
+            },
+            {
+              "speaker": "Fremde",
+              "text": "Danke, Hannes! Na gut, dann schaue ich mal, welche Arbeiter friedlich sind."
+            }
+          ]
         }
       ]
     },
@@ -204,7 +214,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 4",
-          "speaker": "Guide",
+          "speaker": "Fremde",
           "text": "Frueher oder spaeter brauche ich aber eine Grubenklinge. Lasst uns einen friedlichen Waffenschmied suchen, der mir eine schmieden kann. (Hinweis: Bedingungen im WHERE-Teil kannst du mit AND verknuepfen)",
           "objective": "Zeige alle friedlichen Waffenschmiede.",
           "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
@@ -264,7 +274,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 5",
-          "speaker": "Guide",
+          "speaker": "Fremde",
           "text": "Hm, das ist nur einer. Vielleicht gibt es noch andere friedliche Schmiede, z.B. Hufschmied, Schmied, Waffenschmied, etc. Probiere beruf LIKE '%schmied', um alle Arbeiter zu finden, deren Beruf mit 'schmied' endet.",
           "objective": "Zeige alle friedlichen Arbeiter, deren Beruf auf 'schmied' endet.",
           "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
@@ -330,7 +340,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 6",
-          "speaker": "Guide",
+          "speaker": "Merten",
           "text": "Hallo Fremde, wohin des Wegs? Ich bin Merten, der Vorarbeiter vom Stollenmund. Ich trage dich gern als Arbeiterin meines Bereichs ein.",
           "objective": "Trage mich als neue Arbeiterin mit `arbeiternr 20` im Stollenmund ein.",
           "advanceHint": "Nutze INSERT INTO fuer `arbeiter`, vergib `arbeiternr 20` und trage die geforderten Werte in die passenden Spalten ein.",
@@ -390,7 +400,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 7",
-          "speaker": "Guide",
+          "speaker": "Fremde",
           "text": "Hey, nenn mich doch nicht Fremde! Naja, egal. Wie ist eigentlich meine arbeiternr? (Tipp: Verwende eine SELECT-Abfrage ohne Sternchen.)",
           "objective": "Zeige meine arbeiternr.",
           "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
@@ -444,8 +454,8 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 8",
-          "speaker": "Guide",
-          "text": "Hallo Levin! Was kostet bei dir eine Grubenklinge?<br>Ich schmiede dir eine fuer nur 150 Gold. Billiger bekommst du sie nirgendwo! Wie viel Gold hast du momentan?",
+          "speaker": "Fremde",
+          "text": "Hallo Levin! Was kostet bei dir eine Grubenklinge?\nIch schmiede dir eine fuer nur 150 Gold. Billiger bekommst du sie nirgendwo! Wie viel Gold hast du momentan?",
           "objective": "Zeige mein aktuelles Gold.",
           "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
           "editorComment": "Mission 8: Mein aktuelles Gold",
@@ -478,7 +488,17 @@
                 ]
               }
             ]
-          }
+          },
+          "dialogueTurns": [
+            {
+              "speaker": "Fremde",
+              "text": "Hallo Levin! Was kostet bei dir eine Grubenklinge?"
+            },
+            {
+              "speaker": "Levin",
+              "text": "Ich schmiede dir eine fuer nur 150 Gold. Billiger bekommst du sie nirgendwo! Wie viel Gold hast du momentan?"
+            }
+          ]
         }
       ]
     },
@@ -492,7 +512,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 9",
-          "speaker": "Guide",
+          "speaker": "Fremde",
           "text": "Mist, ich habe ja noch gar kein Gold. Arbeiten will ich aber auch nicht sofort. Vorhin habe ich im Stollen mehrere Dinge herumliegen sehen, die niemandem gehoeren. Die koennte ich einsammeln und an Haendler verkaufen. Liste alle Gegenstaende auf, die niemandem gehoeren.",
           "objective": "Zeige alle herrenlosen Gegenstaende.",
           "advanceHint": "Nutze SELECT auf `gegenstand`, filtere mit WHERE.",
@@ -552,7 +572,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 10",
-          "speaker": "Guide",
+          "speaker": "Fremde",
           "text": "Nehmen wir zuerst die Erzlampe mit. Eine Lampe kann man hier unten immer gebrauchen.",
           "objective": "Sammle die Erzlampe ein.",
           "advanceHint": "Nutze UPDATE auf `gegenstand` und setze `besitzer` neu und grenze die betroffenen Zeilen mit WHERE ein.",
@@ -606,7 +626,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 11",
-          "speaker": "Guide",
+          "speaker": "Fremde",
           "text": "Kennst du einen Trick, wie wir alle herrenlosen Gegenstaende auf einmal einsammeln koennen?",
           "objective": "Sammle alle herrenlosen Gegenstaende ein.",
           "advanceHint": "Nutze UPDATE auf `gegenstand` und setze `besitzer` neu und grenze die betroffenen Zeilen mit WHERE ein.",
@@ -666,7 +686,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 12",
-          "speaker": "Guide",
+          "speaker": "Fremde",
           "text": "Jawoll! Welche Gegenstaende besitze ich nun?",
           "objective": "Zeige alle Gegenstaende in meinem Besitz.",
           "advanceHint": "Nutze SELECT auf `gegenstand`, filtere mit WHERE.",
@@ -714,7 +734,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 13",
-          "speaker": "Guide",
+          "speaker": "Fremde",
           "text": "Finde friedliche Arbeiter mit dem Beruf Haendler oder Kaufmann. Eventuell moechten sie etwas von uns kaufen. (Hinweis: Achte bei AND- und OR-Verknuepfungen auf korrekte Klammerung.)",
           "objective": "Zeige alle friedlichen Haendler und Kaufleute.",
           "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
@@ -774,7 +794,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 14",
-          "speaker": "Guide",
+          "speaker": "Lene Handel",
           "text": "Ich interessiere mich fuer den Kupferring und den Zinnbecher. Der Rest ist nur Geruempel. Gib mir bitte die beiden Gegenstaende. Meine arbeiternr ist uebrigens 15.",
           "objective": "Gib Kupferring und Zinnbecher an arbeiternr 15.",
           "advanceHint": "Nutze UPDATE auf `gegenstand` und setze `besitzer` neu und grenze die betroffenen Zeilen mit WHERE ein.",
@@ -840,7 +860,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 15",
-          "speaker": "Guide",
+          "speaker": "Lene Handel",
           "text": "Hier hast du einen Haufen Gold!",
           "objective": "Erhoehe mein Gold um 120.",
           "advanceHint": "Nutze UPDATE auf `arbeiter` und setze `gold` neu und grenze die betroffenen Zeilen mit WHERE ein.",
@@ -888,7 +908,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 16",
-          "speaker": "Guide",
+          "speaker": "Fremde",
           "text": "Leider reicht das noch nicht fuer eine Grubenklinge. Dann muss ich wohl doch arbeiten. Bevor ich mich irgendwo bewerbe, sollte ich vielleicht meinen Namen von Fremde auf meinen richtigen Namen aendern.",
           "objective": "Aendere meinen Namen von Fremde zu Mara.",
           "advanceHint": "Nutze UPDATE auf `arbeiter` und setze `name` neu und grenze die betroffenen Zeilen mit WHERE ein.",
@@ -948,7 +968,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 17",
-          "speaker": "Guide",
+          "speaker": "Mara",
           "text": "In meiner Freizeit backe ich gern. Ich glaube, ich verdiene mir ein bisschen Gold als Baeckerin. Zeige mir alle Baecker. Tipp: Mit ORDER BY gold DESC und einem zweiten Sortierkriterium bleibt die Sache sauber.",
           "objective": "Zeige alle Baecker, sortiert nach Gold absteigend und Name aufsteigend.",
           "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE und sortiere mit ORDER BY.",
@@ -1014,8 +1034,8 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 18",
-          "speaker": "Guide",
-          "text": "Hi, da bist du ja wieder! Soso, Mara heisst du also. Und du willst als Baeckerin arbeiten? Da sage ich nicht nein. Ich zahle dir pro hundert Brote 1 Gold.<br>(8 Stunden spaeter...) Hier bitteschoen, zehntausend Brote! Ich kuendige! Ich habe nun genug Gold fuer die Grubenklinge! Mal schauen, was jetzt mit meinem Kontostand passiert.",
+          "speaker": "Merten",
+          "text": "Hi, da bist du ja wieder! Soso, Mara heisst du also. Und du willst als Baeckerin arbeiten? Da sage ich nicht nein. Ich zahle dir pro hundert Brote 1 Gold.\n(8 Stunden spaeter...) Hier bitteschoen, zehntausend Brote! Ich kuendige! Ich habe nun genug Gold fuer die Grubenklinge! Mal schauen, was jetzt mit meinem Kontostand passiert.",
           "objective": "Erhoehe mein Gold um 100.",
           "advanceHint": "Nutze UPDATE auf `arbeiter` und setze `gold` neu und grenze die betroffenen Zeilen mit WHERE ein.",
           "editorComment": "Mission 18: Mein Gold um 100",
@@ -1048,7 +1068,17 @@
                 ]
               }
             ]
-          }
+          },
+          "dialogueTurns": [
+            {
+              "speaker": "Merten",
+              "text": "Hi, da bist du ja wieder! Soso, Mara heisst du also. Und du willst als Baeckerin arbeiten? Da sage ich nicht nein. Ich zahle dir pro hundert Brote 1 Gold."
+            },
+            {
+              "speaker": "Mara",
+              "text": "(8 Stunden spaeter...) Hier bitteschoen, zehntausend Brote! Ich kuendige! Ich habe nun genug Gold fuer die Grubenklinge! Mal schauen, was jetzt mit meinem Kontostand passiert."
+            }
+          ]
         }
       ]
     },
@@ -1062,7 +1092,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 19",
-          "speaker": "Guide",
+          "speaker": "Levin",
           "text": "Hier ist deine neue Grubenklinge, Mara! Nun kannst du ueberall hin!",
           "objective": "Ziehe 150 Gold von meinem Konto ab.",
           "advanceHint": "Nutze UPDATE auf `arbeiter` und setze `gold` neu und grenze die betroffenen Zeilen mit WHERE ein.",
@@ -1110,7 +1140,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 20",
-          "speaker": "Guide",
+          "speaker": "Mara",
           "text": "Gibt es in der Mine einen Aufzugfuehrer? Er koennte mich wieder ans Tageslicht bringen.",
           "objective": "Zeige alle Aufzugfuehrer.",
           "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE.",
@@ -1164,7 +1194,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 21",
-          "speaker": "Guide",
+          "speaker": "Hannes",
           "text": "Das ist schrecklich! Kuno Erz haelt den Aufzugfuehrer gefangen! Ich verrate dir einen Trick, wie wir schnell herausfinden koennen, in welchem Bereich Kuno Erz arbeitet.",
           "objective": "Zeige den Namen des Bereichs, in dem Kuno Erz arbeitet.",
           "advanceHint": "Nutze SELECT auf `bereich` und `arbeiter`, verbinde die Tabellen per JOIN und filtere mit WHERE.",
@@ -1236,8 +1266,8 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 22",
-          "speaker": "Guide",
-          "text": "Auf diese Weise kannst du den Bereich mit der Bereichsnummer suchen, die bei Kuno Erz im Feld bereichnr steht. Ein solch genialer Ausdruck nennt sich Verbund oder Join.<br>Danke fuer den Tipp. Dann suche ich erst einmal den Vorarbeiter des Tiefstollens. Im Feld vorarbeiter der Tabelle bereich steht ja die arbeiternr des Vorarbeiters.",
+          "speaker": "Hannes",
+          "text": "Auf diese Weise kannst du den Bereich mit der Bereichsnummer suchen, die bei Kuno Erz im Feld bereichnr steht. Ein solch genialer Ausdruck nennt sich Verbund oder Join.\nDanke fuer den Tipp. Dann suche ich erst einmal den Vorarbeiter des Tiefstollens. Im Feld vorarbeiter der Tabelle bereich steht ja die arbeiternr des Vorarbeiters.",
           "objective": "Zeige den Namen des Vorarbeiters des Tiefstollens.",
           "advanceHint": "Nutze SELECT auf `bereich` und `arbeiter`, verbinde die Tabellen per JOIN und filtere mit WHERE.",
           "editorComment": "Mission 22: Den Namen des Vorarbeiters des Tiefstollens",
@@ -1294,7 +1324,17 @@
                 ]
               }
             ]
-          }
+          },
+          "dialogueTurns": [
+            {
+              "speaker": "Hannes",
+              "text": "Auf diese Weise kannst du den Bereich mit der Bereichsnummer suchen, die bei Kuno Erz im Feld bereichnr steht. Ein solch genialer Ausdruck nennt sich Verbund oder Join."
+            },
+            {
+              "speaker": "Mara",
+              "text": "Danke fuer den Tipp. Dann suche ich erst einmal den Vorarbeiter des Tiefstollens. Im Feld vorarbeiter der Tabelle bereich steht ja die arbeiternr des Vorarbeiters."
+            }
+          ]
         }
       ]
     },
@@ -1308,7 +1348,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 23",
-          "speaker": "Guide",
+          "speaker": "Mara",
           "text": "Hm, wie viele Arbeiter hat eigentlich der Tiefstollen?",
           "objective": "Zaehle alle Arbeiter des Tiefstollens.",
           "advanceHint": "Nutze SELECT auf `arbeiter` und `bereich`, verbinde die Tabellen per JOIN, filtere mit WHERE und nutze COUNT fuer die Auswertung.",
@@ -1380,7 +1420,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 24",
-          "speaker": "Guide",
+          "speaker": "Hannes",
           "text": "Hallo Mara, Kuno Erz haelt den Aufzugfuehrer im Raum seiner Schwester gefangen. Soll ich dir verraten, wie viele Frauen es im Tiefstollen gibt? Ach was, das kannst du schon selbst herausfinden! (Hinweis: Frauen erkennt man an geschlecht = 'w')",
           "objective": "Zaehle alle Frauen im Tiefstollen.",
           "advanceHint": "Nutze SELECT auf `arbeiter` und `bereich`, verbinde die Tabellen per JOIN, filtere mit WHERE und nutze COUNT fuer die Auswertung.",
@@ -1452,7 +1492,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 25",
-          "speaker": "Guide",
+          "speaker": "Mara",
           "text": "Ha, nur eine Frau. Mal schauen, wie sie heisst.",
           "objective": "Zeige den Namen der Frau im Tiefstollen.",
           "advanceHint": "Nutze SELECT auf `arbeiter` und `bereich`, verbinde die Tabellen per JOIN und filtere mit WHERE.",
@@ -1524,7 +1564,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 26",
-          "speaker": "Guide",
+          "speaker": "Kuno Erz",
           "text": "Mara, gib mir alles Gold, was die Arbeiter unseres Nachbarbereichs Schmelzhof zusammen besitzen, und ich lasse den Aufzugfuehrer frei! Jetzt verstehst du wohl, warum jeder hier vom Gold der Kupfermine redet. Du willst wissen, wie viel das ist? Ich zeige es dir!",
           "objective": "Summiere das gesamte Gold im Schmelzhof.",
           "advanceHint": "Nutze SELECT auf `arbeiter` und `bereich`, verbinde die Tabellen per JOIN, filtere mit WHERE und nutze SUM fuer die Auswertung.",
@@ -1596,7 +1636,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 27",
-          "speaker": "Guide",
+          "speaker": "Mara",
           "text": "So viel Gold werde ich niemals allein durch Backen verdienen koennen. Wenn ich Gegenstaende verkaufe und zusaetzlich arbeite, kann ich maximal so viel Gold bekommen, wie Haendler, Kaufleute und Baecker zusammen besitzen. Wie viel ist das?",
           "objective": "Summiere das gesamte Gold von Haendlern, Kaufleuten und Baeckern.",
           "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE und nutze SUM fuer die Auswertung.",
@@ -1668,7 +1708,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 28",
-          "speaker": "Guide",
+          "speaker": "Mara",
           "text": "Schauen wir uns mal die gesamten sowie durchschnittlichen Goldvorraete der einzelnen Berufe an. Vielleicht sehe ich dann klarer, wo in dieser Mine das meiste Geld klebt.",
           "objective": "Zeige Beruf, gesamte Goldmenge und durchschnittliches Gold je Beruf.",
           "advanceHint": "Nutze SELECT auf `arbeiter`, gruppiere mit GROUP BY, sortiere mit ORDER BY und nutze SUM und AVG fuer die Auswertung.",
@@ -1740,7 +1780,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 29",
-          "speaker": "Guide",
+          "speaker": "Mara",
           "text": "Bevor ich hier unten irre werde, will ich nur die Berufe sehen, bei denen im Schnitt wirklich mehr als 500 Gold herumliegt. Da sitzt das fette Erz, bildlich gesprochen.",
           "objective": "Zeige Beruf, Anzahl und durchschnittliches Gold je Beruf, aber nur bei Durchschnitt groesser als 500.",
           "advanceHint": "Nutze SELECT auf `arbeiter`, gruppiere mit GROUP BY, pruefe die Gruppen mit HAVING, sortiere mit ORDER BY und nutze COUNT und AVG fuer die Auswertung.",
@@ -1812,8 +1852,8 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 30",
-          "speaker": "Guide",
-          "text": "Und welche friedlichen Arbeiter haben sogar mehr Gold als Falk Seil selbst? Vielleicht kann mir jemand helfen — oder zumindest meine Lage ernst nehmen.",
+          "speaker": "Mara",
+          "text": "Und welche friedlichen Arbeiter haben sogar mehr Gold als Falk Seil selbst? Vielleicht kann mir jemand helfen \u2014 oder zumindest meine Lage ernst nehmen.",
           "objective": "Zeige alle friedlichen Arbeiter mit mehr Gold als Falk Seil.",
           "advanceHint": "Nutze SELECT auf `arbeiter`, filtere mit WHERE, sortiere mit ORDER BY und arbeite mit einer Unterabfrage.",
           "editorComment": "Mission 30: Alle friedlichen Arbeiter mit mehr Gold als Falk Seil",
@@ -1884,7 +1924,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 31",
-          "speaker": "Guide",
+          "speaker": "Mara",
           "text": "Und in welchen Bereichen leben eigentlich mindestens zwei boese Arbeiter? Ich will wissen, wo der Dreck wirklich sitzt.",
           "objective": "Zeige alle Bereiche mit mindestens zwei boesen Arbeitern.",
           "advanceHint": "Nutze SELECT auf `arbeiter` und `bereich`, verbinde die Tabellen per JOIN, filtere mit WHERE, gruppiere mit GROUP BY, pruefe die Gruppen mit HAVING, sortiere mit ORDER BY und nutze COUNT fuer die Auswertung.",
@@ -1956,7 +1996,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 32",
-          "speaker": "Guide",
+          "speaker": "Mara",
           "text": "Hilft alles nichts. Dann muss Kuno Erz eben weg.",
           "objective": "Entferne Kuno Erz aus der Tabelle.",
           "advanceHint": "Nutze DELETE FROM fuer `arbeiter` und grenze die betroffenen Zeilen mit WHERE ein.",
@@ -2016,7 +2056,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 33",
-          "speaker": "Guide",
+          "speaker": "Runa Erz",
           "text": "Heeeey! Jetzt bin ich aber sauer! Was tust du wohl als Naechstes, Mara?",
           "objective": "Entferne Runa Erz aus der Tabelle.",
           "advanceHint": "Nutze DELETE FROM fuer `arbeiter` und grenze die betroffenen Zeilen mit WHERE ein.",
@@ -2076,7 +2116,7 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 34",
-          "speaker": "Guide",
+          "speaker": "Mara",
           "text": "Jetzt ist der Weg frei. Falk, raus hier.",
           "objective": "Setze den Status des Aufzugfuehrers auf friedlich.",
           "advanceHint": "Nutze UPDATE auf `arbeiter` und setze `status` neu und grenze die betroffenen Zeilen mit WHERE ein.",
@@ -2136,8 +2176,8 @@
       "guideScenes": [
         {
           "sceneTitle": "Mission 35",
-          "speaker": "Guide",
-          "text": "Vielen vielen Dank, Mara! Jetzt bringe ich dich wieder nach oben.<br>Juhu! Und als Andenken nehme ich meine Grubenklinge, ein bisschen Gold und den nutzlosen Kram mit nach Hause. Was fuer ein Abenteuer!",
+          "speaker": "Falk",
+          "text": "Vielen vielen Dank, Mara! Jetzt bringe ich dich wieder nach oben.\nJuhu! Und als Andenken nehme ich meine Grubenklinge, ein bisschen Gold und den nutzlosen Kram mit nach Hause. Was fuer ein Abenteuer!",
           "objective": "Setze meinen Status auf abgereist.",
           "advanceHint": "Nutze UPDATE auf `arbeiter` und setze `status` neu und grenze die betroffenen Zeilen mit WHERE ein.",
           "editorComment": "Mission 35: Meinen Status auf abgereist",
@@ -2182,7 +2222,17 @@
                 ]
               }
             ]
-          }
+          },
+          "dialogueTurns": [
+            {
+              "speaker": "Falk",
+              "text": "Vielen vielen Dank, Mara! Jetzt bringe ich dich wieder nach oben."
+            },
+            {
+              "speaker": "Mara",
+              "text": "Juhu! Und als Andenken nehme ich meine Grubenklinge, ein bisschen Gold und den nutzlosen Kram mit nach Hause. Was fuer ein Abenteuer!"
+            }
+          ]
         }
       ]
     }

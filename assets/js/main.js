@@ -339,8 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 path: 'Storys/Die Händler von Rabensand/stories.json',
-                label: 'Die Händler von Rabensand',
-                optional: true
+                label: 'Die Händler von Rabensand'
             }
         ],
         medium: [
@@ -350,30 +349,25 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 path: 'Storys/Das Siegel der Kronfeste/stories.json',
-                label: 'Das Siegel der Kronfeste',
-                optional: true
+                label: 'Das Siegel der Kronfeste'
             },
             {
                 path: 'Storys/Die Spur des Schmugglers/stories.json',
-                label: 'Die Spur des Schmugglers',
-                optional: true
+                label: 'Die Spur des Schmugglers'
             }
         ],
         hard: [
             {
                 path: 'Storys/Sturm auf den Wachturm/stories.json',
-                label: 'Sturm auf den Wachturm',
-                optional: true
+                label: 'Sturm auf den Wachturm'
             },
             {
                 path: 'Storys/Die Tore von Steinbruch/stories.json',
-                label: 'Die Tore von Steinbruch',
-                optional: true
+                label: 'Die Tore von Steinbruch'
             },
             {
                 path: 'Storys/Der letzte Kurier von Dornwall/stories.json',
-                label: 'Der letzte Kurier von Dornwall',
-                optional: true
+                label: 'Der letzte Kurier von Dornwall'
             }
         ]
     };
@@ -538,6 +532,42 @@ document.addEventListener('DOMContentLoaded', () => {
             .join(' > ');
     }
 
+    function sanitizeGuideSceneText(value = '') {
+        return String(value || '')
+            .replace(/<br\s*\/?>/gi, '\n')
+            .replace(/\r\n?/g, '\n')
+            .trim();
+    }
+
+    function normalizeGuideDialogueTurns(scene = null) {
+        const sceneId = String(scene?.id || 'scene').trim() || 'scene';
+        const explicitTurns = Array.isArray(scene?.dialogueTurns) ? scene.dialogueTurns : [];
+        const normalizedTurns = explicitTurns
+            .map((turn, turnIndex) => {
+                const speaker = String(turn?.speaker || '').trim();
+                const text = sanitizeGuideSceneText(turn?.text || '');
+                if (!speaker || !text) return null;
+                return {
+                    id: String(turn?.id || `${sceneId}-turn-${turnIndex + 1}`),
+                    speaker,
+                    text
+                };
+            })
+            .filter(Boolean);
+
+        if (normalizedTurns.length > 0) return normalizedTurns;
+
+        const fallbackText = sanitizeGuideSceneText(scene?.text || '');
+        if (!fallbackText) return [];
+        return [
+            {
+                id: `${sceneId}-turn-1`,
+                speaker: String(scene?.speaker || 'Guide').trim() || 'Guide',
+                text: fallbackText
+            }
+        ];
+    }
+
     function normalizeSimulationDataShape(snapshot) {
         const source = snapshot && typeof snapshot === 'object' ? snapshot : {};
         return {
@@ -606,6 +636,176 @@ document.addEventListener('DOMContentLoaded', () => {
             rows: deepClone(rows)
         };
     }
+
+    function replaceStringValuesDeep(value, replacements = []) {
+        if (typeof value === 'string') {
+            return replacements.reduce((current, [from, to]) => current.split(from).join(to), value);
+        }
+        if (Array.isArray(value)) {
+            return value.map((entry) => replaceStringValuesDeep(entry, replacements));
+        }
+        if (value && typeof value === 'object') {
+            const next = {};
+            Object.entries(value).forEach(([key, entryValue]) => {
+                next[key] = replaceStringValuesDeep(entryValue, replacements);
+            });
+            return next;
+        }
+        return value;
+    }
+
+    function cloneTableDefWithTextReplacements(tableDef, replacements = []) {
+        return replaceStringValuesDeep(deepClone(tableDef), replacements);
+    }
+
+    const MARKTHOF_TO_RABENSAND_REPLACEMENTS = [
+        ['Suedtor', 'Salztor'],
+        ['Markthof', 'Rabensand'],
+        ['Gerbergasse', 'Duenengang'],
+        ['Baldur Laib', 'Yarin Dattel'],
+        ['Lennart Eisen', 'Samir Eisen'],
+        ['Klara Krume', 'Mina Sand'],
+        ['Gregor Zins', 'Marek Salz'],
+        ['Kaspar Klinge', 'Sadir Sand'],
+        ['Borik Kessel', 'Borek Kessel'],
+        ['Tabea Teig', 'Talia Teig'],
+        ['Rika Klinge', 'Yara Sand'],
+        ['Bruno Markt', 'Hakim Markt'],
+        ['Konrad Feder', 'Nabil Feder'],
+        ['Hannes Pfeffer', 'Hannes Safran'],
+        ['Falk Faehre', 'Jorin Segel'],
+        ['Faehrmann', 'Schiffer'],
+        ['Gewuerzbeutel', 'Safranbeutel'],
+        ['Siegelring', 'Silberring'],
+        ['Leinenrolle', 'Seidentuch'],
+        ['Laterne', 'Oellampe']
+    ];
+
+    const MARKTHOF_TO_KRONFESTE_REPLACEMENTS = [
+        ['hauptmann', 'vogt'],
+        ['Suedtor', 'Torwall'],
+        ['Markthof', 'Muenzhof'],
+        ['Gerbergasse', 'Kronarchiv'],
+        ['Baldur Laib', 'Almar Laib'],
+        ['Lennart Eisen', 'Gerrit Eisen'],
+        ['Klara Krume', 'Marta Mehl'],
+        ['Gregor Zins', 'Konrad Pfennig'],
+        ['Kaspar Klinge', 'Viktor Wachs'],
+        ['Borik Kessel', 'Bardo Kessel'],
+        ['Falk Faehre', 'Cedrik Siegel'],
+        ['Faehrmann', 'Siegelmeister'],
+        ['Tabea Teig', 'Tilda Teig'],
+        ['Rika Klinge', 'Ysra Wachs'],
+        ['Magd', 'Kammerzofe'],
+        ['Bruno Markt', 'Bruno Muenz'],
+        ['Konrad Feder', 'Peregrin Feder'],
+        ['Schreiber', 'Archivar'],
+        ['Gewuerzbeutel', 'Siegelwachs'],
+        ['Siegelring', 'Messingring'],
+        ['Zinnbecher', 'Tintenfass'],
+        ['Leinenrolle', 'Pergamentrolle'],
+        ['Laterne', 'Oellampe']
+    ];
+
+    const MARKTHOF_TO_SCHMUGGLER_REPLACEMENTS = [
+        ['bezirknr', 'viertelnr'],
+        ['hauptmann', 'hafenmeister'],
+        ['Suedtor', 'Fischmarkt'],
+        ['Markthof', 'Zollhof'],
+        ['Gerbergasse', 'Lagerkai'],
+        ['Baldur Laib', 'Balduin Laib'],
+        ['Lennart Eisen', 'Lorenz Eisen'],
+        ['Klara Krume', 'Mina Krume'],
+        ['Gregor Zins', 'Gregor Anleger'],
+        ['Kaspar Klinge', 'Silas Schmuggler'],
+        ['Borik Kessel', 'Bardo Kessel'],
+        ['Falk Faehre', 'Hauke Steuer'],
+        ['Faehrmann', 'Kapitaen'],
+        ['Tabea Teig', 'Tilda Teig'],
+        ['Rika Klinge', 'Rike Schmuggler'],
+        ['Magd', 'Hafenmagd'],
+        ['Bruno Markt', 'Bruno Zoll'],
+        ['Konrad Feder', 'Konrad Feder'],
+        ['Gewuerzbeutel', 'Taurolle'],
+        ['Siegelring', 'Kupferkompass'],
+        ['Zinnbecher', 'Zinnbecher'],
+        ['Leinenrolle', 'Leinenballen'],
+        ['Laterne', 'Sturmlaterne']
+    ];
+
+    const KRONFESTE_TO_WACHTURM_REPLACEMENTS = [
+        ['Torwall', 'Aussensteg'],
+        ['Muenzhof', 'Signalhof'],
+        ['Kronarchiv', 'Wachturm'],
+        ['Almar Laib', 'Raban Brot'],
+        ['Gerrit Eisen', 'Torvin Eisen'],
+        ['Marta Mehl', 'Mira Mehl'],
+        ['Konrad Pfennig', 'Brann Taler'],
+        ['Viktor Wachs', 'Darian Horn'],
+        ['Bardo Kessel', 'Borek Kessel'],
+        ['Ulf Kessel', 'Udo Kessel'],
+        ['Cedrik Siegel', 'Leif Funk'],
+        ['Tilda Teig', 'Tilda Korn'],
+        ['Odo Hammer', 'Odo Mast'],
+        ['Ysra Wachs', 'Mira Horn'],
+        ['Bruno Muenz', 'Bruno Funke'],
+        ['Peregrin Feder', 'Orin Mast'],
+        ['Ida Muenz', 'Ida Funke'],
+        ['Hannes Pfeffer', 'Hannes Rauch'],
+        ['Kammerzofe', 'Turmhilfe'],
+        ['Archivar', 'Signalwart'],
+        ['Siegelmeister', 'Turmmeister'],
+        ['Siegelwachs', 'Signalhorn'],
+        ['Messingring', 'Eisenhaken'],
+        ['Tintenfass', 'Leuchtbecher'],
+        ['Pergamentrolle', 'Wachrolle'],
+        ['Oellampe', 'Leuchtlampe']
+    ];
+
+    const KUPFERMINE_TO_STEINBRUCH_REPLACEMENTS = [
+        ['Kupfermine', 'Steinbruch'],
+        ['Stollenmund', 'Nordtor'],
+        ['Schmelzhof', 'Torhof'],
+        ['Tiefstollen', 'Bruchkante'],
+        ['Merten Laib', 'Tarek Brot'],
+        ['Levin Eisen', 'Borin Eisen'],
+        ['Klara Krume', 'Sina Schotter'],
+        ['Torben Taler', 'Rurik Tor'],
+        ['Kuno Erz', 'Raban Stein'],
+        ['Falk Seil', 'Lukas Tor'],
+        ['Runa Erz', 'Rika Stein'],
+        ['Bruno Schurf', 'Bruno Bruch'],
+        ['Konrad Karte', 'Konrad Pfad'],
+        ['Erzlampe', 'Torrolle'],
+        ['Kupferring', 'Steinkeil'],
+        ['Seilrolle', 'Kettenrolle'],
+        ['Werkzeugkiste', 'Windenkiste'],
+        ['Grubenhelm', 'Wappenplatte'],
+        ['Aufzugfuehrer', 'Torwaechter'],
+        ['Stollenhilfe', 'Bruchhilfe']
+    ];
+
+    const SCHMUGGLER_TO_DORNWALL_REPLACEMENTS = [
+        ['Fischmarkt', 'Westtor'],
+        ['Zollhof', 'Botenhof'],
+        ['Lagerkai', 'Dornwall'],
+        ['Balduin Laib', 'Darin Laib'],
+        ['Lorenz Eisen', 'Lorik Eisen'],
+        ['Mina Krume', 'Mina Korn'],
+        ['Gregor Anleger', 'Gregor Tor'],
+        ['Silas Schmuggler', 'Marek Dorn'],
+        ['Rike Schmuggler', 'Elin Dorn'],
+        ['Bruno Zoll', 'Bruno Bote'],
+        ['Konrad Feder', 'Konrad Brief'],
+        ['Hauke Steuer', 'Lenn Kurier'],
+        ['Hafenmagd', 'Botin'],
+        ['Kapitaen', 'Kurier'],
+        ['Schmuggler', 'Wegelagerer'],
+        ['Taurolle', 'Briefrolle'],
+        ['Kupferkompass', 'Siegeltasche'],
+        ['Leinenballen', 'Botenbeutel'],
+        ['Sturmlaterne', 'Wegeleuchte']
+    ];
 
     function createEmployeesTable(withRole = false) {
         const columns = [
@@ -865,6 +1065,66 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function createRabensandBezirkTable() {
+        return cloneTableDefWithTextReplacements(createMarkthofBezirkTable(), MARKTHOF_TO_RABENSAND_REPLACEMENTS);
+    }
+
+    function createRabensandBewohnerTable() {
+        return cloneTableDefWithTextReplacements(createMarkthofBewohnerTable(), MARKTHOF_TO_RABENSAND_REPLACEMENTS);
+    }
+
+    function createRabensandGegenstandTable() {
+        return cloneTableDefWithTextReplacements(createMarkthofGegenstandTable(), MARKTHOF_TO_RABENSAND_REPLACEMENTS);
+    }
+
+    function createRabensandStorySnapshot() {
+        return buildSnapshotFromTables({
+            bezirk: createRabensandBezirkTable(),
+            bewohner: createRabensandBewohnerTable(),
+            gegenstand: createRabensandGegenstandTable()
+        });
+    }
+
+    function createKronfesteBezirkTable() {
+        return cloneTableDefWithTextReplacements(createMarkthofBezirkTable(), MARKTHOF_TO_KRONFESTE_REPLACEMENTS);
+    }
+
+    function createKronfesteBewohnerTable() {
+        return cloneTableDefWithTextReplacements(createMarkthofBewohnerTable(), MARKTHOF_TO_KRONFESTE_REPLACEMENTS);
+    }
+
+    function createKronfesteGegenstandTable() {
+        return cloneTableDefWithTextReplacements(createMarkthofGegenstandTable(), MARKTHOF_TO_KRONFESTE_REPLACEMENTS);
+    }
+
+    function createKronfesteStorySnapshot() {
+        return buildSnapshotFromTables({
+            bezirk: createKronfesteBezirkTable(),
+            bewohner: createKronfesteBewohnerTable(),
+            gegenstand: createKronfesteGegenstandTable()
+        });
+    }
+
+    function createSchmugglerViertelTable() {
+        return cloneTableDefWithTextReplacements(createMarkthofBezirkTable(), MARKTHOF_TO_SCHMUGGLER_REPLACEMENTS);
+    }
+
+    function createSchmugglerBewohnerTable() {
+        return cloneTableDefWithTextReplacements(createMarkthofBewohnerTable(), MARKTHOF_TO_SCHMUGGLER_REPLACEMENTS);
+    }
+
+    function createSchmugglerGegenstandTable() {
+        return cloneTableDefWithTextReplacements(createMarkthofGegenstandTable(), MARKTHOF_TO_SCHMUGGLER_REPLACEMENTS);
+    }
+
+    function createSchmugglerStorySnapshot() {
+        return buildSnapshotFromTables({
+            viertel: createSchmugglerViertelTable(),
+            bewohner: createSchmugglerBewohnerTable(),
+            gegenstand: createSchmugglerGegenstandTable()
+        });
+    }
+
     function createKupfermineBereichTable() {
         return createTableDef(
             [
@@ -940,6 +1200,66 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function createSteinbruchBereichTable() {
+        return cloneTableDefWithTextReplacements(createKupfermineBereichTable(), KUPFERMINE_TO_STEINBRUCH_REPLACEMENTS);
+    }
+
+    function createSteinbruchArbeiterTable() {
+        return cloneTableDefWithTextReplacements(createKupfermineArbeiterTable(), KUPFERMINE_TO_STEINBRUCH_REPLACEMENTS);
+    }
+
+    function createSteinbruchGegenstandTable() {
+        return cloneTableDefWithTextReplacements(createKupfermineGegenstandTable(), KUPFERMINE_TO_STEINBRUCH_REPLACEMENTS);
+    }
+
+    function createSteinbruchStorySnapshot() {
+        return buildSnapshotFromTables({
+            bereich: createSteinbruchBereichTable(),
+            arbeiter: createSteinbruchArbeiterTable(),
+            gegenstand: createSteinbruchGegenstandTable()
+        });
+    }
+
+    function createWachturmBezirkTable() {
+        return cloneTableDefWithTextReplacements(createKronfesteBezirkTable(), KRONFESTE_TO_WACHTURM_REPLACEMENTS);
+    }
+
+    function createWachturmBewohnerTable() {
+        return cloneTableDefWithTextReplacements(createKronfesteBewohnerTable(), KRONFESTE_TO_WACHTURM_REPLACEMENTS);
+    }
+
+    function createWachturmGegenstandTable() {
+        return cloneTableDefWithTextReplacements(createKronfesteGegenstandTable(), KRONFESTE_TO_WACHTURM_REPLACEMENTS);
+    }
+
+    function createWachturmStorySnapshot() {
+        return buildSnapshotFromTables({
+            bezirk: createWachturmBezirkTable(),
+            bewohner: createWachturmBewohnerTable(),
+            gegenstand: createWachturmGegenstandTable()
+        });
+    }
+
+    function createDornwallViertelTable() {
+        return cloneTableDefWithTextReplacements(createSchmugglerViertelTable(), SCHMUGGLER_TO_DORNWALL_REPLACEMENTS);
+    }
+
+    function createDornwallBewohnerTable() {
+        return cloneTableDefWithTextReplacements(createSchmugglerBewohnerTable(), SCHMUGGLER_TO_DORNWALL_REPLACEMENTS);
+    }
+
+    function createDornwallGegenstandTable() {
+        return cloneTableDefWithTextReplacements(createSchmugglerGegenstandTable(), SCHMUGGLER_TO_DORNWALL_REPLACEMENTS);
+    }
+
+    function createDornwallStorySnapshot() {
+        return buildSnapshotFromTables({
+            viertel: createDornwallViertelTable(),
+            bewohner: createDornwallBewohnerTable(),
+            gegenstand: createDornwallGegenstandTable()
+        });
+    }
+
     function createOberburgStorySnapshot() {
         return buildSnapshotFromTables({
             bezirk: createOberburgBezirkTable(),
@@ -950,6 +1270,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function buildActiveStoryDatabaseSnapshot() {
         const normalizedStoryPath = normalizeLessonTitle(activeStoryTitleConfig?.sourcePath || DEFAULT_ACTIVE_STORY_PATH);
+        if (normalizedStoryPath.includes(normalizeLessonTitle('Die Händler von Rabensand'))) {
+            return createRabensandStorySnapshot();
+        }
+        if (normalizedStoryPath.includes(normalizeLessonTitle('Das Siegel der Kronfeste'))) {
+            return createKronfesteStorySnapshot();
+        }
+        if (normalizedStoryPath.includes(normalizeLessonTitle('Die Spur des Schmugglers'))) {
+            return createSchmugglerStorySnapshot();
+        }
+        if (normalizedStoryPath.includes(normalizeLessonTitle('Sturm auf den Wachturm'))) {
+            return createWachturmStorySnapshot();
+        }
+        if (normalizedStoryPath.includes(normalizeLessonTitle('Die Tore von Steinbruch'))) {
+            return createSteinbruchStorySnapshot();
+        }
+        if (normalizedStoryPath.includes(normalizeLessonTitle('Der letzte Kurier von Dornwall'))) {
+            return createDornwallStorySnapshot();
+        }
         if (normalizedStoryPath.includes(normalizeLessonTitle('Das Gold der Kupfermine'))) {
             return createKupfermineStorySnapshot();
         }
@@ -1506,12 +1844,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const guideScenes = Array.isArray(entry?.guideScenes)
                     ? entry.guideScenes
                         .map((scene, sceneIndex) => {
-                            const text = String(scene?.text || '').trim();
+                            const dialogueTurns = normalizeGuideDialogueTurns(scene);
+                            const text = dialogueTurns.map((turn) => turn.text).join('\n').trim();
                             if (!text) return null;
                             return {
                                 id: String(scene?.id || `${safeId}-scene-${sceneIndex + 1}`),
-                                speaker: String(scene?.speaker || 'Guide').trim() || 'Guide',
+                                speaker: dialogueTurns[0]?.speaker || (String(scene?.speaker || 'Guide').trim() || 'Guide'),
                                 text,
+                                dialogueTurns,
                                 sceneTitle: String(scene?.sceneTitle || '').trim(),
                                 objective: String(scene?.objective || '').trim(),
                                 advanceHint: String(scene?.advanceHint || '').trim(),
@@ -1813,12 +2153,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!storyTitleConfig || !Array.isArray(storyTitleConfig.guideScenes)) return [];
         return storyTitleConfig.guideScenes
             .map((scene, sceneIndex) => {
-                const text = String(scene?.text || '').trim();
+                const dialogueTurns = normalizeGuideDialogueTurns(scene);
+                const text = dialogueTurns.map((turn) => turn.text).join('\n').trim();
                 if (!text) return null;
                 return {
                     id: String(scene?.id || `${storyTitleConfig.id}-scene-${sceneIndex + 1}`),
-                    speaker: String(scene?.speaker || 'Guide').trim() || 'Guide',
+                    speaker: dialogueTurns[0]?.speaker || (String(scene?.speaker || 'Guide').trim() || 'Guide'),
                     text,
+                    dialogueTurns,
                     sceneTitle: String(scene?.sceneTitle || '').trim(),
                     objective: String(scene?.objective || '').trim(),
                     advanceHint: String(scene?.advanceHint || '').trim(),
@@ -2285,19 +2627,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const header = document.createElement('header');
         header.className = 'guide-story-header';
 
-        const titleEl = document.createElement('div');
-        titleEl.className = 'guide-story-title';
-        titleEl.textContent = storyTitleConfig.title || 'Story';
-
-        const metaEl = document.createElement('div');
-        metaEl.className = 'guide-story-meta';
-        const stepLabel = String(storyTitleConfig.stepLabel || '').trim();
-        const sceneProgress = getStorySceneProgressLabel(storyTitleConfig, { preferActive: true });
-        metaEl.textContent = stepLabel ? `Kapitelstand ${stepLabel} · ${sceneProgress}` : sceneProgress;
-
-        header.appendChild(titleEl);
-        header.appendChild(metaEl);
-
         const controlsEl = document.createElement('div');
         controlsEl.className = 'guide-story-controls';
 
@@ -2322,15 +2651,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         nextBtn.addEventListener('click', () => advanceActiveStorySceneFromReadyState());
 
-        const statusEl = document.createElement('span');
-        const effectiveStatus = getEffectiveStoryStatus(storyTitleConfig);
-        statusEl.className = `guide-story-status status-${sanitizeClassName(effectiveStatus)}`;
-        statusEl.textContent = getStoryStatusLabel(effectiveStatus);
-
         controlsEl.appendChild(prevBtn);
         controlsEl.appendChild(counterEl);
         controlsEl.appendChild(nextBtn);
-        controlsEl.appendChild(statusEl);
         header.appendChild(controlsEl);
 
         if (activeScene) {
@@ -2345,13 +2668,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (activeScene.sceneTitle || activeScene.objective) {
                 const missionEl = document.createElement('section');
                 missionEl.className = 'guide-story-mission';
-
-                if (activeScene.sceneTitle) {
-                    const missionTitleEl = document.createElement('h3');
-                    missionTitleEl.className = 'guide-story-mission-title';
-                    missionTitleEl.textContent = activeScene.sceneTitle;
-                    missionEl.appendChild(missionTitleEl);
-                }
 
                 if (activeScene.objective) {
                     const missionTextEl = document.createElement('p');
@@ -2375,43 +2691,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const sceneList = document.createElement('div');
         sceneList.className = 'guide-scene-list';
-        const alignRight = activeStorySceneIndex % 2 === 1;
-        const row = document.createElement('article');
-        row.className = `guide-scene-row ${alignRight ? 'side-right' : 'side-left'}`;
-        row.style.setProperty('--scene-delay-ms', '0ms');
+        const dialogueTurns = normalizeGuideDialogueTurns(activeScene);
 
-        const avatar = document.createElement('div');
-        avatar.className = 'guide-avatar';
-        avatar.style.setProperty('--speaker-hue', String(computeSpeakerHue(activeScene.speaker)));
+        dialogueTurns.forEach((turn, turnIndex) => {
+            const alignRight = (activeStorySceneIndex + turnIndex) % 2 === 1;
+            const row = document.createElement('article');
+            row.className = `guide-scene-row ${alignRight ? 'side-right' : 'side-left'}`;
+            row.style.setProperty('--scene-delay-ms', `${turnIndex * 70}ms`);
 
-        const face = document.createElement('span');
-        face.className = 'guide-avatar-face';
-        face.setAttribute('aria-hidden', 'true');
+            const avatar = document.createElement('div');
+            avatar.className = 'guide-avatar';
+            avatar.style.setProperty('--speaker-hue', String(computeSpeakerHue(turn.speaker)));
 
-        const name = document.createElement('span');
-        name.className = 'guide-avatar-name';
-        name.textContent = activeScene.speaker;
+            const face = document.createElement('span');
+            face.className = 'guide-avatar-face';
+            face.setAttribute('aria-hidden', 'true');
 
-        avatar.appendChild(face);
-        avatar.appendChild(name);
+            const name = document.createElement('span');
+            name.className = 'guide-avatar-name';
+            name.textContent = turn.speaker;
 
-        const bubble = document.createElement('div');
-        bubble.className = 'guide-speech-bubble';
+            avatar.appendChild(face);
+            avatar.appendChild(name);
 
-        const text = document.createElement('p');
-        text.className = 'guide-speech-text';
-        text.textContent = activeScene.text;
-        bubble.appendChild(text);
+            const bubble = document.createElement('div');
+            bubble.className = 'guide-speech-bubble';
 
-        if (alignRight) {
-            row.appendChild(bubble);
-            row.appendChild(avatar);
-        } else {
-            row.appendChild(avatar);
-            row.appendChild(bubble);
-        }
+            const text = document.createElement('p');
+            text.className = 'guide-speech-text';
+            text.textContent = turn.text;
+            bubble.appendChild(text);
 
-        sceneList.appendChild(row);
+            if (alignRight) {
+                row.appendChild(bubble);
+                row.appendChild(avatar);
+            } else {
+                row.appendChild(avatar);
+                row.appendChild(bubble);
+            }
+
+            sceneList.appendChild(row);
+        });
 
         guideStoryStageEl.appendChild(sceneList);
     }
@@ -2482,13 +2802,6 @@ document.addEventListener('DOMContentLoaded', () => {
         persistStoryProgress();
         updateGuideWindowStoryHint();
         renderLessonTree(tutorialTreeModel);
-    }
-
-    function getStoryStatusLabel(status = '') {
-        const normalized = String(status || '').trim().toLowerCase();
-        if (normalized === 'aktiv') return 'Aktiv';
-        if (normalized === 'gelesen') return 'Gelesen';
-        return 'Neu';
     }
 
     function createFallbackLessonsForTool(toolLabel = '') {
@@ -3217,9 +3530,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!tool) return;
         const lesson = getLessonById(tool, lessonId) || tool.lessons?.[0] || null;
         if (!lesson) return;
-        if (tool.id === activeToolId && lesson.id === activeLessonId && activeLessonConfig === lesson) return;
 
         activeGuideSelectionScope = 'lesson';
+        if (tool.id === activeToolId && lesson.id === activeLessonId && activeLessonConfig === lesson) {
+            updateGuideWindowStoryHint();
+            return;
+        }
+
         activeToolId = tool.id;
         activeLessonId = lesson.id;
         activeLessonConfig = lesson;

@@ -3,10 +3,10 @@
   "rootLabel": "Storys",
   "titles": [
     {
-      "id": "story-markthof-00",
+      "id": "story-rabensand-00",
       "title": "Schritt 0: Alle Bezirke",
       "treeLabel": "0 Alle Bezirke",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "1 / 34",
       "status": "aktiv",
       "guideScenes": [
@@ -45,10 +45,10 @@
       ]
     },
     {
-      "id": "story-markthof-01",
+      "id": "story-rabensand-01",
       "title": "Schritt 1: Alle Bewohner",
       "treeLabel": "1 Alle Bewohner",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "2 / 34",
       "status": "neu",
       "guideScenes": [
@@ -87,10 +87,10 @@
       ]
     },
     {
-      "id": "story-markthof-02",
+      "id": "story-rabensand-02",
       "title": "Schritt 2: Alle Koeche",
       "treeLabel": "2 Alle Koeche",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "3 / 34",
       "status": "neu",
       "guideScenes": [
@@ -141,10 +141,10 @@
       ]
     },
     {
-      "id": "story-markthof-03",
+      "id": "story-rabensand-03",
       "title": "Schritt 3: Alle friedlichen Bewohner",
       "treeLabel": "3 Alle friedlichen Bewohner",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "4 / 34",
       "status": "neu",
       "guideScenes": [
@@ -205,10 +205,10 @@
       ]
     },
     {
-      "id": "story-markthof-04",
+      "id": "story-rabensand-04",
       "title": "Schritt 4: Alle friedlichen Waffenschmiede",
       "treeLabel": "4 Alle friedlichen Waffenschmiede",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "5 / 34",
       "status": "neu",
       "guideScenes": [
@@ -265,10 +265,10 @@
       ]
     },
     {
-      "id": "story-markthof-05",
+      "id": "story-rabensand-05",
       "title": "Schritt 5: Alle friedlichen Bewohner, deren Beruf auf 'schmied' endet",
       "treeLabel": "5 Alle friedlichen Bewohner, deren Beruf auf 'schmied' endet",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "6 / 34",
       "status": "neu",
       "guideScenes": [
@@ -331,20 +331,20 @@
       ]
     },
     {
-      "id": "story-markthof-06",
-      "title": "Schritt 6: Mich als neue Bewohnerin im Suedtor ein",
-      "treeLabel": "6 Mich als neue Bewohnerin im Suedtor ein",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "id": "story-rabensand-06",
+      "title": "Schritt 6: Mich als neue Bewohnerin im Salztor ein",
+      "treeLabel": "6 Mich als neue Bewohnerin im Salztor ein",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "7 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 6",
           "speaker": "Gregor",
-          "text": "Hallo Fremde, wohin des Wegs? Ich bin Gregor, der Hauptmann des Suedtors. Ich trage dich gern als Bewohnerin meines Bezirks ein.",
-          "objective": "Trage mich als neue Bewohnerin mit `bewohnernr 20` im Suedtor ein.",
+          "text": "Hallo Fremde, wohin des Wegs? Ich bin Gregor, der Hauptmann des Salztors. Ich trage dich gern als Bewohnerin meines Bezirks ein.",
+          "objective": "Trage mich als neue Bewohnerin mit `bewohnernr 20` im Salztor ein.",
           "advanceHint": "Nutze INSERT INTO fuer `bewohner`, vergib `bewohnernr 20` und trage die geforderten Werte in die passenden Spalten ein.",
-          "editorComment": "Mission 6: Mich als neue Bewohnerin im Suedtor ein",
+          "editorComment": "Mission 6: Mich als neue Bewohnerin im Salztor ein",
           "starterSql": "INSERT INTO bewohner (bewohnernr, name, bezirknr, geschlecht, beruf, gold, status) VALUES (20, 'Fremde', 1, '?', '?', 0, '?');",
           "successMessage": "Schritt 6 abgeschlossen.",
           "advanceOn": {
@@ -391,10 +391,10 @@
       ]
     },
     {
-      "id": "story-markthof-07",
+      "id": "story-rabensand-07",
       "title": "Schritt 7: Meine bewohnernr",
       "treeLabel": "7 Meine bewohnernr",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "8 / 34",
       "status": "neu",
       "guideScenes": [
@@ -445,10 +445,10 @@
       ]
     },
     {
-      "id": "story-markthof-08",
+      "id": "story-rabensand-08",
       "title": "Schritt 8: Mein aktuelles Gold",
       "treeLabel": "8 Mein aktuelles Gold",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "9 / 34",
       "status": "neu",
       "guideScenes": [
@@ -503,10 +503,10 @@
       ]
     },
     {
-      "id": "story-markthof-09",
+      "id": "story-rabensand-09",
       "title": "Schritt 9: Alle herrenlosen Gegenstaende",
       "treeLabel": "9 Alle herrenlosen Gegenstaende",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "10 / 34",
       "status": "neu",
       "guideScenes": [
@@ -563,10 +563,10 @@
       ]
     },
     {
-      "id": "story-markthof-10",
+      "id": "story-rabensand-10",
       "title": "Schritt 10: Den Zinnbecher ein",
       "treeLabel": "10 Den Zinnbecher ein",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "11 / 34",
       "status": "neu",
       "guideScenes": [
@@ -623,10 +623,10 @@
       ]
     },
     {
-      "id": "story-markthof-11",
+      "id": "story-rabensand-11",
       "title": "Schritt 11: Alle herrenlosen Gegenstaende ein",
       "treeLabel": "11 Alle herrenlosen Gegenstaende ein",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "12 / 34",
       "status": "neu",
       "guideScenes": [
@@ -683,10 +683,10 @@
       ]
     },
     {
-      "id": "story-markthof-12",
+      "id": "story-rabensand-12",
       "title": "Schritt 12: Alle Gegenstaende in meinem Besitz",
       "treeLabel": "12 Alle Gegenstaende in meinem Besitz",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "13 / 34",
       "status": "neu",
       "guideScenes": [
@@ -731,10 +731,10 @@
       ]
     },
     {
-      "id": "story-markthof-13",
+      "id": "story-rabensand-13",
       "title": "Schritt 13: Alle friedlichen Haendler und Kaufleute",
       "treeLabel": "13 Alle friedlichen Haendler und Kaufleute",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "14 / 34",
       "status": "neu",
       "guideScenes": [
@@ -791,21 +791,21 @@
       ]
     },
     {
-      "id": "story-markthof-14",
-      "title": "Schritt 14: Siegelring und Gewuerzbeutel an bewohnernr 15",
-      "treeLabel": "14 Siegelring und Gewuerzbeutel an bewohnernr 15",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "id": "story-rabensand-14",
+      "title": "Schritt 14: Silberring und Safranbeutel an bewohnernr 15",
+      "treeLabel": "14 Silberring und Safranbeutel an bewohnernr 15",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "15 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 14",
           "speaker": "Lene Handel",
-          "text": "Ich interessiere mich fuer den Siegelring und den Gewuerzbeutel. Der Rest ist nur Kram. Gib mir bitte die beiden Gegenstaende. Meine bewohnernr ist uebrigens 15.",
-          "objective": "Gib Siegelring und Gewuerzbeutel an bewohnernr 15.",
+          "text": "Ich interessiere mich fuer den Silberring und den Safranbeutel. Der Rest ist nur Kram. Gib mir bitte die beiden Gegenstaende. Meine bewohnernr ist uebrigens 15.",
+          "objective": "Gib Silberring und Safranbeutel an bewohnernr 15.",
           "advanceHint": "Nutze UPDATE auf `gegenstand` und setze `besitzer` neu und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 14: Siegelring und Gewuerzbeutel an bewohnernr 15",
-          "starterSql": "UPDATE gegenstand SET besitzer = 15 WHERE gegenstand IN ('Siegelring', 'Gewuerzbeutel');",
+          "editorComment": "Mission 14: Silberring und Safranbeutel an bewohnernr 15",
+          "starterSql": "UPDATE gegenstand SET besitzer = 15 WHERE gegenstand IN ('Silberring', 'Safranbeutel');",
           "successMessage": "Schritt 14 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -857,10 +857,10 @@
       ]
     },
     {
-      "id": "story-markthof-15",
+      "id": "story-rabensand-15",
       "title": "Schritt 15: Mein Gold um 120",
       "treeLabel": "15 Mein Gold um 120",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "16 / 34",
       "status": "neu",
       "guideScenes": [
@@ -905,10 +905,10 @@
       ]
     },
     {
-      "id": "story-markthof-16",
-      "title": "Schritt 16: Meinen Namen von Fremde zu Lea",
-      "treeLabel": "16 Meinen Namen von Fremde zu Lea",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "id": "story-rabensand-16",
+      "title": "Schritt 16: Meinen Namen von Fremde zu Nura",
+      "treeLabel": "16 Meinen Namen von Fremde zu Nura",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "17 / 34",
       "status": "neu",
       "guideScenes": [
@@ -916,10 +916,10 @@
           "sceneTitle": "Mission 16",
           "speaker": "Fremde",
           "text": "Leider reicht das noch nicht fuer ein Schwert. Dann muss ich wohl doch arbeiten. Bevor ich mich irgendwo bewerbe, sollte ich vielleicht meinen Namen von Fremde auf meinen richtigen Namen aendern.",
-          "objective": "Aendere meinen Namen von Fremde zu Lea.",
+          "objective": "Aendere meinen Namen von Fremde zu Nura.",
           "advanceHint": "Nutze UPDATE auf `bewohner` und setze `name` neu und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 16: Meinen Namen von Fremde zu Lea",
-          "starterSql": "UPDATE bewohner SET name = 'Lea' WHERE name = 'Fremde';",
+          "editorComment": "Mission 16: Meinen Namen von Fremde zu Nura",
+          "starterSql": "UPDATE bewohner SET name = 'Nura' WHERE name = 'Fremde';",
           "successMessage": "Schritt 16 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -965,16 +965,16 @@
       ]
     },
     {
-      "id": "story-markthof-17",
+      "id": "story-rabensand-17",
       "title": "Schritt 17: Alle Baecker, sortiert nach Gold absteigend",
       "treeLabel": "17 Alle Baecker, sortiert nach Gold absteigend",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "18 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 17",
-          "speaker": "Lea",
+          "speaker": "Nura",
           "text": "In meiner Freizeit backe ich gern. Ich glaube, ich verdiene mir ein bisschen Gold als Baeckerin. Zeige mir alle Baecker. Tipp: Mit ORDER BY gold DESC steht sogar der reichste oben.",
           "objective": "Zeige alle Baecker, sortiert nach Gold absteigend.",
           "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE und sortiere mit ORDER BY.",
@@ -1031,17 +1031,17 @@
       ]
     },
     {
-      "id": "story-markthof-18",
+      "id": "story-rabensand-18",
       "title": "Schritt 18: Mein Gold um 100",
       "treeLabel": "18 Mein Gold um 100",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "19 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 18",
           "speaker": "Baldur",
-          "text": "Hi, da bist du ja wieder! Soso, Lea heisst du also. Und du willst als Baeckerin arbeiten? Da sage ich nicht nein. Ich zahle dir pro hundert Brote 1 Gold.\n(8 Stunden spaeter...) Hier bitteschoen, zehntausend Brote! Ich kuendige! Ich habe nun genug Gold fuer das Schwert! Mal schauen, was jetzt mit meinem Kontostand passiert.",
+          "text": "Hi, da bist du ja wieder! Soso, Nura heisst du also. Und du willst als Baeckerin arbeiten? Da sage ich nicht nein. Ich zahle dir pro hundert Brote 1 Gold.\n(8 Stunden spaeter...) Hier bitteschoen, zehntausend Brote! Ich kuendige! Ich habe nun genug Gold fuer das Schwert! Mal schauen, was jetzt mit meinem Kontostand passiert.",
           "objective": "Erhoehe mein Gold um 100.",
           "advanceHint": "Nutze UPDATE auf `bewohner` und setze `gold` neu und grenze die betroffenen Zeilen mit WHERE ein.",
           "editorComment": "Mission 18: Mein Gold um 100",
@@ -1078,10 +1078,10 @@
           "dialogueTurns": [
             {
               "speaker": "Baldur",
-              "text": "Hi, da bist du ja wieder! Soso, Lea heisst du also. Und du willst als Baeckerin arbeiten? Da sage ich nicht nein. Ich zahle dir pro hundert Brote 1 Gold."
+              "text": "Hi, da bist du ja wieder! Soso, Nura heisst du also. Und du willst als Baeckerin arbeiten? Da sage ich nicht nein. Ich zahle dir pro hundert Brote 1 Gold."
             },
             {
-              "speaker": "Lea",
+              "speaker": "Nura",
               "text": "(8 Stunden spaeter...) Hier bitteschoen, zehntausend Brote! Ich kuendige! Ich habe nun genug Gold fuer das Schwert! Mal schauen, was jetzt mit meinem Kontostand passiert."
             }
           ]
@@ -1089,17 +1089,17 @@
       ]
     },
     {
-      "id": "story-markthof-19",
+      "id": "story-rabensand-19",
       "title": "Schritt 19: 150 Gold von meinem Konto ab",
       "treeLabel": "19 150 Gold von meinem Konto ab",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "20 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 19",
           "speaker": "Lennart",
-          "text": "Hier ist dein neues Schwert, Lea! Nun kannst du ueberall hin!",
+          "text": "Hier ist dein neues Schwert, Nura! Nun kannst du ueberall hin!",
           "objective": "Ziehe 150 Gold von meinem Konto ab.",
           "advanceHint": "Nutze UPDATE auf `bewohner` und setze `gold` neu und grenze die betroffenen Zeilen mit WHERE ein.",
           "editorComment": "Mission 19: 150 Gold von meinem Konto ab",
@@ -1137,21 +1137,21 @@
       ]
     },
     {
-      "id": "story-markthof-20",
-      "title": "Schritt 20: Alle Faehrmaenner",
-      "treeLabel": "20 Alle Faehrmaenner",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "id": "story-rabensand-20",
+      "title": "Schritt 20: Alle Schiffer",
+      "treeLabel": "20 Alle Schiffer",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "21 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 20",
-          "speaker": "Lea",
-          "text": "Gibt es in der Stadt einen Faehrmann? Er koennte mich ueber den Fluss und damit nach Hause bringen.",
-          "objective": "Zeige alle Faehrmaenner.",
+          "speaker": "Nura",
+          "text": "Gibt es in der Stadt einen Schiffer? Er koennte mich ueber den Bucht und damit nach Hause bringen.",
+          "objective": "Zeige alle Schiffer.",
           "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE.",
-          "editorComment": "Mission 20: Alle Faehrmaenner",
-          "starterSql": "SELECT * FROM bewohner WHERE beruf = 'Faehrmann';",
+          "editorComment": "Mission 20: Alle Schiffer",
+          "starterSql": "SELECT * FROM bewohner WHERE beruf = 'Schiffer';",
           "successMessage": "Schritt 20 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1191,21 +1191,21 @@
       ]
     },
     {
-      "id": "story-markthof-21",
-      "title": "Schritt 21: Den Namen des Bezirks, in dem Kaspar Klinge lebt",
-      "treeLabel": "21 Den Namen des Bezirks, in dem Kaspar Klinge lebt",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "id": "story-rabensand-21",
+      "title": "Schritt 21: Den Namen des Bezirks, in dem Sadir Sand lebt",
+      "treeLabel": "21 Den Namen des Bezirks, in dem Sadir Sand lebt",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "22 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 21",
           "speaker": "Hannes",
-          "text": "Das ist ja das Geheimnis des Markthofs! Kaspar Klinge haelt den Faehrmann gefangen! Ich verrate dir einen Trick, wie wir schnell herausfinden koennen, in welchem Bezirk Kaspar Klinge lebt.",
-          "objective": "Zeige den Namen des Bezirks, in dem Kaspar Klinge lebt.",
+          "text": "Das sind also die Haendler von Rabensand! Sadir Sand haelt den Schiffer gefangen! Ich verrate dir einen Trick, wie wir schnell herausfinden koennen, in welchem Bezirk Sadir Sand lebt.",
+          "objective": "Zeige den Namen des Bezirks, in dem Sadir Sand lebt.",
           "advanceHint": "Nutze SELECT auf `bezirk` und `bewohner`, verbinde die Tabellen per JOIN und filtere mit WHERE.",
-          "editorComment": "Mission 21: Den Namen des Bezirks, in dem Kaspar Klinge lebt",
-          "starterSql": "SELECT bezirk.name FROM bezirk JOIN bewohner ON bezirk.bezirknr = bewohner.bezirknr WHERE bewohner.name = 'Kaspar Klinge';",
+          "editorComment": "Mission 21: Den Namen des Bezirks, in dem Sadir Sand lebt",
+          "starterSql": "SELECT bezirk.name FROM bezirk JOIN bewohner ON bezirk.bezirknr = bewohner.bezirknr WHERE bewohner.name = 'Sadir Sand';",
           "successMessage": "Schritt 21 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1263,21 +1263,21 @@
       ]
     },
     {
-      "id": "story-markthof-22",
-      "title": "Schritt 22: Den Namen des Hauptmanns des Markthofs",
-      "treeLabel": "22 Den Namen des Hauptmanns des Markthofs",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "id": "story-rabensand-22",
+      "title": "Schritt 22: Den Namen des Hauptmanns des Rabensands",
+      "treeLabel": "22 Den Namen des Hauptmanns des Rabensands",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "23 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 22",
           "speaker": "Hannes",
-          "text": "Auf diese Weise kannst du den Bezirk mit der Bezirksnummer suchen, die bei Kaspar Klinge im Feld bezirknr steht. Ein solch genialer Ausdruck nennt sich Verbund oder Join.\nDanke fuer den Tipp. Dann suche ich erst einmal den Hauptmann des Markthofs. Im Feld hauptmann der Tabelle bezirk steht ja die bewohnernr des Hauptmanns.",
-          "objective": "Zeige den Namen des Hauptmanns des Markthofs.",
+          "text": "Auf diese Weise kannst du den Bezirk mit der Bezirksnummer suchen, die bei Sadir Sand im Feld bezirknr steht. Ein solch genialer Ausdruck nennt sich Verbund oder Join.\nDanke fuer den Tipp. Dann suche ich erst einmal den Hauptmann des Rabensands. Im Feld hauptmann der Tabelle bezirk steht ja die bewohnernr des Hauptmanns.",
+          "objective": "Zeige den Namen des Hauptmanns des Rabensands.",
           "advanceHint": "Nutze SELECT auf `bezirk` und `bewohner`, verbinde die Tabellen per JOIN und filtere mit WHERE.",
-          "editorComment": "Mission 22: Den Namen des Hauptmanns des Markthofs",
-          "starterSql": "SELECT bewohner.name FROM bezirk JOIN bewohner ON bezirk.hauptmann = bewohner.bewohnernr WHERE bezirk.name = 'Markthof';",
+          "editorComment": "Mission 22: Den Namen des Hauptmanns des Rabensands",
+          "starterSql": "SELECT bewohner.name FROM bezirk JOIN bewohner ON bezirk.hauptmann = bewohner.bewohnernr WHERE bezirk.name = 'Rabensand';",
           "successMessage": "Schritt 22 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1334,32 +1334,32 @@
           "dialogueTurns": [
             {
               "speaker": "Hannes",
-              "text": "Auf diese Weise kannst du den Bezirk mit der Bezirksnummer suchen, die bei Kaspar Klinge im Feld bezirknr steht. Ein solch genialer Ausdruck nennt sich Verbund oder Join."
+              "text": "Auf diese Weise kannst du den Bezirk mit der Bezirksnummer suchen, die bei Sadir Sand im Feld bezirknr steht. Ein solch genialer Ausdruck nennt sich Verbund oder Join."
             },
             {
-              "speaker": "Lea",
-              "text": "Danke fuer den Tipp. Dann suche ich erst einmal den Hauptmann des Markthofs. Im Feld hauptmann der Tabelle bezirk steht ja die bewohnernr des Hauptmanns."
+              "speaker": "Nura",
+              "text": "Danke fuer den Tipp. Dann suche ich erst einmal den Hauptmann des Rabensands. Im Feld hauptmann der Tabelle bezirk steht ja die bewohnernr des Hauptmanns."
             }
           ]
         }
       ]
     },
     {
-      "id": "story-markthof-23",
-      "title": "Schritt 23: Alle Bewohner des Markthofs",
-      "treeLabel": "23 Alle Bewohner des Markthofs",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "id": "story-rabensand-23",
+      "title": "Schritt 23: Alle Bewohner des Rabensands",
+      "treeLabel": "23 Alle Bewohner des Rabensands",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "24 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 23",
-          "speaker": "Lea",
-          "text": "Hm, wie viele Bewohner hat eigentlich der Markthof?",
-          "objective": "Zaehle alle Bewohner des Markthofs.",
+          "speaker": "Nura",
+          "text": "Hm, wie viele Bewohner hat eigentlich der Rabensand?",
+          "objective": "Zaehle alle Bewohner des Rabensands.",
           "advanceHint": "Nutze SELECT auf `bewohner` und `bezirk`, verbinde die Tabellen per JOIN, filtere mit WHERE und nutze COUNT fuer die Auswertung.",
-          "editorComment": "Mission 23: Alle Bewohner des Markthofs",
-          "starterSql": "SELECT COUNT(*) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Markthof';",
+          "editorComment": "Mission 23: Alle Bewohner des Rabensands",
+          "starterSql": "SELECT COUNT(*) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Rabensand';",
           "successMessage": "Schritt 23 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1417,21 +1417,21 @@
       ]
     },
     {
-      "id": "story-markthof-24",
-      "title": "Schritt 24: Alle Frauen im Markthof",
-      "treeLabel": "24 Alle Frauen im Markthof",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "id": "story-rabensand-24",
+      "title": "Schritt 24: Alle Frauen im Rabensand",
+      "treeLabel": "24 Alle Frauen im Rabensand",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "25 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 24",
           "speaker": "Hannes",
-          "text": "Hallo Lea, Kaspar Klinge haelt den Faehrmann im Keller seiner Schwester gefangen. Unter dem Markthof gibt es alte Lagerr\u00e4ume, und genau dort liegt das Geheimnis. Soll ich dir verraten, wie viele Frauen es im Markthof gibt? Ach was, das kannst du schon selbst herausfinden! (Hinweis: Frauen erkennt man an geschlecht = 'w')",
-          "objective": "Zaehle alle Frauen im Markthof.",
+          "text": "Hallo Nura, Sadir Sand haelt den Schiffer im Keller seiner Schwester gefangen. Unter dem Rabensand gibt es alte Lagerräume, und genau dort liegt das Geheimnis. Soll ich dir verraten, wie viele Frauen es im Rabensand gibt? Ach was, das kannst du schon selbst herausfinden! (Hinweis: Frauen erkennt man an geschlecht = 'w')",
+          "objective": "Zaehle alle Frauen im Rabensand.",
           "advanceHint": "Nutze SELECT auf `bewohner` und `bezirk`, verbinde die Tabellen per JOIN, filtere mit WHERE und nutze COUNT fuer die Auswertung.",
-          "editorComment": "Mission 24: Alle Frauen im Markthof",
-          "starterSql": "SELECT COUNT(*) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Markthof' AND bewohner.geschlecht = 'w';",
+          "editorComment": "Mission 24: Alle Frauen im Rabensand",
+          "starterSql": "SELECT COUNT(*) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Rabensand' AND bewohner.geschlecht = 'w';",
           "successMessage": "Schritt 24 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1489,21 +1489,21 @@
       ]
     },
     {
-      "id": "story-markthof-25",
-      "title": "Schritt 25: Den Namen der Frau im Markthof",
-      "treeLabel": "25 Den Namen der Frau im Markthof",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "id": "story-rabensand-25",
+      "title": "Schritt 25: Den Namen der Frau im Rabensand",
+      "treeLabel": "25 Den Namen der Frau im Rabensand",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "26 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 25",
-          "speaker": "Lea",
+          "speaker": "Nura",
           "text": "Ha, nur eine Frau. Mal schauen, wie sie heisst.",
-          "objective": "Zeige den Namen der Frau im Markthof.",
+          "objective": "Zeige den Namen der Frau im Rabensand.",
           "advanceHint": "Nutze SELECT auf `bewohner` und `bezirk`, verbinde die Tabellen per JOIN und filtere mit WHERE.",
-          "editorComment": "Mission 25: Den Namen der Frau im Markthof",
-          "starterSql": "SELECT bewohner.name FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Markthof' AND bewohner.geschlecht = 'w';",
+          "editorComment": "Mission 25: Den Namen der Frau im Rabensand",
+          "starterSql": "SELECT bewohner.name FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Rabensand' AND bewohner.geschlecht = 'w';",
           "successMessage": "Schritt 25 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1561,21 +1561,21 @@
       ]
     },
     {
-      "id": "story-markthof-26",
-      "title": "Schritt 26: Das gesamte Gold im Markthof",
-      "treeLabel": "26 Das gesamte Gold im Markthof",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "id": "story-rabensand-26",
+      "title": "Schritt 26: Das gesamte Gold im Rabensand",
+      "treeLabel": "26 Das gesamte Gold im Rabensand",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "27 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 26",
-          "speaker": "Kaspar Klinge",
-          "text": "Lea, wenn du den Faehrmann wiedersehen willst, dann bring mir alles Gold, das die Bewohner des Markthofs zusammen besitzen! Du willst wissen, wie viel das ist? Ich zeige es dir!",
-          "objective": "Summiere das gesamte Gold im Markthof.",
+          "speaker": "Sadir Sand",
+          "text": "Nura, wenn du den Schiffer wiedersehen willst, dann bring mir alles Gold, das die Bewohner des Rabensands zusammen besitzen! Du willst wissen, wie viel das ist? Ich zeige es dir!",
+          "objective": "Summiere das gesamte Gold im Rabensand.",
           "advanceHint": "Nutze SELECT auf `bewohner` und `bezirk`, verbinde die Tabellen per JOIN, filtere mit WHERE und nutze SUM fuer die Auswertung.",
-          "editorComment": "Mission 26: Das gesamte Gold im Markthof",
-          "starterSql": "SELECT SUM(bewohner.gold) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Markthof';",
+          "editorComment": "Mission 26: Das gesamte Gold im Rabensand",
+          "starterSql": "SELECT SUM(bewohner.gold) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Rabensand';",
           "successMessage": "Schritt 26 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1633,16 +1633,16 @@
       ]
     },
     {
-      "id": "story-markthof-27",
+      "id": "story-rabensand-27",
       "title": "Schritt 27: Das gesamte Gold von Haendlern, Kaufleuten und Baeckern",
       "treeLabel": "27 Das gesamte Gold von Haendlern, Kaufleuten und Baeckern",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "28 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 27",
-          "speaker": "Lea",
+          "speaker": "Nura",
           "text": "So viel Gold werde ich niemals allein durch Backen verdienen koennen. Wenn ich Gegenstaende verkaufe und zusaetzlich arbeite, kann ich maximal so viel Gold bekommen, wie Haendler, Kaufleute und Baecker zusammen besitzen. Wie viel ist das?",
           "objective": "Summiere das gesamte Gold von Haendlern, Kaufleuten und Baeckern.",
           "advanceHint": "Nutze SELECT auf `bewohner`, filtere mit WHERE und nutze SUM fuer die Auswertung.",
@@ -1705,16 +1705,16 @@
       ]
     },
     {
-      "id": "story-markthof-28",
+      "id": "story-rabensand-28",
       "title": "Schritt 28: Beruf, gesamte Goldmenge und durchschnittliches Gold je...",
       "treeLabel": "28 Beruf, gesamte Goldmenge und durchschnittliches Gold je...",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "29 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 28",
-          "speaker": "Lea",
+          "speaker": "Nura",
           "text": "Schauen wir uns mal die gesamten sowie durchschnittlichen Goldvorraete der einzelnen Berufe an.",
           "objective": "Zeige Beruf, gesamte Goldmenge und durchschnittliches Gold je Beruf.",
           "advanceHint": "Nutze SELECT auf `bewohner`, gruppiere mit GROUP BY, sortiere mit ORDER BY und nutze SUM und AVG fuer die Auswertung.",
@@ -1777,16 +1777,16 @@
       ]
     },
     {
-      "id": "story-markthof-29",
+      "id": "story-rabensand-29",
       "title": "Schritt 29: Den durchschnittlichen Goldbestand je Status",
       "treeLabel": "29 Den durchschnittlichen Goldbestand je Status",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "30 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 29",
-          "speaker": "Lea",
+          "speaker": "Nura",
           "text": "Interessant, die Koeche haben also das meiste Gold. Warum auch immer... Wie viel Gold haben im Durchschnitt die einzelnen Gruppen je nach Status?",
           "objective": "Zeige den durchschnittlichen Goldbestand je Status.",
           "advanceHint": "Nutze SELECT auf `bewohner`, gruppiere mit GROUP BY und nutze AVG fuer die Auswertung.",
@@ -1837,21 +1837,21 @@
       ]
     },
     {
-      "id": "story-markthof-30",
-      "title": "Schritt 30: Kaspar Klinge aus der Tabelle",
-      "treeLabel": "30 Kaspar Klinge aus der Tabelle",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "id": "story-rabensand-30",
+      "title": "Schritt 30: Sadir Sand aus der Tabelle",
+      "treeLabel": "30 Sadir Sand aus der Tabelle",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "31 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 30",
-          "speaker": "Lea",
-          "text": "Dann kann ich auch gleich Kaspar Klinge mit dem Schwert erledigen und den Faehrmann befreien.",
-          "objective": "Entferne Kaspar Klinge aus der Tabelle.",
+          "speaker": "Nura",
+          "text": "Dann kann ich auch gleich Sadir Sand mit dem Schwert erledigen und den Schiffer befreien.",
+          "objective": "Entferne Sadir Sand aus der Tabelle.",
           "advanceHint": "Nutze DELETE FROM fuer `bewohner` und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 30: Kaspar Klinge aus der Tabelle",
-          "starterSql": "DELETE FROM bewohner WHERE name = 'Kaspar Klinge';",
+          "editorComment": "Mission 30: Sadir Sand aus der Tabelle",
+          "starterSql": "DELETE FROM bewohner WHERE name = 'Sadir Sand';",
           "successMessage": "Schritt 30 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1903,21 +1903,21 @@
       ]
     },
     {
-      "id": "story-markthof-31",
-      "title": "Schritt 31: Rika Klinge aus der Tabelle",
-      "treeLabel": "31 Rika Klinge aus der Tabelle",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "id": "story-rabensand-31",
+      "title": "Schritt 31: Yara Sand aus der Tabelle",
+      "treeLabel": "31 Yara Sand aus der Tabelle",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "32 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 31",
-          "speaker": "Rika Klinge",
-          "text": "Heeeey! Jetzt bin ich aber sauer! Was tust du wohl als Naechstes, Lea?",
-          "objective": "Entferne Rika Klinge aus der Tabelle.",
+          "speaker": "Yara Sand",
+          "text": "Heeeey! Jetzt bin ich aber sauer! Was tust du wohl als Naechstes, Nura?",
+          "objective": "Entferne Yara Sand aus der Tabelle.",
           "advanceHint": "Nutze DELETE FROM fuer `bewohner` und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 31: Rika Klinge aus der Tabelle",
-          "starterSql": "DELETE FROM bewohner WHERE name = 'Rika Klinge';",
+          "editorComment": "Mission 31: Yara Sand aus der Tabelle",
+          "starterSql": "DELETE FROM bewohner WHERE name = 'Yara Sand';",
           "successMessage": "Schritt 31 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -1969,21 +1969,21 @@
       ]
     },
     {
-      "id": "story-markthof-32",
-      "title": "Schritt 32: Den Status des Faehrmanns auf friedlich",
-      "treeLabel": "32 Den Status des Faehrmanns auf friedlich",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "id": "story-rabensand-32",
+      "title": "Schritt 32: Den Status des Schiffers auf friedlich",
+      "treeLabel": "32 Den Status des Schiffers auf friedlich",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "33 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 32",
-          "speaker": "Lea",
-          "text": "Yeah! Jetzt muss ich nur noch den Faehrmann befreien.",
-          "objective": "Setze den Status des Faehrmanns auf friedlich.",
+          "speaker": "Nura",
+          "text": "Yeah! Jetzt muss ich nur noch den Schiffer befreien.",
+          "objective": "Setze den Status des Schiffers auf friedlich.",
           "advanceHint": "Nutze UPDATE auf `bewohner` und setze `status` neu und grenze die betroffenen Zeilen mit WHERE ein.",
-          "editorComment": "Mission 32: Den Status des Faehrmanns auf friedlich",
-          "starterSql": "UPDATE bewohner SET status = 'friedlich' WHERE beruf = 'Faehrmann';",
+          "editorComment": "Mission 32: Den Status des Schiffers auf friedlich",
+          "starterSql": "UPDATE bewohner SET status = 'friedlich' WHERE beruf = 'Schiffer';",
           "successMessage": "Schritt 32 abgeschlossen.",
           "advanceOn": {
             "all": [
@@ -2029,17 +2029,17 @@
       ]
     },
     {
-      "id": "story-markthof-33",
+      "id": "story-rabensand-33",
       "title": "Schritt 33: Meinen Status auf abgereist",
       "treeLabel": "33 Meinen Status auf abgereist",
-      "subtitle": "Das Geheimnis des Markthofs",
+      "subtitle": "Die Haendler von Rabensand",
       "stepLabel": "34 / 34",
       "status": "neu",
       "guideScenes": [
         {
           "sceneTitle": "Mission 33",
           "speaker": "Falk",
-          "text": "Vielen vielen Dank, Lea! Jetzt setze ich dich auf die andere Flussseite ueber.\nJuhu! Und als Andenken nehme ich mein Schwert, ein bisschen Gold und den nutzlosen Kram mit nach Hause. Was fuer ein Abenteuer!",
+          "text": "Vielen vielen Dank, Nura! Jetzt setze ich dich auf die andere Bucht ueber.\nJuhu! Und als Andenken nehme ich mein Schwert, ein bisschen Gold und den nutzlosen Kram mit nach Hause. Was fuer ein Abenteuer!",
           "objective": "Setze meinen Status auf abgereist.",
           "advanceHint": "Nutze UPDATE auf `bewohner` und setze `status` neu und grenze die betroffenen Zeilen mit WHERE ein.",
           "editorComment": "Mission 33: Meinen Status auf abgereist",
@@ -2088,10 +2088,10 @@
           "dialogueTurns": [
             {
               "speaker": "Falk",
-              "text": "Vielen vielen Dank, Lea! Jetzt setze ich dich auf die andere Flussseite ueber."
+              "text": "Vielen vielen Dank, Nura! Jetzt setze ich dich auf die andere Bucht ueber."
             },
             {
-              "speaker": "Lea",
+              "speaker": "Nura",
               "text": "Juhu! Und als Andenken nehme ich mein Schwert, ein bisschen Gold und den nutzlosen Kram mit nach Hause. Was fuer ein Abenteuer!"
             }
           ]
