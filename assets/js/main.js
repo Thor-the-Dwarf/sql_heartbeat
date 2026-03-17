@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         smartIndent: true,
         lineWrapping: false,
         matchBrackets: true,
-        autofocus: true,
+        autofocus: false,
         extraKeys: { "Ctrl-Space": "autocomplete" }
     });
 
@@ -3951,7 +3951,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    async function initLessonTree(requestedMode = activeLessonMode) {
+    async function initLessonTree(requestedMode = activeLessonMode, options = {}) {
+        const { initializeEmpty = false } = options;
         if (!lessonTreeContainer) return;
         const nextMode = resolveLessonMode(requestedMode);
         const modeConfig = getLessonModeConfig(nextMode);
@@ -4102,6 +4103,10 @@ document.addEventListener('DOMContentLoaded', () => {
             activeLessonId = '';
             activeLessonConfig = null;
             renderLessonTree(tutorialTreeModel);
+            if (initializeEmpty) {
+                initializeEmptyWorkspace();
+                return;
+            }
             if (activeStoryDatabaseSnapshot) {
                 applySimulationDataSnapshot(activeStoryDatabaseSnapshot, { setAsBaseline: true, clearUi: true });
             }
@@ -4114,8 +4119,17 @@ document.addEventListener('DOMContentLoaded', () => {
             activeLessonId = '';
             activeLessonConfig = null;
             renderLessonTree(tutorialTreeModel);
+            if (initializeEmpty) {
+                initializeEmptyWorkspace();
+                return;
+            }
             const snapshot = activeStoryDatabaseSnapshot || initialTool.databaseSnapshot;
             applySimulationDataSnapshot(snapshot, { setAsBaseline: true, clearUi: true });
+            return;
+        }
+
+        if (initializeEmpty) {
+            initializeEmptyWorkspace();
             return;
         }
 
@@ -4384,6 +4398,25 @@ document.addEventListener('DOMContentLoaded', () => {
         editor.setValue(sql);
         editor.focus();
         renderDiagnostics([]);
+    }
+
+    function initializeEmptyWorkspace() {
+        activeToolId = '';
+        activeLessonId = '';
+        activeLessonConfig = null;
+        activeGuideSelectionScope = 'lesson';
+        hasExplicitStorySelection = false;
+        setStoryAutoAdvanceNotice('');
+        pendingStoryAdvanceParseResult = null;
+        pendingLessonTaskParseResult = null;
+        applySimulationDataSnapshot(createEmptySimulationData(), { setAsBaseline: true, clearUi: true });
+        editor.setValue('');
+        editor.setCursor({ line: 0, ch: 0 });
+        editor.setSelection({ line: 0, ch: 0 }, { line: 0, ch: 0 });
+        editor.getInputField?.()?.blur?.();
+        setIntellisensePopupVisible(false);
+        renderLessonTree(tutorialTreeModel);
+        updateGuideWindowStoryHint();
     }
 
     let diagnosticLineClasses = [];
@@ -8170,12 +8203,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initExampleSelector();
     syncLessonModeUi(activeLessonMode);
     bindLessonModeButtons();
-    initLessonTree();
+    initLessonTree(activeLessonMode, { initializeEmpty: true });
     bindSqlCoreUnlockApi();
     initSqlCoreCatalog();
     if (exampleSelect && BASIC_SQL_EXAMPLES.length > 0 && !exampleSelect.value) {
         exampleSelect.value = BASIC_SQL_EXAMPLES[0].id;
     }
-    loadSelectedExample();
-    renderTables(parser.simulationData);
+    initializeEmptyWorkspace();
 });
