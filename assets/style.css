@@ -1163,13 +1163,12 @@ html {
 
 .intellisense-popup-item.is-locked {
     border-style: dashed;
-    opacity: 0.88;
     background:
         linear-gradient(180deg, hsl(var(--bg) / 0.56), hsl(var(--bg-surface) / 0.42));
 }
 
 .intellisense-popup-item.is-locked .intellisense-popup-keywords-line {
-    opacity: 0.74;
+    opacity: 1;
 }
 
 .intellisense-popup-token {
