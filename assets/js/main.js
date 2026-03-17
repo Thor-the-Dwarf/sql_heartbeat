@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const processResultPanel = document.getElementById('process-result-panel');
     const processResultBody = document.getElementById('process-result-body');
     const processResultStepLabel = document.getElementById('process-result-step');
+    const rightDrawer = document.getElementById('right-drawer');
     const multiIntellisensePanel = document.getElementById('multi-intellisense-panel');
     const multiIntellisenseList = document.getElementById('multi-intellisense-list');
     const multiIntellisenseDebugEl = document.getElementById('multi-intellisense-debug');
@@ -349,6 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeLessonConfig = null;
     let activeStoryTitleId = '';
     let activeStoryTitleConfig = null;
+    let activeGuideSelectionScope = 'lesson';
     let activeStorySceneIndex = 0;
     let storyAutoAdvanceNoticeText = '';
     let storyAutoAdvanceNoticeTimer = null;
@@ -1510,6 +1512,17 @@ document.addEventListener('DOMContentLoaded', () => {
         return collectGuideScenes(storyTitleConfig).length;
     }
 
+    function isGuideWindowStorySelectionActive() {
+        return activeGuideSelectionScope === 'story' && Boolean(activeStoryTitleConfig);
+    }
+
+    function syncGuideWindowVisibility() {
+        if (!rightDrawer) return;
+        const isVisible = isGuideWindowStorySelectionActive();
+        rightDrawer.hidden = !isVisible;
+        rightDrawer.setAttribute('aria-hidden', isVisible ? 'false' : 'true');
+    }
+
     function formatStoryTreeLabel(storyTitleConfig = null, storyIndex = 0) {
         const explicitLabel = String(storyTitleConfig?.treeLabel || '').trim();
         if (explicitLabel) return explicitLabel;
@@ -1943,6 +1956,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateGuideWindowStoryHint() {
+        syncGuideWindowVisibility();
+        if (!isGuideWindowStorySelectionActive()) {
+            renderGuideWindowStoryStage(null, []);
+            if (guideWindowNoteEl) {
+                guideWindowNoteEl.classList.remove('is-hidden');
+                guideWindowNoteEl.textContent = defaultGuideWindowNoteText || 'Guide-Window bereit.';
+            }
+            return;
+        }
+
         const storyScenes = collectGuideScenes(activeStoryTitleConfig);
         renderGuideWindowStoryStage(activeStoryTitleConfig, storyScenes);
 
@@ -1981,6 +2004,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        activeGuideSelectionScope = 'story';
         activeStoryTitleId = storyTitle.id;
         activeStoryTitleConfig = storyTitle;
         const runtimeEntry = getStoryRuntimeEntry(storyTitle);
@@ -2685,10 +2709,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!lesson) return;
         if (tool.id === activeToolId && lesson.id === activeLessonId && activeLessonConfig === lesson) return;
 
+        activeGuideSelectionScope = 'lesson';
         activeToolId = tool.id;
         activeLessonId = lesson.id;
         activeLessonConfig = lesson;
         renderLessonTree(tutorialTreeModel);
+        updateGuideWindowStoryHint();
 
         const snapshot = lesson.databaseSnapshot || tool.databaseSnapshot || createEmptySimulationData();
         applySimulationDataSnapshot(snapshot, { setAsBaseline: true, clearUi: true });
@@ -3059,7 +3085,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         storyFolder.titles.forEach((storyTitle, storyIndex) => {
                             if (storyIndex > visibleStoryUpperIndex) return;
-                            const isActiveStory = storyTitle.id === activeStoryTitleId;
+                            const isActiveStory = activeGuideSelectionScope === 'story' && storyTitle.id === activeStoryTitleId;
 
                             const storyItem = document.createElement('button');
                             storyItem.type = 'button';
@@ -7152,7 +7178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function handleStoryAutoAdvanceAfterSimulation(parseResult) {
-        if (!activeStoryTitleConfig || !parseResult || parseResult.error) return;
+        if (activeGuideSelectionScope !== 'story' || !activeStoryTitleConfig || !parseResult || parseResult.error) return;
         if (hasErrorDiagnostics(parseResult.diagnostics || [])) return;
 
         if (isActiveStorySceneAdvanceConditionSatisfied(parseResult)) {
