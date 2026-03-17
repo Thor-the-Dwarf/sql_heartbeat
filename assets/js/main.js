@@ -4,6 +4,45 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.classList.add('theme-fallback-dark');
     }
 
+    function installEditorPointerSelectionBehavior(editorInstance) {
+        if (!editorInstance?.getWrapperElement) return;
+        const wrapper = editorInstance.getWrapperElement();
+
+        function getPointerEditorPos(event) {
+            return editorInstance.coordsChar({ left: event.clientX, top: event.clientY }, 'window');
+        }
+
+        function selectWordAtPointer(event) {
+            const pointerPos = getPointerEditorPos(event);
+            const range = editorInstance.findWordAt(pointerPos);
+            editorInstance.focus();
+            editorInstance.setSelection(range.anchor, range.head);
+        }
+
+        function selectLineAtPointer(event) {
+            const pointerPos = getPointerEditorPos(event);
+            const lineNumber = Math.max(0, Number(pointerPos?.line) || 0);
+            const lineText = String(editorInstance.getLine(lineNumber) || '');
+            editorInstance.focus();
+            editorInstance.setSelection(
+                CodeMirror.Pos(lineNumber, 0),
+                CodeMirror.Pos(lineNumber, lineText.length)
+            );
+        }
+
+        wrapper.addEventListener('dblclick', (event) => {
+            if (event.button !== 0) return;
+            event.preventDefault();
+            window.requestAnimationFrame(() => selectWordAtPointer(event));
+        });
+
+        wrapper.addEventListener('mousedown', (event) => {
+            if (event.button !== 0 || event.detail < 3) return;
+            event.preventDefault();
+            window.requestAnimationFrame(() => selectLineAtPointer(event));
+        });
+    }
+
     // Initialize CodeMirror
     const editor = CodeMirror.fromTextArea(document.getElementById('sql-editor'), {
         mode: 'text/x-sql',
@@ -17,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         extraKeys: { "Ctrl-Space": "autocomplete" }
     });
 
+    installEditorPointerSelectionBehavior(editor);
     window.sqlEditorInstance = editor;
 
     // --- Simulator & Parser Integration ---
