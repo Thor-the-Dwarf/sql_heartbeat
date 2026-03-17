@@ -382,16 +382,8 @@
           "children": [
             {
               "title": "INSERT",
-              "body": "Fuegt neue Zeilen ein.\nSchema:\nINSERT INTO <tabelle> (<spalte_1>, <spalte_2>) VALUES (<wert_1>, <wert_2>);\nBeispiel:\nINSERT INTO students (id, name) VALUES (1, 'Anna');",
+              "body": "Fuegt neue Zeilen ein.\nVoraussetzung: Die Tabelle `students(id, name)` ist bereits vorbereitet.\nSchema:\nINSERT INTO <tabelle> (<spalte_1>, <spalte_2>) VALUES (<wert_1>, <wert_2>);\nBeispiel:\nINSERT INTO students (id, name) VALUES (1, 'Anna');",
               "tasks": [
-                {
-                  "text": "Erstelle `students` mit `id INTEGER` und `name TEXT`.",
-                  "check": {
-                    "type": "table-columns",
-                    "table": "students",
-                    "columns": ["id", "name"]
-                  }
-                },
                 {
                   "text": "Fuege in `students` den Datensatz `(1, 'Anna')` ein.",
                   "check": {
@@ -411,6 +403,17 @@
                     "where": {
                       "id": 2,
                       "name": "Ben"
+                    }
+                  }
+                },
+                {
+                  "text": "Fuege in `students` den Datensatz `(3, 'Cara')` ein.",
+                  "check": {
+                    "type": "row-exists",
+                    "table": "students",
+                    "where": {
+                      "id": 3,
+                      "name": "Cara"
                     }
                   }
                 }
@@ -601,18 +604,20 @@
           "children": [
             {
               "title": "Stammdatenpflege",
-              "body": "Lernziel: Einen Datensatz ueber mehrere DML-Schritte konsistent aufbauen.\nSchema:\nCREATE TABLE <tabelle> (...);\nINSERT INTO <tabelle> (...);\nUPDATE <tabelle> SET ... WHERE ...;\nBeispiel:\nCREATE TABLE products (id INTEGER, name TEXT);\nINSERT INTO products (id, name) VALUES (1, 'Maus');\nUPDATE products SET name = 'Gaming Maus' WHERE id = 1;\nTypische Fehler: Update ohne WHERE oder zuerst aktualisieren, bevor der Datensatz existiert.",
+              "body": "Lernziel: Einen Datensatz ueber mehrere DML-Schritte konsistent aufbauen.\nVoraussetzung: Die Tabelle `products(id, name)` ist bereits vorbereitet.\nSchema:\nINSERT INTO <tabelle> (...);\nUPDATE <tabelle> SET ... WHERE ...;\nBeispiel:\nINSERT INTO products (id, name) VALUES (1, 'Maus');\nUPDATE products SET name = 'Gaming Maus' WHERE id = 1;\nTypische Fehler: Update ohne WHERE oder zuerst aktualisieren, bevor der Datensatz existiert.",
               "tasks": [
                 {
-                  "text": "Lege fuer den Produktbereich eine Tabelle mit Schluessel `id` und Bezeichnung `name` an.",
+                  "text": "Fuege in `products` zuerst einen Datensatz mit `id = 1` ein.",
                   "check": {
-                    "type": "table-columns",
+                    "type": "row-exists",
                     "table": "products",
-                    "columns": ["id", "name"]
+                    "where": {
+                      "id": 1
+                    }
                   }
                 },
                 {
-                  "text": "Pflege einen Produkteintrag so, dass fuer `id = 1` am Ende der Name `Gaming Maus` gespeichert ist.",
+                  "text": "Aktualisiere denselben Datensatz so, dass fuer `id = 1` am Ende der Name `Gaming Maus` gespeichert ist.",
                   "check": {
                     "type": "row-exists",
                     "table": "products",

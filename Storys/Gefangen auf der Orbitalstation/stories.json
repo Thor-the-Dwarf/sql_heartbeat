@@ -14,15 +14,26 @@
           "sceneTitle": "Mission 1",
           "speaker": "Leona",
           "text": "Willkommen im Orbit-Archiv. Ohne Stationsregister bleibt die Hauptschleuse verriegelt.",
-          "objective": "Lege die Tabelle `story_stationen` mit `station_id`, `name`, `sektor` an.",
-          "advanceHint": "Nutze CREATE TABLE story_stationen (...).",
+          "objective": "Lege die Tabelle `story_stationen` mit `station_id INTEGER`, `name TEXT`, `sektor TEXT` an.",
+          "advanceHint": "Lege `story_stationen` an und verwende diese Spaltentypen: `station_id INTEGER`, `name TEXT` und `sektor TEXT`.",
           "editorComment": "Mission: Grundstruktur der Stationen erstellen.",
           "starterSql": "CREATE TABLE story_stationen (\n  station_id INTEGER,\n  name TEXT,\n  sektor TEXT\n);",
           "successMessage": "Schleuse geoeffnet. Das Archiv nimmt die ersten Stationen an.",
           "advanceOn": {
             "all": [
-              { "type": "statement-contains", "tokens": ["CREATE", "TABLE"] },
-              { "type": "statement-contains", "tokens": ["STORY_STATIONEN"] }
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "CREATE",
+                  "TABLE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "STORY_STATIONEN"
+                ]
+              }
             ]
           }
         }
@@ -65,15 +76,20 @@
           "sceneTitle": "Mission 3",
           "speaker": "Leona",
           "text": "Die Funde aus dem Aussenring liegen ungeordnet. Wir brauchen ein Artefaktregister.",
-          "objective": "Erstelle `story_artefakte` mit `artefakt_id`, `codename`, `station_id`, `risiko`.",
-          "advanceHint": "Nutze CREATE TABLE story_artefakte (...).",
+          "objective": "Erstelle `story_artefakte` mit `artefakt_id INTEGER`, `codename TEXT`, `station_id INTEGER`, `risiko INTEGER`.",
+          "advanceHint": "Lege `story_artefakte` an und verwende diese Spaltentypen: `artefakt_id INTEGER`, `codename TEXT`, `station_id INTEGER` und `risiko INTEGER`.",
           "editorComment": "Mission: Artefaktstruktur anlegen.",
           "starterSql": "CREATE TABLE story_artefakte (\n  artefakt_id INTEGER,\n  codename TEXT,\n  station_id INTEGER,\n  risiko INTEGER\n);",
           "successMessage": "Artefaktkammer verknuepft. Inventar kann geladen werden.",
           "advanceOn": {
             "type": "table-columns",
             "table": "story_artefakte",
-            "columns": ["artefakt_id", "codename", "station_id", "risiko"]
+            "columns": [
+              "artefakt_id",
+              "codename",
+              "station_id",
+              "risiko"
+            ]
           }
         }
       ]
@@ -97,8 +113,19 @@
           "successMessage": "Artefaktliste komplett. Das Muster wird sichtbar.",
           "advanceOn": {
             "all": [
-              { "type": "row-count", "table": "story_artefakte", "value": 5 },
-              { "type": "row-exists", "table": "story_artefakte", "where": { "codename": "Nyx", "risiko": 8 } }
+              {
+                "type": "row-count",
+                "table": "story_artefakte",
+                "value": 5
+              },
+              {
+                "type": "row-exists",
+                "table": "story_artefakte",
+                "where": {
+                  "codename": "Nyx",
+                  "risiko": 8
+                }
+              }
             ]
           }
         }
@@ -116,15 +143,19 @@
           "sceneTitle": "Mission 5",
           "speaker": "Kian",
           "text": "Ohne Logbuch koennen wir keine Entscheidungen absichern. Baue das Protokollschema.",
-          "objective": "Erstelle `story_logs` mit `log_id`, `artefakt_id`, `status`.",
-          "advanceHint": "Nutze CREATE TABLE story_logs (...).",
+          "objective": "Erstelle `story_logs` mit `log_id INTEGER`, `artefakt_id INTEGER`, `status TEXT`.",
+          "advanceHint": "Lege `story_logs` an und verwende diese Spaltentypen: `log_id INTEGER`, `artefakt_id INTEGER` und `status TEXT`.",
           "editorComment": "Mission: Logstruktur vorbereiten.",
           "starterSql": "CREATE TABLE story_logs (\n  log_id INTEGER,\n  artefakt_id INTEGER,\n  status TEXT\n);",
           "successMessage": "Logbuch bereit. Jetzt koennen wir den Verlauf lesen.",
           "advanceOn": {
             "type": "table-columns",
             "table": "story_logs",
-            "columns": ["log_id", "artefakt_id", "status"]
+            "columns": [
+              "log_id",
+              "artefakt_id",
+              "status"
+            ]
           }
         }
       ]
@@ -148,8 +179,19 @@
           "successMessage": "Signalchronik steht. Wir koennen erstmals sauber filtern.",
           "advanceOn": {
             "all": [
-              { "type": "row-count", "table": "story_logs", "value": 6 },
-              { "type": "row-exists", "table": "story_logs", "where": { "log_id": 1004, "status": "verworfen" } }
+              {
+                "type": "row-count",
+                "table": "story_logs",
+                "value": 6
+              },
+              {
+                "type": "row-exists",
+                "table": "story_logs",
+                "where": {
+                  "log_id": 1004,
+                  "status": "verworfen"
+                }
+              }
             ]
           }
         }
@@ -174,8 +216,24 @@
           "successMessage": "Risikolinse aktiv. Prioritaet steht.",
           "advanceOn": {
             "type": "result-equals",
-            "columns": ["codename", "risiko"],
-            "rows": [["Vela", 9], ["Nyx", 8], ["Orion", 7]],
+            "columns": [
+              "codename",
+              "risiko"
+            ],
+            "rows": [
+              [
+                "Vela",
+                9
+              ],
+              [
+                "Nyx",
+                8
+              ],
+              [
+                "Orion",
+                7
+              ]
+            ],
             "rowOrder": true
           }
         }
@@ -200,8 +258,23 @@
           "successMessage": "Nordkorridor entschluesselt. Zwei Spuren bleiben.",
           "advanceOn": {
             "type": "result-equals",
-            "columns": ["codename", "station", "sektor"],
-            "rows": [["Orion", "Cirrus", "Nord"], ["Vela", "Aegis", "Nord"]],
+            "columns": [
+              "codename",
+              "station",
+              "sektor"
+            ],
+            "rows": [
+              [
+                "Orion",
+                "Cirrus",
+                "Nord"
+              ],
+              [
+                "Vela",
+                "Aegis",
+                "Nord"
+              ]
+            ],
             "rowOrder": true
           }
         }
@@ -220,7 +293,7 @@
           "speaker": "Rana",
           "text": "Helios wurde zu niedrig eingestuft. Korrigiere den Datensatz auf das neue Sicherheitsniveau.",
           "objective": "Setze in `story_artefakte` den `risiko` von Helios (`artefakt_id = 101`) auf `9`.",
-          "advanceHint": "Nutze UPDATE ... SET risiko = 9 WHERE artefakt_id = 101.",
+          "advanceHint": "Nutze UPDATE auf `story_artefakte` und setze `risiko` neu und grenze die betroffenen Zeilen mit WHERE ein.",
           "editorComment": "Mission: Risikowert aktualisieren.",
           "starterSql": "UPDATE story_artefakte\nSET risiko = 9\nWHERE artefakt_id = 101;",
           "successMessage": "Helios neu bewertet. Die Gefahrenmatrix ist aktuell.",
@@ -248,7 +321,7 @@
           "speaker": "Leona",
           "text": "Der Status 'verworfen' blockiert Auswertungen. Wir entfernen diese Akte vollstaendig.",
           "objective": "Loesche alle Zeilen aus `story_logs` mit `status = 'verworfen'`.",
-          "advanceHint": "Nutze DELETE FROM story_logs WHERE status = 'verworfen'.",
+          "advanceHint": "Nutze DELETE FROM fuer `story_logs` und grenze die betroffenen Zeilen mit WHERE ein.",
           "editorComment": "Mission: Logbereinigung.",
           "starterSql": "DELETE FROM story_logs\nWHERE status = 'verworfen';",
           "successMessage": "Bereinigung abgeschlossen. Nur relevante Signale bleiben.",
@@ -281,8 +354,20 @@
           "successMessage": "Leitstellenreport erstellt. Muster bestaetigt.",
           "advanceOn": {
             "type": "result-equals",
-            "columns": ["status", "anzahl"],
-            "rows": [["analyse", 2], ["offen", 3]],
+            "columns": [
+              "status",
+              "anzahl"
+            ],
+            "rows": [
+              [
+                "analyse",
+                2
+              ],
+              [
+                "offen",
+                3
+              ]
+            ],
             "rowOrder": true
           }
         }
@@ -307,8 +392,16 @@
           "successMessage": "Engpass isoliert. Fokus liegt auf offenen Signalen.",
           "advanceOn": {
             "type": "result-equals",
-            "columns": ["status", "anzahl"],
-            "rows": [["offen", 3]],
+            "columns": [
+              "status",
+              "anzahl"
+            ],
+            "rows": [
+              [
+                "offen",
+                3
+              ]
+            ],
             "rowOrder": true
           }
         }
@@ -327,14 +420,26 @@
           "speaker": "Leona",
           "text": "Der Lageplan zeigt Sektoren mehrfach. Gib mir jede Zone genau einmal.",
           "objective": "Liefere die unterschiedlichen Werte von `sektor` aus `story_stationen`, sortiert.",
-          "advanceHint": "Nutze SELECT DISTINCT sektor ... ORDER BY sektor.",
+          "advanceHint": "Nutze SELECT auf `story_stationen`, sortiere mit ORDER BY und verwende DISTINCT.",
           "editorComment": "Mission: DISTINCT fuer Sektoruebersicht.",
           "starterSql": "SELECT DISTINCT sektor\nFROM story_stationen\nORDER BY sektor;",
           "successMessage": "Sektorbild bereinigt. Navigation ist eindeutig.",
           "advanceOn": {
             "type": "result-equals",
-            "columns": ["sektor"],
-            "rows": [["Nord"], ["Ost"], ["Sued"]],
+            "columns": [
+              "sektor"
+            ],
+            "rows": [
+              [
+                "Nord"
+              ],
+              [
+                "Ost"
+              ],
+              [
+                "Sued"
+              ]
+            ],
             "rowOrder": true
           }
         }
@@ -359,8 +464,17 @@
           "successMessage": "Quellpunkt geortet. Nur zwei Stationen bleiben uebrig.",
           "advanceOn": {
             "type": "result-equals",
-            "columns": ["name"],
-            "rows": [["Aegis"], ["Boreal"]],
+            "columns": [
+              "name"
+            ],
+            "rows": [
+              [
+                "Aegis"
+              ],
+              [
+                "Boreal"
+              ]
+            ],
             "rowOrder": true
           }
         }
@@ -385,8 +499,28 @@
           "successMessage": "Archivrat informiert. Die Chronik des Orbit-Archivs ist abgeschlossen.",
           "advanceOn": {
             "type": "result-equals",
-            "columns": ["name", "kritische_anzahl"],
-            "rows": [["Aegis", 2], ["Boreal", 1], ["Cirrus", 1], ["Dorian", 0]],
+            "columns": [
+              "name",
+              "kritische_anzahl"
+            ],
+            "rows": [
+              [
+                "Aegis",
+                2
+              ],
+              [
+                "Boreal",
+                1
+              ],
+              [
+                "Cirrus",
+                1
+              ],
+              [
+                "Dorian",
+                0
+              ]
+            ],
             "rowOrder": true
           }
         }

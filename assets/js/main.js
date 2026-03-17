@@ -50,6 +50,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const defaultGuideWindowNoteText = guideWindowNoteEl ? String(guideWindowNoteEl.textContent || '').trim() : '';
     const topCanvas = document.getElementById('top-canvas');
     const ctx = topCanvas.getContext('2d');
+    const storyProgressLiveChecks = window.storyProgressLiveChecks || {
+        normalizeStoryReadySceneIds: () => [],
+        isStorySceneReady: (runtimeEntry, scene) => Boolean(runtimeEntry?.completed) || !scene?.advanceOn,
+        markStorySceneReady: (runtimeEntry) => ({
+            readySceneIds: Array.isArray(runtimeEntry?.readySceneIds) ? runtimeEntry.readySceneIds : [],
+            hasChanges: false,
+            isReady: true
+        }),
+        advanceStoryProgress: (options = {}) => ({
+            allowed: Boolean(options.currentSceneReady),
+            completedStory: Boolean(options.currentSceneReady),
+            nextStoryId: String(options.activeStoryId || ''),
+            nextSceneIndex: 0,
+            openedNextStory: false,
+            reachedStoryEnd: true
+        })
+    };
     const lessonTaskLiveChecks = window.lessonTaskLiveChecks || { deriveTaskCheck: () => null };
 
     // Toggle state for relationship lines (must be declared before drawRelationships is called)
@@ -78,11 +95,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const SUPPORTED_DATABASE_PROFILES = new Set([
         'empty',
         'demo',
+        'demo-analytics',
+        'demo-null-users',
         'demo-students',
         'employees-basic',
         'employees-with-role',
         'customers',
-        'demo-reports'
+        'demo-reports',
+        'products-empty',
+        'students-empty'
     ]);
     let processRuntimeState = createProcessRuntimeState();
     let processLogEntries = [];
@@ -352,12 +373,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeStoryTitleId = '';
     let activeStoryTitleConfig = null;
     let activeGuideSelectionScope = 'lesson';
+    let hasExplicitStorySelection = false;
     let activeStorySceneIndex = 0;
     let storyAutoAdvanceNoticeText = '';
     let storyAutoAdvanceNoticeTimer = null;
     let pendingStoryAdvanceParseResult = null;
     let pendingLessonTaskParseResult = null;
     let liveLessonTaskEvaluationTimer = null;
+    let liveStoryReadinessEvaluationTimer = null;
     const lessonTaskProgress = new Map();
     const lessonTaskAnimationQueue = new Set();
     const lessonFolderOpenState = new Set();
@@ -571,6 +594,57 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
+    function createDemoUsersTable(options = {}) {
+        const { includeNullName = false } = options;
+        const rows = [
+            [1, 'Alice', 'Admin'],
+            [2, 'Bob', 'User'],
+            [3, 'Charlie', 'User']
+        ];
+
+        if (includeNullName) rows.push([4, null, 'User']);
+
+        return createTableDef(
+            [
+                { name: 'id', type: 'INTEGER', isPK: true },
+                { name: 'name', type: 'VARCHAR', isPK: false },
+                { name: 'role', type: 'TEXT', isPK: false }
+            ],
+            rows
+        );
+    }
+
+    function createDemoLogsTable() {
+        return createTableDef(
+            [
+                { name: 'log_id', type: 'INTEGER', isPK: true },
+                { name: 'user_id', type: 'INTEGER', isFK: true, fkTarget: 'users.id' },
+                { name: 'message', type: 'TEXT', isPK: false }
+            ],
+            [
+                [101, 1, 'Logged In'],
+                [102, 2, 'Viewed Page'],
+                [103, 1, 'Logout']
+            ]
+        );
+    }
+
+    function createScoresTable() {
+        return createTableDef(
+            [
+                { name: 'user_id', type: 'INTEGER', isFK: true, fkTarget: 'users.id' },
+                { name: 'points', type: 'INTEGER', isPK: false }
+            ],
+            [
+                [1, 12],
+                [1, 18],
+                [2, 7],
+                [2, 13],
+                [3, 5]
+            ]
+        );
+    }
+
     function createStudentsTable() {
         return createTableDef(
             [
@@ -582,6 +656,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 [2, 'Ben'],
                 [3, 'Cara']
             ]
+        );
+    }
+
+    function createEmptyStudentsTable() {
+        return createTableDef(
+            [
+                { name: 'id', type: 'INTEGER', isPK: true },
+                { name: 'name', type: 'TEXT', isPK: false }
+            ],
+            []
+        );
+    }
+
+    function createProductsTable() {
+        return createTableDef(
+            [
+                { name: 'id', type: 'INTEGER', isPK: true },
+                { name: 'name', type: 'TEXT', isPK: false }
+            ],
+            []
         );
     }
 
@@ -837,8 +931,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (normalizedProfile === 'demo') {
             return buildSnapshotFromTables({}, { includeDemo: true });
         }
+        if (normalizedProfile === 'demo-analytics') {
+            return buildSnapshotFromTables({ scores: createScoresTable() }, { includeDemo: true });
+        }
+        if (normalizedProfile === 'demo-null-users') {
+            return buildSnapshotFromTables(
+                {
+                    users: createDemoUsersTable({ includeNullName: true }),
+                    logs: createDemoLogsTable()
+                },
+                { includeDemo: true }
+            );
+        }
         if (normalizedProfile === 'demo-students') {
             return buildSnapshotFromTables({ students: createStudentsTable() }, { includeDemo: true });
+        }
+        if (normalizedProfile === 'students-empty') {
+            return buildSnapshotFromTables({ students: createEmptyStudentsTable() }, { includeDemo: true });
         }
         if (normalizedProfile === 'employees-basic') {
             return buildSnapshotFromTables({ employees: createEmployeesTable(false) });
@@ -851,6 +960,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (normalizedProfile === 'demo-reports') {
             return buildSnapshotFromTables({ reports: createReportsTable() }, { includeDemo: true });
+        }
+        if (normalizedProfile === 'products-empty') {
+            return buildSnapshotFromTables({ products: createProductsTable() }, { includeDemo: true });
         }
 
         return normalizedProfile ? null : buildToolDatabasePreset(toolCode);
@@ -868,7 +980,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (toolCode === 'dml') {
-            if (title === 'insert' || title === 'stammdatenpflege') return 'empty';
+            if (title === 'insert') return 'students-empty';
+            if (title === 'stammdatenpflege') return 'products-empty';
             if (title === 'bereinigung') return 'demo';
             return 'demo-students';
         }
@@ -1423,7 +1536,8 @@ document.addEventListener('DOMContentLoaded', () => {
             stories[storyTitle.id] = {
                 status: normalizeStoryStatus(runtimeEntry.status, storyTitle.status),
                 sceneIndex: clampStorySceneIndex(runtimeEntry.sceneIndex, getStorySceneCount(storyTitle)),
-                completed: Boolean(runtimeEntry.completed)
+                completed: Boolean(runtimeEntry.completed),
+                readySceneIds: storyProgressLiveChecks.normalizeStoryReadySceneIds(runtimeEntry.readySceneIds)
             };
         });
 
@@ -1465,6 +1579,7 @@ document.addEventListener('DOMContentLoaded', () => {
             );
             runtimeEntry.status = normalizeStoryStatus(snapshot.status, storyTitle.status);
             runtimeEntry.completed = Boolean(snapshot.completed) || runtimeEntry.status === 'gelesen';
+            runtimeEntry.readySceneIds = storyProgressLiveChecks.normalizeStoryReadySceneIds(snapshot.readySceneIds);
         });
 
         const persistedActiveId = String(payload.activeStoryTitleId || '').trim();
@@ -1504,6 +1619,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!runtimeEntry) return;
             runtimeEntry.sceneIndex = 0;
             runtimeEntry.completed = false;
+            runtimeEntry.readySceneIds = [];
             runtimeEntry.status = storyIndex === 0 ? 'aktiv' : 'neu';
         });
 
@@ -1530,7 +1646,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function isGuideWindowStorySelectionActive() {
-        return activeGuideSelectionScope === 'story' && Boolean(activeStoryTitleConfig);
+        return activeGuideSelectionScope === 'story' && hasExplicitStorySelection && Boolean(activeStoryTitleConfig);
     }
 
     function syncGuideWindowVisibility() {
@@ -1615,7 +1731,8 @@ document.addEventListener('DOMContentLoaded', () => {
             runtimeEntry = {
                 status: initialStatus,
                 sceneIndex: 0,
-                completed: initialStatus === 'gelesen'
+                completed: initialStatus === 'gelesen',
+                readySceneIds: []
             };
             storyRuntimeState.set(storyTitleConfig.id, runtimeEntry);
         }
@@ -1623,6 +1740,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const sceneCount = getStorySceneCount(storyTitleConfig);
         runtimeEntry.sceneIndex = clampStorySceneIndex(runtimeEntry.sceneIndex, sceneCount);
         runtimeEntry.status = normalizeStoryStatus(runtimeEntry.status, storyTitleConfig.status);
+        runtimeEntry.readySceneIds = storyProgressLiveChecks.normalizeStoryReadySceneIds(runtimeEntry.readySceneIds);
         if (runtimeEntry.completed) {
             runtimeEntry.status = 'gelesen';
         }
@@ -1922,6 +2040,76 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
+    function isStorySceneReady(storyTitleConfig = activeStoryTitleConfig, scene = null) {
+        if (!storyTitleConfig || !scene) return false;
+        const runtimeEntry = getStoryRuntimeEntry(storyTitleConfig);
+        return storyProgressLiveChecks.isStorySceneReady(runtimeEntry, scene);
+    }
+
+    function isStoryTitleReady(storyTitleConfig = null) {
+        if (!storyTitleConfig) return false;
+        const runtimeEntry = getStoryRuntimeEntry(storyTitleConfig);
+        if (!runtimeEntry) return false;
+        if (runtimeEntry.completed) return true;
+        return storyProgressLiveChecks.normalizeStoryReadySceneIds(runtimeEntry.readySceneIds).length > 0;
+    }
+
+    function markStorySceneReady(storyTitleConfig = activeStoryTitleConfig, scene = null, options = {}) {
+        const { suppressNotice = false } = options;
+        if (!storyTitleConfig || !scene) {
+            return { isReady: false, hasChanges: false };
+        }
+
+        const runtimeEntry = getStoryRuntimeEntry(storyTitleConfig);
+        if (!runtimeEntry) {
+            return { isReady: false, hasChanges: false };
+        }
+
+        if (!scene.advanceOn) {
+            return { isReady: true, hasChanges: false };
+        }
+
+        const readyResult = storyProgressLiveChecks.markStorySceneReady(runtimeEntry, scene.id);
+        runtimeEntry.readySceneIds = readyResult.readySceneIds;
+        if (!readyResult.hasChanges) {
+            return readyResult;
+        }
+
+        applySqlCoreStorySceneSuccessBridge(scene);
+        persistStoryProgress();
+        if (!suppressNotice) {
+            const noticeText = String(scene.successMessage || '').trim() || 'Kapitel freigeschaltet. Mit Fertig weiter.';
+            setStoryAutoAdvanceNotice(noticeText, 3200);
+        }
+        return readyResult;
+    }
+
+    function evaluateActiveStorySceneProgress(parseResult = null, options = {}) {
+        const { showBlockedNotice = false } = options;
+        if (!activeStoryTitleConfig || !parseResult || parseResult.error) return false;
+        if (hasErrorDiagnostics(parseResult.diagnostics || [])) return false;
+        const { scene } = getActiveStorySceneData(activeStoryTitleConfig);
+        if (!scene) return false;
+
+        if (isActiveStorySceneAdvanceConditionSatisfied(parseResult)) {
+            const readyResult = markStorySceneReady(activeStoryTitleConfig, scene);
+            if (readyResult.hasChanges) {
+                updateGuideWindowStoryHint();
+                renderLessonTree(tutorialTreeModel);
+            }
+            return true;
+        }
+
+        if (showBlockedNotice) {
+            const sceneHint = getActiveStorySceneAdvanceHint();
+            const hintText = sceneHint ? `Noch gesperrt: ${sceneHint}` : 'Noch gesperrt: Szenenbedingung nicht erfuellt.';
+            setStoryAutoAdvanceNotice(hintText, 3200);
+            updateGuideWindowStoryHint();
+        }
+
+        return false;
+    }
+
     function isActiveStorySceneAdvanceConditionSatisfied(parseResult = null) {
         if (!activeStoryTitleConfig || !parseResult || parseResult.error) return false;
         if (hasErrorDiagnostics(parseResult.diagnostics || [])) return false;
@@ -1940,36 +2128,68 @@ document.addEventListener('DOMContentLoaded', () => {
         return resolveStorySceneAdvanceHint(scene);
     }
 
-    function advanceActiveStorySceneOnSqlSuccess() {
+    function advanceActiveStorySceneFromReadyState() {
         if (!activeStoryTitleConfig) return;
         const storyScenes = collectGuideScenes(activeStoryTitleConfig);
         if (storyScenes.length === 0) return;
         const currentScene = storyScenes[activeStorySceneIndex] || null;
-        applySqlCoreStorySceneSuccessBridge(currentScene);
-        const customSuccessMessage = String(currentScene?.successMessage || '').trim();
+        if (!currentScene) return;
+        if (!isStorySceneReady(activeStoryTitleConfig, currentScene)) {
+            const sceneHint = resolveStorySceneAdvanceHint(currentScene);
+            const hintText = sceneHint ? `Noch gesperrt: ${sceneHint}` : 'Noch gesperrt: Gib zuerst den passenden SQL-Befehl ein.';
+            setStoryAutoAdvanceNotice(hintText, 3200);
+            updateGuideWindowStoryHint();
+            return;
+        }
 
         const runtimeEntry = getStoryRuntimeEntry(activeStoryTitleConfig);
         if (!runtimeEntry) return;
 
-        const lastSceneIndex = storyScenes.length - 1;
-        if (activeStorySceneIndex < lastSceneIndex) {
-            activeStorySceneIndex += 1;
+        const storyIds = (Array.isArray(storyTreeModel?.titles) ? storyTreeModel.titles : [])
+            .map((storyTitle) => String(storyTitle?.id || '').trim())
+            .filter(Boolean);
+        const advanceResult = storyProgressLiveChecks.advanceStoryProgress({
+            storyIds,
+            activeStoryId: activeStoryTitleConfig.id,
+            sceneCount: storyScenes.length,
+            sceneIndex: activeStorySceneIndex,
+            currentSceneReady: true,
+            completedStory: runtimeEntry.completed
+        });
+
+        if (!advanceResult.allowed) {
+            updateGuideWindowStoryHint();
+            return;
+        }
+
+        runtimeEntry.sceneIndex = clampStorySceneIndex(activeStorySceneIndex, storyScenes.length);
+        runtimeEntry.completed = Boolean(advanceResult.completedStory);
+        runtimeEntry.status = runtimeEntry.completed ? 'gelesen' : 'aktiv';
+
+        if (!advanceResult.completedStory) {
+            activeStorySceneIndex = clampStorySceneIndex(advanceResult.nextSceneIndex, storyScenes.length);
             runtimeEntry.sceneIndex = activeStorySceneIndex;
-            runtimeEntry.status = 'aktiv';
-            if (activeStorySceneIndex >= lastSceneIndex) {
-                runtimeEntry.completed = true;
-                setStoryAutoAdvanceNotice(customSuccessMessage || 'Auto-Fortschritt: Story abgeschlossen.');
+            setStoryAutoAdvanceNotice('Szene abgeschlossen. Naechste Szene geoeffnet.', 3200);
+        } else if (advanceResult.openedNextStory) {
+            const nextStoryTitle = getStoryTitleById(advanceResult.nextStoryId);
+            activeGuideSelectionScope = 'story';
+            activeStoryTitleId = nextStoryTitle?.id || '';
+            activeStoryTitleConfig = nextStoryTitle || null;
+            const nextRuntimeEntry = getStoryRuntimeEntry(nextStoryTitle);
+            if (nextRuntimeEntry) {
+                nextRuntimeEntry.status = nextRuntimeEntry.completed ? 'gelesen' : 'aktiv';
+                activeStorySceneIndex = clampStorySceneIndex(nextRuntimeEntry.sceneIndex, getStorySceneCount(nextStoryTitle));
+                nextRuntimeEntry.sceneIndex = activeStorySceneIndex;
             } else {
-                setStoryAutoAdvanceNotice(customSuccessMessage || 'Auto-Fortschritt: Naechste Szene erreicht.');
+                activeStorySceneIndex = 0;
             }
+            setStoryAutoAdvanceNotice('Kapitel abgeschlossen. Naechster Teil geoeffnet.', 3200);
         } else {
-            runtimeEntry.sceneIndex = activeStorySceneIndex;
-            runtimeEntry.status = 'aktiv';
-            runtimeEntry.completed = true;
-            setStoryAutoAdvanceNotice(customSuccessMessage || 'Auto-Fortschritt: Story bereits abgeschlossen.');
+            setStoryAutoAdvanceNotice('Story abgeschlossen.', 3200);
         }
 
         persistStoryProgress();
+        scheduleLiveStoryReadinessEvaluation(0);
         updateGuideWindowStoryHint();
         renderLessonTree(tutorialTreeModel);
     }
@@ -2018,6 +2238,7 @@ document.addEventListener('DOMContentLoaded', () => {
             runtimeEntry.sceneIndex = activeStorySceneIndex;
         }
         const activeScene = storyScenes[activeStorySceneIndex] || storyScenes[0];
+        const activeSceneReady = isStorySceneReady(storyTitleConfig, activeScene);
 
         guideStoryStageEl.classList.remove('is-empty');
 
@@ -2055,7 +2276,11 @@ document.addEventListener('DOMContentLoaded', () => {
         nextBtn.type = 'button';
         nextBtn.className = 'guide-story-nav-btn';
         nextBtn.textContent = activeStorySceneIndex >= sceneCount - 1 ? 'Fertig' : 'Weiter';
-        nextBtn.addEventListener('click', () => navigateActiveStoryScene(1));
+        nextBtn.disabled = !activeSceneReady;
+        if (activeSceneReady) {
+            nextBtn.classList.add('is-ready');
+        }
+        nextBtn.addEventListener('click', () => advanceActiveStorySceneFromReadyState());
 
         const statusEl = document.createElement('span');
         const effectiveStatus = getEffectiveStoryStatus(storyTitleConfig);
@@ -2071,6 +2296,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (activeScene) {
             const gateEl = document.createElement('div');
             gateEl.className = 'guide-story-gate';
+            if (activeSceneReady) {
+                gateEl.classList.add('is-ready');
+            }
             gateEl.textContent = resolveStorySceneAdvanceHint(activeScene);
             header.appendChild(gateEl);
 
@@ -2198,6 +2426,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         activeGuideSelectionScope = 'story';
+        hasExplicitStorySelection = true;
         activeStoryTitleId = storyTitle.id;
         activeStoryTitleConfig = storyTitle;
         const runtimeEntry = getStoryRuntimeEntry(storyTitle);
@@ -2885,6 +3114,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }, Math.max(0, Number(delayMs) || 0));
     }
 
+    function evaluateActiveStoryReadinessFromEditor() {
+        if (!isGuideWindowStorySelectionActive() || !activeStoryTitleConfig) return;
+        const sql = String(editor.getValue() || '').trim();
+        if (!sql) return;
+        const parseResult = parser.parse(sql);
+        if (!parseResult || parseResult.error || hasErrorDiagnostics(parseResult.diagnostics || [])) return;
+        evaluateActiveStorySceneProgress(parseResult);
+    }
+
+    function scheduleLiveStoryReadinessEvaluation(delayMs = 140) {
+        if (liveStoryReadinessEvaluationTimer) {
+            clearTimeout(liveStoryReadinessEvaluationTimer);
+            liveStoryReadinessEvaluationTimer = null;
+        }
+        liveStoryReadinessEvaluationTimer = window.setTimeout(() => {
+            liveStoryReadinessEvaluationTimer = null;
+            evaluateActiveStoryReadinessFromEditor();
+        }, Math.max(0, Number(delayMs) || 0));
+    }
+
     function applySimulationDataSnapshot(snapshot, options = {}) {
         const { setAsBaseline = true, clearUi = true } = options;
         const normalized = normalizeSimulationDataShape(deepClone(snapshot));
@@ -3308,12 +3557,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         storyFolder.titles.forEach((storyTitle, storyIndex) => {
                             if (storyIndex > visibleStoryUpperIndex) return;
                             const isActiveStory = activeGuideSelectionScope === 'story' && storyTitle.id === activeStoryTitleId;
+                            const isReadyStory = isStoryTitleReady(storyTitle);
+                            const isCompletedStory = Boolean(getStoryRuntimeEntry(storyTitle)?.completed);
 
                             const storyItem = document.createElement('button');
                             storyItem.type = 'button';
                             storyItem.className = 'story-title-item';
                             if (isActiveStory) {
                                 storyItem.classList.add('is-active');
+                            }
+                            if (isReadyStory) {
+                                storyItem.classList.add('is-ready');
+                            }
+                            if (isCompletedStory) {
+                                storyItem.classList.add('is-complete');
                             }
 
                             const titleEl = document.createElement('span');
@@ -3346,6 +3603,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const preferredLessonId = previousMode === nextMode ? activeLessonId : '';
 
         activeLessonMode = nextMode;
+        hasExplicitStorySelection = false;
         persistLessonMode(nextMode);
         syncLessonModeUi(nextMode);
 
@@ -5088,6 +5346,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderDiagnostics([]);
         scheduleIntellisensePopupPosition();
         scheduleLiveLessonTaskEvaluation();
+        scheduleLiveStoryReadinessEvaluation();
     });
 
     editor.on('cursorActivity', () => {
@@ -7400,19 +7659,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    function handleStoryAutoAdvanceAfterSimulation(parseResult) {
+    function handleStoryAdvanceCheckAfterSimulation(parseResult) {
         if (activeGuideSelectionScope !== 'story' || !activeStoryTitleConfig || !parseResult || parseResult.error) return;
         if (hasErrorDiagnostics(parseResult.diagnostics || [])) return;
-
-        if (isActiveStorySceneAdvanceConditionSatisfied(parseResult)) {
-            advanceActiveStorySceneOnSqlSuccess();
-            return;
-        }
-
-        const sceneHint = getActiveStorySceneAdvanceHint();
-        const hintText = sceneHint ? `Auto-Fortschritt blockiert: ${sceneHint}` : 'Auto-Fortschritt blockiert: Szenenbedingung nicht erfuellt.';
-        setStoryAutoAdvanceNotice(hintText, 3200);
-        updateGuideWindowStoryHint();
+        evaluateActiveStorySceneProgress(parseResult, { showBlockedNotice: true });
     }
 
     simulator.onFinish = () => {
@@ -7426,7 +7676,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         evaluateActiveLessonTasks(pendingLessonTaskParseResult);
         pendingLessonTaskParseResult = null;
-        handleStoryAutoAdvanceAfterSimulation(pendingStoryAdvanceParseResult);
+        handleStoryAdvanceCheckAfterSimulation(pendingStoryAdvanceParseResult);
         pendingStoryAdvanceParseResult = null;
     };
 

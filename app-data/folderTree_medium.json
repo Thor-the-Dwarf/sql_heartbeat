@@ -70,10 +70,17 @@
               "id": "dql-data-query-language-lesson-4-null-sauber-is-null-is-not-null",
               "title": "NULL sauber: IS NULL / IS NOT NULL",
               "level": 2,
+              "body": "Arbeite mit vorbereiteten Beispieldaten, in denen mindestens ein `users.name` den Wert NULL hat.",
+              "databaseProfile": "demo-null-users",
               "tasks": [
                 {
                   "id": "dql-data-query-language-lesson-4-null-sauber-is-null-is-not-null-task-1",
-                  "text": "Fuege einen Datensatz in `users` ein, bei dem `name` NULL ist."
+                  "text": "Nutze fuer NULL-Werte nie `= NULL`, sondern `IS NULL`.",
+                  "check": {
+                    "type": "statement-regex",
+                    "pattern": "\\bis\\s+null\\b",
+                    "flags": "i"
+                  }
                 },
                 {
                   "id": "dql-data-query-language-lesson-4-null-sauber-is-null-is-not-null-task-2",
@@ -134,7 +141,7 @@
                 },
                 {
                   "id": "dql-data-query-language-lesson-7-begrenzen-limit-task-2",
-                  "text": "SELECT * FROM logs ORDER BY id LIMIT 1"
+                  "text": "SELECT * FROM logs ORDER BY log_id LIMIT 1"
                 }
               ],
               "children": []
@@ -143,7 +150,7 @@
               "id": "dql-data-query-language-lesson-8-verknuepfen-inner-join-left-join-mit-on",
               "title": "Verknuepfen: INNER JOIN / LEFT JOIN mit ON",
               "level": 2,
-              "body": "Vorbereitung:\n- Stelle sicher: logs hat eine Spalte user_id INTEGER.\n- Fuege Logs ein, die auf users.id zeigen.\nSchema:\nSELECT u.name, l.msg\nFROM users AS u\nINNER JOIN logs AS l ON l.user_id = u.id;",
+              "body": "Ausgangslage:\n- `users.id` und `logs.user_id` sind bereits vorbereitet.\nSchema:\nSELECT u.name, l.message\nFROM users AS u\nINNER JOIN logs AS l ON l.user_id = u.id;",
               "tasks": [
                 {
                   "id": "dql-data-query-language-lesson-8-verknuepfen-inner-join-left-join-mit-on-task-1",
@@ -160,7 +167,8 @@
               "id": "dql-data-query-language-lesson-9-gruppieren-group-by-having-count-sum-avg-min-max",
               "title": "Gruppieren: GROUP BY + HAVING + COUNT/SUM/AVG/MIN/MAX",
               "level": 2,
-              "body": "Vorbereitung:\n- users hat eine Spalte role TEXT.\n- Fuege mehrere users mit role 'Admin' und 'User' ein.\nVorbereitung (SUM/AVG/MIN/MAX):\n- Erstelle scores(user_id INTEGER, points INTEGER)\n- Fuege pro user mehrere scores ein",
+              "body": "Arbeite mit vorbereiteten Beispieldaten:\n- `users` besitzt bereits die Spalte `role`.\n- `scores(user_id, points)` ist bereits gefuellt.\nSchema:\nSELECT role, COUNT(*) FROM users GROUP BY role;\nSELECT user_id, SUM(points) FROM scores GROUP BY user_id;",
+              "databaseProfile": "demo-analytics",
               "tasks": [
                 {
                   "id": "dql-data-query-language-lesson-9-gruppieren-group-by-having-count-sum-avg-min-max-task-1",
@@ -330,15 +338,16 @@
               "id": "ddl-data-definition-language-lesson-3-tabelle-leeren-truncate-table-users",
               "title": "Tabelle leeren: TRUNCATE TABLE users;",
               "level": 2,
+              "databaseProfile": "demo",
               "body": "Schema:\nTRUNCATE TABLE <table_name>;",
               "tasks": [
                 {
                   "id": "ddl-data-definition-language-lesson-3-tabelle-leeren-truncate-table-users-task-1",
-                  "text": "Fuege Daten ein und TRUNCATE TABLE users."
+                  "text": "Leere `users` mit TRUNCATE TABLE."
                 },
                 {
                   "id": "ddl-data-definition-language-lesson-3-tabelle-leeren-truncate-table-users-task-2",
-                  "text": "Pruefe per SELECT, dass users leer ist."
+                  "text": "Leere anschliessend auch `logs` mit TRUNCATE TABLE."
                 }
               ],
               "children": []

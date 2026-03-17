@@ -636,6 +636,25 @@ html {
     box-shadow: 0 0 0 1px hsl(var(--primary) / 0.34);
 }
 
+.story-title-item.is-ready,
+.story-title-item.is-complete {
+    border-color: hsl(var(--success) / 0.8);
+    background: hsl(var(--success) / 0.12);
+    box-shadow: 0 0 0 1px hsl(var(--success) / 0.24), 0 0 16px hsl(var(--success) / 0.12);
+}
+
+.story-title-item.is-active.is-ready,
+.story-title-item.is-active.is-complete {
+    border-color: hsl(var(--success));
+    background: hsl(var(--success) / 0.18);
+    box-shadow: 0 0 0 1px hsl(var(--success) / 0.34), 0 0 18px hsl(var(--success) / 0.16);
+}
+
+.story-title-item.is-ready .story-title-name,
+.story-title-item.is-complete .story-title-name {
+    color: hsl(var(--txt));
+}
+
 .story-title-name {
     display: block;
     font-size: 0.8rem;
@@ -705,6 +724,18 @@ html {
     background: hsl(var(--primary) / 0.16);
 }
 
+.guide-story-nav-btn.is-ready {
+    border-color: hsl(var(--success) / 0.9);
+    background: hsl(var(--success) / 0.18);
+    color: hsl(var(--txt));
+    box-shadow: 0 0 0 1px hsl(var(--success) / 0.28), 0 0 14px hsl(var(--success) / 0.14);
+}
+
+.guide-story-nav-btn.is-ready:hover:not(:disabled) {
+    border-color: hsl(var(--success));
+    background: hsl(var(--success) / 0.24);
+}
+
 .guide-story-nav-btn:disabled {
     opacity: 0.45;
     cursor: default;
@@ -746,6 +777,10 @@ html {
     font-size: 0.68rem;
     color: hsl(var(--txt-muted));
     line-height: 1.35;
+}
+
+.guide-story-gate.is-ready {
+    color: hsl(var(--success));
 }
 
 .guide-story-mission {
@@ -1913,8 +1948,11 @@ html {
     min-width: 280px;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     box-shadow: var(--shadow-sm);
-    flex: 0 1 340px;
-    max-width: 420px;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    width: max-content;
+    max-width: none;
     position: relative;
     z-index: 3;
 }
@@ -1964,7 +2002,8 @@ html {
 }
 
 .db-table {
-    width: 100%;
+    width: max-content;
+    min-width: 100%;
     border-collapse: collapse;
     font-size: 0.9rem;
     color: hsl(var(--txt));
@@ -2653,7 +2692,9 @@ html {
     }
 
     .table-card {
-        flex: 1 1 min(100%, 420px);
+        flex: 0 0 auto;
+        width: max-content;
+        max-width: none;
     }
 }
 
