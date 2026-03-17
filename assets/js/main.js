@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const defaultGuideWindowNoteText = guideWindowNoteEl ? String(guideWindowNoteEl.textContent || '').trim() : '';
     const topCanvas = document.getElementById('top-canvas');
     const ctx = topCanvas.getContext('2d');
+    const lessonTaskLiveChecks = window.lessonTaskLiveChecks || { deriveTaskCheck: () => null };
 
     // Toggle state for relationship lines (must be declared before drawRelationships is called)
     let showRelationships = true;
@@ -356,6 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let storyAutoAdvanceNoticeTimer = null;
     let pendingStoryAdvanceParseResult = null;
     let pendingLessonTaskParseResult = null;
+    let liveLessonTaskEvaluationTimer = null;
     const lessonTaskProgress = new Map();
     const lessonTaskAnimationQueue = new Set();
     const lessonFolderOpenState = new Set();
@@ -1719,6 +1721,185 @@ document.addEventListener('DOMContentLoaded', () => {
         return 'Bedingung: Szenen-Check erfuellen.';
     }
 
+    function normalizeStoryHintSqlText(value = '') {
+        return String(value || '')
+            .replace(/\s+/g, ' ')
+            .trim()
+            .replace(/;+\s*$/u, '');
+    }
+
+    function unwrapStoryHintSqlText(value = '') {
+        let normalized = String(value || '').trim();
+        normalized = normalized.replace(/^\s*Fuehre\s+aus:\s*/iu, '');
+        normalized = normalized.replace(/^\s*Nutze\s+/iu, '');
+        normalized = normalized.trim();
+        const wrappedMatch = normalized.match(/^`(.+)`\.?$/u);
+        if (wrappedMatch) {
+            normalized = String(wrappedMatch[1] || '').trim();
+        }
+        return normalizeStoryHintSqlText(normalized);
+    }
+
+    function looksLikeSqlSolutionText(value = '') {
+        const normalized = String(value || '').trim();
+        if (!normalized) return false;
+        if (!/^(Fuehre\s+aus:|Nutze\b)/iu.test(normalized)) return false;
+        return /\b(SELECT|INSERT\s+INTO|UPDATE|DELETE\s+FROM|CREATE\s+TABLE)\b/iu.test(normalized);
+    }
+
+    function joinStoryHintFragments(fragments = []) {
+        const safeFragments = (Array.isArray(fragments) ? fragments : [])
+            .map((entry) => String(entry || '').trim())
+            .filter(Boolean);
+        if (safeFragments.length === 0) return '';
+        if (safeFragments.length === 1) return safeFragments[0];
+        if (safeFragments.length === 2) return `${safeFragments[0]} und ${safeFragments[1]}`;
+        return `${safeFragments.slice(0, -1).join(', ')} und ${safeFragments[safeFragments.length - 1]}`;
+    }
+
+    function formatStoryHintWrappedList(values = []) {
+        const safeValues = [...new Set((Array.isArray(values) ? values : [])
+            .map((entry) => String(entry || '').trim())
+            .filter(Boolean))];
+        return joinStoryHintFragments(safeValues.map((entry) => `\`${entry}\``));
+    }
+
+    function summarizeStoryCreateTableHint(sql = '') {
+        const normalized = normalizeStoryHintSqlText(sql);
+        const tableMatch = normalized.match(/^CREATE\s+TABLE\s+([A-Za-z_][A-Za-z0-9_]*)\s*\((.+)\)$/iu);
+        if (!tableMatch) {
+            return 'Nutze CREATE TABLE und vergebe die geforderten Datentypen.';
+        }
+
+        const tableName = String(tableMatch[1] || '').trim();
+        const columnDefs = String(tableMatch[2] || '')
+            .split(',')
+            .map((part) => String(part || '').trim())
+            .map((part) => {
+                const match = part.match(/^([A-Za-z_][A-Za-z0-9_]*)\s+([A-Za-z][A-Za-z0-9()]*)/u);
+                if (!match) return '';
+                return `${match[1]} ${String(match[2] || '').toUpperCase()}`;
+            })
+            .filter(Boolean);
+
+        if (columnDefs.length === 0) {
+            return `Lege \`${tableName}\` an und vergebe die geforderten Datentypen.`;
+        }
+
+        return `Lege \`${tableName}\` an und verwende diese Spaltentypen: ${formatStoryHintWrappedList(columnDefs)}.`;
+    }
+
+    function summarizeStoryInsertHint(sql = '') {
+        const normalized = normalizeStoryHintSqlText(sql);
+        const tableMatch = normalized.match(/^INSERT\s+INTO\s+([A-Za-z_][A-Za-z0-9_]*)/iu);
+        if (!tableMatch) {
+            return 'Nutze INSERT INTO und trage die geforderten Werte in die passenden Spalten ein.';
+        }
+
+        const tableName = String(tableMatch[1] || '').trim();
+        return `Nutze INSERT INTO fuer \`${tableName}\` und trage die geforderten Werte in die passenden Spalten ein.`;
+    }
+
+    function summarizeStoryUpdateHint(sql = '') {
+        const normalized = normalizeStoryHintSqlText(sql);
+        const tableMatch = normalized.match(/^UPDATE\s+([A-Za-z_][A-Za-z0-9_]*)\s+/iu);
+        if (!tableMatch) {
+            return 'Nutze UPDATE, setze die benoetigten Werte neu und grenze die betroffenen Zeilen mit WHERE ein.';
+        }
+
+        const tableName = String(tableMatch[1] || '').trim();
+        const setMatch = normalized.match(/\bSET\s+(.+?)(?:\bWHERE\b|$)/iu);
+        const setColumns = String(setMatch?.[1] || '')
+            .split(',')
+            .map((part) => String(part || '').trim())
+            .map((part) => {
+                const match = part.match(/^([A-Za-z_][A-Za-z0-9_]*)\s*=/u);
+                return match ? String(match[1] || '').trim() : '';
+            })
+            .filter(Boolean);
+        const columnText = setColumns.length > 0
+            ? ` und setze ${formatStoryHintWrappedList(setColumns)} neu`
+            : '';
+        const whereText = /\bWHERE\b/iu.test(normalized)
+            ? ' und grenze die betroffenen Zeilen mit WHERE ein'
+            : '';
+        return `Nutze UPDATE auf \`${tableName}\`${columnText}${whereText}.`;
+    }
+
+    function summarizeStoryDeleteHint(sql = '') {
+        const normalized = normalizeStoryHintSqlText(sql);
+        const tableMatch = normalized.match(/^DELETE\s+FROM\s+([A-Za-z_][A-Za-z0-9_]*)/iu);
+        if (!tableMatch) {
+            return 'Nutze DELETE FROM und grenze die betroffenen Zeilen mit WHERE ein.';
+        }
+
+        const tableName = String(tableMatch[1] || '').trim();
+        const whereText = /\bWHERE\b/iu.test(normalized)
+            ? ' und grenze die betroffenen Zeilen mit WHERE ein'
+            : '';
+        return `Nutze DELETE FROM fuer \`${tableName}\`${whereText}.`;
+    }
+
+    function summarizeStorySelectHint(sql = '') {
+        const normalized = normalizeStoryHintSqlText(sql);
+        const tables = [...new Set(
+            [...normalized.matchAll(/\b(?:FROM|JOIN)\s+([A-Za-z_][A-Za-z0-9_]*)\b/giu)]
+                .map((match) => String(match[1] || '').trim())
+                .filter(Boolean)
+        )];
+        const fragments = [];
+
+        if (/\bJOIN\b/iu.test(normalized)) fragments.push('verbinde die Tabellen per JOIN');
+        if (/\bWHERE\b/iu.test(normalized)) fragments.push('filtere mit WHERE');
+        if (/\bGROUP\s+BY\b/iu.test(normalized)) fragments.push('gruppiere mit GROUP BY');
+        if (/\bHAVING\b/iu.test(normalized)) fragments.push('pruefe die Gruppen mit HAVING');
+        if (/\bORDER\s+BY\b/iu.test(normalized)) fragments.push('sortiere mit ORDER BY');
+        if (/\bDISTINCT\b/iu.test(normalized)) fragments.push('verwende DISTINCT');
+        if (/\(\s*SELECT\b/iu.test(normalized)) fragments.push('arbeite mit einer Unterabfrage');
+
+        const aggregateTokens = [];
+        if (/\bCOUNT\s*\(/iu.test(normalized)) aggregateTokens.push('COUNT');
+        if (/\bSUM\s*\(/iu.test(normalized)) aggregateTokens.push('SUM');
+        if (/\bAVG\s*\(/iu.test(normalized)) aggregateTokens.push('AVG');
+        if (aggregateTokens.length > 0) {
+            fragments.push(`nutze ${joinStoryHintFragments(aggregateTokens)} fuer die Auswertung`);
+        }
+
+        const tableText = tables.length > 0
+            ? ` auf ${formatStoryHintWrappedList(tables)}`
+            : '';
+        const fragmentText = joinStoryHintFragments(fragments);
+        if (!fragmentText) {
+            return `Nutze SELECT${tableText}.`;
+        }
+        return `Nutze SELECT${tableText}, ${fragmentText}.`;
+    }
+
+    function summarizeStorySqlHint(sql = '') {
+        const normalized = normalizeStoryHintSqlText(sql);
+        if (!normalized) return '';
+        if (/^CREATE\s+TABLE\b/iu.test(normalized)) return summarizeStoryCreateTableHint(normalized);
+        if (/^INSERT\s+INTO\b/iu.test(normalized)) return summarizeStoryInsertHint(normalized);
+        if (/^UPDATE\b/iu.test(normalized)) return summarizeStoryUpdateHint(normalized);
+        if (/^DELETE\s+FROM\b/iu.test(normalized)) return summarizeStoryDeleteHint(normalized);
+        if (/^SELECT\b/iu.test(normalized)) return summarizeStorySelectHint(normalized);
+        return '';
+    }
+
+    function resolveStorySceneAdvanceHint(scene = null) {
+        if (!scene) return '';
+        const explicitHint = String(scene.advanceHint || '').trim();
+        if (explicitHint && !looksLikeSqlSolutionText(explicitHint)) {
+            return explicitHint;
+        }
+
+        const hintSql = String(scene.starterSql || '').trim() || unwrapStoryHintSqlText(explicitHint);
+        const summarizedHint = summarizeStorySqlHint(hintSql);
+        if (summarizedHint) return summarizedHint;
+        if (explicitHint) return explicitHint;
+        return describeStoryAdvanceRule(scene.advanceOn);
+    }
+
     function getActiveStorySceneData(storyTitleConfig = activeStoryTitleConfig) {
         const storyScenes = collectGuideScenes(storyTitleConfig);
         if (!storyTitleConfig || storyScenes.length === 0) {
@@ -1756,9 +1937,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function getActiveStorySceneAdvanceHint() {
         const { scene } = getActiveStorySceneData(activeStoryTitleConfig);
         if (!scene) return '';
-        const explicitHint = String(scene.advanceHint || '').trim();
-        if (explicitHint) return explicitHint;
-        return describeStoryAdvanceRule(scene.advanceOn);
+        return resolveStorySceneAdvanceHint(scene);
     }
 
     function advanceActiveStorySceneOnSqlSuccess() {
@@ -1892,8 +2071,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (activeScene) {
             const gateEl = document.createElement('div');
             gateEl.className = 'guide-story-gate';
-            const explicitHint = String(activeScene.advanceHint || '').trim();
-            gateEl.textContent = explicitHint || describeStoryAdvanceRule(activeScene.advanceOn);
+            gateEl.textContent = resolveStorySceneAdvanceHint(activeScene);
             header.appendChild(gateEl);
 
             if (activeScene.sceneTitle || activeScene.objective) {
@@ -2072,12 +2250,20 @@ document.addEventListener('DOMContentLoaded', () => {
             ? node.bodyLines.join('\n').trim()
             : String(node?.body || '').trim();
         const tasks = Array.isArray(node?.tasks)
-            ? node.tasks.map((task, taskIndex) => ({
-                id: String(task?.id || `${safeId}-task-${taskIndex + 1}`).trim() || `${safeId}-task-${taskIndex + 1}`,
-                text: String(task?.text || 'Aufgabe'),
-                check: task?.check || null,
-                unlockIds: normalizeSqlCoreUnlockInputIds(task?.unlockIds || [])
-            }))
+            ? node.tasks.map((task, taskIndex) => {
+                const taskText = String(task?.text || 'Aufgabe');
+                const derivedCheck = task?.check || lessonTaskLiveChecks.deriveTaskCheck(taskText, {
+                    lessonTitle: safeTitle,
+                    lessonBody: bodyText,
+                    keyword: safeKeyword
+                });
+                return {
+                    id: String(task?.id || `${safeId}-task-${taskIndex + 1}`).trim() || `${safeId}-task-${taskIndex + 1}`,
+                    text: taskText,
+                    check: derivedCheck || null,
+                    unlockIds: normalizeSqlCoreUnlockInputIds(task?.unlockIds || [])
+                };
+            })
             : [];
         const children = Array.isArray(node?.children)
             ? node.children.map((child, childIndex) => normalizeLessonNode(child, safeId, childIndex + 1))
@@ -2679,6 +2865,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 900);
     }
 
+    function evaluateActiveLessonTasksFromEditor() {
+        if (!activeLessonConfig || !Array.isArray(activeLessonConfig.tasks) || activeLessonConfig.tasks.length === 0) return;
+        const sql = String(editor.getValue() || '').trim();
+        if (!sql) return;
+        const parseResult = parser.parse(sql);
+        if (!parseResult || parseResult.error || hasErrorDiagnostics(parseResult.diagnostics || [])) return;
+        evaluateActiveLessonTasks(parseResult);
+    }
+
+    function scheduleLiveLessonTaskEvaluation(delayMs = 140) {
+        if (liveLessonTaskEvaluationTimer) {
+            clearTimeout(liveLessonTaskEvaluationTimer);
+            liveLessonTaskEvaluationTimer = null;
+        }
+        liveLessonTaskEvaluationTimer = window.setTimeout(() => {
+            liveLessonTaskEvaluationTimer = null;
+            evaluateActiveLessonTasksFromEditor();
+        }, Math.max(0, Number(delayMs) || 0));
+    }
+
     function applySimulationDataSnapshot(snapshot, options = {}) {
         const { setAsBaseline = true, clearUi = true } = options;
         const normalized = normalizeSimulationDataShape(deepClone(snapshot));
@@ -2730,6 +2936,7 @@ document.addEventListener('DOMContentLoaded', () => {
         activeLessonConfig = lesson;
         renderLessonTree(tutorialTreeModel);
         updateGuideWindowStoryHint();
+        scheduleLiveLessonTaskEvaluation(0);
 
         const snapshot = lesson.databaseSnapshot || tool.databaseSnapshot || createEmptySimulationData();
         applySimulationDataSnapshot(snapshot, { setAsBaseline: true, clearUi: true });
@@ -4880,6 +5087,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resetProcessLogEntries();
         renderDiagnostics([]);
         scheduleIntellisensePopupPosition();
+        scheduleLiveLessonTaskEvaluation();
     });
 
     editor.on('cursorActivity', () => {
