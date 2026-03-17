@@ -2683,6 +2683,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!tool) return;
         const lesson = getLessonById(tool, lessonId) || tool.lessons?.[0] || null;
         if (!lesson) return;
+        if (tool.id === activeToolId && lesson.id === activeLessonId && activeLessonConfig === lesson) return;
 
         activeToolId = tool.id;
         activeLessonId = lesson.id;
