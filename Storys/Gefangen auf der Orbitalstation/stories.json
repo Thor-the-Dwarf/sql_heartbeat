@@ -1,0 +1,396 @@
+{
+  "$schema": "./stories.schema.json",
+  "rootLabel": "Storys",
+  "titles": [
+    {
+      "id": "story-orbitarchiv-01",
+      "title": "Kapitel 1: Die versiegelte Schleuse",
+      "treeLabel": "1 Die versiegelte Schleuse",
+      "subtitle": "Der erste Zugang zum Orbit-Archiv",
+      "stepLabel": "1 / 15",
+      "status": "aktiv",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 1",
+          "speaker": "Leona",
+          "text": "Willkommen im Orbit-Archiv. Ohne Stationsregister bleibt die Hauptschleuse verriegelt.",
+          "objective": "Lege die Tabelle `story_stationen` mit `station_id`, `name`, `sektor` an.",
+          "advanceHint": "Nutze CREATE TABLE story_stationen (...).",
+          "editorComment": "Mission: Grundstruktur der Stationen erstellen.",
+          "starterSql": "CREATE TABLE story_stationen (\n  station_id INTEGER,\n  name TEXT,\n  sektor TEXT\n);",
+          "successMessage": "Schleuse geoeffnet. Das Archiv nimmt die ersten Stationen an.",
+          "advanceOn": {
+            "all": [
+              { "type": "statement-contains", "tokens": ["CREATE", "TABLE"] },
+              { "type": "statement-contains", "tokens": ["STORY_STATIONEN"] }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-orbitarchiv-02",
+      "title": "Kapitel 2: Vier Signale im Dunkel",
+      "treeLabel": "2 Vier Signale im Dunkel",
+      "subtitle": "Die Stationen werden eingetragen",
+      "stepLabel": "2 / 15",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 2",
+          "speaker": "Kian",
+          "text": "Wir empfangen vier alte Rufzeichen. Trage sie ein, bevor sie wieder verschwinden.",
+          "objective": "Fuege 4 Datensaetze in `story_stationen` ein: Aegis/Nord, Boreal/Ost, Cirrus/Nord, Dorian/Sued.",
+          "advanceHint": "Nach den INSERTs muss `story_stationen` genau 4 Zeilen haben.",
+          "editorComment": "Mission: Stationsdaten einpflegen.",
+          "starterSql": "INSERT INTO story_stationen (station_id, name, sektor) VALUES (1, 'Aegis', 'Nord');\nINSERT INTO story_stationen (station_id, name, sektor) VALUES (2, 'Boreal', 'Ost');\nINSERT INTO story_stationen (station_id, name, sektor) VALUES (3, 'Cirrus', 'Nord');\nINSERT INTO story_stationen (station_id, name, sektor) VALUES (4, 'Dorian', 'Sued');",
+          "successMessage": "Vier Stationen online. Der Sektorplan ist stabil.",
+          "advanceOn": {
+            "type": "row-count",
+            "table": "story_stationen",
+            "value": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-orbitarchiv-03",
+      "title": "Kapitel 3: Die Artefaktkammer",
+      "treeLabel": "3 Die Artefaktkammer",
+      "subtitle": "Objekte brauchen Struktur",
+      "stepLabel": "3 / 15",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 3",
+          "speaker": "Leona",
+          "text": "Die Funde aus dem Aussenring liegen ungeordnet. Wir brauchen ein Artefaktregister.",
+          "objective": "Erstelle `story_artefakte` mit `artefakt_id`, `codename`, `station_id`, `risiko`.",
+          "advanceHint": "Nutze CREATE TABLE story_artefakte (...).",
+          "editorComment": "Mission: Artefaktstruktur anlegen.",
+          "starterSql": "CREATE TABLE story_artefakte (\n  artefakt_id INTEGER,\n  codename TEXT,\n  station_id INTEGER,\n  risiko INTEGER\n);",
+          "successMessage": "Artefaktkammer verknuepft. Inventar kann geladen werden.",
+          "advanceOn": {
+            "type": "table-columns",
+            "table": "story_artefakte",
+            "columns": ["artefakt_id", "codename", "station_id", "risiko"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-orbitarchiv-04",
+      "title": "Kapitel 4: Fuenf Objekte, ein Muster",
+      "treeLabel": "4 Fuenf Objekte, ein Muster",
+      "subtitle": "Das Register fuellt sich",
+      "stepLabel": "4 / 15",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 4",
+          "speaker": "Rana",
+          "text": "Die Codenamen tragen ein klares Risikomuster. Trage alle Funde vollstaendig ein.",
+          "objective": "Fuege 5 Artefakte ein: Helios(1,6), Nyx(2,8), Orion(3,7), Gaia(4,4), Vela(1,9).",
+          "advanceHint": "Kontrolle: `story_artefakte` hat 5 Zeilen.",
+          "editorComment": "Mission: Artefaktdaten erfassen.",
+          "starterSql": "INSERT INTO story_artefakte (artefakt_id, codename, station_id, risiko) VALUES (101, 'Helios', 1, 6);\nINSERT INTO story_artefakte (artefakt_id, codename, station_id, risiko) VALUES (102, 'Nyx', 2, 8);\nINSERT INTO story_artefakte (artefakt_id, codename, station_id, risiko) VALUES (103, 'Orion', 3, 7);\nINSERT INTO story_artefakte (artefakt_id, codename, station_id, risiko) VALUES (104, 'Gaia', 4, 4);\nINSERT INTO story_artefakte (artefakt_id, codename, station_id, risiko) VALUES (105, 'Vela', 1, 9);",
+          "successMessage": "Artefaktliste komplett. Das Muster wird sichtbar.",
+          "advanceOn": {
+            "all": [
+              { "type": "row-count", "table": "story_artefakte", "value": 5 },
+              { "type": "row-exists", "table": "story_artefakte", "where": { "codename": "Nyx", "risiko": 8 } }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-orbitarchiv-05",
+      "title": "Kapitel 5: Logbuch unter Spannung",
+      "treeLabel": "5 Logbuch unter Spannung",
+      "subtitle": "Jede Bewegung braucht ein Protokoll",
+      "stepLabel": "5 / 15",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 5",
+          "speaker": "Kian",
+          "text": "Ohne Logbuch koennen wir keine Entscheidungen absichern. Baue das Protokollschema.",
+          "objective": "Erstelle `story_logs` mit `log_id`, `artefakt_id`, `status`.",
+          "advanceHint": "Nutze CREATE TABLE story_logs (...).",
+          "editorComment": "Mission: Logstruktur vorbereiten.",
+          "starterSql": "CREATE TABLE story_logs (\n  log_id INTEGER,\n  artefakt_id INTEGER,\n  status TEXT\n);",
+          "successMessage": "Logbuch bereit. Jetzt koennen wir den Verlauf lesen.",
+          "advanceOn": {
+            "type": "table-columns",
+            "table": "story_logs",
+            "columns": ["log_id", "artefakt_id", "status"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-orbitarchiv-06",
+      "title": "Kapitel 6: Signale aus dem Kern",
+      "treeLabel": "6 Signale aus dem Kern",
+      "subtitle": "Statusdaten treffen ein",
+      "stepLabel": "6 / 15",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 6",
+          "speaker": "Rana",
+          "text": "Sechs Kernmeldungen sind eingetroffen. Wir brauchen sie fuer jede spaetere Analyse.",
+          "objective": "Fuege 6 Logs ein: (1001,101,offen), (1002,102,offen), (1003,103,analyse), (1004,104,verworfen), (1005,105,analyse), (1006,105,offen).",
+          "advanceHint": "Kontrolle: `story_logs` hat 6 Zeilen.",
+          "editorComment": "Mission: Logeintraege laden.",
+          "starterSql": "INSERT INTO story_logs (log_id, artefakt_id, status) VALUES (1001, 101, 'offen');\nINSERT INTO story_logs (log_id, artefakt_id, status) VALUES (1002, 102, 'offen');\nINSERT INTO story_logs (log_id, artefakt_id, status) VALUES (1003, 103, 'analyse');\nINSERT INTO story_logs (log_id, artefakt_id, status) VALUES (1004, 104, 'verworfen');\nINSERT INTO story_logs (log_id, artefakt_id, status) VALUES (1005, 105, 'analyse');\nINSERT INTO story_logs (log_id, artefakt_id, status) VALUES (1006, 105, 'offen');",
+          "successMessage": "Signalchronik steht. Wir koennen erstmals sauber filtern.",
+          "advanceOn": {
+            "all": [
+              { "type": "row-count", "table": "story_logs", "value": 6 },
+              { "type": "row-exists", "table": "story_logs", "where": { "log_id": 1004, "status": "verworfen" } }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-orbitarchiv-07",
+      "title": "Kapitel 7: Die Risikolinse",
+      "treeLabel": "7 Die Risikolinse",
+      "subtitle": "Kritische Objekte isolieren",
+      "stepLabel": "7 / 15",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 7",
+          "speaker": "Leona",
+          "text": "Zeige mir nur die wirklich kritischen Artefakte. Wir priorisieren auf Sicht.",
+          "objective": "Selektiere `codename, risiko` aus `story_artefakte` fuer `risiko >= 7`, sortiert nach `risiko DESC`.",
+          "advanceHint": "Erwartet: Vela(9), Nyx(8), Orion(7).",
+          "editorComment": "Mission: Kritische Artefakte abfragen.",
+          "starterSql": "SELECT codename, risiko\nFROM story_artefakte\nWHERE risiko >= 7\nORDER BY risiko DESC;",
+          "successMessage": "Risikolinse aktiv. Prioritaet steht.",
+          "advanceOn": {
+            "type": "result-equals",
+            "columns": ["codename", "risiko"],
+            "rows": [["Vela", 9], ["Nyx", 8], ["Orion", 7]],
+            "rowOrder": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-orbitarchiv-08",
+      "title": "Kapitel 8: Korridor Nord",
+      "treeLabel": "8 Korridor Nord",
+      "subtitle": "Verknuepfung bringt Klarheit",
+      "stepLabel": "8 / 15",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 8",
+          "speaker": "Kian",
+          "text": "Nur der Nordkorridor zeigt das wiederkehrende Signal. Wir muessen Tabellen verbinden.",
+          "objective": "Fuehre einen JOIN von `story_artefakte` und `story_stationen` aus und zeige `codename, station, sektor` fuer Nord + Risiko >= 7, sortiert nach `codename`.",
+          "advanceHint": "Alias-Beispiel: `s.name AS station`.",
+          "editorComment": "Mission: JOIN fuer Sektor-Analyse.",
+          "starterSql": "SELECT a.codename, s.name AS station, s.sektor\nFROM story_artefakte a\nINNER JOIN story_stationen s ON s.station_id = a.station_id\nWHERE s.sektor = 'Nord' AND a.risiko >= 7\nORDER BY a.codename;",
+          "successMessage": "Nordkorridor entschluesselt. Zwei Spuren bleiben.",
+          "advanceOn": {
+            "type": "result-equals",
+            "columns": ["codename", "station", "sektor"],
+            "rows": [["Orion", "Cirrus", "Nord"], ["Vela", "Aegis", "Nord"]],
+            "rowOrder": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-orbitarchiv-09",
+      "title": "Kapitel 9: Korrekturprotokoll Helios",
+      "treeLabel": "9 Korrekturprotokoll Helios",
+      "subtitle": "Ein Risikowert war falsch",
+      "stepLabel": "9 / 15",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 9",
+          "speaker": "Rana",
+          "text": "Helios wurde zu niedrig eingestuft. Korrigiere den Datensatz auf das neue Sicherheitsniveau.",
+          "objective": "Setze in `story_artefakte` den `risiko` von Helios (`artefakt_id = 101`) auf `9`.",
+          "advanceHint": "Nutze UPDATE ... SET risiko = 9 WHERE artefakt_id = 101.",
+          "editorComment": "Mission: Risikowert aktualisieren.",
+          "starterSql": "UPDATE story_artefakte\nSET risiko = 9\nWHERE artefakt_id = 101;",
+          "successMessage": "Helios neu bewertet. Die Gefahrenmatrix ist aktuell.",
+          "advanceOn": {
+            "type": "row-exists",
+            "table": "story_artefakte",
+            "where": {
+              "artefakt_id": 101,
+              "risiko": 9
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-orbitarchiv-10",
+      "title": "Kapitel 10: Die stille Akte",
+      "treeLabel": "10 Die stille Akte",
+      "subtitle": "Veraltete Logeintraege entfernen",
+      "stepLabel": "10 / 15",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 10",
+          "speaker": "Leona",
+          "text": "Der Status 'verworfen' blockiert Auswertungen. Wir entfernen diese Akte vollstaendig.",
+          "objective": "Loesche alle Zeilen aus `story_logs` mit `status = 'verworfen'`.",
+          "advanceHint": "Nutze DELETE FROM story_logs WHERE status = 'verworfen'.",
+          "editorComment": "Mission: Logbereinigung.",
+          "starterSql": "DELETE FROM story_logs\nWHERE status = 'verworfen';",
+          "successMessage": "Bereinigung abgeschlossen. Nur relevante Signale bleiben.",
+          "advanceOn": {
+            "type": "row-missing",
+            "table": "story_logs",
+            "where": {
+              "status": "verworfen"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-orbitarchiv-11",
+      "title": "Kapitel 11: Lagebild der Leitstelle",
+      "treeLabel": "11 Lagebild der Leitstelle",
+      "subtitle": "Statusgruppen zaehlen",
+      "stepLabel": "11 / 15",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 11",
+          "speaker": "Kian",
+          "text": "Jetzt brauchen wir nur noch die aggregierte Sicht: wie viele Logs pro Status?",
+          "objective": "Gib `status, COUNT(*) AS anzahl` aus `story_logs` gruppiert nach `status`, sortiert nach `status`.",
+          "advanceHint": "Erwartet: analyse=2, offen=3.",
+          "editorComment": "Mission: GROUP BY auf Logstatus.",
+          "starterSql": "SELECT status, COUNT(*) AS anzahl\nFROM story_logs\nGROUP BY status\nORDER BY status;",
+          "successMessage": "Leitstellenreport erstellt. Muster bestaetigt.",
+          "advanceOn": {
+            "type": "result-equals",
+            "columns": ["status", "anzahl"],
+            "rows": [["analyse", 2], ["offen", 3]],
+            "rowOrder": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-orbitarchiv-12",
+      "title": "Kapitel 12: Prioritaet offen",
+      "treeLabel": "12 Prioritaet offen",
+      "subtitle": "Nur starke Gruppen behalten",
+      "stepLabel": "12 / 15",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 12",
+          "speaker": "Rana",
+          "text": "Filtere die Aggregation auf die dominante Gruppe. Wir brauchen den Engpass sofort.",
+          "objective": "Zeige per HAVING nur Statusgruppen mit mindestens 3 Eintraegen als `status, anzahl`.",
+          "advanceHint": "Erwartet genau eine Zeile: offen, 3.",
+          "editorComment": "Mission: HAVING-Bedingung anwenden.",
+          "starterSql": "SELECT status, COUNT(*) AS anzahl\nFROM story_logs\nGROUP BY status\nHAVING COUNT(*) >= 3;",
+          "successMessage": "Engpass isoliert. Fokus liegt auf offenen Signalen.",
+          "advanceOn": {
+            "type": "result-equals",
+            "columns": ["status", "anzahl"],
+            "rows": [["offen", 3]],
+            "rowOrder": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-orbitarchiv-13",
+      "title": "Kapitel 13: Kartierung der Sektoren",
+      "treeLabel": "13 Kartierung der Sektoren",
+      "subtitle": "Duplikate entfernen",
+      "stepLabel": "13 / 15",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 13",
+          "speaker": "Leona",
+          "text": "Der Lageplan zeigt Sektoren mehrfach. Gib mir jede Zone genau einmal.",
+          "objective": "Liefere die unterschiedlichen Werte von `sektor` aus `story_stationen`, sortiert.",
+          "advanceHint": "Nutze SELECT DISTINCT sektor ... ORDER BY sektor.",
+          "editorComment": "Mission: DISTINCT fuer Sektoruebersicht.",
+          "starterSql": "SELECT DISTINCT sektor\nFROM story_stationen\nORDER BY sektor;",
+          "successMessage": "Sektorbild bereinigt. Navigation ist eindeutig.",
+          "advanceOn": {
+            "type": "result-equals",
+            "columns": ["sektor"],
+            "rows": [["Nord"], ["Ost"], ["Sued"]],
+            "rowOrder": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-orbitarchiv-14",
+      "title": "Kapitel 14: Der verborgene Quellpunkt",
+      "treeLabel": "14 Der verborgene Quellpunkt",
+      "subtitle": "Unterabfrage auf Hochrisiko",
+      "stepLabel": "14 / 15",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 14",
+          "speaker": "Kian",
+          "text": "Der Quellpunkt sitzt dort, wo mindestens ein Hochrisiko-Artefakt liegt. Finde die Stationen.",
+          "objective": "Nutze eine Unterabfrage (`IN`), um Stationsnamen mit Artefakten `risiko >= 8` zu finden.",
+          "advanceHint": "Erwartet: Aegis und Boreal.",
+          "editorComment": "Mission: IN-Unterabfrage einsetzen.",
+          "starterSql": "SELECT name\nFROM story_stationen\nWHERE station_id IN (\n  SELECT station_id\n  FROM story_artefakte\n  WHERE risiko >= 8\n)\nORDER BY name;",
+          "successMessage": "Quellpunkt geortet. Nur zwei Stationen bleiben uebrig.",
+          "advanceOn": {
+            "type": "result-equals",
+            "columns": ["name"],
+            "rows": [["Aegis"], ["Boreal"]],
+            "rowOrder": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-orbitarchiv-15",
+      "title": "Kapitel 15: Die letzte Auswertung",
+      "treeLabel": "15 Die letzte Auswertung",
+      "subtitle": "Finalbericht fuer den Archivrat",
+      "stepLabel": "15 / 15",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 15",
+          "speaker": "Leona",
+          "text": "Zum Abschluss brauchen wir den Vollbericht: kritische Artefakte pro Station, inklusive leerer Stationen.",
+          "objective": "Erzeuge per LEFT JOIN einen Report `name, kritische_anzahl` fuer Artefakte mit `risiko >= 7`, sortiert nach Anzahl absteigend, dann Name.",
+          "advanceHint": "Erwartet: Aegis 2, Boreal 1, Cirrus 1, Dorian 0.",
+          "editorComment": "Mission: Finales JOIN+GROUP BY Reporting.",
+          "starterSql": "SELECT s.name, COUNT(a.artefakt_id) AS kritische_anzahl\nFROM story_stationen s\nLEFT JOIN story_artefakte a\n  ON a.station_id = s.station_id AND a.risiko >= 7\nGROUP BY s.station_id, s.name\nORDER BY kritische_anzahl DESC, s.name;",
+          "successMessage": "Archivrat informiert. Die Chronik des Orbit-Archivs ist abgeschlossen.",
+          "advanceOn": {
+            "type": "result-equals",
+            "columns": ["name", "kritische_anzahl"],
+            "rows": [["Aegis", 2], ["Boreal", 1], ["Cirrus", 1], ["Dorian", 0]],
+            "rowOrder": true
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -2,7 +2,6 @@
 
 # Internal workspaces and documentation
 /__*/
-/Storys/
 
 # Generated artifacts and local progress
 /output/

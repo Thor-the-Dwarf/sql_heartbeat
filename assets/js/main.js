@@ -263,13 +263,63 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
     const LESSON_MODE_STORAGE_KEY = 'sql-heartbeat.foldertree.mode.v2';
-    const STORY_SOURCE_INDEX_PATH = 'Storys/stories.index.json';
-    const STORY_SOURCE_FALLBACKS = [
-        'Storys/Gefangen auf der Orbitalstation/stories.json',
-        'Storys/Flucht aus der Zitadelle/stories.json',
-        'app-data/stories.json'
-    ];
-    const DEFAULT_ACTIVE_STORY_PATH = 'Storys/Flucht aus der Zitadelle/stories.json';
+    const STORY_SOURCE_INDEX_PATH = 'app-data/stories.index.json';
+    const STORY_SOURCE_FALLBACKS_BY_MODE = {
+        easy: [
+            {
+                path: 'Storys/Flucht aus der Zitadelle/stories.json',
+                label: 'Flucht aus der Zitadelle'
+            },
+            {
+                path: 'Storys/Das Geheimnis des Markthofs/stories.json',
+                label: 'Das Geheimnis des Markthofs'
+            },
+            {
+                path: 'Storys/Die Händler von Rabensand/stories.json',
+                label: 'Die Händler von Rabensand',
+                optional: true
+            }
+        ],
+        medium: [
+            {
+                path: 'Storys/Das Gold der Kupfermine/stories.json',
+                label: 'Das Gold der Kupfermine'
+            },
+            {
+                path: 'Storys/Das Siegel der Kronfeste/stories.json',
+                label: 'Das Siegel der Kronfeste',
+                optional: true
+            },
+            {
+                path: 'Storys/Die Spur des Schmugglers/stories.json',
+                label: 'Die Spur des Schmugglers',
+                optional: true
+            }
+        ],
+        hard: [
+            {
+                path: 'Storys/Sturm auf den Wachturm/stories.json',
+                label: 'Sturm auf den Wachturm',
+                optional: true
+            },
+            {
+                path: 'Storys/Die Tore von Steinbruch/stories.json',
+                label: 'Die Tore von Steinbruch',
+                optional: true
+            },
+            {
+                path: 'Storys/Der letzte Kurier von Dornwall/stories.json',
+                label: 'Der letzte Kurier von Dornwall',
+                optional: true
+            }
+        ]
+    };
+    const DEFAULT_ACTIVE_STORY_PATH_BY_MODE = {
+        easy: 'Storys/Flucht aus der Zitadelle/stories.json',
+        medium: 'Storys/Das Gold der Kupfermine/stories.json',
+        hard: 'Storys/Sturm auf den Wachturm/stories.json'
+    };
+    const DEFAULT_ACTIVE_STORY_PATH = DEFAULT_ACTIVE_STORY_PATH_BY_MODE.easy;
     const STORY_SHOW_ALL_FOR_TEST = true;
     const LESSON_MODE_CONFIG = {
         easy: {
@@ -1152,7 +1202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function resolveStorySourceConfig(mode = activeLessonMode) {
         const resolvedMode = resolveLessonMode(mode);
         let rootLabel = STORY_TREE_FALLBACK.rootLabel;
-        let defaultStoryPath = DEFAULT_ACTIVE_STORY_PATH;
+        let defaultStoryPath = String(DEFAULT_ACTIVE_STORY_PATH_BY_MODE[resolvedMode] || DEFAULT_ACTIVE_STORY_PATH).trim() || DEFAULT_ACTIVE_STORY_PATH;
 
         try {
             const response = await fetch(encodeURI(STORY_SOURCE_INDEX_PATH), { cache: 'no-store' });
@@ -1193,7 +1243,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return {
             rootLabel,
             defaultStoryPath,
-            sourceEntries: normalizeStorySourceEntries(STORY_SOURCE_FALLBACKS)
+            sourceEntries: normalizeStorySourceEntries(
+                STORY_SOURCE_FALLBACKS_BY_MODE[resolvedMode]
+                || STORY_SOURCE_FALLBACKS_BY_MODE.easy
+                || []
+            )
         };
     }
 

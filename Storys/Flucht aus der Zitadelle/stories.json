@@ -1,0 +1,1956 @@
+{
+  "$schema": "./stories.schema.json",
+  "rootLabel": "Storys",
+  "titles": [
+    {
+      "id": "story-oberburg-00",
+      "title": "Schritt 0: Blick ueber die Bezirke",
+      "treeLabel": "0 Blick ueber die Bezirke",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "1 / 34",
+      "status": "aktiv",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 0",
+          "speaker": "Gerold",
+          "text": "Was fuer ein Durcheinander. Zeig mir zuerst die Bezirke der Burganlage.",
+          "objective": "Zeige alle Bezirke.",
+          "advanceHint": "Fuehre aus: SELECT * FROM bezirk;",
+          "editorComment": "Mission 0: Blick ueber die Bezirke",
+          "starterSql": "SELECT * FROM bezirk;",
+          "successMessage": "Schritt 0 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FROM"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEZIRK"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-01",
+      "title": "Schritt 1: Alle Bewohner erfassen",
+      "treeLabel": "1 Alle Bewohner erfassen",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "2 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 1",
+          "speaker": "Gerold",
+          "text": "Und dann ein Gesamtbild: Wer lebt hier ueberhaupt?",
+          "objective": "Zeige alle Bewohner.",
+          "advanceHint": "Fuehre aus: SELECT * FROM bewohner;",
+          "editorComment": "Mission 1: Alle Bewohner erfassen",
+          "starterSql": "SELECT * FROM bewohner;",
+          "successMessage": "Schritt 1 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FROM"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-02",
+      "title": "Schritt 2: Die Koeche finden",
+      "treeLabel": "2 Die Koeche finden",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "3 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 2",
+          "speaker": "Gerold",
+          "text": "Mein Magen knurrt. Zeig mir alle Koeche in der Burg.",
+          "objective": "Zeige alle Koeche.",
+          "advanceHint": "Fuehre aus: SELECT * FROM bewohner WHERE beruf = 'Koch';",
+          "editorComment": "Mission 2: Die Koeche finden",
+          "starterSql": "SELECT * FROM bewohner WHERE beruf = 'Koch';",
+          "successMessage": "Schritt 2 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FROM"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BERUF"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "KOCH"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-03",
+      "title": "Schritt 3: Friedliche Bewohner",
+      "treeLabel": "3 Friedliche Bewohner",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "4 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 3",
+          "speaker": "Gerold",
+          "text": "Hier ist es unruhig. Wir sprechen zuerst nur mit Friedlichen.",
+          "objective": "Zeige alle friedlichen Bewohner.",
+          "advanceHint": "Fuehre aus: SELECT * FROM bewohner WHERE status = 'friedlich';",
+          "editorComment": "Mission 3: Friedliche Bewohner",
+          "starterSql": "SELECT * FROM bewohner WHERE status = 'friedlich';",
+          "successMessage": "Schritt 3 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FROM"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "STATUS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FRIEDLICH"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-04",
+      "title": "Schritt 4: Friedliche Waffenschmiede",
+      "treeLabel": "4 Friedliche Waffenschmiede",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "5 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 4",
+          "speaker": "Gerold",
+          "text": "Fruher oder spaeter brauchen wir Klingen. Aber nur bei sicheren Leuten.",
+          "objective": "Zeige alle friedlichen Waffenschmiede.",
+          "advanceHint": "Fuehre aus: SELECT * FROM bewohner WHERE status = 'friedlich' AND beruf = 'Waffenschmied';",
+          "editorComment": "Mission 4: Friedliche Waffenschmiede",
+          "starterSql": "SELECT * FROM bewohner WHERE status = 'friedlich' AND beruf = 'Waffenschmied';",
+          "successMessage": "Schritt 4 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "STATUS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FRIEDLICH"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BERUF"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "WAFFENSCHMIED"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-05",
+      "title": "Schritt 5: Beruf endet auf schmied",
+      "treeLabel": "5 Beruf endet auf schmied",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "6 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 5",
+          "speaker": "Gerold",
+          "text": "Hm, das ist besser. Such alle friedlichen, deren Beruf auf schmied endet.",
+          "objective": "Zeige friedliche Bewohner mit Beruf LIKE %schmied.",
+          "advanceHint": "Fuehre aus: SELECT * FROM bewohner WHERE status = 'friedlich' AND beruf LIKE '%schmied';",
+          "editorComment": "Mission 5: Beruf endet auf schmied",
+          "starterSql": "SELECT * FROM bewohner WHERE status = 'friedlich' AND beruf LIKE '%schmied';",
+          "successMessage": "Schritt 5 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "STATUS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FRIEDLICH"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "LIKE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SCHMIED"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-06",
+      "title": "Schritt 6: Eintrag im Vorhof",
+      "treeLabel": "6 Eintrag im Vorhof",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "7 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 6",
+          "speaker": "Gerold",
+          "text": "Hallo Fremde. Wenn du raus willst, brauchst du erst einen offiziellen Eintrag.",
+          "objective": "Fuege dich als neue Bewohnerin (bewohnernr 20) in den Vorhof ein.",
+          "advanceHint": "Fuehre aus: INSERT INTO bewohner (bewohnernr, name, bezirknr, geschlecht, beruf, gold, status) VALUES (20, 'Fremde', 1, 'w', 'Unbekannt', 0, 'wachsam');",
+          "editorComment": "Mission 6: Eintrag im Vorhof",
+          "starterSql": "INSERT INTO bewohner (bewohnernr, name, bezirknr, geschlecht, beruf, gold, status) VALUES (20, 'Fremde', 1, 'w', 'Unbekannt', 0, 'wachsam');",
+          "successMessage": "Schritt 6 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "INSERT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "INTO"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FREMDE"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-07",
+      "title": "Schritt 7: Bewohnernummer finden",
+      "treeLabel": "7 Bewohnernummer finden",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "8 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 7",
+          "speaker": "Gerold",
+          "text": "Hey, nenn mir deine Nummer. Ohne Nummer kein Fluchtplan.",
+          "objective": "Zeige meine Bewohnernummer.",
+          "advanceHint": "Fuehre aus: SELECT bewohnernr FROM bewohner WHERE name = 'Fremde';",
+          "editorComment": "Mission 7: Bewohnernummer finden",
+          "starterSql": "SELECT bewohnernr FROM bewohner WHERE name = 'Fremde';",
+          "successMessage": "Schritt 7 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNERNR"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FREMDE"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-08",
+      "title": "Schritt 8: Goldstand pruefen",
+      "treeLabel": "8 Goldstand pruefen",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "9 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 8",
+          "speaker": "Gerold",
+          "text": "Hallo Gerold. Bevor wir handeln, zeig deinen aktuellen Goldstand.",
+          "objective": "Zeige mein aktuelles Gold.",
+          "advanceHint": "Fuehre aus: SELECT gold FROM bewohner WHERE bewohnernr = 20;",
+          "editorComment": "Mission 8: Goldstand pruefen",
+          "starterSql": "SELECT gold FROM bewohner WHERE bewohnernr = 20;",
+          "successMessage": "Schritt 8 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GOLD"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNERNR"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-09",
+      "title": "Schritt 9: Herrenlose Gegenstaende",
+      "treeLabel": "9 Herrenlose Gegenstaende",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "10 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 9",
+          "speaker": "Gerold",
+          "text": "Mist, ich hab keine Ausruestung. Such alle herrenlosen Gegenstaende.",
+          "objective": "Zeige alle herrenlosen Gegenstaende.",
+          "advanceHint": "Fuehre aus: SELECT * FROM gegenstand WHERE besitzer IS NULL;",
+          "editorComment": "Mission 9: Herrenlose Gegenstaende",
+          "starterSql": "SELECT * FROM gegenstand WHERE besitzer IS NULL;",
+          "successMessage": "Schritt 9 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GEGENSTAND"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BESITZER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "NULL"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-10",
+      "title": "Schritt 10: Kupferbecher sichern",
+      "treeLabel": "10 Kupferbecher sichern",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "11 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 10",
+          "speaker": "Gerold",
+          "text": "Nehmen wir den Kupferbecher als Start. Trag ihn in meinen Besitz ein.",
+          "objective": "Setze den Besitzer des Kupferbechers auf 20.",
+          "advanceHint": "Fuehre aus: UPDATE gegenstand SET besitzer = 20 WHERE gegenstand = 'Kupferbecher';",
+          "editorComment": "Mission 10: Kupferbecher sichern",
+          "starterSql": "UPDATE gegenstand SET besitzer = 20 WHERE gegenstand = 'Kupferbecher';",
+          "successMessage": "Schritt 10 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "UPDATE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GEGENSTAND"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SET"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BESITZER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "KUPFERBECHER"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-11",
+      "title": "Schritt 11: Alles herrenlose einsammeln",
+      "treeLabel": "11 Alles herrenlose einsammeln",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "12 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 11",
+          "speaker": "Gerold",
+          "text": "Jaeh! Sammle jetzt den Rest der herrenlosen Gegenstaende ein.",
+          "objective": "Setze Besitzer = 20 fuer alle herrenlosen Gegenstaende.",
+          "advanceHint": "Fuehre aus: UPDATE gegenstand SET besitzer = 20 WHERE besitzer IS NULL;",
+          "editorComment": "Mission 11: Alles herrenlose einsammeln",
+          "starterSql": "UPDATE gegenstand SET besitzer = 20 WHERE besitzer IS NULL;",
+          "successMessage": "Schritt 11 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "UPDATE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GEGENSTAND"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BESITZER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "NULL"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-12",
+      "title": "Schritt 12: Inventar anzeigen",
+      "treeLabel": "12 Inventar anzeigen",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "13 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 12",
+          "speaker": "Gerold",
+          "text": "Jawoll! Jetzt zeig mir alles, was in meinem Besitz liegt.",
+          "objective": "Zeige alle Gegenstaende mit Besitzer 20.",
+          "advanceHint": "Fuehre aus: SELECT * FROM gegenstand WHERE besitzer = 20;",
+          "editorComment": "Mission 12: Inventar anzeigen",
+          "starterSql": "SELECT * FROM gegenstand WHERE besitzer = 20;",
+          "successMessage": "Schritt 12 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GEGENSTAND"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BESITZER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-13",
+      "title": "Schritt 13: Friedliche Haendler und Kaufleute",
+      "treeLabel": "13 Friedliche Haendler und Kaufleute",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "14 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 13",
+          "speaker": "Gerold",
+          "text": "Finde friedliche Verhandler. Wir brauchen Kontakte fuer die Flucht.",
+          "objective": "Zeige friedliche Haendler und Kaufleute.",
+          "advanceHint": "Fuehre aus: SELECT * FROM bewohner WHERE status = 'friedlich' AND (beruf = 'Haendler' OR beruf = 'Kaufmann');",
+          "editorComment": "Mission 13: Friedliche Haendler und Kaufleute",
+          "starterSql": "SELECT * FROM bewohner WHERE status = 'friedlich' AND (beruf = 'Haendler' OR beruf = 'Kaufmann');",
+          "successMessage": "Schritt 13 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "STATUS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FRIEDLICH"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "HAENDLER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "KAUFMANN"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-14",
+      "title": "Schritt 14: Siegelring und Weinkrug uebergeben",
+      "treeLabel": "14 Siegelring und Weinkrug uebergeben",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "15 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 14",
+          "speaker": "Gerold",
+          "text": "Ich interessiere mich fuer den diskreten Weg. Uebergib die Wertstuecke an Kontakt 15.",
+          "objective": "Setze Besitzer = 15 fuer Siegelring und Weinkrug.",
+          "advanceHint": "Fuehre aus: UPDATE gegenstand SET besitzer = 15 WHERE gegenstand IN ('Siegelring', 'Weinkrug');",
+          "editorComment": "Mission 14: Siegelring und Weinkrug uebergeben",
+          "starterSql": "UPDATE gegenstand SET besitzer = 15 WHERE gegenstand IN ('Siegelring', 'Weinkrug');",
+          "successMessage": "Schritt 14 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "UPDATE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GEGENSTAND"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BESITZER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "15"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SIEGELRING"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "WEINKRUG"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-15",
+      "title": "Schritt 15: Gold aufstocken I",
+      "treeLabel": "15 Gold aufstocken I",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "16 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 15",
+          "speaker": "Gerold",
+          "text": "Hier hast du 120 Kronen Vorschuss. Buche sie auf dein Konto.",
+          "objective": "Erhoehe mein Gold um 120.",
+          "advanceHint": "Fuehre aus: UPDATE bewohner SET gold = gold + 120 WHERE bewohnernr = 20;",
+          "editorComment": "Mission 15: Gold aufstocken I",
+          "starterSql": "UPDATE bewohner SET gold = gold + 120 WHERE bewohnernr = 20;",
+          "successMessage": "Schritt 15 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "UPDATE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SET"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GOLD"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "+"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "120"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-16",
+      "title": "Schritt 16: Neuer Name",
+      "treeLabel": "16 Neuer Name",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "17 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 16",
+          "speaker": "Gerold",
+          "text": "Leider reicht Name-Mira auf Dauer nicht. Aendere deinen Eintrag auf Mira.",
+          "objective": "Aendere den Namen von Fremde zu Mira.",
+          "advanceHint": "Fuehre aus: UPDATE bewohner SET name = 'Mira' WHERE name = 'Fremde';",
+          "editorComment": "Mission 16: Neuer Name",
+          "starterSql": "UPDATE bewohner SET name = 'Mira' WHERE name = 'Fremde';",
+          "successMessage": "Schritt 16 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "UPDATE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SET"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "NAME"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "MIRA"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FREMDE"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-17",
+      "title": "Schritt 17: Baecker nach Gold",
+      "treeLabel": "17 Baecker nach Gold",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "18 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 17",
+          "speaker": "Gerold",
+          "text": "In meiner freien Stunde vergleiche ich die Baecker. Sortier sie nach Gold.",
+          "objective": "Zeige Baecker sortiert nach Gold absteigend.",
+          "advanceHint": "Fuehre aus: SELECT * FROM bewohner WHERE beruf = 'Baecker' ORDER BY gold DESC;",
+          "editorComment": "Mission 17: Baecker nach Gold",
+          "starterSql": "SELECT * FROM bewohner WHERE beruf = 'Baecker' ORDER BY gold DESC;",
+          "successMessage": "Schritt 17 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BAECKER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "ORDER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BY"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GOLD"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "DESC"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-18",
+      "title": "Schritt 18: Gold aufstocken II",
+      "treeLabel": "18 Gold aufstocken II",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "19 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 18",
+          "speaker": "Gerold",
+          "text": "Hi, da bist du ja. Noch 100 Gold als Reisepuffer.",
+          "objective": "Erhoehe mein Gold um 100.",
+          "advanceHint": "Fuehre aus: UPDATE bewohner SET gold = gold + 100 WHERE bewohnernr = 20;",
+          "editorComment": "Mission 18: Gold aufstocken II",
+          "starterSql": "UPDATE bewohner SET gold = gold + 100 WHERE bewohnernr = 20;",
+          "successMessage": "Schritt 18 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "UPDATE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GOLD"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "+"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "100"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-19",
+      "title": "Schritt 19: Gold abbuchen",
+      "treeLabel": "19 Gold abbuchen",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "20 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 19",
+          "speaker": "Gerold",
+          "text": "Hier ist dein Plan B - kostet 150 Gold. Zieh es ab.",
+          "objective": "Ziehe 150 Gold von meinem Konto ab.",
+          "advanceHint": "Fuehre aus: UPDATE bewohner SET gold = gold - 150 WHERE bewohnernr = 20;",
+          "editorComment": "Mission 19: Gold abbuchen",
+          "starterSql": "UPDATE bewohner SET gold = gold - 150 WHERE bewohnernr = 20;",
+          "successMessage": "Schritt 19 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "UPDATE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GOLD"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "-"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "150"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-20",
+      "title": "Schritt 20: Kutscher finden",
+      "treeLabel": "20 Kutscher finden",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "21 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 20",
+          "speaker": "Gerold",
+          "text": "Gibt es in der Oberburg einen Kutscher? Den brauchen wir fuer die Flucht.",
+          "objective": "Zeige alle Kutscher.",
+          "advanceHint": "Fuehre aus: SELECT * FROM bewohner WHERE beruf = 'Kutscher';",
+          "editorComment": "Mission 20: Kutscher finden",
+          "starterSql": "SELECT * FROM bewohner WHERE beruf = 'Kutscher';",
+          "successMessage": "Schritt 20 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BERUF"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "KUTSCHER"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-21",
+      "title": "Schritt 21: Bezirk von Roderich Grimm",
+      "treeLabel": "21 Bezirk von Roderich Grimm",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "22 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 21",
+          "speaker": "Gerold",
+          "text": "Das ist schwer. Finde den Bezirk, in dem Roderich Grimm lebt.",
+          "objective": "Zeige den Bezirksnamen von Roderich Grimm.",
+          "advanceHint": "Fuehre aus: SELECT bezirk.name FROM bezirk JOIN bewohner ON bezirk.bezirknr = bewohner.bezirknr WHERE bewohner.name = 'Roderich Grimm';",
+          "editorComment": "Mission 21: Bezirk von Roderich Grimm",
+          "starterSql": "SELECT bezirk.name FROM bezirk JOIN bewohner ON bezirk.bezirknr = bewohner.bezirknr WHERE bewohner.name = 'Roderich Grimm';",
+          "successMessage": "Schritt 21 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEZIRK"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "JOIN"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "RODERICH"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GRIMM"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-22",
+      "title": "Schritt 22: Hauptmann der Oberburg",
+      "treeLabel": "22 Hauptmann der Oberburg",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "23 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 22",
+          "speaker": "Gerold",
+          "text": "Auf diese Weise erfahren wir den Kommandanten. Zeig den Hauptmann der Oberburg.",
+          "objective": "Zeige den Namen des Hauptmanns der Oberburg.",
+          "advanceHint": "Fuehre aus: SELECT bewohner.name FROM bezirk JOIN bewohner ON bezirk.hauptmann = bewohner.bewohnernr WHERE bezirk.name = 'Oberburg';",
+          "editorComment": "Mission 22: Hauptmann der Oberburg",
+          "starterSql": "SELECT bewohner.name FROM bezirk JOIN bewohner ON bezirk.hauptmann = bewohner.bewohnernr WHERE bezirk.name = 'Oberburg';",
+          "successMessage": "Schritt 22 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEZIRK"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "HAUPTMANN"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "OBERBURG"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-23",
+      "title": "Schritt 23: Bewohnerzahl Oberburg",
+      "treeLabel": "23 Bewohnerzahl Oberburg",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "24 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 23",
+          "speaker": "Gerold",
+          "text": "Hm, wie viele leben in der Oberburg? Wir brauchen eine Zahl.",
+          "objective": "Zaehle alle Bewohner der Oberburg.",
+          "advanceHint": "Fuehre aus: SELECT COUNT(*) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Oberburg';",
+          "editorComment": "Mission 23: Bewohnerzahl Oberburg",
+          "starterSql": "SELECT COUNT(*) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Oberburg';",
+          "successMessage": "Schritt 23 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "COUNT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEZIRK"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "OBERBURG"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-24",
+      "title": "Schritt 24: Frauen in der Oberburg",
+      "treeLabel": "24 Frauen in der Oberburg",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "25 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 24",
+          "speaker": "Gerold",
+          "text": "Hallo Mira, konzentrier dich: Wie viele Frauen sind in der Oberburg?",
+          "objective": "Zaehle alle Frauen in der Oberburg.",
+          "advanceHint": "Fuehre aus: SELECT COUNT(*) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Oberburg' AND bewohner.geschlecht = 'w';",
+          "editorComment": "Mission 24: Frauen in der Oberburg",
+          "starterSql": "SELECT COUNT(*) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Oberburg' AND bewohner.geschlecht = 'w';",
+          "successMessage": "Schritt 24 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "COUNT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEZIRK"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "OBERBURG"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GESCHLECHT"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-25",
+      "title": "Schritt 25: Name der Frau in der Oberburg",
+      "treeLabel": "25 Name der Frau in der Oberburg",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "26 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 25",
+          "speaker": "Gerold",
+          "text": "Ha, nur eine! Gib mir jetzt ihren Namen.",
+          "objective": "Zeige den Namen der Frau in der Oberburg.",
+          "advanceHint": "Fuehre aus: SELECT bewohner.name FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Oberburg' AND bewohner.geschlecht = 'w';",
+          "editorComment": "Mission 25: Name der Frau in der Oberburg",
+          "starterSql": "SELECT bewohner.name FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Oberburg' AND bewohner.geschlecht = 'w';",
+          "successMessage": "Schritt 25 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "NAME"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "JOIN"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "OBERBURG"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GESCHLECHT"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-26",
+      "title": "Schritt 26: Gold im Markthof",
+      "treeLabel": "26 Gold im Markthof",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "27 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 26",
+          "speaker": "Gerold",
+          "text": "Mira, gib mir die Summe des Golds im Markthof.",
+          "objective": "Summiere das gesamte Gold im Markthof.",
+          "advanceHint": "Fuehre aus: SELECT SUM(bewohner.gold) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Markthof';",
+          "editorComment": "Mission 26: Gold im Markthof",
+          "starterSql": "SELECT SUM(bewohner.gold) FROM bewohner JOIN bezirk ON bewohner.bezirknr = bezirk.bezirknr WHERE bezirk.name = 'Markthof';",
+          "successMessage": "Schritt 26 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SUM"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GOLD"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEZIRK"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "MARKTHOF"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-27",
+      "title": "Schritt 27: Gold bei Haendlern und Baeckern",
+      "treeLabel": "27 Gold bei Haendlern und Baeckern",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "28 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 27",
+          "speaker": "Gerold",
+          "text": "So viel Gold! Summiere es nur fuer Haendler, Kaufleute und Baecker.",
+          "objective": "Summiere Gold fuer Haendler, Kaufmann und Baecker.",
+          "advanceHint": "Fuehre aus: SELECT SUM(gold) FROM bewohner WHERE beruf IN ('Haendler', 'Kaufmann', 'Baecker');",
+          "editorComment": "Mission 27: Gold bei Haendlern und Baeckern",
+          "starterSql": "SELECT SUM(gold) FROM bewohner WHERE beruf IN ('Haendler', 'Kaufmann', 'Baecker');",
+          "successMessage": "Schritt 27 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SUM"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GOLD"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "IN"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "HAENDLER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "KAUFMANN"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BAECKER"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-28",
+      "title": "Schritt 28: Gold je Beruf",
+      "treeLabel": "28 Gold je Beruf",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "29 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 28",
+          "speaker": "Gerold",
+          "text": "Schau den Beruf-Mag, Zeige Beruf, Summe und Durchschnitt pro Beruf.",
+          "objective": "Zeige Beruf, SUM(gold) und AVG(gold) je Beruf.",
+          "advanceHint": "Fuehre aus: SELECT beruf, SUM(gold), AVG(gold) FROM bewohner GROUP BY beruf ORDER BY AVG(gold);",
+          "editorComment": "Mission 28: Gold je Beruf",
+          "starterSql": "SELECT beruf, SUM(gold), AVG(gold) FROM bewohner GROUP BY beruf ORDER BY AVG(gold);",
+          "successMessage": "Schritt 28 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BERUF"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SUM"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "AVG"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FROM"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GROUP"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BY"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-29",
+      "title": "Schritt 29: Durchschnitt je Status",
+      "treeLabel": "29 Durchschnitt je Status",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "30 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 29",
+          "speaker": "Gerold",
+          "text": "Interessant, jetzt der durchschnittliche Goldbestand je Status.",
+          "objective": "Zeige Status und AVG(gold) je Status.",
+          "advanceHint": "Fuehre aus: SELECT status, AVG(gold) FROM bewohner GROUP BY status;",
+          "editorComment": "Mission 29: Durchschnitt je Status",
+          "starterSql": "SELECT status, AVG(gold) FROM bewohner GROUP BY status;",
+          "successMessage": "Schritt 29 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SELECT"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "STATUS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "AVG"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GOLD"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FROM"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GROUP"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BY"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-30",
+      "title": "Schritt 30: Roderich entfernen",
+      "treeLabel": "30 Roderich entfernen",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "31 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 30",
+          "speaker": "Gerold",
+          "text": "Dann kann ich handeln: Roderich Grimm muss aus der Liste.",
+          "objective": "Entferne Roderich Grimm aus der Tabelle.",
+          "advanceHint": "Fuehre aus: DELETE FROM bewohner WHERE name = 'Roderich Grimm';",
+          "editorComment": "Mission 30: Roderich entfernen",
+          "starterSql": "DELETE FROM bewohner WHERE name = 'Roderich Grimm';",
+          "successMessage": "Schritt 30 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "DELETE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FROM"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "RODERICH"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GRIMM"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-31",
+      "title": "Schritt 31: Ragna entfernen",
+      "treeLabel": "31 Ragna entfernen",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "32 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 31",
+          "speaker": "Gerold",
+          "text": "Heeeey! Jetzt auch Ragna Grimm entfernen.",
+          "objective": "Entferne Ragna Grimm aus der Tabelle.",
+          "advanceHint": "Fuehre aus: DELETE FROM bewohner WHERE name = 'Ragna Grimm';",
+          "editorComment": "Mission 31: Ragna entfernen",
+          "starterSql": "DELETE FROM bewohner WHERE name = 'Ragna Grimm';",
+          "successMessage": "Schritt 31 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "DELETE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FROM"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "RAGNA"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "GRIMM"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-32",
+      "title": "Schritt 32: Kutscher befrieden",
+      "treeLabel": "32 Kutscher befrieden",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "33 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 32",
+          "speaker": "Gerold",
+          "text": "Yeah! Der letzte Stolperstein: Setz den Kutscher auf friedlich.",
+          "objective": "Setze den Status des Kutschers auf friedlich.",
+          "advanceHint": "Fuehre aus: UPDATE bewohner SET status = 'friedlich' WHERE beruf = 'Kutscher';",
+          "editorComment": "Mission 32: Kutscher befrieden",
+          "starterSql": "UPDATE bewohner SET status = 'friedlich' WHERE beruf = 'Kutscher';",
+          "successMessage": "Schritt 32 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "UPDATE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "SET"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "STATUS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "FRIEDLICH"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "KUTSCHER"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "story-oberburg-33",
+      "title": "Schritt 33: Abreise eintragen",
+      "treeLabel": "33 Abreise eintragen",
+      "subtitle": "Flucht aus der Zitadelle",
+      "stepLabel": "34 / 34",
+      "status": "neu",
+      "guideScenes": [
+        {
+          "sceneTitle": "Mission 33",
+          "speaker": "Gerold",
+          "text": "Vielen Dank. Trage jetzt deinen Status als abgereist ein.",
+          "objective": "Setze meinen Status auf abgereist (bewohnernr = 20).",
+          "advanceHint": "Fuehre aus: UPDATE bewohner SET status = 'abgereist' WHERE bewohnernr = 20;",
+          "editorComment": "Mission 33: Abreise eintragen",
+          "starterSql": "UPDATE bewohner SET status = 'abgereist' WHERE bewohnernr = 20;",
+          "successMessage": "Schritt 33 abgeschlossen.",
+          "advanceOn": {
+            "all": [
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "UPDATE"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNER"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "STATUS"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "ABGEREIST"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "BEWOHNERNR"
+                ]
+              },
+              {
+                "type": "statement-contains",
+                "tokens": [
+                  "20"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

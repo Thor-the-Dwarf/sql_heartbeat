@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./stories.schema.json",
+  "title": "SQL Heartbeat Story Tree",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["rootLabel", "titles"],
+  "properties": {
+    "rootLabel": {
+      "type": "string",
+      "minLength": 1
+    },
+    "titles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/storyTitle"
+      }
+    }
+  },
+  "$defs": {
+    "guideScene": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["speaker", "text"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "speaker": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sceneTitle": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "objective": {
+          "type": "string"
+        },
+        "advanceHint": {
+          "type": "string"
+        },
+        "editorComment": {
+          "type": "string"
+        },
+        "starterSql": {
+          "type": "string"
+        },
+        "successMessage": {
+          "type": "string"
+        },
+        "unlockIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "advanceOn": {
+          "type": "object"
+        }
+      }
+    },
+    "storyTitle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "treeLabel": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "stepLabel": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["neu", "aktiv", "gelesen"]
+        },
+        "guideScenes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/guideScene"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "rootLabel": "Storys",
+  "defaultStoryPath": "Storys/Flucht aus der Zitadelle/stories.json",
+  "defaultStoryPathByMode": {
+    "easy": "Storys/Flucht aus der Zitadelle/stories.json",
+    "medium": "Storys/Das Gold der Kupfermine/stories.json",
+    "hard": "Storys/Sturm auf den Wachturm/stories.json"
+  },
+  "storiesByMode": {
+    "easy": [
+      {
+        "path": "Storys/Flucht aus der Zitadelle/stories.json",
+        "label": "Flucht aus der Zitadelle"
+      },
+      {
+        "path": "Storys/Das Geheimnis des Markthofs/stories.json",
+        "label": "Das Geheimnis des Markthofs"
+      },
+      {
+        "path": "Storys/Die Händler von Rabensand/stories.json",
+        "label": "Die Händler von Rabensand",
+        "optional": true
+      }
+    ],
+    "medium": [
+      {
+        "path": "Storys/Das Gold der Kupfermine/stories.json",
+        "label": "Das Gold der Kupfermine"
+      },
+      {
+        "path": "Storys/Das Siegel der Kronfeste/stories.json",
+        "label": "Das Siegel der Kronfeste",
+        "optional": true
+      },
+      {
+        "path": "Storys/Die Spur des Schmugglers/stories.json",
+        "label": "Die Spur des Schmugglers",
+        "optional": true
+      }
+    ],
+    "hard": [
+      {
+        "path": "Storys/Sturm auf den Wachturm/stories.json",
+        "label": "Sturm auf den Wachturm",
+        "optional": true
+      },
+      {
+        "path": "Storys/Die Tore von Steinbruch/stories.json",
+        "label": "Die Tore von Steinbruch",
+        "optional": true
+      },
+      {
+        "path": "Storys/Der letzte Kurier von Dornwall/stories.json",
+        "label": "Der letzte Kurier von Dornwall",
+        "optional": true
+      }
+    ]
+  },
+  "stories": [
+    {
+      "path": "Storys/Flucht aus der Zitadelle/stories.json",
+      "label": "Flucht aus der Zitadelle"
+    }
+  ]
+}
