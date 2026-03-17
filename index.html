@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL-Heartbeat</title>
+    <!-- Shared Theme -->
+    <link rel="stylesheet" href="../../produktiv/Teil01 Grundlagen/shared_theme.css">
+    <!-- Local Styles -->
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- CodeMirror (v5) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/sql/sql.min.js"></script>
+    <!-- Addons (optional but good) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/display/placeholder.min.js"></script>
+</head>
+
+<body>
+
+    <div id="app-container">
+        <!-- Main Content Area (Horizontal Layout: Left - Center - Right) -->
+        <div id="main-area">
+            <aside id="left-drawer" class="drawer horizontal-drawer">
+                <div class="drawer-content">
+                    <h2>Navigation</h2>
+                    <div class="nav-mode-switch" role="group" aria-label="Werkzeuge Modus">
+                        <button type="button" class="nav-mode-btn" data-lesson-mode="easy" aria-pressed="false">easy</button>
+                        <button type="button" class="nav-mode-btn" data-lesson-mode="medium" aria-pressed="false">medium</button>
+                        <button type="button" class="nav-mode-btn" data-lesson-mode="hard" aria-pressed="false">hard</button>
+                    </div>
+                    <p class="nav-tree-subtitle">Modus: easy</p>
+                    <div id="lesson-tree" class="lesson-tree" aria-live="polite"></div>
+                </div>
+                <div class="resizer-handle horizontal-handle" data-target="left"></div>
+            </aside>
+
+            <main id="center-content">
+                <div class="center-header"
+                    style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                    <h1 style="margin-bottom:0;">Datenbank Visualisierung</h1>
+                    <button id="btn-toggle-rels" class="theme-btn">Schlüssel-Referenzen</button>
+                </div>
+                <div id="schema-stage">
+                    <canvas id="top-canvas"></canvas>
+                    <div id="tables-container"></div>
+                </div>
+            </main>
+
+            <aside id="right-drawer" class="drawer horizontal-drawer">
+                <div class="resizer-handle horizontal-handle left-side" data-target="right"></div>
+                <div class="drawer-content">
+                    <div class="guide-window-header">
+                        <h2>Guide-Window</h2>
+                        <button id="btn-reset-story-progress" class="guide-window-reset-btn" type="button">Story-Reset</button>
+                    </div>
+                    <div id="guide-story-stage" class="guide-story-stage" aria-live="polite"></div>
+                    <p class="guide-window-note">
+                        Die DBMS-Unit befindet sich unten rechts neben dem SQL-Editor.
+                    </p>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Bottom Drawer (Vertical Layout) -->
+        <section id="bottom-drawer" class="drawer vertical-drawer">
+            <div class="resizer-handle vertical-handle" data-target="bottom"></div>
+            <div class="drawer-content">
+                <div class="toolbar">
+                    <button id="btn-play">▶ Play</button>
+                    <button id="btn-ff">⏩ Fast Forward</button>
+                    <button id="btn-toggle-intellisense" type="button" aria-pressed="true">IntelliSense: An</button>
+                    <span class="toolbar-hint">Ctrl/Cmd + Enter = Play</span>
+                </div>
+                <div class="editor-container">
+                    <div id="editor-pane" class="editor-pane">
+                        <textarea id="sql-editor" placeholder="-- SQL Code hier eingeben --"></textarea>
+                        <section id="multi-intellisense-panel" class="intellisense-popup is-hidden" aria-label="IntelliSense Vorschlaege">
+                            <div class="intellisense-popup-header">
+                                <span class="intellisense-popup-title">IntelliSense</span>
+                            </div>
+                            <div id="multi-intellisense-list" class="intellisense-popup-list" aria-live="polite"></div>
+                            <div id="multi-intellisense-debug" class="intellisense-popup-debug is-hidden" aria-live="polite"></div>
+                        </section>
+                    </div>
+                    <aside id="diagnostics-pane" class="diagnostics-pane dbms-unit-pane is-visible" aria-label="DBMS-Unit"
+                        aria-hidden="false">
+                        <div class="diagnostics-header">DBMS-Unit</div>
+                        <div id="diagnostics-lines" class="diagnostics-lines"></div>
+                    </aside>
+                    <aside id="query-stage-pane" class="query-stage-pane is-hidden" aria-label="Abfrage-Zustand">
+                        <section id="process-result-panel" class="process-result-panel is-hidden" aria-live="polite">
+                            <div class="process-result-header">
+                                <span class="process-result-title">Abfrage-Zustand</span>
+                                <span id="process-result-step" class="process-result-step"></span>
+                            </div>
+                            <div id="process-result-body" class="process-result-body"></div>
+                        </section>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/parser.js"></script>
+    <script src="assets/js/simulator.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

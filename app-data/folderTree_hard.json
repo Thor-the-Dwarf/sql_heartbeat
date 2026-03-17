@@ -1,0 +1,200 @@
+{
+  "$schema": "./folderTree.schema.json",
+  "rootLabel": "Werkzeuge – Experte",
+  "tools": [
+    {
+      "id": "dql-data-query-language",
+      "label": "DQL Data Query Language",
+      "lessonRoots": [
+        {
+          "id": "dql-data-query-language-lesson-1-uebersicht",
+          "title": "Uebersicht",
+          "level": 1,
+          "body": "Restliche Join-Varianten + Paging.",
+          "tasks": [],
+          "children": [
+            {
+              "id": "dql-data-query-language-lesson-2-right-join-full-join-outer",
+              "title": "RIGHT JOIN / FULL JOIN / OUTER",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "dql-data-query-language-lesson-2-right-join-full-join-outer-task-1",
+                  "text": "RIGHT JOIN: Schreibe RIGHT JOIN und beobachte Ergebnis."
+                },
+                {
+                  "id": "dql-data-query-language-lesson-2-right-join-full-join-outer-task-2",
+                  "text": "FULL JOIN:  Schreibe FULL JOIN und beobachte Ergebnis."
+                },
+                {
+                  "id": "dql-data-query-language-lesson-2-right-join-full-join-outer-task-3",
+                  "text": "OUTER:      Schreibe LEFT OUTER JOIN und FULL OUTER JOIN."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "dql-data-query-language-lesson-3-offset-paging",
+              "title": "OFFSET (Paging)",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "dql-data-query-language-lesson-3-offset-paging-task-1",
+                  "text": "SELECT * FROM users ORDER BY id LIMIT 2 OFFSET 0;"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-3-offset-paging-task-2",
+                  "text": "SELECT * FROM users ORDER BY id LIMIT 2 OFFSET 2;"
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ddl-data-definition-language",
+      "label": "DDL Data Definition Language",
+      "lessonRoots": [
+        {
+          "id": "ddl-data-definition-language-lesson-1-uebersicht",
+          "title": "Uebersicht",
+          "level": 1,
+          "body": "Restliche Objekt-Typen (dialektabhaengig) als Syntax-Training.",
+          "tasks": [],
+          "children": [
+            {
+              "id": "ddl-data-definition-language-lesson-2-view",
+              "title": "VIEW",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "ddl-data-definition-language-lesson-2-view-task-1",
+                  "text": "CREATE VIEW v_users AS SELECT id, name FROM users;"
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-2-view-task-2",
+                  "text": "DROP VIEW v_users;"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "ddl-data-definition-language-lesson-3-index",
+              "title": "INDEX",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "ddl-data-definition-language-lesson-3-index-task-1",
+                  "text": "CREATE INDEX idx_users_name ON users(name);"
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-3-index-task-2",
+                  "text": "DROP INDEX idx_users_name;"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "ddl-data-definition-language-lesson-4-trigger",
+              "title": "TRIGGER",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "ddl-data-definition-language-lesson-4-trigger-task-1",
+                  "text": "CREATE TRIGGER trg_users_ins AFTER INSERT ON users BEGIN SELECT 1; END;"
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-4-trigger-task-2",
+                  "text": "DROP TRIGGER trg_users_ins;"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "ddl-data-definition-language-lesson-5-database",
+              "title": "DATABASE",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "ddl-data-definition-language-lesson-5-database-task-1",
+                  "text": "CREATE DATABASE demo_db;"
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-5-database-task-2",
+                  "text": "DROP DATABASE demo_db;"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "ddl-data-definition-language-lesson-6-schema",
+              "title": "SCHEMA",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "ddl-data-definition-language-lesson-6-schema-task-1",
+                  "text": "CREATE SCHEMA demo_schema;"
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-6-schema-task-2",
+                  "text": "DROP SCHEMA demo_schema;"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "ddl-data-definition-language-lesson-7-sequence",
+              "title": "SEQUENCE",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "ddl-data-definition-language-lesson-7-sequence-task-1",
+                  "text": "CREATE SEQUENCE seq_demo;"
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-7-sequence-task-2",
+                  "text": "DROP SEQUENCE seq_demo;"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "ddl-data-definition-language-lesson-8-type",
+              "title": "TYPE",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "ddl-data-definition-language-lesson-8-type-task-1",
+                  "text": "CREATE TYPE t_demo AS (id INTEGER);"
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-8-type-task-2",
+                  "text": "DROP TYPE t_demo;"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "ddl-data-definition-language-lesson-9-domain",
+              "title": "DOMAIN",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "ddl-data-definition-language-lesson-9-domain-task-1",
+                  "text": "CREATE DOMAIN d_demo AS INTEGER;"
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-9-domain-task-2",
+                  "text": "DROP DOMAIN d_demo;"
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

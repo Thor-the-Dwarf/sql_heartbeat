@@ -1,0 +1,1345 @@
+{
+  "$schema": "./folderTree.schema.json",
+  "rootLabel": "Werkzeuge",
+  "tools": [
+    {
+      "id": "ddl-data-definition-language",
+      "label": "DDL Data Definition Language",
+      "lessons": [
+        {
+          "title": "Uebersicht",
+          "body": "DDL dient dazu, Datenbankstrukturen zu definieren oder zu aendern.\nTypische Befehle sind CREATE, ALTER und DROP.",
+          "tasks": [],
+          "children": []
+        },
+        {
+          "title": "Level 1 CREATE, ALTER, DROP",
+          "body": "",
+          "tasks": [],
+          "children": [
+            {
+              "title": "CREATE TABLE",
+              "body": "Mit CREATE TABLE legst du eine neue Tabelle an.\nSchema:\nCREATE TABLE <tabellenname> (\n<spalte_1> <datentyp>,\n<spalte_2> <datentyp>\n);\nBeispiel:\nCREATE TABLE kunden (\nid INTEGER,\nname TEXT\n);",
+              "tasks": [
+                {
+                  "id": "task_ddl_create_table_employees_01",
+                  "text": "Erstelle `employees` mit mindestens `id INTEGER` und `name TEXT`.",
+                  "unlockIds": ["kw.CREATE", "kw.TABLE"],
+                  "check": {
+                    "type": "table-columns",
+                    "table": "employees",
+                    "columns": ["id", "name"]
+                  }
+                },
+                {
+                  "text": "Erstelle `departments` mit mindestens `dept_id INTEGER` und `title TEXT`.",
+                  "check": {
+                    "type": "table-columns",
+                    "table": "departments",
+                    "columns": ["dept_id", "title"]
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "ALTER TABLE",
+              "body": "Mit ALTER TABLE passt du bestehende Tabellenstrukturen an.\nDiese Lektion zeigt den Grundaufbau, die Unterlektionen zeigen die Detailaktionen.\nSchema:\nALTER TABLE <tabellenname> <aktion>;\nBeispiel:\nALTER TABLE employees ADD COLUMN role TEXT;",
+              "tasks": [],
+              "children": [
+                {
+                  "title": "ADD COLUMN",
+                  "body": "Fuegt eine neue Spalte hinzu.\nSchema:\nALTER TABLE <tabellenname> ADD COLUMN <spalte> <datentyp>;\nBeispiel:\nALTER TABLE employees ADD COLUMN role TEXT;",
+                  "tasks": [
+                    {
+                      "text": "Erweitere `employees` um `role TEXT`.",
+                      "check": {
+                        "type": "table-columns",
+                        "table": "employees",
+                        "columns": ["role"]
+                      }
+                    },
+                    {
+                      "text": "Erweitere `employees` um `email TEXT`.",
+                      "check": {
+                        "type": "table-columns",
+                        "table": "employees",
+                        "columns": ["email"]
+                      }
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "title": "RENAME COLUMN",
+                  "body": "Benennt eine bestehende Spalte um.\nSchema:\nALTER TABLE <tabellenname> RENAME COLUMN <alt> TO <neu>;\nBeispiel:\nALTER TABLE employees RENAME COLUMN name TO full_name;",
+                  "tasks": [
+                    {
+                      "text": "Benenne in `employees` die Spalte `name` in `full_name` um.",
+                      "check": {
+                        "type": "column-renamed",
+                        "table": "employees",
+                        "from": "name",
+                        "to": "full_name"
+                      }
+                    },
+                    {
+                      "text": "Benenne in `employees` die Spalte `id` in `employee_id` um.",
+                      "check": {
+                        "type": "column-renamed",
+                        "table": "employees",
+                        "from": "id",
+                        "to": "employee_id"
+                      }
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "title": "DROP COLUMN",
+                  "body": "Entfernt eine Spalte aus einer Tabelle.\nSchema:\nALTER TABLE <tabellenname> DROP COLUMN <spalte>;\nBeispiel:\nALTER TABLE employees DROP COLUMN role;",
+                  "tasks": [
+                    {
+                      "text": "Entferne in `employees` die Spalte `role` wieder.",
+                      "check": {
+                        "type": "column-absent",
+                        "table": "employees",
+                        "column": "role"
+                      }
+                    },
+                    {
+                      "text": "Entferne in `employees` die Spalte `name`.",
+                      "check": {
+                        "type": "column-absent",
+                        "table": "employees",
+                        "column": "name"
+                      }
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "DROP TABLE",
+              "body": "Entfernt eine Tabelle komplett.\nSchema:\nDROP TABLE <tabellenname>;\nBeispiel:\nDROP TABLE tmp_drop;",
+              "tasks": [
+                {
+                  "text": "Erstelle `tmp_drop` mit `id INTEGER`.",
+                  "check": {
+                    "type": "table-columns",
+                    "table": "tmp_drop",
+                    "columns": ["id"]
+                  }
+                },
+                {
+                  "text": "Entferne `tmp_drop` wieder mit DROP TABLE.",
+                  "check": {
+                    "type": "table-missing",
+                    "table": "tmp_drop"
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Level 2 Constraints",
+          "body": "",
+          "tasks": [],
+          "children": [
+            {
+              "title": "PRIMARY KEY",
+              "body": "Eindeutiger Schluessel pro Zeile.\nSchema:\n<spalte> INTEGER PRIMARY KEY\nBeispiel:\nCREATE TABLE customers (\ncustomer_id INTEGER PRIMARY KEY,\nname TEXT\n);",
+              "tasks": [
+                {
+                  "text": "Erstelle `customers` mit `customer_id INTEGER PRIMARY KEY`.",
+                  "check": {
+                    "type": "column-constraint",
+                    "table": "customers",
+                    "column": "customer_id",
+                    "flag": "isPK",
+                    "value": true
+                  }
+                },
+                {
+                  "text": "Erstelle `invoices` mit `invoice_id INTEGER PRIMARY KEY` und `amount INTEGER`.",
+                  "check": {
+                    "type": "column-constraint",
+                    "table": "invoices",
+                    "column": "invoice_id",
+                    "flag": "isPK",
+                    "value": true
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "FOREIGN KEY",
+              "body": "Verknuepft Tabellen ueber Schluesselbeziehungen.\nSchema:\n<fk_spalte> INTEGER REFERENCES <ziel_tabelle>(<ziel_spalte>)\nBeispiel:\nCREATE TABLE orders (\norder_id INTEGER,\ncustomer_id INTEGER REFERENCES customers(customer_id)\n);",
+              "tasks": [
+                {
+                  "text": "Erstelle `orders` mit `order_id INTEGER` und `customer_id INTEGER`.",
+                  "check": {
+                    "type": "table-columns",
+                    "table": "orders",
+                    "columns": ["order_id", "customer_id"]
+                  }
+                },
+                {
+                  "text": "Verknuepfe `orders.customer_id` mit `customers.customer_id`.",
+                  "check": {
+                    "type": "column-fk-target",
+                    "table": "orders",
+                    "column": "customer_id",
+                    "target": "customers.customer_id"
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "NOT NULL",
+              "body": "Erzwingt, dass ein Feld immer einen Wert hat.\nSchema:\n<spalte> <datentyp> NOT NULL\nBeispiel:\nCREATE TABLE products (\nid INTEGER,\nname TEXT NOT NULL\n);",
+              "tasks": [
+                {
+                  "text": "Erstelle `products` mit `name TEXT NOT NULL`.",
+                  "check": {
+                    "type": "column-constraint",
+                    "table": "products",
+                    "column": "name",
+                    "flag": "isNotNull",
+                    "value": true
+                  }
+                },
+                {
+                  "text": "Erstelle `vendors` mit `vendor_name TEXT NOT NULL`.",
+                  "check": {
+                    "type": "column-constraint",
+                    "table": "vendors",
+                    "column": "vendor_name",
+                    "flag": "isNotNull",
+                    "value": true
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "UNIQUE",
+              "body": "Verhindert doppelte Werte in einer Spalte.\nSchema:\n<spalte> <datentyp> UNIQUE\nBeispiel:\nCREATE TABLE accounts (\nid INTEGER,\nemail TEXT UNIQUE\n);",
+              "tasks": [
+                {
+                  "text": "Erstelle `accounts` mit `email TEXT UNIQUE`.",
+                  "check": {
+                    "type": "column-constraint",
+                    "table": "accounts",
+                    "column": "email",
+                    "flag": "isUnique",
+                    "value": true
+                  }
+                },
+                {
+                  "text": "Erstelle `badges` mit `badge_code TEXT UNIQUE`.",
+                  "check": {
+                    "type": "column-constraint",
+                    "table": "badges",
+                    "column": "badge_code",
+                    "flag": "isUnique",
+                    "value": true
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "DEFAULT",
+              "body": "Setzt einen Standardwert.\nSchema:\n<spalte> <datentyp> DEFAULT <wert>\nBeispiel:\nCREATE TABLE tickets (\nid INTEGER,\nstatus TEXT DEFAULT 'open'\n);",
+              "tasks": [
+                {
+                  "text": "Erstelle `tickets` mit `status TEXT DEFAULT 'open'`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["create table", "tickets", "default", "open"]
+                  }
+                },
+                {
+                  "text": "Erstelle `orders_default` mit `priority TEXT DEFAULT 'normal'`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["create table", "orders_default", "default", "normal"]
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "CHECK",
+              "body": "Erzwingt eine Regel fuer Spaltenwerte.\nSchema:\n<spalte> <datentyp> CHECK (<bedingung>)\nBeispiel:\nCREATE TABLE ratings (\nid INTEGER,\nvalue INTEGER CHECK (value >= 1 AND value <= 5)\n);",
+              "tasks": [
+                {
+                  "text": "Erstelle `ratings` mit `value INTEGER CHECK (value >= 1 AND value <= 5)`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["create table", "ratings", "check", "value"]
+                  }
+                },
+                {
+                  "text": "Erstelle `discounts` mit `percent INTEGER CHECK (percent >= 0 AND percent <= 100)`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["create table", "discounts", "check", "percent"]
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Level 3 Transferfaelle",
+          "body": "",
+          "tasks": [],
+          "children": [
+            {
+              "title": "Modellaufgabe Kundenauftrag",
+              "body": "Lernziel: Ein kleines relationales Mini-Modell aus Anforderungen ableiten.\nSchema:\nCREATE TABLE customers (... PRIMARY KEY, ... NOT NULL);\nCREATE TABLE orders (... PRIMARY KEY, ... REFERENCES customers(...));\nBeispiel:\nCREATE TABLE customers (\ncustomer_id INTEGER PRIMARY KEY,\nname TEXT NOT NULL\n);\nCREATE TABLE orders (\norder_id INTEGER PRIMARY KEY,\ncustomer_id INTEGER REFERENCES customers(customer_id)\n);\nTypische Fehler: Fremdschluessel ohne Zieltabelle oder fehlende NOT NULL-Regel bei Pflichtfeldern.",
+              "tasks": [
+                {
+                  "text": "Fuehre SQL aus, sodass diese Tabelle entsteht: `CREATE TABLE customers (customer_id INTEGER PRIMARY KEY, name TEXT NOT NULL);`",
+                  "check": {
+                    "all": [
+                      {
+                        "type": "table-columns",
+                        "table": "customers",
+                        "columns": ["customer_id", "name"]
+                      },
+                      {
+                        "type": "column-constraint",
+                        "table": "customers",
+                        "column": "customer_id",
+                        "flag": "isPK",
+                        "value": true
+                      },
+                      {
+                        "type": "column-constraint",
+                        "table": "customers",
+                        "column": "name",
+                        "flag": "isNotNull",
+                        "value": true
+                      }
+                    ]
+                  }
+                },
+                {
+                  "text": "Fuehre SQL aus, sodass diese Tabelle entsteht: `CREATE TABLE orders (order_id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(customer_id));`",
+                  "check": {
+                    "all": [
+                      {
+                        "type": "table-columns",
+                        "table": "orders",
+                        "columns": ["order_id", "customer_id"]
+                      },
+                      {
+                        "type": "column-constraint",
+                        "table": "orders",
+                        "column": "order_id",
+                        "flag": "isPK",
+                        "value": true
+                      },
+                      {
+                        "type": "column-fk-target",
+                        "table": "orders",
+                        "column": "customer_id",
+                        "target": "customers.customer_id"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dml-data-manipulation-language",
+      "label": "DML Data Manipulation Language",
+      "lessons": [
+        {
+          "title": "Uebersicht",
+          "body": "DML veraendert Datensaetze in vorhandenen Tabellen.\nTypische Befehle sind INSERT, UPDATE, DELETE und TRUNCATE.",
+          "tasks": [],
+          "children": []
+        },
+        {
+          "title": "Level 1 INSERT, UPDATE, DELETE, TRUNCATE",
+          "body": "",
+          "tasks": [],
+          "children": [
+            {
+              "title": "INSERT",
+              "body": "Fuegt neue Zeilen ein.\nSchema:\nINSERT INTO <tabelle> (<spalte_1>, <spalte_2>) VALUES (<wert_1>, <wert_2>);\nBeispiel:\nINSERT INTO students (id, name) VALUES (1, 'Anna');",
+              "tasks": [
+                {
+                  "text": "Erstelle `students` mit `id INTEGER` und `name TEXT`.",
+                  "check": {
+                    "type": "table-columns",
+                    "table": "students",
+                    "columns": ["id", "name"]
+                  }
+                },
+                {
+                  "text": "Fuege in `students` den Datensatz `(1, 'Anna')` ein.",
+                  "check": {
+                    "type": "row-exists",
+                    "table": "students",
+                    "where": {
+                      "id": 1,
+                      "name": "Anna"
+                    }
+                  }
+                },
+                {
+                  "text": "Fuege in `students` den Datensatz `(2, 'Ben')` ein.",
+                  "check": {
+                    "type": "row-exists",
+                    "table": "students",
+                    "where": {
+                      "id": 2,
+                      "name": "Ben"
+                    }
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "UPDATE",
+              "body": "Aendert bestehende Zeilen.\nSchema:\nUPDATE <tabelle> SET <spalte> = <wert> WHERE <bedingung>;\nBeispiel:\nUPDATE students SET name = 'Anja' WHERE id = 1;",
+              "tasks": [
+                {
+                  "text": "Aktualisiere in `students` den Namen von `id = 1` auf `Anja`.",
+                  "check": {
+                    "type": "row-exists",
+                    "table": "students",
+                    "where": {
+                      "id": 1,
+                      "name": "Anja"
+                    }
+                  }
+                },
+                {
+                  "text": "Aktualisiere in `students` den Namen von `id = 3` auf `Caro`.",
+                  "check": {
+                    "type": "row-exists",
+                    "table": "students",
+                    "where": {
+                      "id": 3,
+                      "name": "Caro"
+                    }
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "DELETE",
+              "body": "Entfernt Zeilen aus einer Tabelle.\nSchema:\nDELETE FROM <tabelle> WHERE <bedingung>;\nBeispiel:\nDELETE FROM students WHERE id = 2;",
+              "tasks": [
+                {
+                  "text": "Loesche in `students` die Zeile mit `id = 2`.",
+                  "check": {
+                    "type": "row-missing",
+                    "table": "students",
+                    "where": {
+                      "id": 2
+                    }
+                  }
+                },
+                {
+                  "text": "Loesche in `students` die Zeile mit `id = 3`.",
+                  "check": {
+                    "type": "row-missing",
+                    "table": "students",
+                    "where": {
+                      "id": 3
+                    }
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "TRUNCATE TABLE",
+              "body": "Leert alle Daten einer Tabelle, ohne die Tabellenstruktur zu loeschen.\nSchema:\nTRUNCATE TABLE <tabellenname>;\nBeispiel:\nTRUNCATE TABLE students;",
+              "tasks": [
+                {
+                  "text": "Leere `students` mit TRUNCATE TABLE.",
+                  "check": {
+                    "type": "row-count",
+                    "table": "students",
+                    "value": 0
+                  }
+                },
+                {
+                  "text": "Fuege danach in `students` den Datensatz `(10, 'Neo')` ein.",
+                  "check": {
+                    "type": "row-exists",
+                    "table": "students",
+                    "where": {
+                      "id": 10,
+                      "name": "Neo"
+                    }
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Level 2 Filterlogik",
+          "body": "",
+          "tasks": [],
+          "children": [
+            {
+              "title": "WHERE Grundlagen",
+              "body": "WHERE grenzt betroffene Zeilen ein.\nSchema:\n... WHERE <bedingung>\nBeispiel:\nUPDATE students SET name = 'Test' WHERE id = 1;",
+              "tasks": [
+                {
+                  "text": "Aktualisiere in `students` den Namen auf `Batch`, aber nur fuer `id >= 2`.",
+                  "check": {
+                    "type": "row-exists",
+                    "table": "students",
+                    "where": {
+                      "id": 2,
+                      "name": "Batch"
+                    }
+                  }
+                },
+                {
+                  "text": "Lass den Datensatz mit `id = 1` unveraendert (`name = 'Anna'`).",
+                  "check": {
+                    "type": "row-exists",
+                    "table": "students",
+                    "where": {
+                      "id": 1,
+                      "name": "Anna"
+                    }
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "Vergleichsoperatoren",
+              "body": "Nutze =, !=, <, >, <=, >=.\nSchema:\nWHERE score >= 50\nBeispiel:\nDELETE FROM exams WHERE score < 50;",
+              "tasks": [
+                {
+                  "text": "Setze in `students` den Namen auf `Top` fuer `id >= 3`.",
+                  "check": {
+                    "type": "row-exists",
+                    "table": "students",
+                    "where": {
+                      "id": 3,
+                      "name": "Top"
+                    }
+                  }
+                },
+                {
+                  "text": "Loesche in `students` alle Zeilen mit `id < 2`.",
+                  "check": {
+                    "type": "row-missing",
+                    "table": "students",
+                    "where": {
+                      "id": 1
+                    }
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "AND / OR",
+              "body": "Kombiniert mehrere Bedingungen.\nSchema:\nWHERE <a> AND <b>\nWHERE <a> OR <b>\nBeispiel:\nUPDATE users SET role = 'User' WHERE city = 'Koeln' OR city = 'Bonn';",
+              "tasks": [
+                {
+                  "text": "Setze in `students` den Namen auf `Batch` fuer `id = 1 OR id = 2`.",
+                  "check": {
+                    "type": "row-exists",
+                    "table": "students",
+                    "where": {
+                      "id": 1,
+                      "name": "Batch"
+                    }
+                  }
+                },
+                {
+                  "text": "Setze in `students` den Namen auf `Solo` nur fuer `id >= 2 AND id <= 2`.",
+                  "check": {
+                    "type": "row-exists",
+                    "table": "students",
+                    "where": {
+                      "id": 2,
+                      "name": "Solo"
+                    }
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Level 3 Datenpflege Szenarien",
+          "body": "",
+          "tasks": [],
+          "children": [
+            {
+              "title": "Stammdatenpflege",
+              "body": "Lernziel: Einen Datensatz ueber mehrere DML-Schritte konsistent aufbauen.\nSchema:\nCREATE TABLE <tabelle> (...);\nINSERT INTO <tabelle> (...);\nUPDATE <tabelle> SET ... WHERE ...;\nBeispiel:\nCREATE TABLE products (id INTEGER, name TEXT);\nINSERT INTO products (id, name) VALUES (1, 'Maus');\nUPDATE products SET name = 'Gaming Maus' WHERE id = 1;\nTypische Fehler: Update ohne WHERE oder zuerst aktualisieren, bevor der Datensatz existiert.",
+              "tasks": [
+                {
+                  "text": "Lege fuer den Produktbereich eine Tabelle mit Schluessel `id` und Bezeichnung `name` an.",
+                  "check": {
+                    "type": "table-columns",
+                    "table": "products",
+                    "columns": ["id", "name"]
+                  }
+                },
+                {
+                  "text": "Pflege einen Produkteintrag so, dass fuer `id = 1` am Ende der Name `Gaming Maus` gespeichert ist.",
+                  "check": {
+                    "type": "row-exists",
+                    "table": "products",
+                    "where": {
+                      "id": 1,
+                      "name": "Gaming Maus"
+                    }
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "Bereinigung",
+              "body": "Lernziel: Datenbereinigung in definierten Schritten ohne Kollateralschaden.\nSchema:\nDELETE FROM <tabelle> WHERE <bedingung>;\nBeispiel:\nDELETE FROM logs WHERE user_id = 1;\nDELETE FROM logs WHERE user_id = 2;\nTypische Fehler: Bedingung vergessen oder Reihenfolge nicht pruefen.",
+              "tasks": [
+                {
+                  "text": "Bereinige zuerst alle Logeintraege von Benutzer `1`.",
+                  "check": {
+                    "type": "row-missing",
+                    "table": "logs",
+                    "where": {
+                      "user_id": 1
+                    }
+                  }
+                },
+                {
+                  "text": "Entferne danach auch alle Eintraege von Benutzer `2`, bis das Log leer ist.",
+                  "check": {
+                    "type": "row-count",
+                    "table": "logs",
+                    "value": 0
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dql-data-query-language",
+      "label": "DQL Data Query Language",
+      "lessons": [
+        {
+          "title": "Uebersicht",
+          "body": "DQL ist der Leseanteil von SQL mit Fokus auf SELECT.",
+          "tasks": [],
+          "children": []
+        },
+        {
+          "title": "Level 1 SELECT Grundlagen",
+          "body": "",
+          "tasks": [],
+          "children": [
+            {
+              "title": "SELECT",
+              "body": "Waehlt Spalten aus.\nSchema:\nSELECT <spalten> FROM <tabelle>;\nBeispiel:\nSELECT id, name FROM users;",
+              "tasks": [
+                {
+                  "text": "Zeige mit `SELECT id, name FROM users ORDER BY id;` alle User in ID-Reihenfolge.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["id", "name"],
+                    "rows": [[1, "Alice"], [2, "Bob"], [3, "Charlie"]],
+                    "rowOrder": true
+                  }
+                },
+                {
+                  "text": "Zeige mit `SELECT name, role FROM users WHERE role = 'User' ORDER BY id;` nur User-Rollen.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["name", "role"],
+                    "rows": [["Bob", "User"], ["Charlie", "User"]],
+                    "rowOrder": true
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "WHERE",
+              "body": "Filtert Zeilen.\nSchema:\nSELECT ... FROM ... WHERE <bedingung>;\nBeispiel:\nSELECT id, name FROM users WHERE role = 'User';",
+              "tasks": [
+                {
+                  "text": "Selektiere aus `users` nur `role = 'User'` und zeige `id, name` sortiert nach `id`.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["id", "name"],
+                    "rows": [[2, "Bob"], [3, "Charlie"]],
+                    "rowOrder": true
+                  }
+                },
+                {
+                  "text": "Selektiere aus `logs` nur Eintraege mit `user_id = 1` und gib `log_id` sortiert aus.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["log_id"],
+                    "rows": [[101], [103]],
+                    "rowOrder": true
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "ORDER BY",
+              "body": "Sortiert Ergebnisse.\nSchema:\nSELECT ... FROM ... ORDER BY <spalte> [ASC|DESC];\nBeispiel:\nSELECT id, name FROM users ORDER BY name ASC;",
+              "tasks": [
+                {
+                  "text": "Sortiere `users` nach `name DESC` und zeige `id, name`.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["id", "name"],
+                    "rows": [[3, "Charlie"], [2, "Bob"], [1, "Alice"]],
+                    "rowOrder": true
+                  }
+                },
+                {
+                  "text": "Sortiere `logs` nach `log_id DESC` und zeige `log_id, user_id`.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["log_id", "user_id"],
+                    "rows": [[103, 1], [102, 2], [101, 1]],
+                    "rowOrder": true
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "DISTINCT",
+              "body": "Entfernt Duplikate im Ergebnis.\nSchema:\nSELECT DISTINCT <spalte> FROM <tabelle>;\nBeispiel:\nSELECT DISTINCT role FROM users ORDER BY role;",
+              "tasks": [
+                {
+                  "text": "Zeige mit `SELECT DISTINCT role FROM users ORDER BY role;` jede Rolle genau einmal.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["role"],
+                    "rows": [["Admin"], ["User"]],
+                    "rowOrder": true
+                  }
+                },
+                {
+                  "text": "Zeige mit `SELECT DISTINCT user_id FROM logs ORDER BY user_id;` jede `user_id` nur einmal.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["user_id"],
+                    "rows": [[1], [2]],
+                    "rowOrder": true
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Level 2 JOIN und Aggregation",
+          "body": "",
+          "tasks": [],
+          "children": [
+            {
+              "title": "INNER JOIN",
+              "body": "Verknuepft nur passende Datensaetze.\nSchema:\nSELECT ... FROM a INNER JOIN b ON b.a_id = a.id;\nBeispiel:\nSELECT u.name, l.message FROM users u INNER JOIN logs l ON l.user_id = u.id;",
+              "tasks": [
+                {
+                  "text": "Verknuepfe `users` und `logs` per INNER JOIN und zeige `u.name, l.message` sortiert nach `l.log_id`.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["name", "message"],
+                    "rows": [["Alice", "Logged In"], ["Bob", "Viewed Page"], ["Alice", "Logout"]],
+                    "rowOrder": true
+                  }
+                },
+                {
+                  "text": "Gib per JOIN die Paare `u.id, l.log_id` sortiert nach `l.log_id` aus.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["id", "log_id"],
+                    "rows": [[1, 101], [2, 102], [1, 103]],
+                    "rowOrder": true
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "LEFT JOIN",
+              "body": "Behaelt alle Zeilen der linken Tabelle.\nSchema:\nSELECT ... FROM a LEFT JOIN b ON ...;\nBeispiel:\nSELECT u.name, l.message FROM users u LEFT JOIN logs l ON l.user_id = u.id;",
+              "tasks": [
+                {
+                  "text": "Zeige mit LEFT JOIN `u.id, u.name, l.message` und sortiere nach `u.id, l.log_id`.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["id", "name", "message"],
+                    "rows": [[1, "Alice", "Logged In"], [1, "Alice", "Logout"], [2, "Bob", "Viewed Page"], [3, "Charlie", null]],
+                    "rowOrder": true
+                  }
+                },
+                {
+                  "text": "Erzeuge per LEFT JOIN ein Resultset mit insgesamt 4 Zeilen.",
+                  "check": {
+                    "type": "result-row-count",
+                    "value": 4
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "GROUP BY",
+              "body": "Gruppiert Zeilen fuer Aggregationen.\nSchema:\nSELECT <spalte>, COUNT(*) FROM <tabelle> GROUP BY <spalte>;\nBeispiel:\nSELECT role, COUNT(*) FROM users GROUP BY role;",
+              "tasks": [
+                {
+                  "text": "Ermittle per `GROUP BY` die Anzahl je `role` und zeige `role, COUNT(*) AS cnt` sortiert nach `role`.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["role", "cnt"],
+                    "rows": [["Admin", 1], ["User", 2]],
+                    "rowOrder": true
+                  }
+                },
+                {
+                  "text": "Ermittle per `GROUP BY` die Anzahl je `user_id` in `logs` (`user_id, COUNT(*) AS cnt`) sortiert nach `user_id`.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["user_id", "cnt"],
+                    "rows": [[1, 2], [2, 1]],
+                    "rowOrder": true
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "HAVING",
+              "body": "Filtert Gruppenergebnisse.\nSchema:\n... GROUP BY <spalte> HAVING COUNT(*) >= 2;\nBeispiel:\nSELECT role, COUNT(*) FROM users GROUP BY role HAVING COUNT(*) >= 2;",
+              "tasks": [
+                {
+                  "text": "Zeige nur Rollen mit `COUNT(*) >= 2` als `role, COUNT(*) AS cnt`.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["role", "cnt"],
+                    "rows": [["User", 2]]
+                  }
+                },
+                {
+                  "text": "Zeige in `logs` nur `user_id`-Gruppen mit `COUNT(*) > 1` als `user_id, COUNT(*) AS cnt`.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["user_id", "cnt"],
+                    "rows": [[1, 2]]
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "LIMIT / OFFSET",
+              "body": "Begrenzt und verschiebt Ergebnismengen.\nSchema:\nSELECT ... FROM ... ORDER BY ... LIMIT <anzahl> OFFSET <start>;\nBeispiel:\nSELECT id, name FROM users ORDER BY id LIMIT 2 OFFSET 1;",
+              "tasks": [
+                {
+                  "text": "Zeige mit `LIMIT 2` nur die ersten zwei User nach `id` sortiert.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["id", "name"],
+                    "rows": [[1, "Alice"], [2, "Bob"]],
+                    "rowOrder": true
+                  }
+                },
+                {
+                  "text": "Zeige mit `LIMIT 2 OFFSET 1` den zweiten und dritten User nach `id` sortiert.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["id", "name"],
+                    "rows": [[2, "Bob"], [3, "Charlie"]],
+                    "rowOrder": true
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Level 3 Unterabfragen",
+          "body": "",
+          "tasks": [],
+          "children": [
+            {
+              "title": "IN",
+              "body": "Lernziel: Unterabfragen als Mengenfilter sicher einsetzen.\nSchema:\nSELECT ... FROM ... WHERE <spalte> IN (SELECT ...);\nBeispiel:\nSELECT name FROM users WHERE id IN (SELECT user_id FROM logs) ORDER BY name;\nTypische Fehler: Unterabfrage liefert falsche Spalte oder fehlende Sortierung im Ergebnis.",
+              "tasks": [
+                {
+                  "text": "Gib nur die Namen der Nutzer aus, zu denen mindestens ein Logeintrag existiert (alphabetisch sortiert).",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["name"],
+                    "rows": [["Alice"], ["Bob"]],
+                    "rowOrder": true
+                  }
+                },
+                {
+                  "text": "Ermittle dazu die passenden User-IDs in absteigender Reihenfolge.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["id"],
+                    "rows": [[2], [1]],
+                    "rowOrder": true
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "EXISTS",
+              "body": "Lernziel: Existenzpruefung mit korrelierter Unterabfrage formulieren.\nSchema:\nSELECT ... FROM a WHERE EXISTS (SELECT 1 FROM b WHERE ... a...);\nBeispiel:\nSELECT name FROM users u WHERE EXISTS (SELECT 1 FROM logs l WHERE l.user_id = u.id) ORDER BY u.id;\nTypische Fehler: Korrelation fehlt oder EXISTS wird wie IN ohne Bezug genutzt.",
+              "tasks": [
+                {
+                  "text": "Loese dieselbe Fragestellung diesmal mit EXISTS und gib nur die passenden Usernamen aus.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["name"],
+                    "rows": [["Alice"], ["Bob"]],
+                    "rowOrder": true
+                  }
+                },
+                {
+                  "text": "Gib per EXISTS die zugehoerigen User-IDs in absteigender Reihenfolge aus.",
+                  "check": {
+                    "type": "result-equals",
+                    "columns": ["id"],
+                    "rows": [[2], [1]],
+                    "rowOrder": true
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dcl-data-control-language",
+      "label": "DCL Data Control Language",
+      "lessons": [
+        {
+          "title": "Uebersicht",
+          "body": "DCL steuert Zugriffsrechte auf Datenbankobjekte.",
+          "tasks": [],
+          "children": []
+        },
+        {
+          "title": "Level 1 Rechte vergeben und entziehen",
+          "body": "",
+          "tasks": [],
+          "children": [
+            {
+              "title": "GRANT",
+              "body": "Vergibt Rechte.\nSchema:\nGRANT <recht> ON <objekt> TO <rolle_oder_user>;\nBeispiel:\nGRANT SELECT ON users TO trainee;",
+              "tasks": [
+                {
+                  "text": "Vergib das Recht `SELECT` auf `users` an `trainee`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["grant", "select", "on users", "to trainee"]
+                  }
+                },
+                {
+                  "text": "Vergib das Recht `UPDATE` auf `logs` an `trainer`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["grant", "update", "on logs", "to trainer"]
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "REVOKE",
+              "body": "Entzieht Rechte.\nSchema:\nREVOKE <recht> ON <objekt> FROM <rolle_oder_user>;\nBeispiel:\nREVOKE SELECT ON users FROM trainee;",
+              "tasks": [
+                {
+                  "text": "Entziehe das Recht `SELECT` auf `users` wieder von `trainee`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["revoke", "select", "on users", "from trainee"]
+                  }
+                },
+                {
+                  "text": "Entziehe das Recht `UPDATE` auf `logs` wieder von `trainer`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["revoke", "update", "on logs", "from trainer"]
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Level 2 Rollenmodell",
+          "body": "",
+          "tasks": [],
+          "children": [
+            {
+              "title": "Rollen statt Einzelrechte",
+              "body": "Rechte zentral ueber Rollen pflegen.\nSchema:\nGRANT <recht> ON <objekt> TO <rolle>;\nGRANT <rolle> TO <user>;\nBeispiel:\nGRANT SELECT ON users TO read_role;\nGRANT read_role TO trainee;",
+              "tasks": [
+                {
+                  "text": "Vergib `SELECT` auf `users` an die Rolle `read_role`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["grant", "select", "on users", "to read_role"]
+                  }
+                },
+                {
+                  "text": "Vergib danach die Rolle `read_role` an `trainee`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["grant", "read_role", "to trainee"]
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "Least Privilege",
+              "body": "Nur minimal noetige Rechte vergeben.\nSchema:\nGRANT SELECT ON ...\nBeispiel:\nGRANT SELECT ON reports TO analyst;",
+              "tasks": [
+                {
+                  "text": "Vergib an `analyst` nur Leserechte auf `reports`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["grant", "select", "on reports", "to analyst"]
+                  }
+                },
+                {
+                  "text": "Stelle sicher, dass `UPDATE` auf `reports` fuer `analyst` entzogen ist.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["revoke", "update", "on reports", "from analyst"]
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Level 3 Berechtigungs-Transfer",
+          "body": "",
+          "tasks": [],
+          "children": [
+            {
+              "title": "Auditfall Reporting",
+              "body": "Lernziel: Rechte in einem Auditfall als Read-Only-Profil umsetzen.\nSchema:\nGRANT SELECT ON <objekt> TO <rolle_oder_user>;\nREVOKE UPDATE ON <objekt> FROM <rolle_oder_user>;\nBeispiel:\nGRANT SELECT ON reports TO analyst;\nREVOKE UPDATE ON reports FROM analyst;\nTypische Fehler: Schreibrechte bleiben aktiv oder Objektname stimmt nicht.",
+              "tasks": [
+                {
+                  "text": "Setze fuer `analyst` ein Read-Only-Profil auf `reports` (SELECT erlaubt, UPDATE entzogen).",
+                  "check": {
+                    "all": [
+                      {
+                        "type": "statement-contains",
+                        "tokens": ["grant", "select", "on reports", "to analyst"]
+                      },
+                      {
+                        "type": "statement-contains",
+                        "tokens": ["revoke", "update", "on reports", "from analyst"]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "text": "Uebertrage dieselbe Absicherung auf `users` fuer `trainee`.",
+                  "check": {
+                    "all": [
+                      {
+                        "type": "statement-contains",
+                        "tokens": ["grant", "select", "on users", "to trainee"]
+                      },
+                      {
+                        "type": "statement-contains",
+                        "tokens": ["revoke", "update", "on users", "from trainee"]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "Rollenbasierte Vergabe",
+              "body": "Lernziel: Einzelrechte in eine rollenbasierte Vergabe ueberfuehren.\nSchema:\nGRANT SELECT ON <objekt> TO <rolle>;\nGRANT <rolle> TO <user>;\nREVOKE UPDATE ON <objekt> FROM <user>;\nBeispiel:\nGRANT SELECT ON users TO read_role;\nGRANT read_role TO trainee;\nREVOKE UPDATE ON users FROM trainee;\nTypische Fehler: Rolle wird erstellt, aber nicht zugewiesen.",
+              "tasks": [
+                {
+                  "text": "Richte fuer `users` eine Leseberechtigung ueber `read_role` ein und weise sie `trainee` zu.",
+                  "check": {
+                    "all": [
+                      {
+                        "type": "statement-contains",
+                        "tokens": ["grant", "select", "on users", "to read_role"]
+                      },
+                      {
+                        "type": "statement-contains",
+                        "tokens": ["grant", "read_role", "to trainee"]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "text": "Sichere den Fall ab, indem `trainee` kein `UPDATE` auf `users` mehr hat.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["revoke", "update", "on users", "from trainee"]
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcl-transaction-control-language",
+      "label": "TCL Transaction Control Language",
+      "lessons": [
+        {
+          "title": "Uebersicht",
+          "body": "TCL steuert Transaktionen und Konsistenz.",
+          "tasks": [],
+          "children": []
+        },
+        {
+          "title": "Level 1 Transaktionsgrundlagen",
+          "body": "",
+          "tasks": [],
+          "children": [
+            {
+              "title": "BEGIN",
+              "body": "Startet einen Transaktionsblock.\nSchema:\nBEGIN;\nBeispiel:\nBEGIN;",
+              "tasks": [
+                {
+                  "text": "Starte einen Transaktionsblock mit `BEGIN`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["begin"]
+                  }
+                },
+                {
+                  "text": "Starte alternativ einen Transaktionsblock mit `BEGIN TRANSACTION`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["begin transaction"]
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "COMMIT",
+              "body": "Bestaetigt Aenderungen dauerhaft.\nSchema:\nCOMMIT;\nBeispiel:\nCOMMIT;",
+              "tasks": [
+                {
+                  "text": "Beende einen offenen Transaktionsblock mit `COMMIT`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["commit"]
+                  }
+                },
+                {
+                  "text": "Nutze alternativ die Schreibweise `COMMIT WORK`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["commit work"]
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "ROLLBACK",
+              "body": "Verwirft Aenderungen seit BEGIN.\nSchema:\nROLLBACK;\nBeispiel:\nROLLBACK;",
+              "tasks": [
+                {
+                  "text": "Verwirf eine laufende Transaktion mit `ROLLBACK`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["rollback"]
+                  }
+                },
+                {
+                  "text": "Nutze alternativ die Schreibweise `ROLLBACK WORK`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["rollback work"]
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Level 2 SAVEPOINT",
+          "body": "",
+          "tasks": [],
+          "children": [
+            {
+              "title": "SAVEPOINT",
+              "body": "Markiert Zwischenstand.\nSchema:\nSAVEPOINT <name>;\nBeispiel:\nSAVEPOINT before_update;",
+              "tasks": [
+                {
+                  "text": "Setze in einer laufenden Transaktion den Savepoint `sp_edit`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["savepoint", "sp_edit"]
+                  }
+                },
+                {
+                  "text": "Setze zusaetzlich einen Savepoint `sp_cleanup`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["savepoint", "sp_cleanup"]
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "ROLLBACK TO SAVEPOINT",
+              "body": "Springt zu einem Savepoint zurueck.\nSchema:\nROLLBACK TO SAVEPOINT <name>;\nBeispiel:\nROLLBACK TO SAVEPOINT before_update;",
+              "tasks": [
+                {
+                  "text": "Rolle mit `ROLLBACK TO SAVEPOINT sp_edit` auf einen gesetzten Savepoint zurueck.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["rollback to savepoint", "sp_edit"]
+                  }
+                },
+                {
+                  "text": "Rolle alternativ auf `sp_cleanup` zurueck.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["rollback to savepoint", "sp_cleanup"]
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Level 3 Fehlerfall und Teilrollback",
+          "body": "",
+          "tasks": [],
+          "children": [
+            {
+              "title": "Teilruecknahme nach Fehler",
+              "body": "Lernziel: Bei einem Fehler nur den letzten Arbeitsschritt zuruecknehmen.\nSchema:\nBEGIN;\nSAVEPOINT <name>;\nROLLBACK TO SAVEPOINT <name>;\nCOMMIT;\nBeispiel:\nBEGIN;\nSAVEPOINT sp_edit;\nROLLBACK TO SAVEPOINT sp_edit;\nCOMMIT;\nTypische Fehler: Savepoint fehlt oder Transaktion wird nicht abgeschlossen.",
+              "tasks": [
+                {
+                  "text": "Starte eine Transaktion, setze `sp_edit` und fuehre danach ein Teilrollback auf diesen Savepoint aus.",
+                  "check": {
+                    "all": [
+                      {
+                        "type": "statement-contains",
+                        "tokens": ["begin"]
+                      },
+                      {
+                        "type": "statement-contains",
+                        "tokens": ["savepoint", "sp_edit"]
+                      },
+                      {
+                        "type": "statement-contains",
+                        "tokens": ["rollback to savepoint", "sp_edit"]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "text": "Schliesse den Ablauf danach sauber mit `COMMIT` ab.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["commit"]
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "title": "Abbruchszenario",
+              "body": "Lernziel: Eine gestartete Transaktion kontrolliert komplett verwerfen.\nSchema:\nBEGIN;\nSAVEPOINT <name>;\nROLLBACK;\nBeispiel:\nBEGIN;\nSAVEPOINT sp_cleanup;\nROLLBACK;\nTypische Fehler: Statt Vollrollback nur bis zum Savepoint zurueckrollen.",
+              "tasks": [
+                {
+                  "text": "Starte eine neue Transaktion und setze `sp_cleanup` als Sicherheitsanker.",
+                  "check": {
+                    "all": [
+                      {
+                        "type": "statement-contains",
+                        "tokens": ["begin"]
+                      },
+                      {
+                        "type": "statement-contains",
+                        "tokens": ["savepoint", "sp_cleanup"]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "text": "Verwirf den Ablauf vollstaendig mit `ROLLBACK`.",
+                  "check": {
+                    "type": "statement-contains",
+                    "tokens": ["rollback"]
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

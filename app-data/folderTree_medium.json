@@ -1,0 +1,476 @@
+{
+  "$schema": "./folderTree.schema.json",
+  "rootLabel": "Werkzeuge – Fortgeschritten",
+  "tools": [
+    {
+      "id": "dql-data-query-language",
+      "label": "DQL Data Query Language",
+      "lessonRoots": [
+        {
+          "id": "dql-data-query-language-lesson-1-uebersicht",
+          "title": "Uebersicht",
+          "level": 1,
+          "body": "Pruefungsrelevant: WHERE, Operatoren, AND/OR/NOT, IN/BETWEEN/LIKE, JOIN, GROUP BY/HAVING, Aggregationen, Sortierung, LIMIT.",
+          "tasks": [],
+          "children": [
+            {
+              "id": "dql-data-query-language-lesson-2-filtern-select-from-where",
+              "title": "Filtern: SELECT ... FROM ... WHERE ...",
+              "level": 2,
+              "body": "Schema:\nSELECT <column_name> FROM <table_name> WHERE <bedingung>;",
+              "tasks": [
+                {
+                  "id": "dql-data-query-language-lesson-2-filtern-select-from-where-task-1",
+                  "text": "Filtere mit = : WHERE id = 2"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-2-filtern-select-from-where-task-2",
+                  "text": "Filtere mit <> : WHERE id <> 2"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-2-filtern-select-from-where-task-3",
+                  "text": "Filtere mit <  : WHERE id < 3"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-2-filtern-select-from-where-task-4",
+                  "text": "Filtere mit <= : WHERE id <= 2"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-2-filtern-select-from-where-task-5",
+                  "text": "Filtere mit >  : WHERE id > 1"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-2-filtern-select-from-where-task-6",
+                  "text": "Filtere mit >= : WHERE id >= 2"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "dql-data-query-language-lesson-3-logik-and-or-not",
+              "title": "Logik: AND / OR / NOT",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "dql-data-query-language-lesson-3-logik-and-or-not-task-1",
+                  "text": "WHERE id = 1 OR id = 3"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-3-logik-and-or-not-task-2",
+                  "text": "WHERE id >= 2 AND id <= 3"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-3-logik-and-or-not-task-3",
+                  "text": "WHERE NOT (name = 'Anna')"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "dql-data-query-language-lesson-4-null-sauber-is-null-is-not-null",
+              "title": "NULL sauber: IS NULL / IS NOT NULL",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "dql-data-query-language-lesson-4-null-sauber-is-null-is-not-null-task-1",
+                  "text": "Fuege einen Datensatz in `users` ein, bei dem `name` NULL ist."
+                },
+                {
+                  "id": "dql-data-query-language-lesson-4-null-sauber-is-null-is-not-null-task-2",
+                  "text": "Selektiere: WHERE name IS NULL"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-4-null-sauber-is-null-is-not-null-task-3",
+                  "text": "Selektiere: WHERE name IS NOT NULL"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "dql-data-query-language-lesson-5-mengen-muster-in-between-like",
+              "title": "Mengen & Muster: IN / BETWEEN / LIKE",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "dql-data-query-language-lesson-5-mengen-muster-in-between-like-task-1",
+                  "text": "WHERE id IN (1, 3)"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-5-mengen-muster-in-between-like-task-2",
+                  "text": "WHERE id BETWEEN 1 AND 2"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-5-mengen-muster-in-between-like-task-3",
+                  "text": "WHERE name LIKE 'A%'"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "dql-data-query-language-lesson-6-sortieren-order-by-und-alias-mit-as",
+              "title": "Sortieren: ORDER BY (und Alias mit AS)",
+              "level": 2,
+              "body": "Schema:\nSELECT <column_name> AS <alias_name> FROM <table_name> ORDER BY <column_name>;",
+              "tasks": [
+                {
+                  "id": "dql-data-query-language-lesson-6-sortieren-order-by-und-alias-mit-as-task-1",
+                  "text": "SELECT name AS n FROM users ORDER BY n"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-6-sortieren-order-by-und-alias-mit-as-task-2",
+                  "text": "SELECT id, name FROM users ORDER BY id"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "dql-data-query-language-lesson-7-begrenzen-limit",
+              "title": "Begrenzen: LIMIT",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "dql-data-query-language-lesson-7-begrenzen-limit-task-1",
+                  "text": "SELECT * FROM users ORDER BY id LIMIT 2"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-7-begrenzen-limit-task-2",
+                  "text": "SELECT * FROM logs ORDER BY id LIMIT 1"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "dql-data-query-language-lesson-8-verknuepfen-inner-join-left-join-mit-on",
+              "title": "Verknuepfen: INNER JOIN / LEFT JOIN mit ON",
+              "level": 2,
+              "body": "Vorbereitung:\n- Stelle sicher: logs hat eine Spalte user_id INTEGER.\n- Fuege Logs ein, die auf users.id zeigen.\nSchema:\nSELECT u.name, l.msg\nFROM users AS u\nINNER JOIN logs AS l ON l.user_id = u.id;",
+              "tasks": [
+                {
+                  "id": "dql-data-query-language-lesson-8-verknuepfen-inner-join-left-join-mit-on-task-1",
+                  "text": "Schreibe einen INNER JOIN users/logs ueber ON."
+                },
+                {
+                  "id": "dql-data-query-language-lesson-8-verknuepfen-inner-join-left-join-mit-on-task-2",
+                  "text": "Schreibe einen LEFT JOIN users/logs ueber ON."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "dql-data-query-language-lesson-9-gruppieren-group-by-having-count-sum-avg-min-max",
+              "title": "Gruppieren: GROUP BY + HAVING + COUNT/SUM/AVG/MIN/MAX",
+              "level": 2,
+              "body": "Vorbereitung:\n- users hat eine Spalte role TEXT.\n- Fuege mehrere users mit role 'Admin' und 'User' ein.\nVorbereitung (SUM/AVG/MIN/MAX):\n- Erstelle scores(user_id INTEGER, points INTEGER)\n- Fuege pro user mehrere scores ein",
+              "tasks": [
+                {
+                  "id": "dql-data-query-language-lesson-9-gruppieren-group-by-having-count-sum-avg-min-max-task-1",
+                  "text": "COUNT: SELECT role, COUNT(*) FROM users GROUP BY role;"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-9-gruppieren-group-by-having-count-sum-avg-min-max-task-2",
+                  "text": "HAVING: ... HAVING COUNT(*) >= 2;"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-9-gruppieren-group-by-having-count-sum-avg-min-max-task-3",
+                  "text": "SUM: SELECT user_id, SUM(points) FROM scores GROUP BY user_id;"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-9-gruppieren-group-by-having-count-sum-avg-min-max-task-4",
+                  "text": "AVG: SELECT user_id, AVG(points) FROM scores GROUP BY user_id;"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-9-gruppieren-group-by-having-count-sum-avg-min-max-task-5",
+                  "text": "MIN: SELECT user_id, MIN(points) FROM scores GROUP BY user_id;"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-9-gruppieren-group-by-having-count-sum-avg-min-max-task-6",
+                  "text": "MAX: SELECT user_id, MAX(points) FROM scores GROUP BY user_id;"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "dql-data-query-language-lesson-10-textfunktionen-lower-upper-coalesce",
+              "title": "Textfunktionen: LOWER / UPPER / COALESCE",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "dql-data-query-language-lesson-10-textfunktionen-lower-upper-coalesce-task-1",
+                  "text": "SELECT LOWER(name) FROM users;"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-10-textfunktionen-lower-upper-coalesce-task-2",
+                  "text": "SELECT UPPER(role) FROM users;"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-10-textfunktionen-lower-upper-coalesce-task-3",
+                  "text": "SELECT COALESCE(name, 'unbekannt') FROM users;"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "dql-data-query-language-lesson-11-rechnen-in-select-where",
+              "title": "Rechnen in SELECT/WHERE: + - * / %",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "dql-data-query-language-lesson-11-rechnen-in-select-where-task-1",
+                  "text": "SELECT id + 10 FROM users;"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-11-rechnen-in-select-where-task-2",
+                  "text": "SELECT id - 1  FROM users;"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-11-rechnen-in-select-where-task-3",
+                  "text": "SELECT 2 * 3   FROM users;"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-11-rechnen-in-select-where-task-4",
+                  "text": "SELECT 10 / 2  FROM users;"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-11-rechnen-in-select-where-task-5",
+                  "text": "SELECT id % 2  FROM users;"
+                },
+                {
+                  "id": "dql-data-query-language-lesson-11-rechnen-in-select-where-task-6",
+                  "text": "WHERE (id % 2) = 0"
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dml-data-manipulation-language",
+      "label": "DML Data Manipulation Language",
+      "lessonRoots": [
+        {
+          "id": "dml-data-manipulation-language-lesson-1-uebersicht",
+          "title": "Uebersicht",
+          "level": 1,
+          "body": "Pruefungsrelevant: UPDATE/SET/DELETE mit WHERE.",
+          "tasks": [],
+          "children": [
+            {
+              "id": "dml-data-manipulation-language-lesson-2-aktualisieren-update-users-set-where",
+              "title": "Aktualisieren: UPDATE users SET ... WHERE ...",
+              "level": 2,
+              "body": "Schema:\nUPDATE <table_name> SET <column_name> = <wert> WHERE <bedingung>;",
+              "tasks": [
+                {
+                  "id": "dml-data-manipulation-language-lesson-2-aktualisieren-update-users-set-where-task-1",
+                  "text": "UPDATE users SET name = 'Anja' WHERE id = 1;"
+                },
+                {
+                  "id": "dml-data-manipulation-language-lesson-2-aktualisieren-update-users-set-where-task-2",
+                  "text": "UPDATE users SET role = 'User' WHERE id >= 2;"
+                },
+                {
+                  "id": "dml-data-manipulation-language-lesson-2-aktualisieren-update-users-set-where-task-3",
+                  "text": "UPDATE users SET name = 'X', role = 'Admin' WHERE id = 3;"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "dml-data-manipulation-language-lesson-3-loeschen-delete-from-users-where",
+              "title": "Loeschen: DELETE FROM users WHERE ...",
+              "level": 2,
+              "body": "Schema:\nDELETE FROM <table_name> WHERE <bedingung>;",
+              "tasks": [
+                {
+                  "id": "dml-data-manipulation-language-lesson-3-loeschen-delete-from-users-where-task-1",
+                  "text": "DELETE FROM users WHERE id = 2;"
+                },
+                {
+                  "id": "dml-data-manipulation-language-lesson-3-loeschen-delete-from-users-where-task-2",
+                  "text": "DELETE FROM users WHERE role = 'Temp';"
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ddl-data-definition-language",
+      "label": "DDL Data Definition Language",
+      "lessonRoots": [
+        {
+          "id": "ddl-data-definition-language-lesson-1-uebersicht",
+          "title": "Uebersicht",
+          "level": 1,
+          "body": "Pruefungsrelevant: ALTER TABLE, TRUNCATE, IF EXISTS/IF NOT EXISTS, Constraints, weitere Datentypen.",
+          "tasks": [],
+          "children": [
+            {
+              "id": "ddl-data-definition-language-lesson-2-spalte-hinzufuegen-alter-table-users-add-column-role-text",
+              "title": "Spalte hinzufuegen: ALTER TABLE users ADD COLUMN role TEXT;",
+              "level": 2,
+              "body": "Schema:\nALTER TABLE <table_name> ADD COLUMN <column_name> <datatype>;",
+              "tasks": [
+                {
+                  "id": "ddl-data-definition-language-lesson-2-spalte-hinzufuegen-alter-table-users-add-column-role-text-task-1",
+                  "text": "Fuege role TEXT zu users hinzu."
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-2-spalte-hinzufuegen-alter-table-users-add-column-role-text-task-2",
+                  "text": "Fuege active BOOLEAN zu users hinzu."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "ddl-data-definition-language-lesson-3-tabelle-leeren-truncate-table-users",
+              "title": "Tabelle leeren: TRUNCATE TABLE users;",
+              "level": 2,
+              "body": "Schema:\nTRUNCATE TABLE <table_name>;",
+              "tasks": [
+                {
+                  "id": "ddl-data-definition-language-lesson-3-tabelle-leeren-truncate-table-users-task-1",
+                  "text": "Fuege Daten ein und TRUNCATE TABLE users."
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-3-tabelle-leeren-truncate-table-users-task-2",
+                  "text": "Pruefe per SELECT, dass users leer ist."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "ddl-data-definition-language-lesson-4-sicher-anlegen-loeschen-if-exists-if-not-exists",
+              "title": "Sicher anlegen/loeschen: IF EXISTS / IF NOT EXISTS",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "ddl-data-definition-language-lesson-4-sicher-anlegen-loeschen-if-exists-if-not-exists-task-1",
+                  "text": "CREATE TABLE IF NOT EXISTS tmp (id INTEGER);"
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-4-sicher-anlegen-loeschen-if-exists-if-not-exists-task-2",
+                  "text": "DROP TABLE IF EXISTS tmp;"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "ddl-data-definition-language-lesson-5-constraints-in-create-table-primary-key-foreign-key-unique-not-null-default-check-references",
+              "title": "Constraints in CREATE TABLE: PRIMARY KEY / FOREIGN KEY / UNIQUE / NOT NULL / DEFAULT / CHECK / REFERENCES",
+              "level": 2,
+              "body": "Vorbereitung FK:\n- customers(id INTEGER PRIMARY KEY)\n- orders(id INTEGER, customer_id INTEGER)\nCREATE TABLE orders (\nid INTEGER,\ncustomer_id INTEGER,\nFOREIGN KEY (customer_id) REFERENCES customers(id)\n);",
+              "tasks": [
+                {
+                  "id": "ddl-data-definition-language-lesson-5-constraints-in-create-table-primary-key-foreign-key-unique-not-null-default-check-references-task-1",
+                  "text": "PRIMARY KEY: CREATE TABLE customers (id INTEGER PRIMARY KEY, name TEXT);"
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-5-constraints-in-create-table-primary-key-foreign-key-unique-not-null-default-check-references-task-2",
+                  "text": "UNIQUE:      CREATE TABLE accounts (id INTEGER, email TEXT UNIQUE);"
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-5-constraints-in-create-table-primary-key-foreign-key-unique-not-null-default-check-references-task-3",
+                  "text": "NOT NULL:    CREATE TABLE products (id INTEGER, name TEXT NOT NULL);"
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-5-constraints-in-create-table-primary-key-foreign-key-unique-not-null-default-check-references-task-4",
+                  "text": "DEFAULT:     CREATE TABLE tickets (id INTEGER, status TEXT DEFAULT 'open');"
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-5-constraints-in-create-table-primary-key-foreign-key-unique-not-null-default-check-references-task-5",
+                  "text": "CHECK:       CREATE TABLE ratings (id INTEGER, value INTEGER CHECK (value >= 1 AND value <= 5));"
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-5-constraints-in-create-table-primary-key-foreign-key-unique-not-null-default-check-references-task-6",
+                  "text": "FOREIGN KEY + REFERENCES:"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "ddl-data-definition-language-lesson-6-datentypen-varchar-char-bigint-decimal-numeric-date-timestamp",
+              "title": "Datentypen: VARCHAR / CHAR / BIGINT / DECIMAL / NUMERIC / DATE / TIMESTAMP",
+              "level": 2,
+              "body": "big BIGINT,\ncode CHAR(2),\nemail VARCHAR(100),\nprice DECIMAL(10,2),\namount NUMERIC(10,2),\ncreated DATE,\ncreated_at TIMESTAMP",
+              "tasks": [
+                {
+                  "id": "ddl-data-definition-language-lesson-6-datentypen-varchar-char-bigint-decimal-numeric-date-timestamp-task-1",
+                  "text": "Erstelle eine Tabelle `types_demo` mit:"
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dcl-data-control-language",
+      "label": "DCL Data Control Language",
+      "lessonRoots": [
+        {
+          "id": "dcl-data-control-language-lesson-1-uebersicht",
+          "title": "Uebersicht",
+          "level": 1,
+          "body": "Pruefungsrelevant: ALL PRIVILEGES (PRIVILEGES als Token).",
+          "tasks": [],
+          "children": [
+            {
+              "id": "dcl-data-control-language-lesson-2-all-privileges",
+              "title": "ALL PRIVILEGES",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "dcl-data-control-language-lesson-2-all-privileges-task-1",
+                  "text": "GRANT ALL PRIVILEGES ON TABLE users TO trainee;"
+                },
+                {
+                  "id": "dcl-data-control-language-lesson-2-all-privileges-task-2",
+                  "text": "REVOKE ALL PRIVILEGES ON TABLE users FROM trainee;"
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcl-transaction-control-language",
+      "label": "TCL Transaction Control Language",
+      "lessonRoots": [
+        {
+          "id": "tcl-transaction-control-language-lesson-1-uebersicht",
+          "title": "Uebersicht",
+          "level": 1,
+          "body": "Pruefungsrelevant: SAVEPOINT als Zwischenstand.",
+          "tasks": [],
+          "children": [
+            {
+              "id": "tcl-transaction-control-language-lesson-2-savepoint-in-einer-transaktion",
+              "title": "SAVEPOINT in einer Transaktion",
+              "level": 2,
+              "body": "Schema:\nBEGIN;\nSAVEPOINT <identifier>;\n... Aenderung ...\nROLLBACK;\nCOMMIT;",
+              "tasks": [
+                {
+                  "id": "tcl-transaction-control-language-lesson-2-savepoint-in-einer-transaktion-task-1",
+                  "text": "BEGIN; SAVEPOINT sp1; UPDATE users SET name='X' WHERE id=1; ROLLBACK; (pruefen)"
+                },
+                {
+                  "id": "tcl-transaction-control-language-lesson-2-savepoint-in-einer-transaktion-task-2",
+                  "text": "BEGIN; SAVEPOINT sp1; UPDATE users SET name='X' WHERE id=1; COMMIT; (pruefen)"
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

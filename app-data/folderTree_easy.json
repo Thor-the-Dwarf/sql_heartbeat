@@ -1,0 +1,264 @@
+{
+  "$schema": "./folderTree.schema.json",
+  "rootLabel": "Werkzeuge",
+  "tools": [
+    {
+      "id": "ddl-data-definition-language",
+      "label": "DDL Data Definition Language",
+      "lessonRoots": [
+        {
+          "id": "ddl-data-definition-language-lesson-1-uebersicht",
+          "title": "Uebersicht",
+          "level": 1,
+          "body": "DDL definiert Strukturen. Start: eine echte Tabelle, die du danach auch abfragen und befuellen kannst.",
+          "tasks": [],
+          "children": [
+            {
+              "id": "ddl-data-definition-language-lesson-2-erste-tabelle-anlegen-users-mit-id-integer-und-name-text",
+              "title": "Erste Tabelle anlegen: users mit id INTEGER und name TEXT",
+              "level": 2,
+              "body": "Beispiel (nur Referenz):\nCREATE TABLE users (\nid INTEGER,\nname TEXT\n);\n- eine INTEGER-Spalte als eindeutige Nummer\n- eine TEXT-Spalte fuer einen Namen/Titel\n(Spaltennamen frei)\n- INTEGER\n- TEXT\n- TEXT\n(Spaltennamen frei, aber sinnvoll)",
+              "tasks": [
+                {
+                  "id": "ddl-data-definition-language-lesson-2-erste-tabelle-anlegen-users-mit-id-integer-und-name-text-task-1",
+                  "text": "Lege die Tabelle `users` exakt mit den beiden Spalten an (id INTEGER, name TEXT)."
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-2-erste-tabelle-anlegen-users-mit-id-integer-und-name-text-task-2",
+                  "text": "Lege eine zweite Tabelle an (Tabellenname frei, aber nicht `users`), mit genau 2 Spalten:"
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-2-erste-tabelle-anlegen-users-mit-id-integer-und-name-text-task-3",
+                  "text": "Lege eine dritte Tabelle an (Tabellenname frei), mit 3 Spalten:"
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "ddl-data-definition-language-lesson-3-tabelle-loeschen-eine-deiner-tabellen-wieder-entfernen",
+              "title": "Tabelle loeschen: eine deiner Tabellen wieder entfernen",
+              "level": 2,
+              "body": "Beispiel (nur Referenz):\nDROP TABLE users;",
+              "tasks": [
+                {
+                  "id": "ddl-data-definition-language-lesson-3-tabelle-loeschen-eine-deiner-tabellen-wieder-entfernen-task-1",
+                  "text": "Loesche nur eine der von dir erstellten Zusatz-Tabellen wieder (nicht `users`)."
+                },
+                {
+                  "id": "ddl-data-definition-language-lesson-3-tabelle-loeschen-eine-deiner-tabellen-wieder-entfernen-task-2",
+                  "text": "Erstelle die geloeschte Tabelle danach erneut, aber mit anderen Spaltennamen als beim ersten Versuch."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dml-data-manipulation-language",
+      "label": "DML Data Manipulation Language",
+      "lessonRoots": [
+        {
+          "id": "dml-data-manipulation-language-lesson-1-uebersicht",
+          "title": "Uebersicht",
+          "level": 1,
+          "body": "DML schreibt Daten. Start: INSERT fuer die Tabellen aus dem DDL-Teil.",
+          "tasks": [],
+          "children": [
+            {
+              "id": "dml-data-manipulation-language-lesson-2-daten-einfuegen-insert-into-values",
+              "title": "Daten einfuegen (INSERT INTO ... VALUES ...)",
+              "level": 2,
+              "body": "Beispiel (nur Referenz):\nINSERT INTO users (id, name) VALUES (1, 'Anna');\n- ids: 1, 2, 3\n- Namen: 3 unterschiedliche Namen (einer mit Leerzeichen, einer mit Umlaut, einer sehr kurz)\n- Nummern frei\n- Texte frei, aber unterschiedlich\n- Nummern frei\n- beide Textspalten muessen befuellt sein",
+              "tasks": [
+                {
+                  "id": "dml-data-manipulation-language-lesson-2-daten-einfuegen-insert-into-values-task-1",
+                  "text": "Fuege 3 Datensaetze in `users` ein:"
+                },
+                {
+                  "id": "dml-data-manipulation-language-lesson-2-daten-einfuegen-insert-into-values-task-2",
+                  "text": "Fuege 2 Datensaetze in deine 2-Spalten-Tabelle ein:"
+                },
+                {
+                  "id": "dml-data-manipulation-language-lesson-2-daten-einfuegen-insert-into-values-task-3",
+                  "text": "Fuege 2 Datensaetze in deine 3-Spalten-Tabelle ein:"
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dql-data-query-language",
+      "label": "DQL Data Query Language",
+      "lessonRoots": [
+        {
+          "id": "dql-data-query-language-lesson-1-uebersicht",
+          "title": "Uebersicht",
+          "level": 1,
+          "body": "DQL liest Daten. Start: SELECT * und SELECT mit Spaltenliste.",
+          "tasks": [],
+          "children": [
+            {
+              "id": "dql-data-query-language-lesson-2-alles-lesen-select-from",
+              "title": "Alles lesen (SELECT * FROM ...)",
+              "level": 2,
+              "body": "Beispiel (nur Referenz):\nSELECT * FROM users;",
+              "tasks": [
+                {
+                  "id": "dql-data-query-language-lesson-2-alles-lesen-select-from-task-1",
+                  "text": "Gib alle Zeilen von `users` aus."
+                },
+                {
+                  "id": "dql-data-query-language-lesson-2-alles-lesen-select-from-task-2",
+                  "text": "Gib alle Zeilen deiner 2-Spalten-Tabelle aus."
+                },
+                {
+                  "id": "dql-data-query-language-lesson-2-alles-lesen-select-from-task-3",
+                  "text": "Gib alle Zeilen deiner 3-Spalten-Tabelle aus."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "dql-data-query-language-lesson-3-spalten-auswaehlen-select-a-b-from",
+              "title": "Spalten auswaehlen (SELECT a, b FROM ...)",
+              "level": 2,
+              "body": "Beispiel (nur Referenz):\nSELECT id, name FROM users;",
+              "tasks": [
+                {
+                  "id": "dql-data-query-language-lesson-3-spalten-auswaehlen-select-a-b-from-task-1",
+                  "text": "Gib aus `users` nur die Namen aus (eine Spalte)."
+                },
+                {
+                  "id": "dql-data-query-language-lesson-3-spalten-auswaehlen-select-a-b-from-task-2",
+                  "text": "Gib aus `users` beide Spalten aus, aber in umgekehrter Reihenfolge (name zuerst, dann id)."
+                },
+                {
+                  "id": "dql-data-query-language-lesson-3-spalten-auswaehlen-select-a-b-from-task-3",
+                  "text": "Gib aus deiner 3-Spalten-Tabelle genau zwei Spalten aus (eine INTEGER + eine TEXT)."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dcl-data-control-language",
+      "label": "DCL Data Control Language",
+      "lessonRoots": [
+        {
+          "id": "dcl-data-control-language-lesson-1-uebersicht",
+          "title": "Uebersicht",
+          "level": 1,
+          "body": "DCL steuert Rechte. In SQL-Core als Schreibtraining (DBMS kann das ggf. nicht ausfuehren).",
+          "tasks": [],
+          "children": [
+            {
+              "id": "dcl-data-control-language-lesson-2-rechte-vergeben-grant",
+              "title": "Rechte vergeben (GRANT ...)",
+              "level": 2,
+              "body": "Beispiel (nur Referenz):\nGRANT SELECT ON TABLE users TO trainee;",
+              "tasks": [
+                {
+                  "id": "dcl-data-control-language-lesson-2-rechte-vergeben-grant-task-1",
+                  "text": "Formuliere ein Statement, das einer Rolle deiner Wahl Leserecht auf `users` gibt."
+                },
+                {
+                  "id": "dcl-data-control-language-lesson-2-rechte-vergeben-grant-task-2",
+                  "text": "Formuliere ein Statement, das derselben Rolle Schreibrecht (INSERT) auf `users` gibt."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "dcl-data-control-language-lesson-3-rechte-entziehen-revoke",
+              "title": "Rechte entziehen (REVOKE ...)",
+              "level": 2,
+              "body": "Beispiel (nur Referenz):\nREVOKE SELECT ON TABLE users FROM trainee;",
+              "tasks": [
+                {
+                  "id": "dcl-data-control-language-lesson-3-rechte-entziehen-revoke-task-1",
+                  "text": "Formuliere ein Statement, das das Leserecht wieder entzieht."
+                },
+                {
+                  "id": "dcl-data-control-language-lesson-3-rechte-entziehen-revoke-task-2",
+                  "text": "Formuliere ein Statement, das das INSERT-Recht wieder entzieht."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcl-transaction-control-language",
+      "label": "TCL Transaction Control Language",
+      "lessonRoots": [
+        {
+          "id": "tcl-transaction-control-language-lesson-1-uebersicht",
+          "title": "Uebersicht",
+          "level": 1,
+          "body": "TCL steuert Transaktionen. Ziel: sehen, was COMMIT vs ROLLBACK macht.",
+          "tasks": [],
+          "children": [
+            {
+              "id": "tcl-transaction-control-language-lesson-2-commit-szenario",
+              "title": "Commit-Szenario",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "tcl-transaction-control-language-lesson-2-commit-szenario-task-1",
+                  "text": "Starte eine Transaktion."
+                },
+                {
+                  "id": "tcl-transaction-control-language-lesson-2-commit-szenario-task-2",
+                  "text": "Fuege in `users` einen neuen Datensatz ein (id frei, Name frei)."
+                },
+                {
+                  "id": "tcl-transaction-control-language-lesson-2-commit-szenario-task-3",
+                  "text": "Bestaetige die Transaktion."
+                },
+                {
+                  "id": "tcl-transaction-control-language-lesson-2-commit-szenario-task-4",
+                  "text": "Pruefe per SELECT, dass der Datensatz danach existiert."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "tcl-transaction-control-language-lesson-3-rollback-szenario",
+              "title": "Rollback-Szenario",
+              "level": 2,
+              "tasks": [
+                {
+                  "id": "tcl-transaction-control-language-lesson-3-rollback-szenario-task-1",
+                  "text": "Starte eine Transaktion."
+                },
+                {
+                  "id": "tcl-transaction-control-language-lesson-3-rollback-szenario-task-2",
+                  "text": "Fuege in `users` einen neuen Datensatz ein (andere id als oben)."
+                },
+                {
+                  "id": "tcl-transaction-control-language-lesson-3-rollback-szenario-task-3",
+                  "text": "Verwirf die Transaktion."
+                },
+                {
+                  "id": "tcl-transaction-control-language-lesson-3-rollback-szenario-task-4",
+                  "text": "Pruefe per SELECT, dass dieser Datensatz danach NICHT existiert."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

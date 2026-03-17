@@ -1,0 +1,19 @@
+# Project-local Git hygiene for public hosting
+
+# Internal workspaces and documentation
+/__*/
+/Storys/
+
+# Generated artifacts and local progress
+/output/
+/progress.md
+
+# IDE / OS noise
+/.idea/
+.DS_Store
+Thumbs.db
+
+# Local secrets and machine-specific files
+.env
+.env.*
+*.local

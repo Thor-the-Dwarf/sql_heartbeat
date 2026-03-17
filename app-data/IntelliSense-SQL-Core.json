@@ -1,0 +1,378 @@
+{
+  "dialect": "SQL Core",
+  "version": "1.0.0",
+  "storage": {
+    "localStorageKey": "sqlcore.progress.v1",
+    "schema": 1
+  },
+  "items": {
+    "kw.SELECT": { "text": "SELECT", "kind": "keyword", "defaultUnlocked": true, "tags": ["DQL"] },
+    "kw.FROM": { "text": "FROM", "kind": "keyword", "defaultUnlocked": true, "tags": ["DQL"] },
+    "kw.WHERE": { "text": "WHERE", "kind": "keyword", "defaultUnlocked": false, "tags": ["DQL"] },
+    "kw.GROUP": { "text": "GROUP", "kind": "keyword", "defaultUnlocked": false, "tags": ["DQL"] },
+    "kw.BY": { "text": "BY", "kind": "keyword", "defaultUnlocked": false, "tags": ["DQL"] },
+    "kw.HAVING": { "text": "HAVING", "kind": "keyword", "defaultUnlocked": false, "tags": ["DQL"] },
+    "kw.ORDER": { "text": "ORDER", "kind": "keyword", "defaultUnlocked": false, "tags": ["DQL"] },
+    "kw.LIMIT": { "text": "LIMIT", "kind": "keyword", "defaultUnlocked": false, "tags": ["DQL"] },
+    "kw.OFFSET": { "text": "OFFSET", "kind": "keyword", "defaultUnlocked": false, "tags": ["DQL"] },
+    "kw.DISTINCT": { "text": "DISTINCT", "kind": "keyword", "defaultUnlocked": false, "tags": ["DQL"] },
+    "kw.AS": { "text": "AS", "kind": "keyword", "defaultUnlocked": false, "tags": ["Shared"] },
+
+    "kw.JOIN": { "text": "JOIN", "kind": "keyword", "defaultUnlocked": false, "tags": ["DQL"] },
+    "kw.INNER": { "text": "INNER", "kind": "keyword", "defaultUnlocked": false, "tags": ["DQL"] },
+    "kw.LEFT": { "text": "LEFT", "kind": "keyword", "defaultUnlocked": false, "tags": ["DQL"] },
+    "kw.RIGHT": { "text": "RIGHT", "kind": "keyword", "defaultUnlocked": false, "tags": ["DQL"] },
+    "kw.FULL": { "text": "FULL", "kind": "keyword", "defaultUnlocked": false, "tags": ["DQL"] },
+    "kw.OUTER": { "text": "OUTER", "kind": "keyword", "defaultUnlocked": false, "tags": ["DQL"] },
+    "kw.ON": { "text": "ON", "kind": "keyword", "defaultUnlocked": false, "tags": ["DQL"] },
+
+    "kw.INSERT": { "text": "INSERT", "kind": "keyword", "defaultUnlocked": false, "tags": ["DML"] },
+    "kw.INTO": { "text": "INTO", "kind": "keyword", "defaultUnlocked": false, "tags": ["DML"] },
+    "kw.VALUES": { "text": "VALUES", "kind": "keyword", "defaultUnlocked": false, "tags": ["DML"] },
+    "kw.UPDATE": { "text": "UPDATE", "kind": "keyword", "defaultUnlocked": false, "tags": ["DML"] },
+    "kw.SET": { "text": "SET", "kind": "keyword", "defaultUnlocked": false, "tags": ["DML"] },
+    "kw.DELETE": { "text": "DELETE", "kind": "keyword", "defaultUnlocked": false, "tags": ["DML"] },
+
+    "kw.CREATE": { "text": "CREATE", "kind": "keyword", "defaultUnlocked": true, "tags": ["DDL"] },
+    "kw.ALTER": { "text": "ALTER", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.DROP": { "text": "DROP", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.TRUNCATE": { "text": "TRUNCATE", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+
+    "kw.TABLE": { "text": "TABLE", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.VIEW": { "text": "VIEW", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.INDEX": { "text": "INDEX", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.TRIGGER": { "text": "TRIGGER", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.DATABASE": { "text": "DATABASE", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.SCHEMA": { "text": "SCHEMA", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.SEQUENCE": { "text": "SEQUENCE", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.TYPE": { "text": "TYPE", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.DOMAIN": { "text": "DOMAIN", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+
+    "kw.IF": { "text": "IF", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL","Shared"] },
+    "kw.EXISTS": { "text": "EXISTS", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL","DQL"] },
+    "kw.NOT": { "text": "NOT", "kind": "keyword", "defaultUnlocked": false, "tags": ["Shared"] },
+    "kw.NULL": { "text": "NULL", "kind": "keyword", "defaultUnlocked": false, "tags": ["Shared"] },
+
+    "kw.PRIMARY": { "text": "PRIMARY", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.FOREIGN": { "text": "FOREIGN", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.KEY": { "text": "KEY", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.UNIQUE": { "text": "UNIQUE", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.CHECK": { "text": "CHECK", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.DEFAULT": { "text": "DEFAULT", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+    "kw.REFERENCES": { "text": "REFERENCES", "kind": "keyword", "defaultUnlocked": false, "tags": ["DDL"] },
+
+    "kw.GRANT": { "text": "GRANT", "kind": "keyword", "defaultUnlocked": false, "tags": ["DCL"] },
+    "kw.REVOKE": { "text": "REVOKE", "kind": "keyword", "defaultUnlocked": false, "tags": ["DCL"] },
+    "kw.TO": { "text": "TO", "kind": "keyword", "defaultUnlocked": false, "tags": ["DCL","DDL"] },
+    "kw.FROM_DCL": { "text": "FROM", "kind": "keyword", "defaultUnlocked": false, "tags": ["DCL"] },
+    "kw.PRIVILEGES": { "text": "PRIVILEGES", "kind": "keyword", "defaultUnlocked": false, "tags": ["DCL"] },
+
+    "kw.BEGIN": { "text": "BEGIN", "kind": "keyword", "defaultUnlocked": false, "tags": ["TCL"] },
+    "kw.COMMIT": { "text": "COMMIT", "kind": "keyword", "defaultUnlocked": false, "tags": ["TCL"] },
+    "kw.ROLLBACK": { "text": "ROLLBACK", "kind": "keyword", "defaultUnlocked": false, "tags": ["TCL"] },
+    "kw.SAVEPOINT": { "text": "SAVEPOINT", "kind": "keyword", "defaultUnlocked": false, "tags": ["TCL"] },
+
+    "op.AND": { "text": "AND", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+    "op.OR": { "text": "OR", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+    "op.IS": { "text": "IS", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+    "op.IN": { "text": "IN", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+    "op.BETWEEN": { "text": "BETWEEN", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+    "op.LIKE": { "text": "LIKE", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+
+    "op.EQ": { "text": "=", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+    "op.NE": { "text": "<>", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+    "op.LT": { "text": "<", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+    "op.LE": { "text": "<=", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+    "op.GT": { "text": ">", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+    "op.GE": { "text": ">=", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+
+    "op.PLUS": { "text": "+", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+    "op.MINUS": { "text": "-", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+    "op.MUL": { "text": "*", "kind": "operator", "defaultUnlocked": true, "tags": ["Shared"] },
+    "op.DIV": { "text": "/", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+    "op.MOD": { "text": "%", "kind": "operator", "defaultUnlocked": false, "tags": ["Shared"] },
+
+    "sym.LPAREN": { "text": "(", "kind": "symbol", "defaultUnlocked": true, "tags": ["Shared"] },
+    "sym.RPAREN": { "text": ")", "kind": "symbol", "defaultUnlocked": true, "tags": ["Shared"] },
+    "sym.COMMA": { "text": ",", "kind": "symbol", "defaultUnlocked": true, "tags": ["Shared"] },
+    "sym.DOT": { "text": ".", "kind": "symbol", "defaultUnlocked": true, "tags": ["Shared"] },
+    "sym.SEMI": { "text": ";", "kind": "symbol", "defaultUnlocked": true, "tags": ["Shared"] },
+    "sym.STAR": { "text": "*", "kind": "symbol", "defaultUnlocked": true, "tags": ["Shared"] },
+
+    "ph.<identifier>": { "text": "<identifier>", "kind": "placeholder", "defaultUnlocked": true, "tags": ["Shared"] },
+    "ph.<schema_name>": { "text": "<schema_name>", "kind": "placeholder", "defaultUnlocked": true, "tags": ["Shared"] },
+    "ph.<table_name>": { "text": "<table_name>", "kind": "placeholder", "defaultUnlocked": true, "tags": ["Shared"] },
+    "ph.<column_name>": { "text": "<column_name>", "kind": "placeholder", "defaultUnlocked": true, "tags": ["Shared"] },
+    "ph.<alias_name>": { "text": "<alias_name>", "kind": "placeholder", "defaultUnlocked": true, "tags": ["Shared"] },
+    "ph.<numeric_literal>": { "text": "<numeric_literal>", "kind": "placeholder", "defaultUnlocked": true, "tags": ["Shared"] },
+    "ph.<string_literal>": { "text": "<string_literal>", "kind": "placeholder", "defaultUnlocked": true, "tags": ["Shared"] },
+
+    "dt.INTEGER": { "text": "INTEGER", "kind": "datatype", "defaultUnlocked": false, "tags": ["DDL"] },
+    "dt.BIGINT": { "text": "BIGINT", "kind": "datatype", "defaultUnlocked": false, "tags": ["DDL"] },
+    "dt.DECIMAL": { "text": "DECIMAL", "kind": "datatype", "defaultUnlocked": false, "tags": ["DDL"] },
+    "dt.NUMERIC": { "text": "NUMERIC", "kind": "datatype", "defaultUnlocked": false, "tags": ["DDL"] },
+    "dt.VARCHAR": { "text": "VARCHAR", "kind": "datatype", "defaultUnlocked": false, "tags": ["DDL"] },
+    "dt.CHAR": { "text": "CHAR", "kind": "datatype", "defaultUnlocked": false, "tags": ["DDL"] },
+    "dt.TEXT": { "text": "TEXT", "kind": "datatype", "defaultUnlocked": false, "tags": ["DDL"] },
+    "dt.BOOLEAN": { "text": "BOOLEAN", "kind": "datatype", "defaultUnlocked": false, "tags": ["DDL"] },
+    "dt.DATE": { "text": "DATE", "kind": "datatype", "defaultUnlocked": false, "tags": ["DDL"] },
+    "dt.TIMESTAMP": { "text": "TIMESTAMP", "kind": "datatype", "defaultUnlocked": false, "tags": ["DDL"] },
+
+    "fn.SUM": { "text": "SUM", "kind": "function", "defaultUnlocked": false, "tags": ["DQL","Shared","Aggregate"] },
+    "fn.COUNT": { "text": "COUNT", "kind": "function", "defaultUnlocked": false, "tags": ["DQL","Shared","Aggregate"] },
+    "fn.AVG": { "text": "AVG", "kind": "function", "defaultUnlocked": false, "tags": ["DQL","Shared","Aggregate"] },
+    "fn.MIN": { "text": "MIN", "kind": "function", "defaultUnlocked": false, "tags": ["DQL","Shared","Aggregate"] },
+    "fn.MAX": { "text": "MAX", "kind": "function", "defaultUnlocked": false, "tags": ["DQL","Shared","Aggregate"] },
+
+    "fn.LOWER": { "text": "LOWER", "kind": "function", "defaultUnlocked": false, "tags": ["DQL","Shared"] },
+    "fn.UPPER": { "text": "UPPER", "kind": "function", "defaultUnlocked": false, "tags": ["DQL","Shared"] },
+    "fn.COALESCE": { "text": "COALESCE", "kind": "function", "defaultUnlocked": false, "tags": ["DQL","Shared"] }
+  },
+  "states": {
+    "stmt.start": {
+      "next": [
+        "kw.SELECT",
+        "kw.INSERT",
+        "kw.UPDATE",
+        "kw.DELETE",
+        "kw.CREATE",
+        "kw.ALTER",
+        "kw.DROP",
+        "kw.TRUNCATE",
+        "kw.GRANT",
+        "kw.REVOKE",
+        "kw.BEGIN",
+        "kw.COMMIT",
+        "kw.ROLLBACK",
+        "kw.SAVEPOINT"
+      ]
+    },
+
+    "dql.after_SELECT": {
+      "next": [
+        "kw.DISTINCT",
+        "sym.STAR",
+        "fn.SUM",
+        "fn.COUNT",
+        "fn.AVG",
+        "fn.MIN",
+        "fn.MAX",
+        "fn.LOWER",
+        "fn.UPPER",
+        "fn.COALESCE",
+        "sym.LPAREN",
+        "kw.NOT",
+        "op.PLUS",
+        "op.MINUS",
+        "ph.<identifier>",
+        "ph.<column_name>",
+        "ph.<numeric_literal>",
+        "ph.<string_literal>",
+        "kw.NULL"
+      ]
+    },
+    "dql.select_list.after_item": {
+      "next": [
+        "sym.COMMA",
+        "kw.AS",
+        "kw.FROM"
+      ]
+    },
+    "dql.after_FROM": {
+      "next": [
+        "ph.<schema_name>",
+        "ph.<table_name>",
+        "ph.<identifier>",
+        "sym.LPAREN"
+      ]
+    },
+    "dql.table_ref.after_name": {
+      "next": [
+        "sym.DOT",
+        "kw.AS",
+        "ph.<alias_name>",
+        "kw.JOIN",
+        "kw.INNER",
+        "kw.LEFT",
+        "kw.RIGHT",
+        "kw.FULL",
+        "kw.WHERE",
+        "kw.GROUP",
+        "kw.HAVING",
+        "kw.ORDER",
+        "kw.LIMIT",
+        "kw.OFFSET",
+        "sym.SEMI"
+      ]
+    },
+    "dql.join.after_type": {
+      "next": [
+        "kw.JOIN"
+      ]
+    },
+    "dql.after_JOIN": {
+      "next": [
+        "ph.<schema_name>",
+        "ph.<table_name>",
+        "ph.<identifier>",
+        "sym.LPAREN"
+      ]
+    },
+    "dql.after_ON": {
+      "next": [
+        "expr.start"
+      ]
+    },
+    "dql.after_WHERE": {
+      "next": [
+        "expr.start"
+      ]
+    },
+    "dql.after_GROUP": {
+      "next": [
+        "kw.BY"
+      ]
+    },
+    "dql.after_GROUP_BY": {
+      "next": [
+        "ph.<column_name>",
+        "ph.<identifier>",
+        "fn.SUM",
+        "fn.COUNT",
+        "fn.AVG",
+        "fn.MIN",
+        "fn.MAX",
+        "sym.LPAREN"
+      ]
+    },
+    "dql.after_ORDER": {
+      "next": [
+        "kw.BY"
+      ]
+    },
+    "dql.after_ORDER_BY": {
+      "next": [
+        "ph.<column_name>",
+        "ph.<identifier>",
+        "fn.SUM",
+        "fn.COUNT",
+        "fn.AVG",
+        "fn.MIN",
+        "fn.MAX",
+        "sym.LPAREN"
+      ]
+    },
+
+    "expr.start": {
+      "next": [
+        "kw.NOT",
+        "sym.LPAREN",
+        "ph.<column_name>",
+        "ph.<identifier>",
+        "ph.<numeric_literal>",
+        "ph.<string_literal>",
+        "kw.NULL",
+        "fn.SUM",
+        "fn.COUNT",
+        "fn.AVG",
+        "fn.MIN",
+        "fn.MAX",
+        "fn.LOWER",
+        "fn.UPPER",
+        "fn.COALESCE"
+      ]
+    },
+    "expr.after_operand": {
+      "next": [
+        "op.EQ",
+        "op.NE",
+        "op.LT",
+        "op.LE",
+        "op.GT",
+        "op.GE",
+        "op.AND",
+        "op.OR",
+        "op.IS",
+        "op.IN",
+        "op.BETWEEN",
+        "op.LIKE",
+        "op.PLUS",
+        "op.MINUS",
+        "op.MUL",
+        "op.DIV",
+        "op.MOD",
+        "sym.RPAREN",
+        "sym.SEMI",
+        "sym.COMMA"
+      ]
+    },
+    "expr.after_operator": {
+      "next": [
+        "expr.start"
+      ]
+    },
+
+    "dml.after_INSERT": { "next": ["kw.INTO"] },
+    "dml.after_INTO": { "next": ["ph.<table_name>", "ph.<identifier>"] },
+    "dml.after_insert_table": { "next": ["sym.LPAREN", "kw.VALUES"] },
+    "dml.after_VALUES": { "next": ["sym.LPAREN"] },
+    "dml.values.in_parens": { "next": ["ph.<numeric_literal>", "ph.<string_literal>", "kw.NULL", "sym.RPAREN", "sym.COMMA", "fn.COALESCE"] },
+
+    "dml.after_UPDATE": { "next": ["ph.<table_name>", "ph.<identifier>"] },
+    "dml.after_update_table": { "next": ["kw.SET"] },
+    "dml.after_SET": { "next": ["ph.<column_name>", "ph.<identifier>"] },
+    "dml.after_set_column": { "next": ["op.EQ"] },
+
+    "dml.after_DELETE": { "next": ["kw.FROM"] },
+
+    "ddl.after_CREATE": { "next": ["kw.TABLE", "kw.VIEW", "kw.INDEX", "kw.TRIGGER", "kw.DATABASE", "kw.SCHEMA", "kw.SEQUENCE", "kw.TYPE", "kw.DOMAIN"] },
+    "ddl.after_CREATE_TABLE": { "next": ["kw.IF", "ph.<table_name>", "ph.<identifier>"] },
+    "ddl.after_CREATE_TABLE_name": { "next": ["sym.LPAREN"] },
+    "ddl.create_table.in_parens": { "next": ["ph.<column_name>", "ph.<identifier>", "kw.PRIMARY", "kw.FOREIGN", "kw.UNIQUE", "kw.CHECK"] },
+    "ddl.after_column_name": { "next": ["dt.INTEGER","dt.BIGINT","dt.DECIMAL","dt.NUMERIC","dt.VARCHAR","dt.CHAR","dt.TEXT","dt.BOOLEAN","dt.DATE","dt.TIMESTAMP"] },
+    "ddl.after_datatype": { "next": ["kw.NOT","kw.NULL","kw.DEFAULT","kw.PRIMARY","kw.UNIQUE","kw.CHECK","kw.REFERENCES","sym.COMMA","sym.RPAREN"] },
+    "ddl.after_PRIMARY": { "next": ["kw.KEY"] },
+    "ddl.after_FOREIGN": { "next": ["kw.KEY"] },
+    "ddl.after_key_clause": { "next": ["sym.LPAREN"] },
+
+    "dcl.after_GRANT": { "next": ["ph.<identifier>", "kw.PRIVILEGES"] },
+    "dcl.after_ON": { "next": ["kw.TABLE", "kw.VIEW", "kw.SCHEMA", "kw.DATABASE"] },
+    "dcl.after_TO": { "next": ["ph.<identifier>"] },
+
+    "tcl.after_BEGIN": { "next": ["sym.SEMI"] },
+    "tcl.after_COMMIT": { "next": ["sym.SEMI"] },
+    "tcl.after_ROLLBACK": { "next": ["sym.SEMI"] },
+    "tcl.after_SAVEPOINT": { "next": ["ph.<identifier>"] }
+  },
+  "transitions": [
+    { "from": "stmt.start", "on": "kw.SELECT", "to": "dql.after_SELECT" },
+    { "from": "dql.after_SELECT", "onAnyOf": ["sym.STAR","ph.<identifier>","ph.<column_name>","ph.<numeric_literal>","ph.<string_literal>","kw.NULL","fn.SUM","fn.COUNT","fn.AVG","fn.MIN","fn.MAX","fn.LOWER","fn.UPPER","fn.COALESCE","sym.LPAREN","kw.NOT","op.PLUS","op.MINUS"], "to": "dql.select_list.after_item" },
+    { "from": "dql.select_list.after_item", "on": "sym.COMMA", "to": "dql.after_SELECT" },
+    { "from": "dql.select_list.after_item", "on": "kw.FROM", "to": "dql.after_FROM" },
+    { "from": "dql.after_FROM", "onAnyOf": ["ph.<schema_name>","ph.<table_name>","ph.<identifier>"], "to": "dql.table_ref.after_name" },
+    { "from": "dql.table_ref.after_name", "on": "kw.WHERE", "to": "dql.after_WHERE" },
+    { "from": "dql.table_ref.after_name", "on": "kw.GROUP", "to": "dql.after_GROUP" },
+    { "from": "dql.after_GROUP", "on": "kw.BY", "to": "dql.after_GROUP_BY" },
+    { "from": "dql.table_ref.after_name", "on": "kw.ORDER", "to": "dql.after_ORDER" },
+    { "from": "dql.after_ORDER", "on": "kw.BY", "to": "dql.after_ORDER_BY" },
+
+    { "from": "dql.after_WHERE", "on": "expr.start", "to": "expr.start" },
+    { "from": "expr.start", "onAnyOf": ["ph.<identifier>","ph.<column_name>","ph.<numeric_literal>","ph.<string_literal>","kw.NULL","fn.SUM","fn.COUNT","fn.AVG","fn.MIN","fn.MAX","fn.LOWER","fn.UPPER","fn.COALESCE","sym.LPAREN","kw.NOT"], "to": "expr.after_operand" },
+    { "from": "expr.after_operand", "onAnyOf": ["op.EQ","op.NE","op.LT","op.LE","op.GT","op.GE","op.AND","op.OR","op.IS","op.IN","op.BETWEEN","op.LIKE","op.PLUS","op.MINUS","op.MUL","op.DIV","op.MOD"], "to": "expr.after_operator" },
+    { "from": "expr.after_operator", "on": "expr.start", "to": "expr.start" },
+
+    { "from": "stmt.start", "on": "kw.INSERT", "to": "dml.after_INSERT" },
+    { "from": "dml.after_INSERT", "on": "kw.INTO", "to": "dml.after_INTO" },
+    { "from": "stmt.start", "on": "kw.UPDATE", "to": "dml.after_UPDATE" },
+    { "from": "stmt.start", "on": "kw.DELETE", "to": "dml.after_DELETE" },
+
+    { "from": "stmt.start", "on": "kw.CREATE", "to": "ddl.after_CREATE" },
+    { "from": "ddl.after_CREATE", "on": "kw.TABLE", "to": "ddl.after_CREATE_TABLE" },
+
+    { "from": "stmt.start", "on": "kw.GRANT", "to": "dcl.after_GRANT" },
+    { "from": "stmt.start", "on": "kw.BEGIN", "to": "tcl.after_BEGIN" },
+    { "from": "stmt.start", "on": "kw.COMMIT", "to": "tcl.after_COMMIT" },
+    { "from": "stmt.start", "on": "kw.ROLLBACK", "to": "tcl.after_ROLLBACK" },
+    { "from": "stmt.start", "on": "kw.SAVEPOINT", "to": "tcl.after_SAVEPOINT" }
+  ]
+}

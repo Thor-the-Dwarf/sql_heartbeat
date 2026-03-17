@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "source": "external-v1",
+  "statePolicy": {
+    "slots": {
+      "statement_start": ["dml_statements", "ddl_statements", "dcl_statements", "tcl_statements", "cte"],
+      "statement_keyword_prefix": ["dml_statements", "ddl_statements", "dcl_statements", "tcl_statements", "cte"],
+      "select_list_start": ["identifiers", "select_core", "from_sources", "aggregate_functions", "window_functions", "numeric_scalar_functions", "string_scalar_functions", "datetime_functions", "system_metadata_functions", "json_functions", "literals", "subqueries"],
+      "select_list_expression": ["identifiers", "from_sources", "aggregate_functions", "window_functions", "numeric_scalar_functions", "string_scalar_functions", "datetime_functions", "system_metadata_functions", "json_functions", "xml_functions", "spatial_functions", "literals", "arithmetic_operators", "string_operators", "conditional_expressions", "null_handling", "type_conversion", "aliasing", "subqueries"],
+      "from_source": ["from_sources", "identifiers", "join_types"],
+      "join_source": ["from_sources", "identifiers", "join_types"],
+      "join_condition": ["identifiers", "comparison_operators", "logical_operators", "null_predicates", "range_membership", "pattern_matching", "existence_quantifiers", "literals", "parameters", "numeric_scalar_functions", "string_scalar_functions", "datetime_functions", "conditional_expressions", "null_handling", "type_conversion"],
+      "where_expression": ["identifiers", "comparison_operators", "logical_operators", "null_predicates", "range_membership", "pattern_matching", "existence_quantifiers", "literals", "parameters", "subqueries", "null_handling", "numeric_scalar_functions", "string_scalar_functions", "datetime_functions", "system_metadata_functions", "conditional_expressions", "type_conversion"],
+      "group_by_expression": ["identifiers", "grouping", "aggregate_functions", "window_functions", "numeric_scalar_functions", "string_scalar_functions", "datetime_functions"],
+      "having_expression": ["aggregate_functions", "comparison_operators", "logical_operators", "identifiers", "literals", "numeric_scalar_functions", "string_scalar_functions", "datetime_functions", "conditional_expressions", "null_handling"],
+      "order_by_expression": ["ordering", "identifiers", "aggregate_functions", "window_functions", "pagination"],
+      "pagination_expression": ["pagination", "literals", "parameters"],
+      "insert_column_list": ["identifiers", "insert_syntax_parts", "delimiters_punctuation"],
+      "insert_values_expression": ["literals", "parameters", "delimiters_punctuation", "arithmetic_operators", "string_operators", "null_handling"],
+      "update_set_expression": ["identifiers", "literals", "parameters", "arithmetic_operators", "string_operators", "null_handling", "type_conversion", "conditional_expressions"],
+      "ddl_column_definition": ["integer_types", "exact_numeric_types", "approx_numeric_types", "character_types", "binary_types", "boolean_types", "datetime_types", "interval_types", "other_common_types", "column_constraints", "table_constraints", "referential_actions"],
+      "dql_statement_body": ["select_core", "from_sources", "join_types", "filtering", "grouping", "windowing", "ordering", "pagination", "set_operations", "cte", "locking_clauses"],
+      "dml_statement_body": ["dml_statements", "insert_syntax_parts", "update_syntax_parts", "delete_syntax_parts", "identifiers", "literals", "parameters", "logical_operators", "comparison_operators"],
+      "ddl_statement_body": ["ddl_statements", "identifiers", "column_constraints", "table_constraints", "referential_actions", "indexing_partitioning"],
+      "dcl_statement_body": ["dcl_statements", "privileges", "identifiers"],
+      "tcl_statement_body": ["tcl_statements", "isolation_levels", "transaction_modifiers"]
+    },
+    "clauses": {
+      "SELECT": ["select_core", "from_sources", "identifiers", "aggregate_functions", "window_functions", "aliasing", "literals", "subqueries"],
+      "FROM": ["from_sources", "join_types", "identifiers"],
+      "JOIN": ["join_types", "from_sources", "identifiers"],
+      "ON": ["identifiers", "comparison_operators", "logical_operators", "null_predicates", "range_membership", "pattern_matching", "existence_quantifiers", "literals", "parameters"],
+      "WHERE": ["identifiers", "comparison_operators", "logical_operators", "null_predicates", "range_membership", "pattern_matching", "existence_quantifiers", "literals", "parameters", "subqueries"],
+      "GROUP_BY": ["grouping", "identifiers", "aggregate_functions", "window_functions"],
+      "HAVING": ["aggregate_functions", "comparison_operators", "logical_operators", "identifiers", "literals"],
+      "ORDER_BY": ["ordering", "identifiers", "aggregate_functions", "window_functions", "pagination"],
+      "VALUES": ["literals", "parameters", "delimiters_punctuation", "arithmetic_operators", "string_operators", "null_handling"],
+      "SET": ["identifiers", "update_syntax_parts", "literals", "parameters", "arithmetic_operators", "string_operators", "null_handling", "type_conversion"],
+      "CREATE_TABLE": ["ddl_statements", "integer_types", "exact_numeric_types", "approx_numeric_types", "character_types", "binary_types", "boolean_types", "datetime_types", "interval_types", "other_common_types", "column_constraints", "table_constraints", "referential_actions"],
+      "INSERT": ["insert_syntax_parts", "identifiers", "literals", "parameters"],
+      "UPDATE": ["update_syntax_parts", "identifiers", "literals", "parameters", "comparison_operators", "logical_operators"],
+      "DELETE": ["delete_syntax_parts", "identifiers", "comparison_operators", "logical_operators"]
+    },
+    "statementFamilies": {
+      "dql": ["select_core", "from_sources", "join_types", "filtering", "grouping", "windowing", "ordering", "pagination", "set_operations", "cte", "locking_clauses", "identifiers", "literals", "parameters", "logical_operators", "comparison_operators", "null_predicates", "range_membership", "pattern_matching", "existence_quantifiers", "aggregate_functions", "aggregate_modifiers", "window_functions", "arithmetic_operators", "string_operators", "null_handling", "type_conversion", "subqueries", "aliasing", "conditional_expressions"],
+      "dml": ["dml_statements", "insert_syntax_parts", "update_syntax_parts", "delete_syntax_parts", "identifiers", "literals", "parameters", "comparison_operators", "logical_operators", "null_predicates", "range_membership", "pattern_matching", "arithmetic_operators", "string_operators", "null_handling", "type_conversion", "conditional_expressions", "from_sources", "filtering"],
+      "ddl": ["ddl_statements", "identifiers", "integer_types", "exact_numeric_types", "approx_numeric_types", "character_types", "binary_types", "boolean_types", "datetime_types", "interval_types", "other_common_types", "column_constraints", "table_constraints", "referential_actions", "indexing_partitioning"],
+      "dcl": ["dcl_statements", "privileges", "identifiers"],
+      "tcl": ["tcl_statements", "isolation_levels", "transaction_modifiers"]
+    }
+  },
+  "denyByStatementFamily": {
+    "dql": ["ddl_statements", "dcl_statements", "tcl_statements"],
+    "dml": ["ddl_statements", "dcl_statements", "tcl_statements"],
+    "ddl": ["dml_statements", "dcl_statements", "tcl_statements"],
+    "dcl": ["dml_statements", "ddl_statements", "tcl_statements"],
+    "tcl": ["dml_statements", "ddl_statements", "dcl_statements"]
+  },
+  "denyGlobal": []
+}
