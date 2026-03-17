@@ -3019,8 +3019,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const storyFolderStateKey = `story-folder:${sanitizeClassName(storyFolder.id) || `story-${folderIndex + 1}`}`;
                     const storyFolderDetails = document.createElement('details');
                     storyFolderDetails.className = 'lesson-folder lesson-tool-folder';
-                    const containsActiveStory = storyFolder.titles.some((storyTitle) => storyTitle.id === activeStoryTitleId);
-                    storyFolderDetails.open = lessonFolderOpenState.has(storyFolderStateKey) || containsActiveStory;
+                    storyFolderDetails.open = lessonFolderOpenState.has(storyFolderStateKey);
                     storyFolderDetails.addEventListener('toggle', () => {
                         if (storyFolderDetails.open) {
                             lessonFolderOpenState.add(storyFolderStateKey);
