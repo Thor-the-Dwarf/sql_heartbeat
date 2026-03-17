@@ -242,9 +242,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const LESSON_TREE_FALLBACK = {
         rootLabel: 'Werkzeuge',
         toolLabels: [
-            'DDL Data Definition Language',
-            'DML Data Manipulation Language',
             'DQL Data Query Language',
+            'DML Data Manipulation Language',
+            'DDL Data Definition Language',
             'DCL Data Control Language',
             'TCL Transaction Control Language'
         ]
@@ -497,6 +497,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function extractToolCode(label = '') {
         const match = String(label || '').trim().match(/^([A-Za-z]+)/);
         return match ? match[1].toLowerCase() : '';
+    }
+
+    const CANONICAL_TOOL_ORDER = ['dql', 'dml', 'ddl', 'dcl', 'tcl'];
+
+    function sortToolsByCanonicalOrder(tools = []) {
+        const orderMap = new Map(CANONICAL_TOOL_ORDER.map((code, index) => [code, index]));
+        return (Array.isArray(tools) ? tools : [])
+            .map((tool, index) => ({ tool, index }))
+            .sort((left, right) => {
+                const leftRank = orderMap.has(left.tool?.code) ? orderMap.get(left.tool.code) : Number.MAX_SAFE_INTEGER;
+                const rightRank = orderMap.has(right.tool?.code) ? orderMap.get(right.tool.code) : Number.MAX_SAFE_INTEGER;
+                if (leftRank !== rightRank) return leftRank - rightRank;
+                return left.index - right.index;
+            })
+            .map((entry) => entry.tool);
     }
 
     function buildToolDatabasePreset(toolCode) {
@@ -2097,7 +2112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const rootLabel = String(parsedTree.rootLabel || LESSON_TREE_FALLBACK.rootLabel).trim() || LESSON_TREE_FALLBACK.rootLabel;
         const parsedTools = Array.isArray(parsedTree.tools) ? parsedTree.tools : [];
 
-        const toolsFromTree = parsedTools.map((tool, index) => {
+        const toolsFromTree = sortToolsByCanonicalOrder(parsedTools.map((tool, index) => {
             const safeLabel = String(tool?.label || `Werkzeug ${index + 1}`).trim() || `Werkzeug ${index + 1}`;
             const toolCode = extractToolCode(safeLabel);
             const fallbackPrefix = sanitizeClassName(safeLabel) || `tool-${index + 1}`;
@@ -2115,13 +2130,13 @@ document.addEventListener('DOMContentLoaded', () => {
             assignLessonSnapshotsForTool(modelEntry);
             modelEntry.lessons = flattenLessonTreeNodes(modelEntry.lessonRoots);
             return modelEntry;
-        });
+        }));
 
         if (toolsFromTree.length > 0) {
             return { rootLabel, tools: toolsFromTree };
         }
 
-        const fallbackTools = LESSON_TREE_FALLBACK.toolLabels.map((label, index) => {
+        const fallbackTools = sortToolsByCanonicalOrder(LESSON_TREE_FALLBACK.toolLabels.map((label, index) => {
             const safeLabel = String(label || `Werkzeug ${index + 1}`).trim() || `Werkzeug ${index + 1}`;
             const toolCode = extractToolCode(safeLabel);
             const modelEntry = {
@@ -2134,7 +2149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             assignLessonSnapshotsForTool(modelEntry);
             modelEntry.lessons = flattenLessonTreeNodes(modelEntry.lessonRoots);
             return modelEntry;
-        });
+        }));
 
         return { rootLabel, tools: fallbackTools };
     }
